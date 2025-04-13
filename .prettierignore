@@ -1,0 +1,6 @@
+package-lock.yaml
+/node_modules
+/out
+/dist
+/.nuxt
+/.vscode
