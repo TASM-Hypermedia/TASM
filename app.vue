@@ -1,6 +1,12 @@
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+  <index />
 </template>
+<script>
+import  index  from './pages/index.vue'
+
+export default {
+  components: {
+    index
+  }
+}
+</script>
