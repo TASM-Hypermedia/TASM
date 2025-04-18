@@ -6,6 +6,17 @@ export default defineNuxtConfig({
     strict: true,
     typeCheck: true,
   },
-
-  modules: ["@nuxt/eslint", "@nuxt/fonts", "@nuxt/icon", "@nuxt/image"],
+  srcDir: "src/",
+  css: ["@/assets/styles/index.css"],
+  modules: [
+    "@nuxt/eslint",
+    "@nuxt/fonts",
+    "@nuxt/icon",
+    "@nuxt/image",
+    "vuetify-nuxt-module",
+  ],
+  vuetify: {
+    moduleOptions: {},
+    vuetifyOptions: {},
+  },
 })

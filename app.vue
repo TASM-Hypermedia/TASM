@@ -1,12 +1,20 @@
 <template>
-  <index />
+  <div class="root">
+    <index />
+  </div>
 </template>
 <script>
-import  index  from './pages/index.vue'
+import index from "./pages/index.vue"
 
 export default {
   components: {
-    index
-  }
+    index,
+  },
 }
 </script>
+
+<style>
+.root {
+  flex: 1;
+}
+</style>
