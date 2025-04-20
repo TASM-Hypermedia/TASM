@@ -1,7 +1,10 @@
 <template>
-  <div class="root">
-    <index />
-  </div>
+  <v-app>
+    <header></header>
+    <v-main><index /> </v-main>
+    <footer></footer>
+  </v-app>
+  <div class="root"></div>
 </template>
 <script>
 import index from "./pages/index.vue"
