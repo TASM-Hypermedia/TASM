@@ -3,20 +3,24 @@
     <v-row>
       <v-col cols="12">
         <copertinaPag title="Namaste" subtitle="Welcome to the teacher page!" />
+        <!-- obj teacher only -->
       </v-col>
     </v-row>
 
     <v-row>
       <v-col cols="6">
-        <h1>{{ name }}</h1>
-        <p>{{ description }}</p>
+        <div>
+          <p v-if="teacher">Name: {{ teacher.name }}</p>
+          <p v-if="teacher">{{ teacher.description }}</p>
+        </div>
       </v-col>
-      <v-col cols="4">
+      <v-col cols="">
         <v-card>
-          <v-img
-            src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-            height="200px"
-          ></v-img>
+          <v-card-title>Teacher Details</v-card-title>
+          <v-card-text>
+            <p v-if="teacher">Name: {{ teacher.name }}</p>
+            <p v-if="teacher">Description: {{ teacher.description }}</p>
+          </v-card-text>
         </v-card>
       </v-col>
     </v-row>
@@ -25,9 +29,13 @@
 
 <script setup lang="ts">
 import copertinaPag from "~/components/copertinaPag.vue"
+interface Teacher {
+  name: string
+  description: string
+}
+
 defineProps<{
-  name?: string
-  description?: string
+  teacher?: Teacher
 }>()
 </script>
 <style scoped>
