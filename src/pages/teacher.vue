@@ -2,7 +2,7 @@
   <div class="teacherWrapper">
     <v-row>
       <v-col cols="12">
-        <copertinaPag title="Namaste" subtitle="Welcome to the teacher page!" />
+        <heroPage title="Namaste" subtitle="Welcome to the teacher page!" />
         <!-- obj teacher only -->
       </v-col>
     </v-row>
@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import copertinaPag from "~/components/copertinaPag.vue"
+import heroPage from "~/components/HeroPage.vue"
 interface Teacher {
   name: string
   description: string
