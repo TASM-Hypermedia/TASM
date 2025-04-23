@@ -1,20 +1,17 @@
 <template>
   <div>
-    <!--<TestComponent />-->
-    <teacher :teacher="teacherInfo" />
+    <test-component />
   </div>
 </template>
+<script lang="ts">
+import testComponent from "~/components/TestComponent.vue"
 
-<script setup lang="ts">
-//import TestComponent from "~/components/TestComponent.vue"
-import teacher from "./teacher.vue"
-
-const teacherInfo = {
-  name: "John Doe",
-  description: "A passionate teacher with a love for learning.",
+export default {
+  components: {
+    testComponent,
+  },
 }
 </script>
-
 <style scoped>
 div {
   background-color: #f0f0f0;

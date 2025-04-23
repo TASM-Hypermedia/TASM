@@ -1,23 +1,32 @@
+<script setup lang="ts">
+const props = defineProps<{
+  title?: string
+  subtitle?: string
+  urlImg?: string
+}>()
+
+function getUrlImg() {
+  return new URL(`../assets/images/${props.urlImg}`, import.meta.url)
+}
+</script>
+
 <template>
-  <div class="copertinaPage">
+  <div
+    class="copertinaPage"
+    :style="{ backgroundImage: `url(${getUrlImg()})` }"
+  >
     <v-row class="d-flex justify-center align-center">
       <v-col cols="12" class="d-flex justify-center align-center">
         <div class="heroPage">
           <span>{{ title }}</span>
           <br />
           <span>{{ subtitle }}</span>
+          {{ urlImg }}
         </div>
       </v-col>
     </v-row>
   </div>
 </template>
-
-<script setup lang="ts">
-defineProps<{
-  title?: string
-  subtitle?: string
-}>()
-</script>
 
 <style>
 .heroPage {
@@ -34,7 +43,6 @@ defineProps<{
   border-radius: 16px;
 }
 .copertinaPage {
-  background-image: url("../assets/styles/Team.jpg");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
