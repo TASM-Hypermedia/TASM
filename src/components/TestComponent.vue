@@ -16,8 +16,3 @@ const teacherInfo = {
   mantraSubtitle: "Inspiring minds, shaping futures.",
 }
 </script>
-<style scoped>
-div {
-  padding: 16px;
-}
-</style>

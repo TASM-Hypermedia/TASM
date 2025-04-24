@@ -3,8 +3,9 @@
     <v-row>
       <v-col cols="12">
         <heroPage
-          :title="teacher.mantra"
-          :subtitle="teacher.mantraSubtitle"
+          :title="teacher.name"
+          :subtitle="teacher.mantra"
+          tagline="The Teachers:"
           url-img="Team.jpg"
         />
         <!-- obj teacher only -->
@@ -78,5 +79,6 @@ withDefaults(
 .teacherWrapper {
   width: 100%;
   height: 100%;
+  /* max-width: 800px; */
 }
 </style>
