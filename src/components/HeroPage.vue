@@ -58,7 +58,7 @@ export default {
         :style="{ top: scrollAmount / 3 + 'px' }"
       />
     </client-only>
-    <div class="hero-page">
+    <div class="hero-page" :style="{ marginTop: scrollAmount / 2 + 'px' }">
       <p v-if="tagline">{{ tagline }}</p>
       <h1>{{ title }}</h1>
       <h2 v-if="subtitle">{{ subtitle }}</h2>
@@ -78,6 +78,9 @@ export default {
   border-radius: 32px;
   gap: 8px;
   flex: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero-page h1 {
@@ -107,7 +110,9 @@ export default {
   height: 100%;
   padding: 32px;
   flex: 1;
-  width: 100%;
+  width: 100vw;
+  overflow: hidden;
+  padding-top: 40px;
 }
 
 .background-image {
