@@ -1,13 +1,27 @@
 <script setup lang="ts">
 const props = defineProps<{
+  /**
+   * Hero page title
+   */
   title: string
+  /**
+   * @optional Hero page subtitle, below the title
+   */
   subtitle?: string
+  /**
+   * @optional Hero page tagline, above the title
+   */
   tagline?: string
+  /**
+   * @optional URL for the hero image (Takes the image name from the `assets/images` folder)
+   */
   urlImg?: string
 }>()
 
-const url = computed(
-  () => new URL(`../assets/images/${props.urlImg}`, import.meta.url).href
+const url = computed(() =>
+  props.urlImg
+    ? new URL(`../assets/images/${props.urlImg}`, import.meta.url).href
+    : undefined
 )
 </script>
 

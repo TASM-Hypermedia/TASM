@@ -2,7 +2,7 @@
   <div class="teacherWrapper">
     <v-row>
       <v-col cols="12">
-        <heroPage
+        <HeroPage
           :title="teacher.name"
           :subtitle="teacher.mantra"
           tagline="The Teachers:"
@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import heroPage from "~/components/HeroPage.vue"
+import HeroPage from "~/components/HeroPage.vue"
 interface Teacher {
   name: string
   description: string
