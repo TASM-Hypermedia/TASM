@@ -1,8 +1,9 @@
 <template>
-  <AppHeader />
-  <div class="root">
-    <index />
-  </div>
+  <v-app>
+    <AppHeader />
+    <v-main><index /> </v-main>
+    <footer></footer>
+  </v-app>
 </template>
 
 <script>
@@ -14,9 +15,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.root {
-  flex: 1;
-}
-</style>

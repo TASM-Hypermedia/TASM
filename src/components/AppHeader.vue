@@ -1,43 +1,38 @@
 <script setup lang="ts">
+import { NuxtLink } from "#components"
 </script>
 
 <template>
-  <div class="header-div">
-    <div class="header-column">
-      <img class="header-img" src="../assets/images/headerIcon.svg" alt="headerIcon" />
-    </div>
-    <div class="header-column">
-      <ul>
-        <li><a href="#">The Center</a></li>
-        <li><a href="#">Our Team</a></li>
-        <li><a href="#">Activities</a></li>
-        <li><a href="#">Events</a></li>
-        <li><a href="#">Pricing</a></li>
-        <li><a class="active-link" href="#">Contacts</a></li>
-      </ul>
-    </div>
-  </div>
+  <nav class="header-div">
+    <img class="header-img" src="../assets/images/headerIcon.svg" alt="logo" />
+    <NuxtLink to="#">The Center</NuxtLink>
+    <NuxtLink to="#">Our Team</NuxtLink>
+    <NuxtLink to="#">Activities</NuxtLink>
+    <NuxtLink to="#">Events</NuxtLink>
+    <NuxtLink to="#">Pricing</NuxtLink>
+    <NuxtLink class="active-link" to="#">Contacts</NuxtLink>
+  </nav>
 </template>
 
 <style scoped>
-
 .header-div {
-  background-color: blue;
-  display: table;
-  border-bottom: 2px gray solid;
-  width: 100%;
-  height: 20px;
-}
-
-.header-column {
-  float: left;
-  width: 50%;
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  top: 0;
+  width: 100vw;
+  padding: 16px;
+  gap: 8px;
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 img {
   display: block;
-  width: 86px;
-  padding: 10px;
+  width: 64px;
+  margin-right: auto;
 }
 
 ul {
@@ -49,18 +44,22 @@ li {
   float: right;
 }
 
-li a {
+a {
   display: block;
   color: black;
   text-align: center;
   padding: 5px 10px;
-  margin: 10px;
   text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+a:hover {
+  background-color: #e2e2e2;
+  color: black;
 }
 
 .active-link {
-  background-color: #D3D3D3;
-  border-radius: 10px;
+  background-color: #d3d3d3;
 }
-
 </style>

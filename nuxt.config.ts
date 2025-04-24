@@ -19,4 +19,11 @@ export default defineNuxtConfig({
     moduleOptions: {},
     vuetifyOptions: {},
   },
+  fonts: {
+    defaults: {
+      weights: [400, 700],
+      styles: ["normal", "italic"],
+      subsets: ["latin-ext", "latin"],
+    },
+  },
 })
