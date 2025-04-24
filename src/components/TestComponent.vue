@@ -5,6 +5,6 @@
 </template>
 <style scoped>
 div {
-  padding: 16px;
+  width: 50%;
 }
 </style>

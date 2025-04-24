@@ -1,8 +1,10 @@
 <template>
+  <AppHeader />
   <div class="root">
     <index />
   </div>
 </template>
+
 <script>
 import index from "./pages/index.vue"
 
