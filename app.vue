@@ -1,7 +1,9 @@
 <template>
-  <div class="root">
-    <index />
-  </div>
+  <v-app>
+    <header></header>
+    <v-main><index /> </v-main>
+    <footer></footer>
+  </v-app>
 </template>
 <script>
 import index from "./pages/index.vue"
@@ -12,9 +14,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.root {
-  flex: 1;
-}
-</style>
