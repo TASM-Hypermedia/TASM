@@ -1,17 +1,14 @@
 <template>
   <div>
-    <AppHeader />
     <test-component />
   </div>
 </template>
 <script lang="ts">
 import testComponent from "~/components/TestComponent.vue"
-import AppHeader from "~/components/AppHeader.vue"
 
 export default {
   components: {
     testComponent,
-    AppHeader,
   },
 }
 </script>
