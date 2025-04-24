@@ -22,7 +22,22 @@
 <style scoped>
 
 .header-div {
-  background-color: white;
+  background-color: blue;
+  display: table;
+  border-bottom: 2px gray solid;
+  width: 100%;
+  height: 20px;
+}
+
+.header-column {
+  float: left;
+  width: 50%;
+}
+
+img {
+  display: block;
+  width: 86px;
+  padding: 10px;
 }
 
 ul {
