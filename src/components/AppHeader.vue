@@ -1,38 +1,8 @@
 <script setup lang="ts">
 import { NuxtLink } from "#components"
-</script>
 
-<script lang="ts">
-const opacity = ref(0.6)
-
-function clamp(value: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, value))
-}
-
-function map(
-  value: number,
-  in_min: number,
-  in_max: number,
-  out_min: number,
-  out_max: number
-) {
-  return ((value - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
-}
-
-export default {
-  mounted() {
-    window.addEventListener("scroll", this.handleScroll)
-    this.handleScroll()
-  },
-  beforeUnmount() {
-    window.removeEventListener("scroll", this.handleScroll)
-  },
-  methods: {
-    handleScroll() {
-      opacity.value = map(clamp(window.scrollY, 0, 600), 0, 600, 0.6, 1)
-    },
-  },
-}
+const { y } = useScroll()
+const opacity = computed(() => maprange(clamp(y.value, 0, 600), 0, 600, 0.6, 1))
 </script>
 
 <template>

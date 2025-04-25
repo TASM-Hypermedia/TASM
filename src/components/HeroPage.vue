@@ -23,35 +23,15 @@ const url = computed(() =>
     ? new URL(`../assets/images/${props.urlImg}`, import.meta.url).href
     : undefined
 )
-</script>
 
-<script lang="ts">
-const scrollAmount = ref(0)
-
-function clamp(value: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, value))
-}
-
-export default {
-  mounted() {
-    window.addEventListener("scroll", this.handleScroll)
-  },
-  beforeUnmount() {
-    window.removeEventListener("scroll", this.handleScroll)
-  },
-  methods: {
-    handleScroll() {
-      scrollAmount.value = clamp(window.scrollY, 0, 600)
-    },
-  },
-}
+const { y } = useScroll()
+const scrollAmount = computed(() => clamp(y.value, 0, 600))
 </script>
 
 <template>
   <div class="copertina-page">
     <client-only v-if="url">
       <img
-        v-if="url"
         :src="url"
         alt=""
         class="background-image"
