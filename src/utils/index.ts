@@ -45,7 +45,6 @@ export function throttle<A extends unknown[], R>(
   func: (...args: A) => R,
   limit: number
 ): (...args: A) => R {
-  console.log("throttle", func, limit)
   let timeout: NodeJS.Timeout | null = null
   let cachedResult: R | null = null
 
