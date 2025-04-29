@@ -26,9 +26,9 @@
 
     .card {
         width: 100%;
-        max-width: 300px; 
-        height: 100%;
-        max-height: 250px; 
+        max-width: 500px; 
+        height: 40vh;
+         
         padding: 10px; 
         background: white; 
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);

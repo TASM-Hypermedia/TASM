@@ -7,7 +7,7 @@ import { NuxtLink } from "#components"
     <img class="header-img" src="../assets/images/headerIcon.svg" alt="logo" />
     <NuxtLink to="#">The Center</NuxtLink>
     <NuxtLink to="#">Our Team</NuxtLink>
-    <NuxtLink to="#">Activities</NuxtLink>
+    <NuxtLink to="/activities">Activities</NuxtLink>
     <NuxtLink to="#">Events</NuxtLink>
     <NuxtLink to="#">Pricing</NuxtLink>
     <NuxtLink class="active-link" to="#">Contacts</NuxtLink>
