@@ -1,5 +1,5 @@
 <template>
-    <v-container class="bg-black">
+    <v-container class="">
         <v-row no-gutters>
             <!--
             <v-col v-for="n in 9" :key="n" cols="12" sm="12" md="6" lg="4">
@@ -17,13 +17,12 @@
             </v-col>
             -->
 
-            <v-col v-for="n in 9" :key="n" class="pa-3" cols="12" sm="12" md="6" lg="4">
-                <activity-card :title="'Prova ' +  n "/>
+            <v-col v-for="n in 5" :key="n" class="pa-3" cols="12" sm="12" md="6" lg="4">
+                <activity-card :title="'Prova ' +  n " />
             </v-col>
   
         </v-row>
     </v-container>
-    
 </template>
 
 <script setup lang="ts">
