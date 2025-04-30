@@ -39,7 +39,7 @@
 <style scoped>
 footer {
   background-color: #f3f3f3;
-  padding: 32px;
+  padding: 32px 128px;
   gap: 16px;
   display: flex;
   justify-content: space-between;
@@ -55,6 +55,7 @@ img {
 footer div {
   display: flex;
   flex-direction: column;
+  margin-right: 32px;
 }
 
 .logo {
