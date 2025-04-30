@@ -17,13 +17,14 @@ if (!data.value || data.value.length === 0) {
 const { name } = data.value[0]
 
 // Example POST API call
-const { data: dataPost } = await useAPI<{ id: number; name: string }>(
-  "/postData",
-  {
-    method: "POST",
-    body: JSON.stringify({ id: 1 }),
-  }
-)
+const { data: dataPost } = await useAPI<{
+  id: number
+  name: string
+  surname: string
+}>("/postData", {
+  method: "POST",
+  body: JSON.stringify({ id: 1 }),
+})
 
 if (!dataPost.value) {
   throw new Error("No data found")
