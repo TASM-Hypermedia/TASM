@@ -1,17 +1,10 @@
 <template>
-  <div class="teacherWrapper">
-    <v-row>
-      <v-col cols="12">
-        <HeroPage
-          :title="teacher.name"
-          :subtitle="teacher.mantra"
-          tagline="The Teachers:"
-          url-img="Team.jpg"
-        />
-        <!-- obj teacher only -->
-      </v-col>
-    </v-row>
-
+  <PageWrap
+    :title="teacher.name"
+    :subtitle="teacher.mantra"
+    tagline="The Teachers:"
+    img-src="Team.jpg"
+  >
     <v-row>
       <v-col cols="6">
         <v-card>
@@ -50,11 +43,10 @@
         </v-card>
       </v-col>
     </v-row>
-  </div>
+  </PageWrap>
 </template>
 
 <script setup lang="ts">
-import HeroPage from "~/components/HeroPage.vue"
 interface Teacher {
   name: string
   description: string
@@ -75,10 +67,3 @@ withDefaults(
   }
 )
 </script>
-<style scoped>
-.teacherWrapper {
-  width: 100%;
-  height: 100%;
-  /* max-width: 800px; */
-}
-</style>
