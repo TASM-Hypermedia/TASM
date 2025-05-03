@@ -23,42 +23,22 @@ const url = computed(() =>
     ? new URL(`../assets/images/${props.urlImg}`, import.meta.url).href
     : undefined
 )
-</script>
 
-<script lang="ts">
-const scrollAmount = ref(0)
-
-function clamp(value: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, value))
-}
-
-export default {
-  mounted() {
-    window.addEventListener("scroll", this.handleScroll)
-  },
-  beforeUnmount() {
-    window.removeEventListener("scroll", this.handleScroll)
-  },
-  methods: {
-    handleScroll() {
-      scrollAmount.value = clamp(window.scrollY, 0, 600)
-    },
-  },
-}
+const { y } = useScroll()
+const scrollAmount = computed(() => clamp(y.value, 0, 600))
 </script>
 
 <template>
   <div class="copertina-page">
     <client-only v-if="url">
       <img
-        v-if="url"
         :src="url"
         alt=""
         class="background-image"
         :style="{ top: scrollAmount / 3 + 'px' }"
       />
     </client-only>
-    <div class="hero-page">
+    <div class="hero-page" :style="{ marginTop: scrollAmount / 2 + 'px' }">
       <p v-if="tagline">{{ tagline }}</p>
       <h1>{{ title }}</h1>
       <h2 v-if="subtitle">{{ subtitle }}</h2>
@@ -78,6 +58,9 @@ export default {
   border-radius: 32px;
   gap: 8px;
   flex: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero-page h1 {
@@ -107,7 +90,9 @@ export default {
   height: 100%;
   padding: 32px;
   flex: 1;
-  width: 100%;
+  width: 100vw;
+  overflow: hidden;
+  padding-top: 40px;
 }
 
 .background-image {
