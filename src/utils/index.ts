@@ -59,3 +59,31 @@ export function throttle<A extends unknown[], R>(
     return cachedResult
   }
 }
+
+/**
+ * Locks the execution of a function at at most once per frame, all other calls
+ * within the same fram will return the value returned from the last excecuted call
+ * @param func The function to be executed
+ * @returns A throttled version of the function
+ */
+export function withFramerate<A extends unknown[], R>(func: (...args: A) => R) {
+  let lock = false
+  let cachedResult: R | symbol = Symbol("Empty cache")
+  return function (...args: A): R {
+    if (lock && typeof cachedResult !== "symbol") return cachedResult
+    lock = true
+    void nextFrame().then(() => (lock = false))
+    const res = func(...args)
+    cachedResult = res
+    return res
+  }
+}
+
+/**
+ * Wait for the next frame.
+ */
+export async function nextFrame(): Promise<void> {
+  return new Promise((res) => {
+    window.requestAnimationFrame(() => res())
+  })
+}

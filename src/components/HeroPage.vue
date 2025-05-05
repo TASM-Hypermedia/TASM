@@ -57,7 +57,6 @@ const scrollAmount = computed(() => clamp(y.value, 0, 600))
   padding: 24px;
   border-radius: 32px;
   gap: 8px;
-  flex: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;

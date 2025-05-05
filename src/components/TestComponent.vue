@@ -6,30 +6,8 @@
 
 <script setup lang="ts">
 import teacher from "../pages/teacher.vue"
-import { useAPI } from "~/composables/useAPI"
 
-// Example GET API call
-const { data } = await useAPI<{ id: number; name: string }[]>("/getData")
-
-if (!data.value || data.value.length === 0) {
-  throw new Error("No data found")
-}
-const { name } = data.value[0]
-
-// Example POST API call
-const { data: dataPost } = await useAPI<{
-  id: number
-  name: string
-  surname: string
-}>("/postData", {
-  method: "POST",
-  body: JSON.stringify({ id: 1 }),
-})
-
-if (!dataPost.value) {
-  throw new Error("No data found")
-}
-const namePost = dataPost.value.name + name
+const namePost = "Sara Morelli"
 
 const teacherInfo = {
   name: namePost,
