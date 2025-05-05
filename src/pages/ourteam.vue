@@ -1,17 +1,15 @@
 <template>
-    <page-wrap :title="'Activities'">
+    <page-wrap :title="'Our Team'">
         <card-grid/>
     </page-wrap>
 </template>
 
 <script lang="ts">
     import CardGrid from "~/components/CardGrid.vue";
-    import PageWrap from "~/components/PageWrap.vue";
 
     export default {
         components: {
             CardGrid,
-            PageWrap,
         },
     }
 

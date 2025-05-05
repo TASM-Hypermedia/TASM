@@ -9,9 +9,6 @@
 </template>
 
 <script setup lang="ts">
-    /*defineProps<{
-        title: string,
-    }>();*/
 
     import defaultImage from "../assets/images/activities/prova.png";
 
@@ -23,7 +20,6 @@
             title: "Default Title", // Default value for the title prop
             img: defaultImage, // Default value for the title prop
     });
-
 </script>
 
 <style scoped>
