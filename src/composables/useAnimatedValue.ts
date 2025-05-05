@@ -41,3 +41,13 @@ export function useAnimatedValue(
 
   return animatedValue
 }
+
+export function useAnimatedComputed<T>(
+  target: Ref<number>,
+  computeFn: (value: number) => T,
+  transitionTime: number,
+  easeFn: EaseFN = Ease.linear
+) {
+  const animationValue = useAnimatedValue(target, transitionTime, easeFn)
+  return computed(() => computeFn(animationValue.value))
+}
