@@ -1,3 +1,5 @@
+
+
 <script setup lang="ts">
 const props = defineProps<{
   /**
@@ -26,6 +28,8 @@ const url = computed(() =>
 
 const { y } = useScroll()
 const scrollAmount = computed(() => clamp(y.value, 0, 600))
+
+export class heroPage {}
 </script>
 
 <template>

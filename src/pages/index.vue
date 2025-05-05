@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { TestComponent } from "#components"
 </script>
 
 <template>
   <div>
-    <TestComponent />
+
   </div>
 </template>
 
