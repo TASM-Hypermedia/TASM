@@ -29,7 +29,7 @@ const url = computed(() =>
 const { y } = useScroll()
 const scrollAmount = computed(() => clamp(y.value, 0, 600))
 
-export class heroPage {}
+// export class heroPage {}
 </script>
 
 <template>
@@ -68,7 +68,7 @@ export class heroPage {}
 }
 
 .hero-page h1 {
-  font-size: 54px;
+  font-size: 30px;
   line-height: 64px;
 }
 
