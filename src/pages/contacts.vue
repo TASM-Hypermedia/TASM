@@ -8,7 +8,7 @@ import PriceCard from "~/components/PriceCard.vue"
     img-src="contact-page-banner.jpg"
   >
 
-    <v-container>
+    <v-container class="pricingContainer">
       <v-row no-gutters>
         <v-col
           v-for="n in 3"
@@ -138,6 +138,11 @@ import PriceCard from "~/components/PriceCard.vue"
   border-radius: 10px;
   padding: 10px;
   margin: 5px 0;
+}
+
+.pricingContainer {
+  width: 80%;
+  margin: auto;
 }
 
 </style>
