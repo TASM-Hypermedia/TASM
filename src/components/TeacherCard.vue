@@ -1,15 +1,15 @@
 <template>
     <div class="card">
         <img class="teacher_image" style="" src="https://placehold.co/226x218" />
-        <div class="teacher_name" style="">Bardo con l'ascia</div>
-        <div class="mantra" style="">“Inhale the future, exhale the past.”</div>
+        <div class="teacher_name" style="">{{teacher.name}}</div>
+        <div class="mantra" style="">{{teacher.mantra}}</div>
         
         <v-container class="tag_container">       
-                <activity-tag
-                    v-for="(tag, index) in activityTags" 
-                    :key="index"
-                    :text="tag.text"
-                />
+            <activity-tag
+                v-for="(tag, index) in teacher.activityTags" 
+                :key="index"
+                :text="tag.text"
+            />
         </v-container>
     
     </div>
@@ -17,37 +17,27 @@
 
 <script setup lang="ts">
 
-    const activityTags = [
-        { text: "Meditation" },
-        { text: "Magic Shower" },
-        { text: "Breathwork" },
-        { text: "Golden Pot" },
-        { text: "Yoga" },
-        { text: "Magic Shower" },
-        { text: "Magic Shower" },
-        { text: "Magic Shower" },
-        { text: "Breathwork" },
-        { text: "Sound" },
-        { text: "Magic Shower" },
-    ];
+    type Teacher = {
+        name: string,
+        image: string,
+        mantra: string,
+        activityTags: Array<{ text: string }>,
+    };
 
     /*
     import defaultImage from "../assets/images/activities/prova.png";
+    */
 
-    withDefaults(
-        defineProps<{
-            title?: string,
-            //img?: string,
-        }>(), {
-            title: "Default Title", // Default value for the title prop
-            //img: defaultImage, // Default value for the title prop
-    });*/
-
+    defineProps<{
+        teacher: Teacher,
+    }>();
+  
 </script>
 
 <style scoped>
     .card{
-        width: 100%; 
+        width: 100%;
+        max-width: 375px; 
         height: 100%; 
         padding: 11px; 
         background: white; 
