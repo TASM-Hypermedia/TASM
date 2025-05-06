@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import PriceCard from "~/components/PriceCard.vue"
 </script>
 
 <template>
@@ -6,6 +7,37 @@
     title="Contacts"
     img-src="contact-page-banner.jpg"
   >
+
+    <v-container>
+      <v-row no-gutters>
+        <v-col
+          v-for="n in 3"
+          :key="n"
+          class="pa-3"
+          cols="12"
+          sm="12"
+          md="6"
+          lg="4"
+          >
+
+          <price-card
+            :pricing="{
+            title: 'Premium',
+            price: 50,
+            items: [
+                { text: 'Meditazione' },
+                { text: 'Mindfulness' },
+                { text: 'Rituale' },
+                { text: 'Better sleep' },
+                { text: 'Golden Hour Sunset' },
+            ],
+            }"
+          />
+
+        </v-col>
+      </v-row>
+    </v-container>
+
     <section class="contact-section">
       <div class="row">
         <div class="column"></div>
@@ -106,6 +138,60 @@
   border-radius: 10px;
   padding: 10px;
   margin: 5px 0;
+}
+
+
+.faq-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  color: #333;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ddd;
+  overflow: hidden;
+}
+
+.faq-question {
+  background-color: #ecf0f1;
+  width: 100%;
+  padding: 20px;
+  text-align: left;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+  background-color: #d0d7de;
+}
+
+.faq-question .arrow {
+  position: absolute;
+  right: 20px;
+  transition: transform 0.3s ease;
+}
+
+.faq-question.active .arrow {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background-color: #fff;
+}
+
+.faq-answer p {
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555;
 }
 
 </style>
