@@ -28,9 +28,9 @@
     <v-row>
       <v-col cols="6">
         <v-card>
-          <v-card-title>What we'll do</v-card-title>
+          <v-card-title>What I've done</v-card-title>
           <v-card-text>
-            <p>{{ teacher.description }}</p>
+            <p>{{ teacher.history }}</p>
           </v-card-text>
         </v-card>
       </v-col>
@@ -52,6 +52,7 @@ interface Teacher {
   description: string
   mantra: string
   mantraSubtitle: string
+  history: string
 }
 withDefaults(
   defineProps<{
@@ -63,6 +64,7 @@ withDefaults(
       description: "",
       mantra: "",
       mantraSubtitle: "",
+      history: "",
     }),
   }
 )
