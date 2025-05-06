@@ -43,7 +43,7 @@ const loadedImages: ComputedRef<string[]> = computed((prev) => {
 
   // map it to the correct URL
   return shown.map(
-    (i) => new URL(`../assets/images/${i.URL}`, import.meta.url).href
+    (i) => `/images/${i.URL}` // new URL(`../assets/images/${i.URL}`, import.meta.url).href
   )
 })
 
@@ -144,7 +144,7 @@ const backwards = throttle(() => {
   align-items: center;
   overflow: "hidden";
   position: relative;
-  height: 350px;
+  height: 450px;
   padding: 32px 0;
 
   img {

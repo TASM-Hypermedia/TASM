@@ -13,7 +13,7 @@
         title: string,
     }>();*/
 
-    import defaultImage from "../assets/images/activities/prova.png";
+    import defaultImage from "../public/images/activities/prova.png";
 
     withDefaults(
         defineProps<{

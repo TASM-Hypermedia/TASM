@@ -51,7 +51,7 @@ article {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 800px;
+  max-width: 1080px;
   height: 100%;
 }
 </style>

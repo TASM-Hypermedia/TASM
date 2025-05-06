@@ -8,7 +8,7 @@ interface ActivityType {
   title: string
   mainImageURL: string
   description: string
-  nextLessons?: {
+  nextLessons: {
     date: string
     time: string
     name: string
@@ -18,9 +18,41 @@ interface ActivityType {
 
 const activity: ActivityType = {
   title: "Vinyasa Yoga",
-  mainImageURL: "Teacher1.jpg",
+  mainImageURL: "activities/image1.jpg",
   description:
-    "Vinyasa Yoga is a dynamic and flowing style of yoga that emphasizes the seamless connection between breath and movement. In a Vinyasa practice, each posture is synchronized with an inhale or exhale, creating a continuous flow from one asana (yoga posture) to the next. This rhythmic movement not only builds strength, flexibility, and endurance but also encourages mindfulness, helping practitioners stay present in the moment. The practice often includes creative sequences, which can range from slow and meditative to fast-paced and intense, providing a holistic workout for both the body and mind. \nVinyasa Yoga is known for its versatility and adaptability, allowing practitioners to tailor the experience to their own level of fitness and personal goals. Whether you're looking for a gentle practice to calm your mind or a vigorous session to challenge your body, Vinyasa offers a balance of flow, power, and relaxation.",
+    "Vinyasa Yoga is a dynamic and flowing style of yoga that emphasizes the seamless connection between breath and movement. In a Vinyasa practice, each posture is synchronized with an inhale or exhale, creating a continuous flow from one asana (yoga posture) to the next. This rhythmic movement not only builds strength, flexibility, and endurance but also encourages mindfulness, helping practitioners stay present in the moment. The practice often includes creative sequences, which can range from slow and meditative to fast-paced and intense, providing a holistic workout for both the body and mind. \n\n\nVinyasa Yoga is known for its versatility and adaptability, allowing practitioners to tailor the experience to their own level of fitness and personal goals. Whether you're looking for a gentle practice to calm your mind or a vigorous session to challenge your body, Vinyasa offers a balance of flow, power, and relaxation.",
+  nextLessons: [
+    {
+      date: "2023-10-30",
+      time: "10:00 - 11:00 (1h)",
+      name: "Lesson 1",
+      difficulty: "🌀 Medium",
+    },
+    {
+      date: "2023-10-31",
+      time: "14:00 - 15:00 (1h)",
+      name: "Lesson 2",
+      difficulty: "🌿 Easy",
+    },
+    {
+      date: "2023-11-01",
+      time: "09:00 - 10:00 (1h)",
+      name: "Lesson 3",
+      difficulty: "🔥 Hard",
+    },
+    {
+      date: "2023-11-02",
+      time: "13:00 - 14:00 (1h)",
+      name: "Lesson 4",
+      difficulty: "🌀 Medium",
+    },
+    {
+      date: "2023-11-03",
+      time: "11:00 - 12:00 (1h)",
+      name: "Lesson 5",
+      difficulty: "🌿 Easy",
+    },
+  ],
 }
 
 const selectedDifficulty = ref(0)
@@ -40,7 +72,7 @@ const setDifficulty = (n: number) => {
       </p>
     </section>
     <SlideCarousel
-      :width="750"
+      :width="1000"
       :images="[
         { URL: 'Teacher1.jpg' },
         { URL: 'Team.jpg' },
@@ -98,13 +130,59 @@ const setDifficulty = (n: number) => {
       </div>
       <div>
         <h1>Next Lessons</h1>
-        <div class="next-lesson"></div>
+        <div
+          v-for="(lesson, index) in activity.nextLessons"
+          :key="index"
+          class="next-lesson"
+        >
+          <img class="logo" src="../../assets/images/calendar.svg" alt="logo" />
+          <div>
+            <div>
+              <span style="font-weight: bold">{{ lesson.name }}</span>
+              <span>{{ lesson.difficulty }}</span>
+            </div>
+            <div style="font-size: 0.9em; opacity: 0.7">
+              <span>{{ lesson.date.split("-").reverse().join("/") }}</span>
+              <span>{{ lesson.time }}</span>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
+    <section style="align-items: center; text-align: center">
+      <h1>Teaching {{ activity.title }}</h1>
+      <div class="temp-grid">
+        <div class="temp"></div>
+        <div class="temp"></div>
+        <div class="temp"></div>
+      </div>
+    </section>
+    <section style="align-items: center; text-align: center">
+      <h2>Similar Activities</h2>
+      <div class="temp-grid">
+        <div class="temp"></div>
+        <div class="temp"></div>
+        <div class="temp"></div>
+      </div>
+      <NuxtLink class="link-button" to="/activities">
+        View all activities
+      </NuxtLink>
     </section>
   </PageWrap>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+section {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  h2 {
+    font-weight: 400;
+    font-size: 1.8em;
+  }
+}
+
 .description {
   text-align: center;
 }
@@ -118,15 +196,15 @@ span.label {
   font-size: 1.3em;
 }
 
-.pair {
+section.pair {
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: start;
   justify-content: stretch;
-  gap: 16px;
+  gap: 64px;
 
-  div {
+  & > div {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -134,8 +212,12 @@ span.label {
   }
 }
 
-li::marker {
-  font-weight: bold;
+ol {
+  padding-left: 20px;
+
+  li::marker {
+    font-weight: bold;
+  }
 }
 
 div.buttons {
@@ -156,5 +238,59 @@ div.buttons {
       background-color: #e2e2e2;
     }
   }
+}
+
+.next-lesson {
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 12px;
+  margin: 4px;
+
+  img {
+    flex: 0;
+    padding: 8px;
+  }
+
+  div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}
+
+div.temp-grid {
+  display: flex;
+  width: 100%;
+  padding: 24px 0;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .temp {
+    height: 300px;
+    width: 250px;
+    background-color: #0005;
+    border-radius: 16px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.link-button {
+  color: white;
+  background-color: #020202;
+  border-radius: 8px;
+  padding: 8px 32px;
+  margin: 16px;
+  text-decoration: none;
 }
 </style>
