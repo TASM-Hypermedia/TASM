@@ -144,7 +144,8 @@ const backwards = throttle(() => {
   align-items: center;
   overflow: "hidden";
   position: relative;
-  height: 300px;
+  height: 350px;
+  padding: 32px 0;
 
   img {
     height: 100%;
