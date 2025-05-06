@@ -46,14 +46,20 @@ export function throttle<A extends unknown[], R>(
   limit: number
 ): (...args: A) => R {
   let timeout: NodeJS.Timeout | null = null
-  let cachedResult: R | null = null
+  let again = false
+  let cachedResult: R | symbol = Symbol("Empty cache")
 
   return function (...args: A): R {
-    if (!timeout || cachedResult === null) {
-      timeout = setTimeout(() => {
-        cachedResult = func(...args)
-        timeout = null
-      }, limit)
+    if (timeout !== null) again = true
+    if (!timeout || typeof cachedResult === "symbol") {
+      const handler = () => {
+        if (again) {
+          cachedResult = func(...args)
+          timeout = setTimeout(handler, limit)
+        } else timeout = null
+        again = false
+      }
+      timeout = setTimeout(handler, limit)
       cachedResult = func(...args)
     }
     return cachedResult

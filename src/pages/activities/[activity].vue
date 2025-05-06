@@ -27,7 +27,10 @@ const activity: ActivityType = {
       {{ activity.description }}
     </p>
     <SlideCarousel
+      :width="750"
       :images="[
+        { URL: 'Teacher1.jpg' },
+        { URL: 'Team.jpg' },
         { URL: 'Teacher1.jpg' },
         { URL: 'Teacher1.jpg' },
         { URL: 'Teacher1.jpg' },
