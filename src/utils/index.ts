@@ -46,16 +46,50 @@ export function throttle<A extends unknown[], R>(
   limit: number
 ): (...args: A) => R {
   let timeout: NodeJS.Timeout | null = null
-  let cachedResult: R | null = null
+  let again = false
+  let cachedResult: R | symbol = Symbol("Empty cache")
 
   return function (...args: A): R {
-    if (!timeout || cachedResult === null) {
-      timeout = setTimeout(() => {
-        cachedResult = func(...args)
-        timeout = null
-      }, limit)
+    if (timeout !== null) again = true
+    if (!timeout || typeof cachedResult === "symbol") {
+      const handler = () => {
+        if (again) {
+          cachedResult = func(...args)
+          timeout = setTimeout(handler, limit)
+        } else timeout = null
+        again = false
+      }
+      timeout = setTimeout(handler, limit)
       cachedResult = func(...args)
     }
     return cachedResult
   }
+}
+
+/**
+ * Locks the execution of a function at at most once per frame, all other calls
+ * within the same fram will return the value returned from the last excecuted call
+ * @param func The function to be executed
+ * @returns A throttled version of the function
+ */
+export function withFramerate<A extends unknown[], R>(func: (...args: A) => R) {
+  let lock = false
+  let cachedResult: R | symbol = Symbol("Empty cache")
+  return function (...args: A): R {
+    if (lock && typeof cachedResult !== "symbol") return cachedResult
+    lock = true
+    void nextFrame().then(() => (lock = false))
+    const res = func(...args)
+    cachedResult = res
+    return res
+  }
+}
+
+/**
+ * Wait for the next frame.
+ */
+export async function nextFrame(): Promise<void> {
+  return new Promise((res) => {
+    window.requestAnimationFrame(() => res())
+  })
 }

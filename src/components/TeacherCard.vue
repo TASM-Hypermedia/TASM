@@ -36,6 +36,7 @@
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12); 
         overflow: hidden; 
         border-radius: 15px; 
+        cursor: pointer;
         outline: 1px rgba(0, 0, 0, 0.17) solid; 
         outline-offset: -1px; 
         flex-direction: column; 

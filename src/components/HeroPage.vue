@@ -18,26 +18,18 @@ const props = defineProps<{
   urlImg?: string
 }>()
 
-const url = computed(() =>
-  props.urlImg
-    ? new URL(`../assets/images/${props.urlImg}`, import.meta.url).href
-    : undefined
-)
-
 const { y } = useScroll()
 const scrollAmount = computed(() => clamp(y.value, 0, 600))
 </script>
 
 <template>
   <div class="copertina-page">
-    <client-only v-if="url">
-      <img
-        :src="url"
-        alt=""
-        class="background-image"
-        :style="{ top: scrollAmount / 3 + 'px' }"
-      />
-    </client-only>
+    <NuxtImg
+      :src="`/images/${props.urlImg}`"
+      alt=""
+      class="background-image"
+      :style="{ top: scrollAmount / 3 + 'px' }"
+    />
     <div class="hero-page" :style="{ marginTop: scrollAmount / 2 + 'px' }">
       <p v-if="tagline">{{ tagline }}</p>
       <h1>{{ title }}</h1>
@@ -53,11 +45,10 @@ const scrollAmount = computed(() => clamp(y.value, 0, 600))
   box-shadow: 0px 4px 24px 2px rgba(0, 0, 0, 0.1);
   text-align: center;
   font-weight: 700;
-  max-width: 800px;
+  max-width: 1080px;
   padding: 24px;
   border-radius: 32px;
   gap: 8px;
-  flex: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -86,13 +77,13 @@ const scrollAmount = computed(() => clamp(y.value, 0, 600))
   align-items: center;
   flex-direction: column;
   position: relative;
-  min-height: 600px;
+  min-height: 60vh;
   height: 100%;
   padding: 32px;
   flex: 1;
   width: 100vw;
   overflow: hidden;
-  padding-top: 40px;
+  padding-top: 112px;
 }
 
 .background-image {
