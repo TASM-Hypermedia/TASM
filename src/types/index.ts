@@ -1,0 +1,11 @@
+export type Teacher = {
+    name: string,
+    image: string,
+    mantra: string,
+    activityTags: Array<{ text: string }>,
+};
+
+export type Activity = {
+    title: string,
+    image: string,
+};
