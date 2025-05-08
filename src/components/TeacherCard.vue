@@ -1,12 +1,12 @@
 <template>
     <div class="card">
         <img class="teacher_image" style="" src="https://placehold.co/226x218" />
-        <div class="teacher_name" style="">{{teacher.name}}</div>
-        <div class="mantra" style="">{{teacher.mantra}}</div>
+        <div class="teacher_name" style="">{{teacherProp.name}}</div>
+        <div class="mantra" style="">{{teacherProp.mantra}}</div>
         
         <v-container class="tag_container">       
             <activity-tag
-                v-for="(tag, index) in teacher.activityTags" 
+                v-for="(tag, index) in teacherProp.activityTags" 
                 :key="index"
                 :text="tag.text"
             />
@@ -16,31 +16,23 @@
 </template>
 
 <script setup lang="ts">
+    import type { Teacher } from '~/types';
 
-    type Teacher = {
-        name: string,
-        image: string,
-        mantra: string,
-        activityTags: Array<{ text: string }>,
-    };
-
-    /*
-    import defaultImage from "../assets/images/activities/prova.png";
-    */
 
     defineProps<{
-        teacher: Teacher,
+        teacherProp: Teacher,
     }>();
   
 </script>
 
 <style scoped>
+
     .card{
         width: 100%;
         max-width: 375px; 
         height: 100%; 
         padding: 11px; 
-        background: white; 
+        background: rgb(255, 255, 255); 
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12); 
         overflow: hidden; 
         border-radius: 15px; 
@@ -51,6 +43,7 @@
         align-items: center; 
         gap: 10px; 
         display: inline-flex;
+        color:rgb(0, 0, 0);
     }
 
     .teacher_image{
@@ -60,6 +53,7 @@
         background: #D9D9D9; 
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
         border-radius: 114px;
+        
     }
     .teacher_name{
         align-self: stretch; 
@@ -74,6 +68,7 @@
         font-weight: 400; 
         line-height: 24px; 
         word-wrap: break-word;
+        color: inherit;
     }
 
     .mantra{
@@ -89,6 +84,7 @@
         font-weight: 600; 
         line-height: 28.80px; 
         word-wrap: break-word;
+        color: inherit;
     }
 
     .tag_container{

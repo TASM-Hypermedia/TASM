@@ -23,7 +23,7 @@
         padding-right: 10px; 
         padding-top: 4px; 
         padding-bottom: 4px; 
-        background: black; 
+        background: rgb(4, 84, 28); 
         overflow: hidden; 
         border-radius: 10px; 
         justify-content: center; 
@@ -38,7 +38,7 @@
         display: flex; 
         flex-direction: column; 
         color: white; 
-        font-size: 10px; 
+        font-size: 12px; 
         font-family: Instrument Sans; 
         font-weight: 400; 
         line-height: 10px; 
