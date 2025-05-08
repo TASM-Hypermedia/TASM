@@ -1,14 +1,14 @@
 import { onBeforeUnmount, onMounted, ref } from "vue"
-import { throttle } from "~/utils"
+import { withFramerate } from "~/utils"
 
 export function useScroll() {
   const x = ref(0)
   const y = ref(0)
 
-  const onScroll = throttle(() => {
+  const onScroll = withFramerate(() => {
     x.value = window.scrollX
     y.value = window.scrollY
-  }, 10)
+  })
 
   onMounted(() => {
     window.addEventListener("scroll", onScroll)
