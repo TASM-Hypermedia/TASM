@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { TestComponent } from "#components"
+import Activity from "./activities.vue"
 </script>
 
 <template>
   <div>
-    <TestComponent />
+    <Activity></Activity>
   </div>
 </template>
 
