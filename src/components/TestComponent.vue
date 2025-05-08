@@ -7,7 +7,6 @@
 <script setup lang="ts">
 import teacher from "../pages/teacher.vue"
 
-
 const teacherInfo = {
   name: "Sono bello",
   description:
