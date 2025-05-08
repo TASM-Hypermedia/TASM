@@ -25,6 +25,7 @@
     }
 
     .card {
+        cursor: pointer;
         width: 100%;
         max-width: 400px; 
         height: 275px;

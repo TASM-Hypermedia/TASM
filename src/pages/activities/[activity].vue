@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Teacher } from "~/types"
+
 // const route = useRoute()
 
 // const a = route.params.activity
@@ -54,6 +56,57 @@ const activity: ActivityType = {
     },
   ],
 }
+
+const teachersList: Teacher[] = [
+  {
+    name: "string",
+    image: "https://placehold.co/226x218",
+    mantra: "Come quando fuori piove",
+    activityTags: [
+      { text: "Meditazione" },
+      { text: "Meditazione" },
+      { text: "Meditazione" },
+      { text: "Meditazione" },
+    ],
+  },
+  {
+    name: "string",
+    image: "https://placehold.co/226x218",
+    mantra: "Come quando fuori piove",
+    activityTags: [
+      { text: "Meditazione" },
+      { text: "Meditazione" },
+      { text: "Meditazione" },
+      { text: "Meditazione" },
+    ],
+  },
+  {
+    name: "string",
+    image: "https://placehold.co/226x218",
+    mantra: "Come quando fuori piove",
+    activityTags: [
+      { text: "Meditazione" },
+      { text: "Meditazione" },
+      { text: "Meditazione" },
+      { text: "Meditazione" },
+    ],
+  },
+]
+
+const activitiesList = [
+  {
+    title: "Meditazione",
+    image: "https://placehold.co/400x400",
+  },
+  {
+    title: "Mindfulness",
+    image: "https://placehold.co/400x400",
+  },
+  {
+    title: "Rituale",
+    image: "https://placehold.co/400x400",
+  },
+]
 
 const selectedDifficulty = ref(0)
 const setDifficulty = (n: number) => {
@@ -152,17 +205,17 @@ const setDifficulty = (n: number) => {
     <section style="align-items: center; text-align: center">
       <h1>Teaching {{ activity.title }}</h1>
       <div class="temp-grid">
-        <div class="temp"></div>
-        <div class="temp"></div>
-        <div class="temp"></div>
+        <teacher-card :teacher-prop="teachersList[0]" />
+        <teacher-card :teacher-prop="teachersList[1]" />
+        <teacher-card :teacher-prop="teachersList[2]" />
       </div>
     </section>
     <section style="align-items: center; text-align: center">
       <h2>Similar Activities</h2>
       <div class="temp-grid">
-        <div class="temp"></div>
-        <div class="temp"></div>
-        <div class="temp"></div>
+        <activity-card :activity-prop="activitiesList[0]" />
+        <activity-card :activity-prop="activitiesList[1]" />
+        <activity-card :activity-prop="activitiesList[2]" />
       </div>
       <NuxtLink class="link-button" to="/activities">
         View all activities
@@ -274,6 +327,7 @@ div.temp-grid {
   width: 100%;
   padding: 24px 0;
   flex-direction: row;
+  gap: 32px;
   justify-content: space-between;
 
   .temp {
