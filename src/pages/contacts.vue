@@ -42,17 +42,17 @@ import PriceCard from "~/components/PriceCard.vue"
       <div class="row">
         <div class="column"></div>
         <div class="column">
-          <img src="../assets/images/socials/wa.png" alt="Whatsapp" style="width: 40%" />
+          <img src="../assets/socials/wa.png" alt="Whatsapp" style="width: 40%" />
           <br/>
           <span>+39 3123456789</span>
         </div>
         <div class="column">
-          <img src="../assets/images/phone-icon.png" alt="Phone" style="width: 40%" />
+          <img src="../public/images/icons/phone.png" alt="Phone" style="width: 40%" />
           <br/>
           <span>+39 3123456789</span>
         </div>
         <div class="column">
-          <img src="../assets/images/mail-icon.png" alt="Mail" style="width: 40%" />
+          <img src="../public/images/icons/mail.png" alt="Mail" style="width: 40%" />
           <br/>
           <span>info@yoga.com</span>
         </div>

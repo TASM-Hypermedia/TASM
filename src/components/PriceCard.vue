@@ -14,7 +14,11 @@ defineProps<{
 <template>
   <div class="priceCard">
     <div class="pricingTitle" style="">{{pricing.title}}</div>
-    <div class="pricingPrice" style="">€{{pricing.price}}/mo</div>
+    <div class="pricingPrice" style="">
+      <sup style="margin-right: 5px">€</sup>
+      <span class="priceSpan">{{pricing.price}}</span>
+      <sub>/mo</sub>
+    </div>
     <button class="pricingButton">Prenota</button>
   </div>
 </template>
@@ -38,6 +42,10 @@ defineProps<{
 
 .pricingPrice {
   font-size: 1.5em;
+}
+
+.priceSpan {
+  font-size: 1.7em;
 }
 
 .pricingButton {
