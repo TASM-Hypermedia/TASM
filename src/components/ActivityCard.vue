@@ -2,27 +2,20 @@
     <div class="card">
         <div 
             class="card-image"
-            :style="{ backgroundImage: `url(${img})` }"
+            :style="{ backgroundImage: `url(${activityProp.image})` }"
         ></div>
-        <div class="card-title">{{title}}</div>
+        <div class="card-title">{{activityProp.title}}</div>
     </div>
 </template>
 
 <script setup lang="ts">
-    /*defineProps<{
-        title: string,
-    }>();*/
+    import type { Activity } from '~/types';
 
-    import defaultImage from "../assets/images/activities/prova.png";
+    const {activityProp} = defineProps<{
+        activityProp: Activity,
+    }>();
 
-    withDefaults(
-        defineProps<{
-            title?: string,
-            img?: string,
-        }>(), {
-            title: "Default Title", // Default value for the title prop
-            img: defaultImage, // Default value for the title prop
-    });
+    console.log("ActivityCard props: ", activityProp);
 
 </script>
 
@@ -32,10 +25,10 @@
     }
 
     .card {
+        cursor: pointer;
         width: 100%;
         max-width: 400px; 
-        height: 40vh;
-        min-height: 275px;
+        height: 275px;
          
         padding: 10px; 
         background: inherit; 

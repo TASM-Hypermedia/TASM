@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt build --preset github_pages",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -30,6 +30,7 @@
     "@nuxt/typescript-build": "^3.0.2",
     "eslint-config-prettier": "^10.1.2",
     "prettier": "^3.5.3",
+    "sass-embedded": "^1.87.0",
     "typescript": "^5.8.3",
     "vue-tsc": "^2.2.10"
   }

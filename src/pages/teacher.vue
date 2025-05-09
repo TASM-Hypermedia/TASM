@@ -10,7 +10,7 @@
         <v-card>
           <!--<v-card-title>Teacher Mantra</v-card-title>-->
           <v-card-text>
-            <v-img src="../assets/images/Teacher1.jpg"></v-img>
+            <v-img src="/images/Teacher1.jpg"></v-img>
           </v-card-text>
         </v-card>
       </v-col>
@@ -38,7 +38,7 @@
         <v-card>
           <!--<v-card-title>Teacher Mantra</v-card-title>-->
           <v-card-text>
-            <v-img src="../assets/images/Teacher1.jpg"></v-img>
+            <v-img src="/images/Teacher1.jpg"></v-img>
           </v-card-text>
         </v-card>
       </v-col>

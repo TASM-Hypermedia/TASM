@@ -12,11 +12,11 @@ const opacity = computed(() => maprange(clamp(y.value, 0, 600), 0, 600, 0.6, 1))
   >
     <img class="header-img" src="../assets/images/headerIcon.svg" alt="logo" />
     <NuxtLink to="#">The Center</NuxtLink>
-    <NuxtLink to="#">Our Team</NuxtLink>
+    <NuxtLink to="/ourteam">Our Team</NuxtLink>
     <NuxtLink to="/activities">Activities</NuxtLink>
     <NuxtLink to="#">Events</NuxtLink>
     <NuxtLink to="#">Pricing</NuxtLink>
-    <NuxtLink class="active-link" to="#">Contacts</NuxtLink>
+    <NuxtLink class="active-link" to="/contacts">Contacts</NuxtLink>
   </nav>
 </template>
 

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import PriceCard from "~/components/PriceCard.vue"
 </script>
 
 <template>
@@ -7,52 +6,18 @@ import PriceCard from "~/components/PriceCard.vue"
     title="Contacts"
     img-src="contact-page-banner.jpg"
   >
-
-    <v-container class="pricingContainer">
-      <v-row no-gutters>
-        <v-col
-          v-for="n in 3"
-          :key="n"
-          class="pa-3"
-          cols="12"
-          sm="12"
-          md="6"
-          lg="4"
-          >
-
-          <price-card
-            :pricing="{
-            title: 'Premium',
-            price: 50,
-            items: [
-                { text: 'Meditazione' },
-                { text: 'Mindfulness' },
-                { text: 'Rituale' },
-                { text: 'Better sleep' },
-                { text: 'Golden Hour Sunset' },
-            ],
-            }"
-          />
-
-        </v-col>
-      </v-row>
-    </v-container>
-
     <section class="contact-section">
       <div class="row">
         <div class="column"></div>
         <div class="column">
-          <img src="../assets/socials/wa.png" alt="Whatsapp" style="width: 40%" />
           <br/>
           <span>+39 3123456789</span>
         </div>
         <div class="column">
-          <img src="../public/images/icons/phone.png" alt="Phone" style="width: 40%" />
           <br/>
           <span>+39 3123456789</span>
         </div>
         <div class="column">
-          <img src="../public/images/icons/mail.png" alt="Mail" style="width: 40%" />
           <br/>
           <span>info@yoga.com</span>
         </div>
@@ -138,11 +103,6 @@ import PriceCard from "~/components/PriceCard.vue"
   border-radius: 10px;
   padding: 10px;
   margin: 5px 0;
-}
-
-.pricingContainer {
-  width: 80%;
-  margin: auto;
 }
 
 </style>
