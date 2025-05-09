@@ -4,20 +4,23 @@
 <template>
   <PageWrap
     title="Contacts"
-    img-src="contact-page-banner.jpg"
+    img-src="../public/images/banners/contacts-banner.jpg"
   >
     <section class="contact-section">
       <div class="row">
         <div class="column"></div>
         <div class="column">
+          <img src="../assets/socials/wa.png" alt="Whatsapp number" class="contact-image" />
           <br/>
           <span>+39 3123456789</span>
         </div>
         <div class="column">
+          <img src="../public/images/icons/phone.png" alt="Phone number" class="contact-image" />
           <br/>
           <span>+39 3123456789</span>
         </div>
         <div class="column">
+          <img src="../public/images/icons/mail.png" alt="Mail" class="contact-image" />
           <br/>
           <span>info@yoga.com</span>
         </div>
@@ -61,6 +64,10 @@
 .column {
   flex: 20%;
   text-align: center;
+}
+
+.contact-image {
+  width: 50%;
 }
 
 .map-section {

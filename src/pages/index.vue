@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import Activity from "./activities.vue"
+import Contacts from "./contacts.vue"
 </script>
 
 <template>
   <div>
-    <Activity></Activity>
+    <Contacts></Contacts>
   </div>
 </template>
 

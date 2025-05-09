@@ -20,7 +20,7 @@ interface ActivityType {
 
 const activity: ActivityType = {
   title: "Vinyasa Yoga",
-  mainImageURL: "activities/image1.jpg",
+  mainImageURL: "activities/vinyasaYoga-banner.jpg",
   description:
     "Vinyasa Yoga is a dynamic and flowing style of yoga that emphasizes the seamless connection between breath and movement. In a Vinyasa practice, each posture is synchronized with an inhale or exhale, creating a continuous flow from one asana (yoga posture) to the next. This rhythmic movement not only builds strength, flexibility, and endurance but also encourages mindfulness, helping practitioners stay present in the moment. The practice often includes creative sequences, which can range from slow and meditative to fast-paced and intense, providing a holistic workout for both the body and mind. \n\n\nVinyasa Yoga is known for its versatility and adaptability, allowing practitioners to tailor the experience to their own level of fitness and personal goals. Whether you're looking for a gentle practice to calm your mind or a vigorous session to challenge your body, Vinyasa offers a balance of flow, power, and relaxation.",
   nextLessons: [
@@ -284,7 +284,7 @@ div.buttons {
     flex: 1;
     border-radius: 8px;
     font-weight: bold;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease-in-out;
 
     &.selected {
@@ -294,7 +294,7 @@ div.buttons {
 }
 
 .next-lesson {
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 12px 16px;
   display: flex;
@@ -335,7 +335,7 @@ div.temp-grid {
     width: 250px;
     background-color: #0005;
     border-radius: 16px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 }
 
