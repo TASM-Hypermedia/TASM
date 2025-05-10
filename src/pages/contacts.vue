@@ -1,11 +1,42 @@
 <script setup lang="ts">
+
+const pricingsList = [
+  {
+    title: "Base",
+    price: 50,
+    darkMode: false,
+    pricingItems: [
+      {text: "Ciao"},
+      {text: "No"}
+    ],
+  },
+  {
+    title: "Premium",
+    price: 75,
+    darkMode: true,
+  },
+  {
+    title: "Deluxe",
+    price: 100,
+    darkMode: false,
+  }
+];
+
 </script>
 
 <template>
   <PageWrap
     title="Contacts"
-    img-src="../public/images/banners/contacts-banner.jpg"
   >
+
+    <section style="width: 100%">
+      <card-grid :length="pricingsList.length">
+        <template #card="{ index }">
+          <price-card :price-prop="pricingsList[index]" />
+        </template>
+      </card-grid>
+    </section>
+
     <section class="contact-section">
       <div class="row">
         <div class="column"></div>
@@ -55,6 +86,7 @@
 </template>
 
 <style scoped>
+
 .row {
   width: 80%;
   margin: auto;

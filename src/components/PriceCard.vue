@@ -1,23 +1,27 @@
 <script setup lang="ts">
 
-type Pricing = {
-  title: string,
-  price: number,
-  items: Array<{ text: string }>
-};
+import type { Price } from '~/types';
 
-defineProps<{
-  pricing: Pricing,
+const {priceProp} = defineProps<{
+  priceProp: Price;
 }>();
+
+const theme = priceProp.darkMode ? 'dark-theme' : 'light-theme'
+
 </script>
 
 <template>
-  <div class="priceCard">
-    <div class="pricingTitle" style="">{{pricing.title}}</div>
+  <div class="priceCard" :class="theme">
+    <div class="pricingTitle" style="">{{priceProp.title}}</div>
     <div class="pricingPrice" style="">
-      <sup style="margin-right: 5px">€</sup>
-      <span class="priceSpan">{{pricing.price}}</span>
-      <sub>/mo</sub>
+      <sup class="pricingSup">€</sup>
+      <span class="pricingSpan">{{priceProp.price}}</span>
+      <sub class="pricingSub">/mo</sub>
+    </div>
+    <div v-for="item in priceProp.pricingItems" v-bind:key="item.text">
+      <ul>
+        <li>{{priceProp.pricingItems}}</li>
+      </ul>
     </div>
     <button class="pricingButton">Prenota</button>
   </div>
@@ -25,37 +29,56 @@ defineProps<{
 
 <style scoped>
 .priceCard {
-  width: 100%;
-  margin: 10px;
-  padding: 10px;
-  color: black;
-  text-align: center;
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 20px;
+  padding: 10px;
+  margin: auto;
+  width: 100%;
+  text-align: center;
 }
 
 .pricingTitle {
-  font-size: 1.2em;
-  font-weight: 500;
-  margin: 10px 0;
+  font-size: 25px;
 }
 
-.pricingPrice {
-  font-size: 1.5em;
+.pricingSup {
+  font-size: 30px;
+  margin-right: 10px;
 }
 
-.priceSpan {
-  font-size: 1.7em;
+.pricingSpan {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.pricingSub {
+  font-size: 25px;
 }
 
 .pricingButton {
-  width: 80%;
-  background-color: black;
-  color: white;
+  margin-top: 15px;
+  width: 100%;
   padding: 10px;
   border-radius: 10px;
-  margin: 10px 0;
-  cursor: pointer;
+}
+
+.dark-theme {
+  background-color: #020202;
+  color: white;
+
+  .pricingButton {
+    background-color: #e3e3e3;
+    color: black;
+  }
+}
+
+.light-theme {
+  color: black;
+
+  .pricingButton {
+    background-color: black;
+    color: white;
+  }
 }
 
 </style>
