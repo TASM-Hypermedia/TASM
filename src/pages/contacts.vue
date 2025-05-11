@@ -1,5 +1,16 @@
 <script setup lang="ts">
 
+const faqsList = [
+  {
+    question: "How are you?",
+    answer: "I'm fine",
+  },
+  {
+    question: "How is the weather today?",
+    answer: "It's raining",
+  }
+]
+
 const pricingsList = [
   {
     title: "Base",
@@ -43,6 +54,16 @@ const pricingsList = [
           <price-card :price-prop="pricingsList[index]" />
         </template>
       </card-grid>
+    </section>
+
+    <section style="width: 100%; background-color: blue">
+      <div>
+        <card-grid :length="faqsList.length" style="width: 100%">
+          <template #card="{ index }">
+            <faq-card :faq-prop="faqsList[index]" />
+          </template>
+        </card-grid>
+      </div>
     </section>
 
     <section class="contact-section">

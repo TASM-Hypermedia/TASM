@@ -16,3 +16,8 @@ export type Price = {
   pricingItems?: Array<{ text: string }>,
   darkMode: boolean,
 };
+
+export type Faq = {
+  question: string,
+  answer: string,
+};
