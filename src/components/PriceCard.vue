@@ -18,9 +18,11 @@ const theme = priceProp.darkMode ? 'dark-theme' : 'light-theme'
       <span class="pricingSpan">{{priceProp.price}}</span>
       <sub class="pricingSub">/mo</sub>
     </div>
-    <div v-for="item in priceProp.pricingItems" v-bind:key="item.text">
+    <div class="pricingItemList">
       <ul>
-        <li>{{priceProp.pricingItems}}</li>
+        <li v-for="item in priceProp.pricingItems" :key="item.text">
+          {{item.text}}
+        </li>
       </ul>
     </div>
     <button class="pricingButton">Prenota</button>
@@ -53,6 +55,12 @@ const theme = priceProp.darkMode ? 'dark-theme' : 'light-theme'
 
 .pricingSub {
   font-size: 25px;
+}
+
+.pricingItemList {
+  text-align: left;
+  margin: auto;
+  width: 80%;
 }
 
 .pricingButton {

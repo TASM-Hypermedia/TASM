@@ -6,19 +6,27 @@ const pricingsList = [
     price: 50,
     darkMode: false,
     pricingItems: [
-      {text: "Ciao"},
-      {text: "No"}
+      {text: "3 courses"},
+      {text: "1H meeting with an assigned teacher"}
     ],
   },
   {
     title: "Premium",
     price: 75,
     darkMode: true,
+    pricingItems: [
+      {text: "6 courses"},
+      {text: "3 months coverage with a teacher"}
+    ],
   },
   {
     title: "Deluxe",
     price: 100,
     darkMode: false,
+    pricingItems: [
+      {text: "10 courses"},
+      {text: "6 months coverage with a teacher"}
+    ],
   }
 ];
 
