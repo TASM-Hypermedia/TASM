@@ -92,10 +92,10 @@ const programPoints: {
   day: string
   points: string[]
 }[] = event.programstr.split("#").map((d) => {
-  const lines = d.split("\n")
+  const lines = d.split("\n").map((s) => s.trim())
   return {
     day: lines.shift() ?? "",
-    points: lines,
+    points: lines.filter((s) => s),
   }
 })
 </script>
@@ -247,6 +247,7 @@ section.guest {
       max-height: 300px;
       object-fit: cover;
       border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
     }
     div {
       flex: 1 1 auto;
@@ -264,14 +265,6 @@ div.temp-grid {
   flex-direction: row;
   gap: 32px;
   justify-content: space-between;
-
-  .temp {
-    height: 300px;
-    width: 250px;
-    background-color: #0005;
-    border-radius: 16px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  }
 }
 
 .link-button {
