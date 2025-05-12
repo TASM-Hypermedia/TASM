@@ -3,10 +3,10 @@
     <div>
       <img class="logo" src="../assets/images/headerIcon.svg" alt="logo" />
       <div class="socials">
-        <img src="../assets/images/socials/fb.svg" alt="facebook" />
-        <img src="../assets/images/socials/tw.svg" alt="twitter" />
-        <img src="../assets/images/socials/ig.svg" alt="instagram" />
-        <img src="../assets/images/socials/yt.svg" alt="youtube" />
+        <img src="../assets/socials/fb.svg" alt="facebook" />
+        <img src="../assets/socials/tw.svg" alt="twitter" />
+        <img src="../assets/socials/ig.svg" alt="instagram" />
+        <img src="../assets/socials/yt.svg" alt="youtube" />
       </div>
     </div>
     <div>
