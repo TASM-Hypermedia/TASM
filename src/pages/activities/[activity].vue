@@ -329,14 +329,6 @@ div.temp-grid {
   flex-direction: row;
   gap: 32px;
   justify-content: space-between;
-
-  .temp {
-    height: 300px;
-    width: 250px;
-    background-color: #0005;
-    border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
 }
 
 .link-button {
