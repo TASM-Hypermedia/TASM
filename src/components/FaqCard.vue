@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import type { Faq } from "~/types"
 
 const {faqProp} = defineProps<{
@@ -9,7 +8,7 @@ const {faqProp} = defineProps<{
 </script>
 
 <template>
-  <v-expansion-panels style="background-color: red">
+  <v-expansion-panels>
     <v-expansion-panel class="faqPanel">
       <v-expansion-panel-title>{{faqProp.question}}</v-expansion-panel-title>
       <v-expansion-panel-text>{{faqProp.answer}}</v-expansion-panel-text>
@@ -18,10 +17,8 @@ const {faqProp} = defineProps<{
 </template>
 
 <style scoped>
-
 .faqPanel {
   border-radius: 10px;
   width: 100%;
 }
-
 </style>

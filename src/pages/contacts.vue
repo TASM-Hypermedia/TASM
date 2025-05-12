@@ -56,13 +56,9 @@ const pricingsList = [
       </card-grid>
     </section>
 
-    <section style="width: 100%; background-color: blue">
-      <div>
-        <card-grid :length="faqsList.length" style="width: 100%">
-          <template #card="{ index }">
-            <faq-card :faq-prop="faqsList[index]" />
-          </template>
-        </card-grid>
+    <section style="width: 100%">
+      <div v-for="(item, index) in faqsList" :key="index">
+        <faq-card :faq-prop="item"/>
       </div>
     </section>
 
