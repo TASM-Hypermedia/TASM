@@ -18,7 +18,6 @@
 <script setup lang="ts">
     import type { Teacher } from '~/types';
 
-
     defineProps<{
         teacherProp: Teacher,
     }>();
@@ -26,7 +25,6 @@
 </script>
 
 <style scoped>
-
     .card{
         width: 100%;
         max-width: 375px; 

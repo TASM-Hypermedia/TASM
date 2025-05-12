@@ -15,7 +15,7 @@
         activityProp: Activity,
     }>();
 
-    console.log("ActivityCard props: ", activityProp);
+    //console.log("ActivityCard props: ", activityProp);
 
 </script>
 
