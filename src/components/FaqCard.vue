@@ -20,5 +20,6 @@ const {faqProp} = defineProps<{
 .faqPanel {
   border-radius: 10px;
   width: 100%;
+  margin-bottom: 15px;
 }
 </style>
