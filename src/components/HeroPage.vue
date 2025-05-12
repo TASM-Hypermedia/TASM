@@ -25,6 +25,7 @@ const scrollAmount = computed(() => clamp(y.value, 0, 600))
 <template>
   <div class="copertina-page">
     <NuxtImg
+      v-if="props.urlImg !== undefined"
       :src="`/images/${props.urlImg}`"
       alt=""
       class="background-image"
