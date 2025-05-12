@@ -14,9 +14,6 @@
     const {activityProp} = defineProps<{
         activityProp: Activity,
     }>();
-
-    console.log("ActivityCard props: ", activityProp);
-
 </script>
 
 <style scoped>
