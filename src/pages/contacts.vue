@@ -1,26 +1,82 @@
 <script setup lang="ts">
+
+const faqsList = [
+  {
+    question: "How are you?",
+    answer: "I'm fine",
+  },
+  {
+    question: "How is the weather today?",
+    answer: "It's raining",
+  }
+]
+
+const pricingsList = [
+  {
+    title: "Base",
+    price: 50,
+    darkMode: false,
+    pricingItems: [
+      {text: "3 courses"},
+      {text: "1H meeting with an assigned teacher"}
+    ],
+  },
+  {
+    title: "Premium",
+    price: 75,
+    darkMode: true,
+    pricingItems: [
+      {text: "6 courses"},
+      {text: "3 months coverage with a teacher"}
+    ],
+  },
+  {
+    title: "Deluxe",
+    price: 100,
+    darkMode: false,
+    pricingItems: [
+      {text: "10 courses"},
+      {text: "6 months coverage with a teacher"}
+    ],
+  }
+];
+
 </script>
 
 <template>
   <PageWrap
     title="Contacts"
-    img-src="contact-page-banner.jpg"
   >
+
+    <section style="width: 100%">
+      <card-grid :length="pricingsList.length">
+        <template #card="{ index }">
+          <price-card :price-prop="pricingsList[index]" />
+        </template>
+      </card-grid>
+    </section>
+
+    <section style="width: 100%">
+      <div v-for="(item, index) in faqsList" :key="index">
+        <faq-card :faq-prop="item"/>
+      </div>
+    </section>
+
     <section class="contact-section">
       <div class="row">
         <div class="column"></div>
         <div class="column">
-          <img src="../assets/images/socials/wa.png" alt="Whatsapp" style="width: 40%" />
+          <img src="../assets/socials/wa.png" alt="Whatsapp number" class="contact-image" />
           <br/>
           <span>+39 3123456789</span>
         </div>
         <div class="column">
-          <img src="../assets/images/phone-icon.png" alt="Phone" style="width: 40%" />
+          <img src="../public/images/icons/phone.png" alt="Phone number" class="contact-image" />
           <br/>
           <span>+39 3123456789</span>
         </div>
         <div class="column">
-          <img src="../assets/images/mail-icon.png" alt="Mail" style="width: 40%" />
+          <img src="../public/images/icons/mail.png" alt="Mail" class="contact-image" />
           <br/>
           <span>info@yoga.com</span>
         </div>
@@ -55,6 +111,7 @@
 </template>
 
 <style scoped>
+
 .row {
   width: 80%;
   margin: auto;
@@ -64,6 +121,10 @@
 .column {
   flex: 20%;
   text-align: center;
+}
+
+.contact-image {
+  width: 50%;
 }
 
 .map-section {
