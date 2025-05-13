@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { TestComponent } from "#components"
+import Contacts from "./contacts.vue"
 </script>
 
 <template>
   <div>
-    <TestComponent />
+    <Contacts></Contacts>
   </div>
 </template>
 
