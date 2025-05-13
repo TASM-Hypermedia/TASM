@@ -13,6 +13,7 @@
             subtitle: t.Mantra,
             urlImg: t.MainImageURL,
           }"
+          @click="goToTeacher(t.TeacherId)"
         />
       </v-col>
     </v-row>
@@ -35,4 +36,9 @@ if (!data.value || data.value.length === 0) {
 }
 console.log(data.value)
 teachers.value = data.value
+
+const router = useRouter()
+function goToTeacher(id: number) {
+  router.push(`/teacher/${id}`)
+}
 </script>
