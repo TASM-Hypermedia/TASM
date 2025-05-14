@@ -8,9 +8,10 @@ const {faqProp} = defineProps<{
 </script>
 
 <template>
-  <v-expansion-panels>
-    <v-expansion-panel class="faqPanel">
-      <v-expansion-panel-title>{{faqProp.question}}</v-expansion-panel-title>
+  <v-expansion-panels hover="true">
+    <v-expansion-panel class="faqPanel" bg-color="blue">
+      <v-expansion-panel-title class="faqQuestion"
+      >{{faqProp.question}}</v-expansion-panel-title>
       <v-expansion-panel-text>{{faqProp.answer}}</v-expansion-panel-text>
     </v-expansion-panel>
   </v-expansion-panels>
@@ -21,5 +22,7 @@ const {faqProp} = defineProps<{
   border-radius: 10px;
   width: 100%;
   margin-bottom: 15px;
+  border: 1px solid black;
+  transition-duration: 1s;
 }
 </style>

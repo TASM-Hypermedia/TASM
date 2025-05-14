@@ -1,5 +1,13 @@
 <script setup lang="ts">
 
+const content = {
+  title: "Sara Morelli",
+  subtitle: "Yoga teacher",
+  description: "Yoga teacher specialized in vyniasana and other type of yoga yoyo boy",
+  imageOnTheRight: false,
+}
+
+
 const faqsList = [
   {
     question: "How are you?",
@@ -47,7 +55,12 @@ const pricingsList = [
 
   <PageWrap
     title="Pricing"
+    img-src="./banners/pricing-banner.jpg"
   >
+    <section style="width: 70%; margin: auto">
+      <content-card :content-card-prop="content"></content-card>
+    </section>
+
     <section style="width: 100%">
       <card-grid :length="pricingsList.length">
         <template #card="{ index }">
