@@ -44,6 +44,7 @@ main {
   height: 100%;
   gap: 32px;
   margin-bottom: 32px;
+  border : 0px solid black;
 }
 
 article {
@@ -51,7 +52,9 @@ article {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1080px;
+  max-width: 1120px;
   height: 100%;
+  border : 0px solid black;
+
 }
 </style>

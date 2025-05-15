@@ -23,7 +23,7 @@
         padding-right: 10px; 
         padding-top: 4px; 
         padding-bottom: 4px; 
-        background: rgb(4, 84, 28); 
+        background: rgb(24, 25, 24); 
         overflow: hidden; 
         border-radius: 10px; 
         justify-content: center; 
