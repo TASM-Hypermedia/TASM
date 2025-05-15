@@ -1,6 +1,5 @@
 <script setup lang="ts">
-//import type { Title } from "#components"
-//import type { Teacher } from "~/types"
+import type { Teacher } from "~/types"
 
 // const route = useRoute()
 
@@ -8,62 +7,62 @@
 // const title = typeof a === "string" ? a : a.join("")
 
 interface ActivityType {
-  Title: string
-  MainImageURL: string
-  Description: string
-  NextLessons: {
-    Date: string
-    Time: string
-    Name: string
-    Difficulty: string
+  title: string
+  mainImageURL: string
+  description: string
+  nextLessons: {
+    date: string
+    time: string
+    name: string
+    difficulty: string
   }[]
 }
 
 const activity: ActivityType = {
-  Title: "Vinyasa Yoga",
-  MainImageURL: "activities/vinyasaYoga-banner.jpg",
-  Description:
+  title: "Vinyasa Yoga",
+  mainImageURL: "activities/vinyasaYoga-banner.jpg",
+  description:
     "Vinyasa Yoga is a dynamic and flowing style of yoga that emphasizes the seamless connection between breath and movement. In a Vinyasa practice, each posture is synchronized with an inhale or exhale, creating a continuous flow from one asana (yoga posture) to the next. This rhythmic movement not only builds strength, flexibility, and endurance but also encourages mindfulness, helping practitioners stay present in the moment. The practice often includes creative sequences, which can range from slow and meditative to fast-paced and intense, providing a holistic workout for both the body and mind. \n\n\nVinyasa Yoga is known for its versatility and adaptability, allowing practitioners to tailor the experience to their own level of fitness and personal goals. Whether you're looking for a gentle practice to calm your mind or a vigorous session to challenge your body, Vinyasa offers a balance of flow, power, and relaxation.",
-  NextLessons: [
+  nextLessons: [
     {
-      Date: "2023-10-30",
-      Time: "10:00 - 11:00 (1h)",
-      Name: "Lesson 1",
-      Difficulty: "🌀 Medium",
+      date: "2023-10-30",
+      time: "10:00 - 11:00 (1h)",
+      name: "Lesson 1",
+      difficulty: "🌀 Medium",
     },
     {
-      Date: "2023-10-31",
-      Time: "14:00 - 15:00 (1h)",
-      Name: "Lesson 2",
-      Difficulty: "🌿 Easy",
+      date: "2023-10-31",
+      time: "14:00 - 15:00 (1h)",
+      name: "Lesson 2",
+      difficulty: "🌿 Easy",
     },
     {
-      Date: "2023-11-01",
-      Time: "09:00 - 10:00 (1h)",
-      Name: "Lesson 3",
-      Difficulty: "🔥 Hard",
+      date: "2023-11-01",
+      time: "09:00 - 10:00 (1h)",
+      name: "Lesson 3",
+      difficulty: "🔥 Hard",
     },
     {
-      Date: "2023-11-02",
-      Time: "13:00 - 14:00 (1h)",
-      Name: "Lesson 4",
-      Difficulty: "🌀 Medium",
+      date: "2023-11-02",
+      time: "13:00 - 14:00 (1h)",
+      name: "Lesson 4",
+      difficulty: "🌀 Medium",
     },
     {
-      Date: "2023-11-03",
-      Time: "11:00 - 12:00 (1h)",
-      Name: "Lesson 5",
-      Difficulty: "🌿 Easy",
+      date: "2023-11-03",
+      time: "11:00 - 12:00 (1h)",
+      name: "Lesson 5",
+      difficulty: "🌿 Easy",
     },
   ],
 }
 
-/*const teachersList: Teacher[] = [
+const teachersList: Teacher[] = [
   {
-    Name: "string",
-    MainImageURL: "https://placehold.co/226x218",
-    Mantra: "Come quando fuori piove",
-    ActivityTags: [
+    name: "string",
+    image: "https://placehold.co/226x218",
+    mantra: "Come quando fuori piove",
+    activityTags: [
       { text: "Meditazione" },
       { text: "Meditazione" },
       { text: "Meditazione" },
@@ -71,10 +70,10 @@ const activity: ActivityType = {
     ],
   },
   {
-    Name: "string",
-    MainImageURL: "https://placehold.co/226x218",
-    Mantra: "Come quando fuori piove",
-    ActivityTags: [
+    name: "string",
+    image: "https://placehold.co/226x218",
+    mantra: "Come quando fuori piove",
+    activityTags: [
       { text: "Meditazione" },
       { text: "Meditazione" },
       { text: "Meditazione" },
@@ -82,41 +81,30 @@ const activity: ActivityType = {
     ],
   },
   {
-    Name: "string",
-    MainImageURL: "https://placehold.co/226x218",
-    Mantra: "Come quando fuori piove",
-    ActivityTags: [
+    name: "string",
+    image: "https://placehold.co/226x218",
+    mantra: "Come quando fuori piove",
+    activityTags: [
       { text: "Meditazione" },
       { text: "Meditazione" },
       { text: "Meditazione" },
       { text: "Meditazione" },
     ],
   },
-  {
-    Name: "string",
-    MainImageURL: "https://placehold.co/226x218",
-    Mantra: "Come quando fuori piove",
-    ActivityTags: [
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-    ],
-  },
-]*/
+]
 
 const activitiesList = [
   {
-    Title: "Meditazione",
-    MainImageURL: "https://placehold.co/400x400",
+    title: "Meditazione",
+    image: "https://placehold.co/400x400",
   },
   {
-    Title: "Mindfulness",
-    MainImageURL: "https://placehold.co/400x400",
+    title: "Mindfulness",
+    image: "https://placehold.co/400x400",
   },
   {
-    Title: "Rituale",
-    MainImageURL: "https://placehold.co/400x400",
+    title: "Rituale",
+    image: "https://placehold.co/400x400",
   },
 ]
 
@@ -127,13 +115,13 @@ const setDifficulty = (n: number) => {
 </script>
 <template>
   <PageWrap
-    :img-src="activity.MainImageURL"
+    :img-src="activity.mainImageURL"
     tagline="Our Activities:"
-    :title="activity.Title"
+    :title="activity.title"
   >
     <section>
       <p class="description">
-        {{ activity.Description }}
+        {{ activity.description }}
       </p>
     </section>
     <SlideCarousel
@@ -196,32 +184,32 @@ const setDifficulty = (n: number) => {
       <div>
         <h1>Next Lessons</h1>
         <div
-          v-for="(lesson, index) in activity.NextLessons"
+          v-for="(lesson, index) in activity.nextLessons"
           :key="index"
           class="next-lesson"
         >
           <img class="logo" src="../../assets/images/calendar.svg" alt="logo" />
           <div>
             <div>
-              <span style="font-weight: bold">{{ lesson.Name }}</span>
-              <span>{{ lesson.Difficulty }}</span>
+              <span style="font-weight: bold">{{ lesson.name }}</span>
+              <span>{{ lesson.difficulty }}</span>
             </div>
             <div style="font-size: 0.9em; opacity: 0.7">
-              <span>{{ lesson.Date.split("-").reverse().join("/") }}</span>
-              <span>{{ lesson.Time }}</span>
+              <span>{{ lesson.date.split("-").reverse().join("/") }}</span>
+              <span>{{ lesson.time }}</span>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- <section style="align-items: center; text-align: center">
-      <h1>Teaching {{ activity.Title }}</h1>
+    <section style="align-items: center; text-align: center">
+      <h1>Teaching {{ activity.title }}</h1>
       <div class="temp-grid">
         <teacher-card :teacher-prop="teachersList[0]" />
         <teacher-card :teacher-prop="teachersList[1]" />
         <teacher-card :teacher-prop="teachersList[2]" />
       </div>
-    </section>-->
+    </section>
     <section style="align-items: center; text-align: center">
       <h2>Similar Activities</h2>
       <div class="temp-grid">
