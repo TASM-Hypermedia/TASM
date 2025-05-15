@@ -27,5 +27,6 @@ export type ContentCard = {
   subtitle?: string,
   description?: string,
   imgUrl?: string,
+  altDescription?: string,
   imageOnTheRight: boolean,
 }

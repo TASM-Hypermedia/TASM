@@ -4,7 +4,9 @@ const content = {
   title: "Sara Morelli",
   subtitle: "Yoga teacher",
   description: "Yoga teacher specialized in vyniasana and other type of yoga yoyo boy",
-  imageOnTheRight: false,
+  imgUrl: "/images/banners/activities-banner.jpg",
+  altDescription: "Theacher Sara Morelli",
+  imageOnTheRight: true,
 }
 
 
