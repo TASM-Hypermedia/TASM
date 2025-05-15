@@ -22,13 +22,12 @@
         </div>
         <div class="bottom">
             <div class="host_box" style="">
-                <img class="host_image" style="width: 74px; height: 74px; left: 11.50px; top: 1px; position: absolute; border-radius: 9999px" :src="eventProp.hostImage" />
-                <div style="width: 51px; height: 17px; left: 126px; top: 12px; position: absolute">
-                    <span style="color: black; font-size: 15px; font-family: Instrument Sans; font-weight: 700; line-height: 15px; word-wrap: break-word">HOST:</span>
-                    
-                </div>
-                <div class="host_name" style="width: 141px; height: 18px; left: 126px; top: 38px; position: absolute; color: black; font-size: 18px; font-family: Instrument Sans; font-weight: 400; line-height: 18px; word-wrap: break-word">
-                    {{eventProp.hostName}}
+                <img class="host_image" style="width: 74px; height: 74px; border-radius: 9999px" :src="eventProp.hostImage" />
+                <div style="display: flex; gap: 6px; flex-direction: column; justify-content: start; width: 100%; color: black;">
+                    <span style="color: black; font-size: 13px; font-family: Instrument Sans; font-weight: 700; line-height: 15px; word-wrap: break-word">HOST:</span>
+                    <div class="host_name" style="color: black; font-size: 18px; font-family: Instrument Sans; font-weight: 400; line-height: 18px; word-wrap: break-word">
+                        {{eventProp.hostName}}
+                    </div>
                 </div>
             </div>
 
@@ -120,7 +119,6 @@
         flex-direction: column; 
         justify-content: flex-start; 
         align-items: center; 
-        gap: 18px; 
         display: inline-flex;
     }
 
@@ -137,10 +135,11 @@
     }
 
     .bottom {
-        padding: 14px 10px;
+        width: 100%;
+        padding: 16px;
         flex-direction: column; 
         justify-content: flex-start; 
-        align-items: center; 
+        align-items: stretch; 
         gap: 18px; 
         display: inline-flex;
     }
@@ -205,17 +204,14 @@
     }
 
     .host_box {
-        width: 275px; 
-        height: 95px;
-        position: relative; 
         background: white; 
         overflow: hidden;
-        flex-direction: column;
+        display: flex;
+        gap: 16px;
         border: 0px solid black;
     }
 
     .info_box {
-        width: 321px; 
         height: 48px; 
         border: solid black 0px ; 
     }
