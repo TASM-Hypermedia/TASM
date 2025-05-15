@@ -2,16 +2,16 @@
     <div class="card" style="">
         <div class="top" style="">
             <div class="calendar" style="">
-                <div style="width: 87px; height: 25px; left: 0px; top: 0px; position: absolute; background: rgba(223.86, 84.16, 84.16, 0.83); overflow: hidden; border-bottom: 1px #B94646 solid">
-                    <div style="width: 61px; height: 17px; left: 13px; top: 4px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: rgba(137.55, 21.03, 21.03, 0.72); font-size: 20px; font-family: Instrument Sans; font-weight: 700; line-height: 20px; word-wrap: break-word">
+                <div style="width: 87px; height: 25px; background: rgba(223.86, 84.16, 84.16, 0.83); overflow: hidden; border-bottom: 1px #B94646 solid">
+                    <div style="height: 100%; text-align: center; justify-content: center; display: flex; flex-direction: column; color: rgba(137.55, 21.03, 21.03, 0.72); font-size: 20px; font-family: Instrument Sans; font-weight: 700; line-height: 20px; word-wrap: break-word">
                         AUG
                     </div>
                 </div>
-                <div style="width: 50px; height: 18px; left: 19px; top: 66px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #7A7A7A; font-size: 15px; font-family: Instrument Sans; font-weight: 500; line-height: 15px; word-wrap: break-word">
-                    MON
-                </div>
-                <div style="width: 50px; height: 35px; left: 19px; top: 30px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #2B2B2B; font-size: 40px; font-family: Instrument Sans; font-weight: 500; line-height: 40px; word-wrap: break-word">
+                <div style=" height: 35px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #2B2B2B; font-size: 40px; font-family: Instrument Sans; font-weight: 500; line-height: 40px; word-wrap: break-word">
                     12
+                </div>
+                <div style=" height: 18px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #7A7A7A; font-size: 15px; font-family: Instrument Sans; font-weight: 500; line-height: 15px; word-wrap: break-word">
+                    MON
                 </div>
             </div>
             <div class="title_box" style="">
@@ -152,7 +152,12 @@
        background: white; 
        box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.25); 
        overflow: hidden; 
-       border-radius: 16px 
+       border-radius: 16px;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: space-between;
+       text-align: center;
     }
 
     .title_box {

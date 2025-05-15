@@ -52,7 +52,7 @@ article {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1120px;
+  max-width: 1080px;
   height: 100%;
   border : 0px solid black;
 
