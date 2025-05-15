@@ -7,10 +7,11 @@
   >
     <card-grid :length="teachersList.length">
       <template #card="{ index }">
-        <teacher-card
-          :teacher-prop="teachersList[index]"
-          @click="goToPage('teacher', teachersList[index].TeacherId)"
-        />
+        <NuxtLink
+          :to="`/teacher/${encodeURIComponent(teachersList[index].Name)}`"
+        >
+          <teacher-card :teacher-prop="teachersList[index]" />
+        </NuxtLink>
       </template>
     </card-grid>
   </page-wrap>
@@ -52,11 +53,6 @@ const tempteachers = data.value.map((teacher) => {
 })
 
 teachersList.value = tempteachers
-
-const router = useRouter()
-function goToPage(category: string, id: number) {
-  router.push(`/${category}/${id}`)
-}
 </script>
 
 <style scoped>
