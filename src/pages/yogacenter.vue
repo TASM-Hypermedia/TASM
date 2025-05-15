@@ -1,17 +1,20 @@
 <script setup lang="ts">
-
-const { data, error } = await useAPI<[{
-  YogaCenterId: number
-  Title: string
-  Subtitle: string
-  LongDescription: string
-  Room: Array<{
-      Name: string;
-      Text: string;
-      UrlImage: string;
-  }>
-}]>("/getAllRooms", {
-  method: "GET"
+const { data, error } = await useAPI<
+  [
+    {
+      YogaCenterId: number
+      Title: string
+      Subtitle: string
+      LongDescription: string
+      Room: Array<{
+        Name: string
+        Text: string
+        UrlImage: string
+      }>
+    },
+  ]
+>("/getAllRooms", {
+  method: "GET",
 })
 
 if (error.value || !data.value) {
@@ -20,26 +23,42 @@ if (error.value || !data.value) {
 }
 
 const yogaCenter = data.value[0]
+const roomContent = [
+  {
+    title: "",
+    description: "",
+    imgUrl: "",
+    altDescription: "",
+    imageOnTheRight: true,
+  }
+];
+
+for (let i = 0; i < yogaCenter.Room.length; i++) {
+  const flag = i % 2 === 0
+  roomContent[i] = {
+    title: yogaCenter.Room[i].Name,
+    description: yogaCenter.Room[i].Text,
+    imgUrl: "images/" + yogaCenter.Room[i].UrlImage,
+    altDescription: yogaCenter.Room[i].Name + " room",
+    imageOnTheRight: flag,
+  }
+}
 
 console.log(yogaCenter)
-
 </script>
 
 <template>
-  <PageWrap
-    title="Yoga Center"
-    img-src="./banners/yogaCenter-banner.jpg"
-  >
+  <PageWrap title="Yoga Center" img-src="./banners/yogaCenter-banner.jpg">
     <section class="description">
       <div>
-        {{yogaCenter.LongDescription}}
+        {{ yogaCenter.LongDescription }}
       </div>
     </section>
 
     <section class="rooms">
       <h2>AVAILABLE ROOMS</h2>
-      <div v-for="(room, index) in yogaCenter.Room" :key="index">
-        <content-card :content-card-prop="{title: room.Name, description: room.Text, imgUrl: room.UrlImage, imageOnTheRight: true}"></content-card>
+      <div v-for="(room, index) in roomContent" :key="index">
+        <content-card :content-card-prop="room"></content-card>
       </div>
     </section>
   </PageWrap>
