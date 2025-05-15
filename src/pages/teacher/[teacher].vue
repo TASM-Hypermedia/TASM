@@ -47,13 +47,29 @@
           <NuxtLink
             :to="`/events/${encodeURIComponent(teacher.TeacherEvent[index].Event.Name)}`"
           >
-            <ContentPreview
-              :content-preview="{
-                title: teacher.TeacherEvent[index].Event.Name,
-                subtitle: teacher.TeacherEvent[index].Event.ShortIntroduction,
-                urlImg: teacher.TeacherEvent[index].Event.BannerImageURL,
+            <EventCard
+              :event-prop="{
+                Date: teacher.TeacherEvent[index].Event.Date,
+                Name: teacher.TeacherEvent[index].Event.Name,
+                EndTime: teacher.TeacherEvent[index].Event.EndTime,
+                EventId: teacher.TeacherEvent[index].Event.EventId,
+                Location: teacher.TeacherEvent[index].Event.Location,
+                StartTime: teacher.TeacherEvent[index].Event.StartTime,
+                EventImage:
+                  '/images/' + teacher.TeacherEvent[index].Event.BannerImageURL,
+                HostImage:
+                  '/images/' +
+                  teacher.TeacherEvent[index].Event.GuestEvent[0].Guest
+                    .MainImageURL,
+                HostName:
+                  teacher.TeacherEvent[index].Event.GuestEvent[0].Guest.Name,
+                ActivityTags: teacher.TeacherActivity.map((ta) => ({
+                  Text: ta.Activity.Title,
+                })),
               }"
-          /></NuxtLink>
+            >
+            </EventCard>
+          </NuxtLink>
         </template>
       </card-grid>
     </div>
@@ -113,10 +129,22 @@ const { data, error } = await useAPI<
     }>
     TeacherEvent: Array<{
       Event: {
-        EventId: number
+        Date: string
         Name: string
-        ShortIntroduction: string
+        EndTime: string
+        EventId: number
+        Location: string
+        StartTime: string
+        GuestEvent: [
+          {
+            Guest: {
+              Name: string
+              MainImageURL: string
+            }
+          },
+        ]
         BannerImageURL: string
+        ShortIntroduction: string
       }
     }>
   }[]

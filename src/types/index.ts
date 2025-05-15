@@ -11,16 +11,17 @@ export type Activity = {
     MainImageURL: string,
 };
 
-export type Event ={
-  title: string,
-  eventImage: string,
-  hostImage: string,
-  hostName: string,
-  date: string,
-  startTime: string,
-  endTime: string,
-  location: string,
-  activityTags: Array<{ text: string }>,
+export type Event = {
+  Name: string,
+  EventId : number,
+  EventImage: string,
+  HostImage: string,
+  HostName: string,
+  Date: string,
+  StartTime: string,
+  EndTime: string,
+  Location: string,
+  ActivityTags: Array<{ Text: string }>,
 };
 
 export type Price = {
