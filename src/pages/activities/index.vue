@@ -1,35 +1,42 @@
 <template>
   <page-wrap :title="'Activities'">
-    <card-grid :length="activitiesList.length">
-      <template #card="{ index }">
-        <activity-card :activity-prop="activitiesList[index]" />
-      </template>
-    </card-grid>
+    <template v-if="activitiesList.length > 0">
+      <card-grid :length="activitiesList.length">
+        <template #card="{ index }">
+          <activity-card :activity-prop="activitiesList[index]" />
+        </template>
+      </card-grid>
+    </template>
+    <template v-else>
+      <div class="empty-state">No activities available at the moment.</div>
+    </template>
   </page-wrap>
 </template>
 
 <script setup lang="ts">
-const activitiesList = [
-  {
-    Title: "Meditazione",
-    MainImageURL: "https://placehold.co/400x400",
-  },
-  {
-    Title: "Mindfulness",
-    MainImageURL: "https://placehold.co/400x400",
-  },
-  {
-    Title: "Rituale",
-    MainImageURL: "https://placehold.co/400x400",
-  },
-  {
-    Title: "Better sleep",
-    MainImageURL: "https://placehold.co/400x400",
-  },
-  {
-    Title: "Golden Hour Sunset",
-    MainImageURL: "https://placehold.co/400x400",
-  },
+import type { Activity } from "~/types"
+
+const activitiesList: Activity[] = [
+  // {
+  //     title: "Meditazione",
+  //     image: "https://placehold.co/400x400",
+  // },
+  // {
+  //     title: "Mindfulness",
+  //     image: "https://placehold.co/400x400",
+  // },
+  // {
+  //     title: "Rituale",
+  //     image: "https://placehold.co/400x400",
+  // },
+  // {
+  //     title: "Better sleep",
+  //     image: "https://placehold.co/400x400",
+  // },
+  // {
+  //     title: "Golden Hour Sunset",
+  //     image: "https://placehold.co/400x400",
+  // },
 ]
 </script>
 

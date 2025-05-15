@@ -14,7 +14,7 @@ const opacity = computed(() => maprange(clamp(y.value, 0, 600), 0, 600, 0.6, 1))
     <NuxtLink to="#">The Center</NuxtLink>
     <NuxtLink to="/ourteam">Our Team</NuxtLink>
     <NuxtLink to="/activities">Activities</NuxtLink>
-    <NuxtLink to="#">Events</NuxtLink>
+    <NuxtLink to="/events">Events</NuxtLink>
     <NuxtLink to="#">Pricing</NuxtLink>
     <NuxtLink class="active-link" to="/contacts">Contacts</NuxtLink>
   </nav>
