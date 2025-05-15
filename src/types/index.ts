@@ -1,13 +1,14 @@
 export type Teacher = {
-    name: string,
-    image: string,
-    mantra: string,
-    activityTags: Array<{ text: string }>,
+  TeacherId: number,
+    Name: string,
+    MainImageURL: string,
+    Mantra: string,
+    ActivityTags: Array<{ text: string }>,
 };
 
 export type Activity = {
-    title: string,
-    image: string,
+    Title: string,
+    MainImageURL: string,
 };
 
 export type Price = {
