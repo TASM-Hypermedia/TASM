@@ -1,5 +1,8 @@
 <template>
-  <div class="card">
+  <NuxtLink
+    :to="`/teachers/${encodeURIComponent(teacherProp.Name)}`"
+    class="card"
+  >
     <img
       class="teacher_image"
       style=""
@@ -15,7 +18,7 @@
         :text="tag.text"
       />
     </v-container>
-  </div>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
@@ -45,6 +48,7 @@ defineProps<{
   gap: 10px;
   display: inline-flex;
   color: rgb(0, 0, 0);
+  text-decoration: none;
 }
 
 .teacher_image {

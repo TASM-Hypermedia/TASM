@@ -7,11 +7,7 @@
   >
     <card-grid :length="teachersList.length">
       <template #card="{ index }">
-        <NuxtLink
-          :to="`/teacher/${encodeURIComponent(teachersList[index].Name)}`"
-        >
-          <teacher-card :teacher-prop="teachersList[index]" />
-        </NuxtLink>
+        <teacher-card :teacher-prop="teachersList[index]" />
       </template>
     </card-grid>
   </page-wrap>
