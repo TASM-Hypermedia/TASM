@@ -6,7 +6,7 @@
       :src="'/images/' + teacherProp.MainImageURL"
     />
     <div class="teacher_name" style="">{{ teacherProp.Name }}</div>
-    <div class="mantra" style="">{{ teacherProp.Mantra }}</div>
+    <div class="mantra" style="">&ldquo;{{ teacherProp.Mantra }}&rdquo;</div>
 
     <v-container class="tag_container">
       <activity-tag
@@ -47,12 +47,39 @@ defineProps<{
   color: rgb(0, 0, 0);
 }
 
-.mantra {
+.teacher_image {
+  width: 226px;
+  height: 218px;
+  transform-origin: top left;
+  object-fit: cover;
+  background: #d9d9d9;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 114px;
+}
+
+.teacher_name {
   align-self: stretch;
-  height: 63px;
+  height: 43px;
   text-align: center;
   justify-content: center;
   display: flex;
+  flex-direction: column;
+  color: black;
+  font-size: 24px;
+  font-family: Instrument Sans;
+  font-weight: 400;
+  line-height: 24px;
+  word-wrap: break-word;
+  color: inherit;
+}
+
+.mantra {
+  align-self: stretch;
+  flex: 1;
+  text-align: center;
+  /* justify-content: center; */
+  display: flex;
+  font-style: italic;
   flex-direction: column;
   color: var(--Text-Default-Default, #1e1e1e);
   font-size: 24px;
