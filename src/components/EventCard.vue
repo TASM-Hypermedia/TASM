@@ -1,5 +1,5 @@
 <template>
-    <div class="card" style="">
+    <NuxtLink :to="`/events/${eventProp.title}`" class="card" style="">
         <div class="top" style="">
             <div class="calendar" style="">
                 <div style="width: 87px; height: 25px; background: rgba(223.86, 84.16, 84.16, 0.83); overflow: hidden; border-bottom: 1px #B94646 solid">
@@ -54,11 +54,12 @@
         </div>
         
     
-    </div>
+    </NuxtLink>
 </template>
 
 <script setup lang="ts">
-    import type { Event } from '~/types';
+    import { NuxtLink } from '#components';
+import type { Event } from '~/types';
 
     // const actTags = [
     //     { text: "Meditazione" },

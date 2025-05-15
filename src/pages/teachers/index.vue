@@ -17,8 +17,6 @@
 import type { Teacher } from "~/types"
 
 import { useAPI } from "~/composables/useAPI"
-
-const teachersList = ref<Teacher[]>([])
 // GET API CALL - all teachers
 const { data } = await useAPI<
   {
@@ -36,19 +34,17 @@ if (!data.value || data.value.length === 0) {
 }
 console.log(data.value)
 
-const tempteachers = data.value.map((teacher) => {
+const teachersList: Teacher[] = data.value.map((teacher) => {
   return {
-    TeacherId: teacher.TeacherId,
-    Name: teacher.Name,
-    MainImageURL: teacher.MainImageURL,
-    Mantra: teacher.Mantra,
-    ActivityTags: teacher.TeacherActivity.map((ta) => ({
+    teacherId: teacher.TeacherId,
+    name: teacher.Name,
+    image: teacher.MainImageURL,
+    mantra: teacher.Mantra,
+    activityTags: teacher.TeacherActivity.map((ta) => ({
       text: ta.Activity.Title,
     })),
   }
 })
-
-teachersList.value = tempteachers
 </script>
 
 <style scoped>

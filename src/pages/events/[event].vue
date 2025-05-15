@@ -36,68 +36,6 @@ const event: EventType = {
   },
 }
 
-/*const teachersList: Teacher[] = [
-  {
-    Name: "string",
-    MainImageURL: "https://placehold.co/226x218",
-    Mantra: "Come quando fuori piove",
-    ActivityTags: [
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-    ],
-  },
-  {
-    Name: "string",
-    MainImageURL: "https://placehold.co/226x218",
-    Mantra: "Come quando fuori piove",
-    ActivityTags: [
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-    ],
-  },
-  {
-    Name: "string",
-    MainImageURL: "https://placehold.co/226x218",
-    Mantra: "Come quando fuori piove",
-    ActivityTags: [
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-    ],
-  },
-  {
-    Name: "string",
-    MainImageURL: "https://placehold.co/226x218",
-    Mantra: "Come quando fuori piove",
-    ActivityTags: [
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-    ],
-  },
-]
-*/
-const eventsList = [
-  {
-    Title: "Meditazione",
-    MainImageURL: "https://placehold.co/400x400",
-  },
-  {
-    Title: "Mindfulness",
-    MainImageURL: "https://placehold.co/400x400",
-  },
-  {
-    Title: "Rituale",
-    MainImageURL: "https://placehold.co/400x400",
-  },
-]
-
 const learnPoints = event.infostr.split("\n")
 const programPoints: {
   day: string
@@ -175,9 +113,9 @@ const programPoints: {
     <section style="align-items: center; text-align: center">
       <h2>Similar Events</h2>
       <div class="temp-grid">
-        <activity-card :activity-prop="eventsList[0]" />
+        <!-- <activity-card :activity-prop="eventsList[0]" />
         <activity-card :activity-prop="eventsList[1]" />
-        <activity-card :activity-prop="eventsList[2]" />
+        <activity-card :activity-prop="eventsList[2]" /> -->
       </div>
       <NuxtLink class="link-button" to="#"> View all events </NuxtLink>
     </section>

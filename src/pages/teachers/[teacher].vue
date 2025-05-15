@@ -22,19 +22,15 @@
       <h3>ACTIVITIES WITH ME</h3>
       <card-grid :length="teacher.TeacherActivity.length">
         <template #card="{ index }">
-          <NuxtLink
-            :to="`/activities/${encodeURIComponent(teacher.TeacherActivity[index].Activity.Title)}`"
-            ><ActivityCard
-              :activity-prop="{
-                Title: teacher.TeacherActivity[index].Activity.Title,
-
-                MainImageURL:
-                  '/images/' +
-                  teacher.TeacherActivity[index].Activity.BannerImageURL,
-              }"
-            >
-            </ActivityCard
-          ></NuxtLink>
+          <ActivityCard
+            :activity-prop="{
+              title: teacher.TeacherActivity[index].Activity.Title,
+              image:
+                '/images/' +
+                teacher.TeacherActivity[index].Activity.BannerImageURL,
+            }"
+          >
+          </ActivityCard>
         </template>
       </card-grid>
     </div>
@@ -44,32 +40,28 @@
       <h3>EVENTS WITH ME</h3>
       <card-grid :length="teacher.TeacherEvent.length">
         <template #card="{ index }">
-          <NuxtLink
-            :to="`/events/${encodeURIComponent(teacher.TeacherEvent[index].Event.Name)}`"
+          <EventCard
+            :event-prop="{
+              date: teacher.TeacherEvent[index].Event.Date,
+              title: teacher.TeacherEvent[index].Event.Name,
+              endTime: teacher.TeacherEvent[index].Event.EndTime,
+              eventId: teacher.TeacherEvent[index].Event.EventId,
+              location: teacher.TeacherEvent[index].Event.Location,
+              startTime: teacher.TeacherEvent[index].Event.StartTime,
+              eventImage:
+                '/images/' + teacher.TeacherEvent[index].Event.BannerImageURL,
+              hostImage:
+                '/images/' +
+                teacher.TeacherEvent[index].Event.GuestEvent[0].Guest
+                  .MainImageURL,
+              hostName:
+                teacher.TeacherEvent[index].Event.GuestEvent[0].Guest.Name,
+              activityTags: teacher.TeacherActivity.map((ta) => ({
+                text: ta.Activity.Title,
+              })),
+            }"
           >
-            <EventCard
-              :event-prop="{
-                Date: teacher.TeacherEvent[index].Event.Date,
-                Name: teacher.TeacherEvent[index].Event.Name,
-                EndTime: teacher.TeacherEvent[index].Event.EndTime,
-                EventId: teacher.TeacherEvent[index].Event.EventId,
-                Location: teacher.TeacherEvent[index].Event.Location,
-                StartTime: teacher.TeacherEvent[index].Event.StartTime,
-                EventImage:
-                  '/images/' + teacher.TeacherEvent[index].Event.BannerImageURL,
-                HostImage:
-                  '/images/' +
-                  teacher.TeacherEvent[index].Event.GuestEvent[0].Guest
-                    .MainImageURL,
-                HostName:
-                  teacher.TeacherEvent[index].Event.GuestEvent[0].Guest.Name,
-                ActivityTags: teacher.TeacherActivity.map((ta) => ({
-                  Text: ta.Activity.Title,
-                })),
-              }"
-            >
-            </EventCard>
-          </NuxtLink>
+          </EventCard>
         </template>
       </card-grid>
     </div>

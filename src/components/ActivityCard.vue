@@ -1,11 +1,11 @@
 <template>
-  <div class="card">
+  <NuxtLink :to="`/activities/${activityProp.title}`" class="card">
     <div
       class="card-image"
-      :style="{ backgroundImage: `url(${activityProp.MainImageURL})` }"
+      :style="{ backgroundImage: `url(${activityProp.image})` }"
     ></div>
-    <div class="card-title">{{ activityProp.Title }}</div>
-  </div>
+    <div class="card-title">{{ activityProp.title }}</div>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
@@ -26,7 +26,7 @@ div {
   width: 100%;
   max-width: 400px;
   height: 275px;
-
+  text-decoration: none;
   padding: 10px;
   background: inherit;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);

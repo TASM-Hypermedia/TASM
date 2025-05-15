@@ -1,19 +1,12 @@
 <template>
-  <NuxtLink
-    :to="`/teachers/${encodeURIComponent(teacherProp.Name)}`"
-    class="card"
-  >
-    <img
-      class="teacher_image"
-      style=""
-      :src="'/images/' + teacherProp.MainImageURL"
-    />
-    <div class="teacher_name" style="">{{ teacherProp.Name }}</div>
-    <div class="mantra" style="">&ldquo;{{ teacherProp.Mantra }}&rdquo;</div>
+  <NuxtLink :to="`/teachers/${teacherProp.name}`" class="card">
+    <img class="teacher_image" style="" :src="'/images/' + teacherProp.image" />
+    <div class="teacher_name" style="">{{ teacherProp.name }}</div>
+    <div class="mantra" style="">&ldquo;{{ teacherProp.mantra }}&rdquo;</div>
 
     <v-container class="tag_container">
       <activity-tag
-        v-for="(tag, index) in teacherProp.ActivityTags"
+        v-for="(tag, index) in teacherProp.activityTags"
         :key="index"
         :text="tag.text"
       />
@@ -36,7 +29,7 @@ defineProps<{
   height: 100%;
   padding: 11px;
   background: rgb(255, 255, 255);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   border-radius: 15px;
   cursor: pointer;
@@ -81,7 +74,6 @@ defineProps<{
   align-self: stretch;
   flex: 1;
   text-align: center;
-  /* justify-content: center; */
   display: flex;
   font-style: italic;
   flex-direction: column;

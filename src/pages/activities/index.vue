@@ -1,57 +1,39 @@
 <template>
-    <page-wrap :title="'Activities'">
-        <template v-if="activitiesList.length > 0">
-            
-            <card-grid :length="activitiesList.length">
-                <template #card="{ index }">
-                    <activity-card :activity-prop="activitiesList[index]" />
-                </template>
-            </card-grid> 
-            
+  <page-wrap
+    :title="'Activities'"
+    subtitle="All the types of yoga we offer"
+    img-src="/banners/activities-banner.jpg"
+  >
+    <template v-if="activitiesList && activitiesList.length > 0">
+      <card-grid :length="activitiesList.length">
+        <template #card="{ index }">
+          <activity-card :activity-prop="activitiesList[index]" />
         </template>
-        <template v-else>
-
-            <div class="empty-state">
-                No activities available at the moment.
-            </div>
-
-        </template>
-    </page-wrap>
+      </card-grid>
+    </template>
+    <template v-else>
+      <div class="empty-state">No activities available at the moment.</div>
+    </template>
+  </page-wrap>
 </template>
-
 <script setup lang="ts">
-    import type { Activity } from '~/types';
-    
-    const activitiesList: Activity[]= [
-        // {
-        //     title: "Meditazione",
-        //     image: "https://placehold.co/400x400",
-        // },
-        // {
-        //     title: "Mindfulness",
-        //     image: "https://placehold.co/400x400",
-        // },
-        // {
-        //     title: "Rituale",
-        //     image: "https://placehold.co/400x400",
-        // },
-        // {
-        //     title: "Better sleep",
-        //     image: "https://placehold.co/400x400",
-        // },
-        // {
-        //     title: "Golden Hour Sunset",
-        //     image: "https://placehold.co/400x400",
-        // },
-    ];
+import ActivityCard from "~/components/ActivityCard.vue"
 
+const res = await useAPI<
+  {
+    title: string
+    image: string
+  }[]
+>("/getAllActivities")
+
+if (res.error.value) throw res.error.value
+const activitiesList = res.data.value
 </script>
 
 <style scoped>
-    div {
-        background-color: #f0f0f0;
-        flex: 1;
-        width: 100%;
-    }
-
+div {
+  background-color: #f0f0f0;
+  flex: 1;
+  width: 100%;
+}
 </style>

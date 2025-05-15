@@ -1,27 +1,27 @@
 export type Teacher = {
-  TeacherId: number,
-    Name: string,
-    MainImageURL: string,
-    Mantra: string,
-    ActivityTags: Array<{ text: string }>,
-};
+  teacherId: number
+  name: string
+  image: string
+  mantra: string
+  activityTags: Array<{ text: string }>
+}
 
 export type Activity = {
-    Title: string,
-    MainImageURL: string,
+    title: string,
+    image: string,
 };
 
 export type Event = {
-  Name: string,
-  EventId : number,
-  EventImage: string,
-  HostImage: string,
-  HostName: string,
-  Date: string,
-  StartTime: string,
-  EndTime: string,
-  Location: string,
-  ActivityTags: Array<{ Text: string }>,
+  title: string,
+  eventId : number,
+  eventImage: string,
+  hostImage: string,
+  hostName: string,
+  date: string,
+  startTime: string,
+  endTime: string,
+  location: string,
+  activityTags: Array<{ text: string }>,
 };
 
 export type Price = {
