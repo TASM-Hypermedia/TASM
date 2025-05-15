@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Teacher } from "~/types"
+//import type { Teacher } from "~/types"
 
 interface EventType {
   title: string
@@ -36,12 +36,12 @@ const event: EventType = {
   },
 }
 
-const teachersList: Teacher[] = [
+/*const teachersList: Teacher[] = [
   {
-    name: "string",
-    image: "https://placehold.co/226x218",
-    mantra: "Come quando fuori piove",
-    activityTags: [
+    Name: "string",
+    MainImageURL: "https://placehold.co/226x218",
+    Mantra: "Come quando fuori piove",
+    ActivityTags: [
       { text: "Meditazione" },
       { text: "Meditazione" },
       { text: "Meditazione" },
@@ -49,10 +49,10 @@ const teachersList: Teacher[] = [
     ],
   },
   {
-    name: "string",
-    image: "https://placehold.co/226x218",
-    mantra: "Come quando fuori piove",
-    activityTags: [
+    Name: "string",
+    MainImageURL: "https://placehold.co/226x218",
+    Mantra: "Come quando fuori piove",
+    ActivityTags: [
       { text: "Meditazione" },
       { text: "Meditazione" },
       { text: "Meditazione" },
@@ -60,10 +60,21 @@ const teachersList: Teacher[] = [
     ],
   },
   {
-    name: "string",
-    image: "https://placehold.co/226x218",
-    mantra: "Come quando fuori piove",
-    activityTags: [
+    Name: "string",
+    MainImageURL: "https://placehold.co/226x218",
+    Mantra: "Come quando fuori piove",
+    ActivityTags: [
+      { text: "Meditazione" },
+      { text: "Meditazione" },
+      { text: "Meditazione" },
+      { text: "Meditazione" },
+    ],
+  },
+  {
+    Name: "string",
+    MainImageURL: "https://placehold.co/226x218",
+    Mantra: "Come quando fuori piove",
+    ActivityTags: [
       { text: "Meditazione" },
       { text: "Meditazione" },
       { text: "Meditazione" },
@@ -71,19 +82,19 @@ const teachersList: Teacher[] = [
     ],
   },
 ]
-
+*/
 const eventsList = [
   {
-    title: "Meditazione",
-    image: "https://placehold.co/400x400",
+    Title: "Meditazione",
+    MainImageURL: "https://placehold.co/400x400",
   },
   {
-    title: "Mindfulness",
-    image: "https://placehold.co/400x400",
+    Title: "Mindfulness",
+    MainImageURL: "https://placehold.co/400x400",
   },
   {
-    title: "Rituale",
-    image: "https://placehold.co/400x400",
+    Title: "Rituale",
+    MainImageURL: "https://placehold.co/400x400",
   },
 ]
 
@@ -153,14 +164,14 @@ const programPoints: {
         </div>
       </div>
     </section>
-    <section style="align-items: center; text-align: center">
+    <!--<section style="align-items: center; text-align: center">
       <h1>Teachers in This Event</h1>
       <div class="temp-grid">
         <teacher-card :teacher-prop="teachersList[0]" />
         <teacher-card :teacher-prop="teachersList[1]" />
         <teacher-card :teacher-prop="teachersList[2]" />
       </div>
-    </section>
+    </section>-->
     <section style="align-items: center; text-align: center">
       <h2>Similar Events</h2>
       <div class="temp-grid">
