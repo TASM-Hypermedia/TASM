@@ -10,6 +10,18 @@ export type Activity = {
     image: string,
 };
 
+export type Event ={
+  title: string,
+  eventImage: string,
+  hostImage: string,
+  hostName: string,
+  date: string,
+  startTime: string,
+  endTime: string,
+  location: string,
+  activityTags: Array<{ text: string }>,
+};
+
 export type Price = {
   title: string,
   price: number,
