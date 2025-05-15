@@ -33,3 +33,12 @@ export type Faq = {
   question: string,
   answer: string,
 };
+
+export type ContentCard = {
+  title: string,
+  subtitle?: string,
+  description?: string,
+  imgUrl?: string,
+  altDescription?: string,
+  imageOnTheRight: boolean,
+}
