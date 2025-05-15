@@ -1,16 +1,16 @@
 <script setup lang="ts">
 
-const { data, error } = await useAPI<{
+const { data, error } = await useAPI<[{
   YogaCenterId: number
   Title: string
   Subtitle: string
   LongDescription: string
-  Rooms: Array<{
+  Room: Array<{
       Name: string;
       Text: string;
       UrlImage: string;
   }>
-}>("/getAllRooms", {
+}]>("/getAllRooms", {
   method: "GET"
 })
 
@@ -19,20 +19,39 @@ if (error.value || !data.value) {
   throw new Error("Yoga center not found")
 }
 
-console.log(data)
+const yogaCenter = data.value[0]
+
+console.log(yogaCenter)
 
 </script>
 
 <template>
   <PageWrap
     title="Yoga Center"
+    img-src="./banners/yogaCenter-banner.jpg"
   >
-    <div>
-      {{data?.LongDescription}}
-    </div>
+    <section class="description">
+      <div>
+        {{yogaCenter.LongDescription}}
+      </div>
+    </section>
+
+    <section class="rooms">
+      <h2>AVAILABLE ROOMS</h2>
+      <div v-for="(room, index) in yogaCenter.Room" :key="index">
+        <content-card :content-card-prop="{title: room.Name, description: room.Text, imgUrl: room.UrlImage, imageOnTheRight: true}"></content-card>
+      </div>
+    </section>
   </PageWrap>
 </template>
 
 <style scoped>
+.description {
+  margin: auto;
+  width: 75%;
+}
 
+.rooms {
+  margin-top: 50px;
+}
 </style>

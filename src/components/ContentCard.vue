@@ -4,6 +4,7 @@ import type { ContentCard } from "~/types"
 const { contentCardProp } = defineProps<{
   contentCardProp: ContentCard
 }>()
+
 </script>
 
 <template>
