@@ -24,10 +24,10 @@ const scrollAmount = computed(() => clamp(y.value, 0, 600))
 
 <template>
   <div class="copertina-page">
-    <NuxtImg
+    <img
       v-if="props.urlImg !== undefined"
       :src="`/images/${props.urlImg}`"
-      alt=""
+      :alt="`Background Image - ${title}`"
       class="background-image"
       :style="{ top: scrollAmount / 3 + 'px' }"
     />
@@ -53,6 +53,7 @@ const scrollAmount = computed(() => clamp(y.value, 0, 600))
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: all 0.1 linear;
 }
 
 .hero-page h1 {
@@ -95,5 +96,6 @@ const scrollAmount = computed(() => clamp(y.value, 0, 600))
   height: 100%;
   object-fit: cover;
   user-select: none;
+  transition: all 0.1 linear;
 }
 </style>

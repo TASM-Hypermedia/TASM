@@ -92,10 +92,7 @@ const programPoints: {
     <section v-if="event.guest" class="guest">
       <h1>Special Guest</h1>
       <div>
-        <NuxtImg
-          :src="`/images/${event.guest.imageURL}`"
-          :alt="event.guest.name"
-        />
+        <img :src="`/images/${event.guest.imageURL}`" :alt="event.guest.name" />
         <div>
           <h2>{{ event.guest.name }}</h2>
           <p>{{ event.guest.description }}</p>

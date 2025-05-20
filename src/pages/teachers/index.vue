@@ -32,7 +32,6 @@ const { data } = await useAPI<
 if (!data.value || data.value.length === 0) {
   throw new Error("No data found")
 }
-console.log(data.value)
 
 const teachersList: Teacher[] = data.value.map((teacher) => {
   return {
