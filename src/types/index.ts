@@ -1,17 +1,19 @@
 export type Teacher = {
-    name: string,
-    image: string,
-    mantra: string,
-    activityTags: Array<{ text: string }>,
-};
+  teacherId: number
+  name: string
+  image: string
+  mantra: string
+  activityTags: Array<{ text: string }>
+}
 
 export type Activity = {
     title: string,
     image: string,
 };
 
-export type Event ={
+export type Event = {
   title: string,
+  eventId : number,
   eventImage: string,
   hostImage: string,
   hostName: string,

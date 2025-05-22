@@ -9,9 +9,7 @@
       data-variant="Stroke"
     >
       <v-col cols="12">
-        <client-only v-if="url">
-          <img class="imgPreview" :src="url" />
-        </client-only>
+        <img class="imgPreview" :src="url" />
       </v-col>
       <v-col>
         <div class="firtsContainer">
@@ -31,21 +29,21 @@
 interface contentPreviewInterface {
   title: string
   subtitle: string
-  urlImg?: string
+  urlImg: string
 }
 
 const props = defineProps<{
-  contentPreview?: contentPreviewInterface
+  contentPreview: contentPreviewInterface
 }>()
 
-const url = computed(() =>
+const url = "/images/" + props.contentPreview.urlImg /*computed(() =>
   props.contentPreview?.urlImg
     ? new URL(
         `../assets/images/${props.contentPreview.urlImg}`,
         import.meta.url
       ).href
     : undefined
-)
+)*/
 </script>
 
 <style scoped>

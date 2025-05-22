@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Teacher } from "~/types"
+//import type { Teacher } from "~/types"
 
 interface EventType {
   title: string
@@ -35,57 +35,6 @@ const event: EventType = {
       'Meet Ravi Solan, the special guest at this year’s Moonridge Yoga Retreat. A former architect turned mindfulness guide, Ravi left the fast-paced world of city design to explore the inner landscapes of the human spirit. Now known for his grounding presence and poetic teachings, he blends Vinyasa flow with ancient breathwork practices inspired by his travels through the Himalayas. Attendees are especially drawn to his "Stillness in Motion" workshops, where silence becomes the most powerful teacher.',
   },
 }
-
-const teachersList: Teacher[] = [
-  {
-    name: "string",
-    image: "https://placehold.co/226x218",
-    mantra: "Come quando fuori piove",
-    activityTags: [
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-    ],
-  },
-  {
-    name: "string",
-    image: "https://placehold.co/226x218",
-    mantra: "Come quando fuori piove",
-    activityTags: [
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-    ],
-  },
-  {
-    name: "string",
-    image: "https://placehold.co/226x218",
-    mantra: "Come quando fuori piove",
-    activityTags: [
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-    ],
-  },
-]
-
-const eventsList = [
-  {
-    title: "Meditazione",
-    image: "https://placehold.co/400x400",
-  },
-  {
-    title: "Mindfulness",
-    image: "https://placehold.co/400x400",
-  },
-  {
-    title: "Rituale",
-    image: "https://placehold.co/400x400",
-  },
-]
 
 const learnPoints = event.infostr.split("\n")
 const programPoints: {
@@ -153,20 +102,20 @@ const programPoints: {
         </div>
       </div>
     </section>
-    <section style="align-items: center; text-align: center">
+    <!--<section style="align-items: center; text-align: center">
       <h1>Teachers in This Event</h1>
       <div class="temp-grid">
         <teacher-card :teacher-prop="teachersList[0]" />
         <teacher-card :teacher-prop="teachersList[1]" />
         <teacher-card :teacher-prop="teachersList[2]" />
       </div>
-    </section>
+    </section>-->
     <section style="align-items: center; text-align: center">
       <h2>Similar Events</h2>
       <div class="temp-grid">
-        <activity-card :activity-prop="eventsList[0]" />
+        <!-- <activity-card :activity-prop="eventsList[0]" />
         <activity-card :activity-prop="eventsList[1]" />
-        <activity-card :activity-prop="eventsList[2]" />
+        <activity-card :activity-prop="eventsList[2]" /> -->
       </div>
       <NuxtLink class="link-button" to="#"> View all events </NuxtLink>
     </section>
