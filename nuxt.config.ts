@@ -26,4 +26,7 @@ export default defineNuxtConfig({
       subsets: ["latin-ext", "latin"],
     },
   },
+  app: {
+    pageTransition: { name: "page", mode: "out-in" },
+  },
 })

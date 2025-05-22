@@ -216,6 +216,9 @@ div.buttons {
     font-weight: bold;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease-in-out;
+    padding: 2px;
+    outline: 1px rgba(0, 0, 0, 0.17) solid;
+    outline-offset: -1px;
 
     &.selected {
       background-color: #e2e2e2;
@@ -232,6 +235,8 @@ div.buttons {
   align-items: stretch;
   gap: 12px;
   margin: 4px;
+  outline: 1px rgba(0, 0, 0, 0.17) solid;
+  outline-offset: -1px;
 
   img {
     flex: 0;
