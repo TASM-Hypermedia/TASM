@@ -3,6 +3,13 @@ import { NuxtLink } from "#components"
 
 const { y } = useScroll()
 const opacity = computed(() => maprange(clamp(y.value, 0, 600), 0, 600, 0.6, 1))
+
+const route = useRoute()
+
+function active(thisRoute: string) {
+  if (route.path.startsWith(`/${thisRoute}`)) return "link active-link"
+  else return "link"
+}
 </script>
 
 <template>
@@ -10,17 +17,25 @@ const opacity = computed(() => maprange(clamp(y.value, 0, 600), 0, 600, 0.6, 1))
     class="header-div"
     :style="{ backgroundColor: `rgba(240, 240, 240, ${opacity})` }"
   >
-    <img class="header-img" src="../assets/images/headerIcon.svg" alt="logo" />
-    <NuxtLink to="#">The Center</NuxtLink>
-    <NuxtLink to="/teachers">Our Team</NuxtLink>
-    <NuxtLink to="/activities">Activities</NuxtLink>
-    <NuxtLink to="/events">Events</NuxtLink>
-    <NuxtLink to="#">Pricing</NuxtLink>
-    <NuxtLink class="active-link" to="/contacts">Contacts</NuxtLink>
+    <NuxtLink to="/" class="logo">
+      <img
+        class="header-img"
+        src="../assets/images/headerIcon.svg"
+        alt="logo"
+      />
+    </NuxtLink>
+    <NuxtLink :class="active('center')" to="#">The Center</NuxtLink>
+    <NuxtLink :class="active('teachers')" to="/teachers"> Our Team </NuxtLink>
+    <NuxtLink :class="active('activities')" to="/activities">
+      Activities
+    </NuxtLink>
+    <NuxtLink :class="active('events')" to="/events">Events</NuxtLink>
+    <NuxtLink :class="active('pricing')" to="/pricing">Pricing</NuxtLink>
+    <NuxtLink :class="active('contacts')" to="/contacts"> Contacts </NuxtLink>
   </nav>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .header-div {
   position: fixed;
   display: flex;
@@ -36,22 +51,15 @@ const opacity = computed(() => maprange(clamp(y.value, 0, 600), 0, 600, 0.6, 1))
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-img {
+.logo {
   display: block;
-  width: 64px;
   margin-right: auto;
+  img {
+    width: 64px;
+  }
 }
 
-ul {
-  list-style-type: none;
-  padding-right: 50px;
-}
-
-li {
-  float: right;
-}
-
-a {
+.link {
   display: block;
   color: black;
   text-align: center;
@@ -61,16 +69,16 @@ a {
   background-color: transparent;
   transition: all 0.3s ease;
   border: 1px solid transparent;
+
+  &.active-link {
+    background-color: #e2e2e2f0;
+    font-weight: bold;
+  }
 }
 
-a:hover {
+.link:hover {
   background-color: #e2e2e2a0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid #fffc;
-}
-
-.active-link {
-  background-color: #e2e2e2f0;
-  font-weight: bold;
 }
 </style>
