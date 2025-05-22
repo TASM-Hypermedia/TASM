@@ -1,31 +1,10 @@
 <script setup lang="ts">
-import type { Activity, Teacher } from "~/types"
+import type { Activity, ActivityType } from "~/types"
 
 const route = useRoute()
 
 const a = route.params.activity
 const ActivityTitle = typeof a === "string" ? a : a.join("")
-
-interface ActivityType {
-  title: string
-  mainImageURL: string
-  description: string
-  nextLessons: {
-    date: string
-    time: string
-    name: string
-    difficulty: string
-  }[]
-  teachers: Teacher[]
-  info: {
-    name: string
-    description: string
-  }[][]
-  images: {
-    URL: string
-    alt: string
-  }[]
-}
 
 const response = await useAPI<ActivityType>("/postActivity", {
   method: "POST",
@@ -45,7 +24,7 @@ const activity = response.data.value
 
 const activityProp: Activity = {
   title: activity.title,
-  image: activity.mainImageURL,
+  image: `/images/${activity.mainImageURL}`,
 }
 
 const defaultDifficulty =
