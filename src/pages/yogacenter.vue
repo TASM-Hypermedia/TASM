@@ -13,7 +13,7 @@ const { data, error } = await useAPI<
       }>
     },
   ]
->("/getAllRooms", {
+>("/getYogaCenter", {
   method: "GET",
 })
 

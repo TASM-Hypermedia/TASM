@@ -1,5 +1,19 @@
 <script setup lang="ts">
+const { data, error } = await useAPI<
+    {
+      ContactId: number
+      ContactInfo: string
+    }[]
+>("/getContacts", {
+  method: "GET",
+})
 
+if (error.value || !data.value) {
+  console.error("Error in loading contacts:", error.value)
+  throw new Error("Contacts not found")
+}
+
+const contacts = data.value
 </script>
 
 <template>
@@ -14,17 +28,17 @@
         <div class="column">
           <img src="../assets/socials/wa.png" alt="Whatsapp number" class="contact-image" />
           <br/>
-          <span>+39 3123456789</span>
+          <span>{{contacts[0].ContactInfo}}</span>
         </div>
         <div class="column">
           <img src="../public/images/icons/phone.png" alt="Phone number" class="contact-image" />
           <br/>
-          <span>+39 3123456789</span>
+          <span>{{contacts[0].ContactInfo}}</span>
         </div>
         <div class="column">
           <img src="../public/images/icons/mail.png" alt="Mail" class="contact-image" />
           <br/>
-          <span>info@yoga.com</span>
+          <span>{{contacts[1].ContactInfo}}</span>
         </div>
         <div class="column"></div>
       </div>

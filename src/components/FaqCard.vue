@@ -1,32 +1,43 @@
 <script setup lang="ts">
 import type { Faq } from "~/types"
 
-const {faqProp} = defineProps<{
-  faqProp: Faq;
-}>();
+const { faqProp } = defineProps<{
+  faqProp: Faq
+}>()
 
+const open = ref(false)
+
+function toggle() {
+  open.value = !open.value
+}
 </script>
 
 <template>
-  <v-expansion-panels hover="true">
-    <v-expansion-panel class="faqPanel" selected-class="changingBg">
-      <v-expansion-panel-title class="faqQuestion"
-      >{{faqProp.question}}</v-expansion-panel-title>
-      <v-expansion-panel-text>{{faqProp.answer}}</v-expansion-panel-text>
-    </v-expansion-panel>
-  </v-expansion-panels>
+  <button type="button" class="collapsible" @click="toggle">
+    {{ faqProp.question }}
+  </button>
+  <div class="content" :style="`display: ${open? 'block' : 'none' }`">
+    <p>{{ faqProp.answer }}</p>
+  </div>
 </template>
 
 <style scoped>
-.faqPanel {
-  border-radius: 10px;
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
   width: 100%;
-  margin-bottom: 15px;
-  border: 1px solid black;
-  transition-duration: 1s;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
 }
 
-.changingBg {
-  background-color: red;
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
 }
 </style>
