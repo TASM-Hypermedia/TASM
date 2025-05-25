@@ -22,7 +22,7 @@
         </div>
         <div class="bottom">
             <div class="host_box" style="">
-                <img class="host_image" style="width: 74px; height: 74px; border-radius: 9999px" :src="eventProp.hostImage" />
+                <img class="host_image" :src="eventProp.hostImage" />
                 <div style="display: flex; gap: 6px; flex-direction: column; justify-content: start; width: 100%; color: black;">
                     <span style="color: black; font-size: 13px; font-family: Instrument Sans; font-weight: 700; line-height: 15px; word-wrap: break-word">HOST:</span>
                     <div class="host_name" style="color: black; font-size: 18px; font-family: Instrument Sans; font-weight: 400; line-height: 18px; word-wrap: break-word">
@@ -108,6 +108,7 @@ import type { Event } from '~/types';
     .card {
         width: 100%;
         max-width: 361px; 
+        text-decoration: none;
         /* padding-left: 11px; 
         padding-bottom: 11px; 
         padding-right: 11px;  */
@@ -210,6 +211,14 @@ import type { Event } from '~/types';
         display: flex;
         gap: 16px;
         border: 0px solid black;
+    }
+
+    .host_image {
+        object-fit: cover;
+        width: 74px; 
+        height: 74px; 
+        aspect-ratio: 1;
+        border-radius: 50%
     }
 
     .info_box {
