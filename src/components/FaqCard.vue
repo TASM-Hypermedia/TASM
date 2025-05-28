@@ -13,31 +13,31 @@ function toggle() {
 </script>
 
 <template>
-  <button type="button" class="collapsible" @click="toggle">
+  <button type="button" class="faqQuestion" @click="toggle">
     {{ faqProp.question }}
   </button>
-  <div class="content" :style="`display: ${open? 'block' : 'none' }`">
+  <div class="faqAnswer" :style="`display: ${open? 'block' : 'none' }`">
     <p>{{ faqProp.answer }}</p>
   </div>
 </template>
 
 <style scoped>
-.collapsible {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
+.faqQuestion {
+  background-color: gray;
+  padding: 10px;
+  border-radius: 10px;
+  display: block;
   width: 100%;
-  border: none;
   text-align: left;
-  outline: none;
-  font-size: 15px;
+  margin-top: 10px;
 }
 
-.content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #f1f1f1;
+.faqAnswer {
+  background-color: #B94646;
+  padding: 10px;
+  border-radius: 10px;
+  display: block;
+  text-align: left;
+  margin-bottom: 10px;
 }
 </style>

@@ -23,28 +23,24 @@ if (error.value || !data.value) {
 }
 
 const yogaCenter = data.value[0]
-const roomContent = [
-  {
-    title: "",
-    description: "",
-    imgUrl: "",
-    altDescription: "",
-    imageOnTheRight: true,
-  }
-];
+const roomContent: {
+  title: string,
+  description: string,
+  imgUrl: string,
+  altDescription: string,
+  imageOnTheRight: boolean,
+}[] = []
 
 for (let i = 0; i < yogaCenter.Room.length; i++) {
   const flag = i % 2 === 0
-  roomContent[i] = {
+  roomContent.push({
     title: yogaCenter.Room[i].Name,
     description: yogaCenter.Room[i].Text,
     imgUrl: "images/" + yogaCenter.Room[i].UrlImage,
     altDescription: yogaCenter.Room[i].Name + " room",
     imageOnTheRight: flag,
-  }
+  })
 }
-
-console.log(yogaCenter)
 </script>
 
 <template>

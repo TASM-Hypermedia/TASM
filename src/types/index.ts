@@ -24,8 +24,9 @@ export type Event ={
 
 export type Price = {
   title: string,
+  subtitle?: string,
   price: number,
-  pricingItems?: Array<{ text: string }>,
+  pricingItems?: Array<{ Item: string }>,
   darkMode: boolean,
 };
 
