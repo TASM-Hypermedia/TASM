@@ -24,7 +24,9 @@ function active(thisRoute: string) {
         alt="logo"
       />
     </NuxtLink>
-    <NuxtLink :class="active('center')" to="/yogacenter">The Center</NuxtLink>
+    <NuxtLink :class="active('yogacenter')" to="/yogacenter"
+      >The Center</NuxtLink
+    >
     <NuxtLink :class="active('teachers')" to="/teachers"> Our Team </NuxtLink>
     <NuxtLink :class="active('activities')" to="/activities">
       Activities
