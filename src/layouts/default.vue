@@ -1,8 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import DesktopHeader from "~/components/layout/DesktopHeader.vue"
+import AppFooter from "~/components/layout/AppFooter.vue"
+</script>
 
 <template>
   <div class="desktop-layout">
-    <AppHeader />
+    <DesktopHeader />
     <NuxtPage />
     <AppFooter />
   </div>

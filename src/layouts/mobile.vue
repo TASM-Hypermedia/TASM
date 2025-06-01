@@ -1,8 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import MobileHeader from "~/components/layout/MobileHeader.vue"
+import AppFooter from "~/components/layout/AppFooter.vue"
+</script>
 
 <template>
   <div class="mobile-layout">
-    <p>Mobile ahahahhahahaa</p>
+    <MobileHeader />
     <NuxtPage />
     <AppFooter />
   </div>
