@@ -1,24 +1,33 @@
 <script setup lang="ts">
-import type { NuxtError } from '#app'
-import { useNuxtApp } from '#app'
+import type { NuxtError } from "#app"
+import { useNuxtApp } from "#app"
 const { $viewport } = useNuxtApp()
 
 // VIEWPORT
 watch($viewport.breakpoint, (newBreakpoint, oldBreakpoint) => {
-  console.log('Breakpoint updated:', oldBreakpoint, '->', newBreakpoint)
+  console.log("Breakpoint updated:", oldBreakpoint, "->", newBreakpoint)
 })
 
 // ERROR HANDLING
-const props = defineProps({
+const _props = defineProps({
   // eslint-disable-next-line vue/require-default-prop
-  error: Object as () => NuxtError
+  error: Object as () => NuxtError,
 })
 
-const handleError = () => clearError({ redirect: '/' })
+const handleError = () => clearError({ redirect: "/" })
 </script>
 
 <template>
-  <div style="width: 100%; margin: auto; display: flex; flex-direction: column; justify-content: space-between; height: 100%">
+  <div
+    style="
+      width: 100%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    "
+  >
     <LoadingIndicator />
     <template v-if="$viewport.isLessThan('tablet')">
       <NuxtLayout name="mobile"></NuxtLayout>
@@ -37,6 +46,4 @@ const handleError = () => clearError({ redirect: '/' })
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
