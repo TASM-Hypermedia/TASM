@@ -1,5 +1,5 @@
 <template>
-    <div class="card" style="">
+    <NuxtLink :to="`/events/${eventProp.title}`" class="card" style="">
         <div class="top" style="">
             <div class="calendar" style="">
                 <div style="width: 87px; height: 25px; background: rgba(223.86, 84.16, 84.16, 0.83); overflow: hidden; border-bottom: 1px #B94646 solid">
@@ -22,13 +22,12 @@
         </div>
         <div class="bottom">
             <div class="host_box" style="">
-                <img class="host_image" style="width: 74px; height: 74px; left: 11.50px; top: 1px; position: absolute; border-radius: 9999px" :src="eventProp.hostImage" />
-                <div style="width: 51px; height: 17px; left: 126px; top: 12px; position: absolute">
-                    <span style="color: black; font-size: 15px; font-family: Instrument Sans; font-weight: 700; line-height: 15px; word-wrap: break-word">HOST:</span>
-                    
-                </div>
-                <div class="host_name" style="width: 141px; height: 18px; left: 126px; top: 38px; position: absolute; color: black; font-size: 18px; font-family: Instrument Sans; font-weight: 400; line-height: 18px; word-wrap: break-word">
-                    {{eventProp.hostName}}
+                <img class="host_image" :src="eventProp.hostImage" />
+                <div style="display: flex; gap: 6px; flex-direction: column; justify-content: start; width: 100%; color: black;">
+                    <span style="color: black; font-size: 13px; font-family: Instrument Sans; font-weight: 700; line-height: 15px; word-wrap: break-word">HOST:</span>
+                    <div class="host_name" style="color: black; font-size: 18px; font-family: Instrument Sans; font-weight: 400; line-height: 18px; word-wrap: break-word">
+                        {{eventProp.hostName}}
+                    </div>
                 </div>
             </div>
 
@@ -55,11 +54,12 @@
         </div>
         
     
-    </div>
+    </NuxtLink>
 </template>
 
 <script setup lang="ts">
-    import type { Event } from '~/types';
+    import { NuxtLink } from '#components';
+import type { Event } from '~/types';
 
     // const actTags = [
     //     { text: "Meditazione" },
@@ -108,6 +108,7 @@
     .card {
         width: 100%;
         max-width: 361px; 
+        text-decoration: none;
         /* padding-left: 11px; 
         padding-bottom: 11px; 
         padding-right: 11px;  */
@@ -120,7 +121,6 @@
         flex-direction: column; 
         justify-content: flex-start; 
         align-items: center; 
-        gap: 18px; 
         display: inline-flex;
     }
 
@@ -137,10 +137,11 @@
     }
 
     .bottom {
-        padding: 14px 10px;
+        width: 100%;
+        padding: 16px;
         flex-direction: column; 
         justify-content: flex-start; 
-        align-items: center; 
+        align-items: stretch; 
         gap: 18px; 
         display: inline-flex;
     }
@@ -205,17 +206,22 @@
     }
 
     .host_box {
-        width: 275px; 
-        height: 95px;
-        position: relative; 
         background: white; 
         overflow: hidden;
-        flex-direction: column;
+        display: flex;
+        gap: 16px;
         border: 0px solid black;
     }
 
+    .host_image {
+        object-fit: cover;
+        width: 74px; 
+        height: 74px; 
+        aspect-ratio: 1;
+        border-radius: 50%
+    }
+
     .info_box {
-        width: 321px; 
         height: 48px; 
         border: solid black 0px ; 
     }

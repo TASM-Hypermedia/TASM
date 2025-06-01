@@ -9,6 +9,7 @@ watch($viewport.breakpoint, (newBreakpoint, oldBreakpoint) => {
 
 <template>
   <v-app>
+    <LoadingIndicator />
     <template v-if="$viewport.isLessThan('tablet')">
       <NuxtLayout name="mobile"></NuxtLayout>
     </template>
@@ -18,5 +19,6 @@ watch($viewport.breakpoint, (newBreakpoint, oldBreakpoint) => {
     </template>
 
     <NuxtPage />
+    <AppFooter />
   </v-app>
 </template>

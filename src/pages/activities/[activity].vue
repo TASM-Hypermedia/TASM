@@ -1,114 +1,36 @@
 <script setup lang="ts">
-import type { Teacher } from "~/types"
+import type { Activity, ActivityType } from "~/types"
 
-// const route = useRoute()
+const route = useRoute()
 
-// const a = route.params.activity
-// const title = typeof a === "string" ? a : a.join("")
+const a = route.params.activity
+const ActivityTitle = typeof a === "string" ? a : a.join("")
 
-interface ActivityType {
-  title: string
-  mainImageURL: string
-  description: string
-  nextLessons: {
-    date: string
-    time: string
-    name: string
-    difficulty: string
-  }[]
+const response = await useAPI<ActivityType>("/postActivity", {
+  method: "POST",
+  body: JSON.stringify({ ActivityTitle }),
+})
+
+if (response.error.value || !response.data.value)
+  throw createError({
+    fatal: true,
+    ...(response.error.value ?? {
+      statusCode: 404,
+      message: `${ActivityTitle}\nNo one with this name works with us!`,
+    }),
+  })
+
+const activity = response.data.value
+
+const activityProp: Activity = {
+  title: activity.title,
+  image: `/images/${activity.mainImageURL}`,
 }
 
-const activity: ActivityType = {
-  title: "Vinyasa Yoga",
-  mainImageURL: "activities/vinyasaYoga-banner.jpg",
-  description:
-    "Vinyasa Yoga is a dynamic and flowing style of yoga that emphasizes the seamless connection between breath and movement. In a Vinyasa practice, each posture is synchronized with an inhale or exhale, creating a continuous flow from one asana (yoga posture) to the next. This rhythmic movement not only builds strength, flexibility, and endurance but also encourages mindfulness, helping practitioners stay present in the moment. The practice often includes creative sequences, which can range from slow and meditative to fast-paced and intense, providing a holistic workout for both the body and mind. \n\n\nVinyasa Yoga is known for its versatility and adaptability, allowing practitioners to tailor the experience to their own level of fitness and personal goals. Whether you're looking for a gentle practice to calm your mind or a vigorous session to challenge your body, Vinyasa offers a balance of flow, power, and relaxation.",
-  nextLessons: [
-    {
-      date: "2023-10-30",
-      time: "10:00 - 11:00 (1h)",
-      name: "Lesson 1",
-      difficulty: "🌀 Medium",
-    },
-    {
-      date: "2023-10-31",
-      time: "14:00 - 15:00 (1h)",
-      name: "Lesson 2",
-      difficulty: "🌿 Easy",
-    },
-    {
-      date: "2023-11-01",
-      time: "09:00 - 10:00 (1h)",
-      name: "Lesson 3",
-      difficulty: "🔥 Hard",
-    },
-    {
-      date: "2023-11-02",
-      time: "13:00 - 14:00 (1h)",
-      name: "Lesson 4",
-      difficulty: "🌀 Medium",
-    },
-    {
-      date: "2023-11-03",
-      time: "11:00 - 12:00 (1h)",
-      name: "Lesson 5",
-      difficulty: "🌿 Easy",
-    },
-  ],
-}
+const defaultDifficulty =
+  activity.info[0].length > 0 ? 0 : activity.info[1].length ? 1 : 2
 
-const teachersList: Teacher[] = [
-  {
-    name: "string",
-    image: "https://placehold.co/226x218",
-    mantra: "Come quando fuori piove",
-    activityTags: [
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-    ],
-  },
-  {
-    name: "string",
-    image: "https://placehold.co/226x218",
-    mantra: "Come quando fuori piove",
-    activityTags: [
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-    ],
-  },
-  {
-    name: "string",
-    image: "https://placehold.co/226x218",
-    mantra: "Come quando fuori piove",
-    activityTags: [
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-    ],
-  },
-]
-
-const activitiesList = [
-  {
-    title: "Meditazione",
-    image: "https://placehold.co/400x400",
-  },
-  {
-    title: "Mindfulness",
-    image: "https://placehold.co/400x400",
-  },
-  {
-    title: "Rituale",
-    image: "https://placehold.co/400x400",
-  },
-]
-
-const selectedDifficulty = ref(0)
+const selectedDifficulty = ref(defaultDifficulty)
 const setDifficulty = (n: number) => {
   selectedDifficulty.value = n
 }
@@ -124,34 +46,28 @@ const setDifficulty = (n: number) => {
         {{ activity.description }}
       </p>
     </section>
-    <SlideCarousel
-      :width="1000"
-      :images="[
-        { URL: 'Teacher1.jpg' },
-        { URL: 'Team.jpg' },
-        { URL: 'Teacher1.jpg' },
-        { URL: 'Teacher1.jpg' },
-        { URL: 'Teacher1.jpg' },
-      ]"
-    />
+    <SlideCarousel :width="1000" :images="activity.images" />
     <section class="pair">
       <div>
         <h1>What You'll Do</h1>
         <span class="label">Difficulty level:</span>
         <div class="buttons">
           <button
+            v-if="activity.info[0].length > 0"
             :class="selectedDifficulty === 0 ? 'selected' : undefined"
             @click="setDifficulty(0)"
           >
             Easy
           </button>
           <button
+            v-if="activity.info[1].length > 0"
             :class="selectedDifficulty === 1 ? 'selected' : undefined"
             @click="setDifficulty(1)"
           >
             Medium
           </button>
           <button
+            v-if="activity.info[2].length > 0"
             :class="selectedDifficulty === 2 ? 'selected' : undefined"
             @click="setDifficulty(2)"
           >
@@ -159,25 +75,11 @@ const setDifficulty = (n: number) => {
           </button>
         </div>
         <ol>
-          <li>
-            <strong>Child's Pose (Balasana)</strong> – Start with a grounding
-            pose to center your breath and set the intention for the practice.
-          </li>
-          <li>
-            <strong>Child's Pose (Balasana)</strong> – Start with a grounding
-            pose to center your breath and set the intention for the practice.
-          </li>
-          <li>
-            <strong>Child's Pose (Balasana)</strong> – Start with a grounding
-            pose to center your breath and set the intention for the practice.
-          </li>
-          <li>
-            <strong>Child's Pose (Balasana)</strong> – Start with a grounding
-            pose to center your breath and set the intention for the practice.
-          </li>
-          <li>
-            <strong>Child's Pose (Balasana)</strong> – Start with a grounding
-            pose to center your breath and set the intention for the practice.
+          <li
+            v-for="(info, i) in activity.info[selectedDifficulty]"
+            :key="`info-point-${i}`"
+          >
+            <strong>{{ info.name }}</strong> – {{ info.description }}
           </li>
         </ol>
       </div>
@@ -195,7 +97,7 @@ const setDifficulty = (n: number) => {
               <span>{{ lesson.difficulty }}</span>
             </div>
             <div style="font-size: 0.9em; opacity: 0.7">
-              <span>{{ lesson.date.split("-").reverse().join("/") }}</span>
+              <span>{{ lesson.date }}</span>
               <span>{{ lesson.time }}</span>
             </div>
           </div>
@@ -205,17 +107,24 @@ const setDifficulty = (n: number) => {
     <section style="align-items: center; text-align: center">
       <h1>Teaching {{ activity.title }}</h1>
       <div class="temp-grid">
-        <teacher-card :teacher-prop="teachersList[0]" />
-        <teacher-card :teacher-prop="teachersList[1]" />
-        <teacher-card :teacher-prop="teachersList[2]" />
+        <teacher-card :teacher-prop="activity.teachers[0]" />
+        <teacher-card
+          v-if="activity.teachers[1]"
+          :teacher-prop="activity.teachers[1]"
+        />
+        <teacher-card
+          v-if="activity.teachers[2]"
+          :teacher-prop="activity.teachers[2]"
+        />
       </div>
     </section>
     <section style="align-items: center; text-align: center">
       <h2>Similar Activities</h2>
       <div class="temp-grid">
-        <activity-card :activity-prop="activitiesList[0]" />
-        <activity-card :activity-prop="activitiesList[1]" />
-        <activity-card :activity-prop="activitiesList[2]" />
+        <!-- TODO: similar activities -->
+        <activity-card :activity-prop="activityProp" />
+        <activity-card :activity-prop="activityProp" />
+        <activity-card :activity-prop="activityProp" />
       </div>
       <NuxtLink class="link-button" to="/activities">
         View all activities
@@ -286,6 +195,9 @@ div.buttons {
     font-weight: bold;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease-in-out;
+    padding: 2px;
+    outline: 1px rgba(0, 0, 0, 0.17) solid;
+    outline-offset: -1px;
 
     &.selected {
       background-color: #e2e2e2;
@@ -302,6 +214,8 @@ div.buttons {
   align-items: stretch;
   gap: 12px;
   margin: 4px;
+  outline: 1px rgba(0, 0, 0, 0.17) solid;
+  outline-offset: -1px;
 
   img {
     flex: 0;

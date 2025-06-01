@@ -1,98 +1,35 @@
 <script setup lang="ts">
-import type { Teacher } from "~/types"
+import type { EventType } from "~/types"
 
-interface EventType {
-  title: string
-  subtitle?: string
-  mainImageURL: string
-  shortDesc: string
-  description: string
-  infostr: string
-  programstr: string
-  guest?: {
-    name: string
-    imageURL: string
-    description: string
-  }
-}
+const route = useRoute()
 
-const event: EventType = {
-  title: "Flow & Breathe",
-  subtitle: "A Vinyasa Yoga Retreat",
-  mainImageURL: "events/flownbreathe.png",
-  shortDesc:
-    "A transformative weekend of deepening your practice, connecting with your breath, and cultivating inner peace.",
-  description:
-    "Join us for a rejuvenating weekend of Vinyasa Yoga at Flow & Breathe: A Vinyasa Yoga Retreat. Set in the tranquil surroundings of nature, this immersive retreat is designed to deepen your practice, rejuvenate your body, and calm your mind. Whether you're a seasoned yogi or a beginner, this retreat will guide you through dynamic sequences, breathwork techniques, and mindful meditation practices, offering tools to bring balance into your daily life. Each session is crafted to help you build strength, increase flexibility, and connect with your inner self, all while enjoying the peaceful ambiance of our serene location. Don’t miss this opportunity to explore the power of Vinyasa Yoga in a supportive and inspiring environment.",
-  infostr:
-    "How to flow seamlessly between postures with mindful breath synchronization\nTechniques to strengthen your body and improve flexibility through Vinyasa sequences\nBreathwork (Pranayama) practices to calm the mind and enhance focus\nAlignment principles to prevent injury and improve posture\nMeditation and mindfulness tools to cultivate inner peace and balance\nModifications and variations for poses to tailor your practice to your level\nThe benefits of integrating yoga into your daily routine for long-term well-being",
-  programstr:
-    "#Saturday:\n7:30 AM – Morning Meditation & Breathwork Session\n8:00 AM – Energizing Vinyasa Flow Practice\n10:00 AM – Healthy Breakfast and Networking\n11:00 AM – Alignment and Adjustments Workshop\n1:00 PM – Lunch (light and nourishing)\n2:30 PM – Mindful Movement and Deep Stretching\n4:00 PM – Pranayama: Breathing Techniques for Stress Relief\n6:00 PM – Dinner (with time for reflection)\n7:30 PM – Evening Candlelight Yoga and Restorative Practice\n#Sunday:\n7:30 AM – Morning Yoga Flow with Meditation\n9:00 AM – Breakfast and Group Reflection\n10:00 AM – Yoga for Strength: Vinyasa Sequences for Building Power\n12:00 PM – Final Circle: Sharing Experiences and Closing Ceremony\n1:00 PM – Farewell Lunch",
-  guest: {
-    name: "Ravi Solan",
-    imageURL: "events/ravisolan.png",
-    description:
-      'Meet Ravi Solan, the special guest at this year’s Moonridge Yoga Retreat. A former architect turned mindfulness guide, Ravi left the fast-paced world of city design to explore the inner landscapes of the human spirit. Now known for his grounding presence and poetic teachings, he blends Vinyasa flow with ancient breathwork practices inspired by his travels through the Himalayas. Attendees are especially drawn to his "Stillness in Motion" workshops, where silence becomes the most powerful teacher.',
-  },
-}
+const a = route.params.event
+const EventName = typeof a === "string" ? a : a.join("")
 
-const teachersList: Teacher[] = [
-  {
-    name: "string",
-    image: "https://placehold.co/226x218",
-    mantra: "Come quando fuori piove",
-    activityTags: [
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-    ],
-  },
-  {
-    name: "string",
-    image: "https://placehold.co/226x218",
-    mantra: "Come quando fuori piove",
-    activityTags: [
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-    ],
-  },
-  {
-    name: "string",
-    image: "https://placehold.co/226x218",
-    mantra: "Come quando fuori piove",
-    activityTags: [
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-      { text: "Meditazione" },
-    ],
-  },
-]
+const response = await useAPI<EventType>("/postEvent", {
+  method: "POST",
+  body: JSON.stringify({ EventName }),
+})
 
-const eventsList = [
-  {
-    title: "Meditazione",
-    image: "https://placehold.co/400x400",
-  },
-  {
-    title: "Mindfulness",
-    image: "https://placehold.co/400x400",
-  },
-  {
-    title: "Rituale",
-    image: "https://placehold.co/400x400",
-  },
-]
+if (response.error.value || !response.data.value)
+  throw createError({
+    fatal: true,
+    ...(response.error.value ?? {
+      statusCode: 404,
+      message: `${EventName} - Event not found`,
+    }),
+  })
 
-const learnPoints = event.infostr.split("\n")
+const event = response.data.value
+
+const learnPoints = event.infostr
+  .split("\n")
+  .map((s) => s.replace(";", "").trim())
 const programPoints: {
   day: string
   points: string[]
 }[] = event.programstr.split("#").map((d) => {
-  const lines = d.split("\n").map((s) => s.trim())
+  const lines = d.split("\n").map((s) => s.replace(";", "").trim())
   return {
     day: lines.shift() ?? "",
     points: lines.filter((s) => s),
@@ -143,10 +80,7 @@ const programPoints: {
     <section v-if="event.guest" class="guest">
       <h1>Special Guest</h1>
       <div>
-        <NuxtImg
-          :src="`/images/${event.guest.imageURL}`"
-          :alt="event.guest.name"
-        />
+        <img :src="event.guest.imageURL" :alt="event.guest.name" />
         <div>
           <h2>{{ event.guest.name }}</h2>
           <p>{{ event.guest.description }}</p>
@@ -156,19 +90,21 @@ const programPoints: {
     <section style="align-items: center; text-align: center">
       <h1>Teachers in This Event</h1>
       <div class="temp-grid">
-        <teacher-card :teacher-prop="teachersList[0]" />
-        <teacher-card :teacher-prop="teachersList[1]" />
-        <teacher-card :teacher-prop="teachersList[2]" />
+        <teacher-card
+          v-for="(teacher, i) in event.teachers.toSpliced(3)"
+          :key="`teacher${i}`"
+          :teacher-prop="teacher"
+        />
       </div>
     </section>
     <section style="align-items: center; text-align: center">
       <h2>Similar Events</h2>
       <div class="temp-grid">
-        <activity-card :activity-prop="eventsList[0]" />
+        <!-- <activity-card :activity-prop="eventsList[0]" />
         <activity-card :activity-prop="eventsList[1]" />
-        <activity-card :activity-prop="eventsList[2]" />
+        <activity-card :activity-prop="eventsList[2]" /> -->
       </div>
-      <NuxtLink class="link-button" to="#"> View all events </NuxtLink>
+      <NuxtLink class="link-button" to="/events"> View all events </NuxtLink>
     </section>
   </PageWrap>
 </template>
