@@ -80,6 +80,8 @@
       :images="teacher.TeacherImages.map((img) => img.Image)"
       :width="1000"
     ></SlideCarousel>
+
+    <NuxtLink class="link-button" to="/teachers"> View all teachers </NuxtLink>
   </PageWrap>
 </template>
 
@@ -167,5 +169,13 @@ const txtCertification = computed(() => {
 <style scoped>
 .divWithMe {
   width: 100%;
+}
+.link-button {
+  color: white;
+  background-color: #020202;
+  border-radius: 8px;
+  padding: 8px 32px;
+  margin: 16px;
+  text-decoration: none;
 }
 </style>

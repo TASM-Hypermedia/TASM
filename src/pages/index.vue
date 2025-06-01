@@ -1,17 +1,81 @@
 <script setup lang="ts">
-import Contacts from "./contacts.vue"
+import { useAPI } from "~/composables/useAPI"
+import type { ResponseData } from "~/types"
+
+const response = await useAPI<ResponseData>("/getHomePage", {
+  method: "GET",
+})
+
+if (response.error.value || !response.data.value)
+  throw createError({
+    fatal: true,
+    ...(response.error.value ?? {
+      statusCode: 404,
+      message: `${response.error.value}`,
+    }),
+  })
+
+const { data } = response
+
+console.log(data.value)
+
+//const activity = response.data.value
 </script>
 
 <template>
-  <div>
-    <Contacts></Contacts>
-  </div>
+  <PageWrap title="Namaste" img-src="HomePage 1.jpeg">
+    <NuxtLink to="/teachers" class="cardYogaCenter">
+      <ContentCard
+        :content-card-prop="{
+          title: data?.yogaCenter.title || 'Yoga Center',
+          //subtitle: data?.yogaCenter.Mantra,
+          description: data?.yogaCenter.description,
+          imgUrl: '/images/center/yogaCenter.jpg',
+          altDescription: 'Yoga center image',
+          imageOnTheRight: false,
+        }"
+      ></ContentCard>
+    </NuxtLink>
+
+    <card-grid :length="data?.teachers.length || 0">
+      <template #card="{ index }">
+        <teacher-card :teacher-prop="data?.teachers[index]!" />
+      </template>
+    </card-grid>
+
+    <card-grid :length="data?.events.length || 0">
+      <template #card="{ index }">
+        <event-card :event-prop="data?.events[index]!" />
+      </template>
+    </card-grid>
+
+    <card-grid :length="data?.activities.length || 0">
+      <template #card="{ index }">
+        <activity-card :activity-prop="data?.activities[index]!" />
+      </template>
+    </card-grid>
+  </PageWrap>
 </template>
 
 <style scoped>
-div {
-  background-color: #f0f0f0;
-  flex: 1;
+.cardYogaCenter {
   width: 100%;
+  max-width: 375px;
+  height: 100%;
+  padding: 11px;
+  background: rgb(255, 255, 255);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  border-radius: 15px;
+  cursor: pointer;
+  outline: 1px rgba(0, 0, 0, 0.17) solid;
+  outline-offset: -1px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  display: inline-flex;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
 }
 </style>
