@@ -60,7 +60,6 @@ console.log(data.value)
 <style scoped>
 .cardYogaCenter {
   width: 100%;
-  max-width: 375px;
   height: 100%;
   padding: 11px;
   background: rgb(255, 255, 255);
