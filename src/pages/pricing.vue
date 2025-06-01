@@ -1,55 +1,74 @@
 <script setup lang="ts">
 
-const content = {
-  title: "Sara Morelli",
-  subtitle: "Yoga teacher",
-  description: "Yoga teacher specialized in vyniasana and other type of yoga yoyo boy",
-  imgUrl: "/images/banners/activities-banner.jpg",
-  altDescription: "Theacher Sara Morelli",
-  imageOnTheRight: true,
+const { data:faqData, error:faqError } = await useAPI<
+  [
+    {
+      Question: string,
+      Answer: string
+    },
+  ]
+>("/getFaqs.js", {
+  method: "GET",
+})
+
+if (faqError.value || !faqData.value) {
+  console.error("Error in loading yoga center:", faqError.value)
+  throw new Error("Yoga center not found")
 }
 
+const faqList = faqData.value
+const faqContent: {
+  question: string
+  answer: string
+}[] = []
 
-const faqsList = [
-  {
-    question: "How are you?",
-    answer: "I'm fine",
-  },
-  {
-    question: "How is the weather today?",
-    answer: "It's raining",
-  }
-];
+for (let i = 0; i < faqList.length; i++) {
+  faqContent.push({
+    question: faqList[i].Question,
+    answer: faqList[i].Answer,
+  })
+}
 
-const pricingsList = [
-  {
-    title: "Base",
-    price: 50,
-    darkMode: false,
-    pricingItems: [
-      {text: "3 courses"},
-      {text: "1H meeting with an assigned teacher"}
-    ],
-  },
-  {
-    title: "Premium",
-    price: 75,
-    darkMode: true,
-    pricingItems: [
-      {text: "6 courses"},
-      {text: "3 months coverage with a teacher"}
-    ],
-  },
-  {
-    title: "Deluxe",
-    price: 100,
-    darkMode: false,
-    pricingItems: [
-      {text: "10 courses"},
-      {text: "6 months coverage with a teacher"}
-    ],
-  }
-];
+const { data:pricingData, error:pricingError } = await useAPI<
+  [
+    {
+      PricingId: number
+      Title: string
+      Subtitle: string
+      Price: number
+      PricingListItem: Array<{
+        Item: string
+      }>
+    }
+  ]
+>("/getPricing.js", {
+  method: "GET",
+})
+
+if (pricingError.value || !pricingData.value) {
+  console.error("Error in loading yoga center:", pricingError.value)
+  throw new Error("Yoga center not found")
+}
+
+const pricingList = pricingData.value
+const pricingContent: {
+  title: string,
+  subtitle: string,
+  price: number,
+  pricingItems: Array<{ Item: string }>,
+  darkMode: boolean,
+}[] = []
+
+for (let i = 0; i < pricingList.length; i++) {
+  const flag = i % 2 !== 0
+  pricingContent.push({
+    title: pricingList[i].Title,
+    subtitle: pricingList[i].Subtitle,
+    price: pricingList[i].Price,
+    pricingItems: pricingList[i].PricingListItem,
+    darkMode: flag,
+  })
+}
 
 </script>
 
@@ -59,21 +78,16 @@ const pricingsList = [
     title="Pricing"
     img-src="./banners/pricing-banner.jpg"
   >
-    <section style="width: 70%; margin: auto">
-      <content-card :content-card-prop="content"></content-card>
-    </section>
 
-    <section style="width: 100%">
-      <card-grid :length="pricingsList.length">
-        <template #card="{ index }">
-          <price-card :price-prop="pricingsList[index]" />
-        </template>
-      </card-grid>
+    <section>
+      <div v-for="(item, index) in pricingContent" :key="index">
+        <price-card :price-prop="item" />
+      </div>
     </section>
 
     <section class="faqSection">
       <h2>FAQs</h2>
-      <div v-for="(item, index) in faqsList" :key="index">
+      <div v-for="(item, index) in faqContent" :key="index">
         <faq-card :faq-prop="item"/>
       </div>
     </section>
