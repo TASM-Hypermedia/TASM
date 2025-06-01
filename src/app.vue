@@ -1,7 +1,10 @@
+<script setup lang="ts">
+</script>
+
 <template>
   <v-app>
-    <AppHeader />
-    <NuxtPage />
-    <AppFooter />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </v-app>
 </template>
