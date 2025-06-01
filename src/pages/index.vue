@@ -37,11 +37,15 @@ console.log(data.value)
       ></ContentCard>
     </NuxtLink>
 
+    <h2 class="titleSubsection">OUR TEACHERS</h2>
+
     <card-grid :length="data?.teachers.length || 0">
       <template #card="{ index }">
         <teacher-card :teacher-prop="data?.teachers[index]!" />
       </template>
     </card-grid>
+
+    <h2 class="titleSubsection">OUR EVENTS</h2>
 
     <card-grid :length="data?.events.length || 0">
       <template #card="{ index }">
@@ -49,6 +53,7 @@ console.log(data.value)
       </template>
     </card-grid>
 
+    <h2 class="titleSubsection">OUR ACTIVITIES</h2>
     <card-grid :length="data?.activities.length || 0">
       <template #card="{ index }">
         <activity-card :activity-prop="data?.activities[index]!" />
@@ -73,8 +78,11 @@ console.log(data.value)
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
-  display: inline-flex;
+  display: flex;
   color: rgb(0, 0, 0);
   text-decoration: none;
+}
+.titleSubsection {
+  padding: 20px;
 }
 </style>
