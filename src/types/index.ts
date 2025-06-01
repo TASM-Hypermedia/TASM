@@ -36,6 +36,15 @@ export type Faq = {
   answer: string
 }
 
+export type YogaCenter = {
+  title: string,
+  subtitle?: string,
+  description?: string,
+  imgUrl?: string,
+  altDescription?: string,
+  imageOnTheRight: boolean
+}
+
 export type ContentCard = {
   title: string
   subtitle?: string
@@ -82,4 +91,11 @@ export interface ActivityType {
     URL: string
     alt: string
   }[]
+}
+
+export type  ResponseData = {
+  yogaCenter: YogaCenter,
+  activities: Activity[],
+  events: Event[],
+  teachers: Teacher[],
 }
