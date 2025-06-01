@@ -1,14 +1,21 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>
+  <div class="desktop-layout">
     <AppHeader />
-    <slot />
+    <NuxtPage />
+    <AppFooter />
   </div>
 </template>
 
 <style scoped>
 p {
   text-align: center;
+}
+
+.desktop-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 </style>

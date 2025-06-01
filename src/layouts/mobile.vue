@@ -1,14 +1,17 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>
+  <div class="mobile-layout">
     <p>Mobile ahahahhahahaa</p>
-    <slot />
+    <NuxtPage />
+    <AppFooter />
   </div>
 </template>
 
 <style scoped>
-p {
-  text-align: center;
+.mobile-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 </style>

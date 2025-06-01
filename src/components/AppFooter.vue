@@ -48,6 +48,11 @@ footer {
   box-shadow: 0 -1px 16px rgba(0, 0, 0, 0.1);
 }
 
+.mobile-layout footer {
+  padding: 16px;
+  flex-direction: column;
+}
+
 img {
   cursor: pointer;
 }
@@ -56,6 +61,7 @@ footer div {
   display: flex;
   flex-direction: column;
   margin-right: 32px;
+  flex: 1;
 }
 
 .logo {
