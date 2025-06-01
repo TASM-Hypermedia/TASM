@@ -4,11 +4,13 @@
 
 <template>
   <div>
-    <p>Default layout header</p>
+    <AppHeader />
     <slot />
   </div>
 </template>
 
 <style scoped>
-
+p {
+  text-align: center;
+}
 </style>

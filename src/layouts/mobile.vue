@@ -3,13 +3,13 @@
 
 <template>
   <div>
-    <span>Mobile ahahahhahahaa</span>
+    <p>Mobile ahahahhahahaa</p>
     <slot />
   </div>
 </template>
 
 <style scoped>
-span {
+p {
   text-align: center;
 }
 </style>
