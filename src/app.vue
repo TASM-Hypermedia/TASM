@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useNuxtApp } from '#app'
+import { useNuxtApp } from "#app"
 const { $viewport } = useNuxtApp()
 
 watch($viewport.breakpoint, (newBreakpoint, oldBreakpoint) => {
-  console.log('Breakpoint updated:', oldBreakpoint, '->', newBreakpoint)
+  console.log("Breakpoint updated:", oldBreakpoint, "->", newBreakpoint)
 })
 </script>
 

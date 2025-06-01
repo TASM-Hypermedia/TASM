@@ -70,8 +70,6 @@ for (let i = 0; i < pricingList.length; i++) {
   })
 }
 
-console.log(pricingList[0].PricingListItem)
-
 </script>
 
 <template>

@@ -7,6 +7,9 @@
     <AppHeader />
     <slot />
   </div>
+  <footer>
+    ciao stronzo
+  </footer>
 </template>
 
 <style scoped>
