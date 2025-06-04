@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { NuxtLink } from "#components"
+import { useScroll } from "@/composables/useScroll"
 
 const { y } = useScroll()
 const opacity = computed(() => maprange(clamp(y.value, 0, 600), 0, 600, 0.6, 1))
@@ -45,6 +46,8 @@ function active(thisRoute: string) {
   align-items: center;
   z-index: 1;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100vw;
   padding: 16px;
   gap: 8px;

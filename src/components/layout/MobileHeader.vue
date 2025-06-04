@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { NuxtLink } from "#components"
+import { motion, AnimatePresence } from "motion-v"
 
 const route = useRoute()
 
@@ -10,41 +11,76 @@ function active(thisRoute: string) {
 
 const open = ref(false)
 
-function toggleMenu () {
+function toggleMenu() {
   open.value = !open.value
 }
 </script>
 
 <template>
   <nav>
-    <NuxtLink to="/src/public" class="logo">
-      <img
-        class="header-img"
-        src="../../assets/images/headerIcon.svg"
-        alt="logo"
-      />
-    </NuxtLink>
-    <v-icon id="icon" icon="mdi-menu" @click="toggleMenu()"></v-icon>
-  </nav>
+    <header>
+      <NuxtLink to="/src/public" class="logo">
+        <img
+          class="header-img"
+          src="../../assets/images/headerIcon.svg"
+          alt="logo"
+        />
+      </NuxtLink>
+      <v-icon id="icon" icon="mdi-menu" @click="toggleMenu()"></v-icon>
+    </header>
 
-  <div :style="open ? 'display: flex' : 'display: none'">
-    <NuxtLink :class="active('yogacenter')" class="links" to="/yogacenter"
-    >The Center</NuxtLink
-    >
-    <NuxtLink :class="active('teachers')" class="links" to="/teachers"> Our Team </NuxtLink>
-    <NuxtLink :class="active('activities')" class="links" to="/activities">
-      Activities
-    </NuxtLink>
-    <NuxtLink :class="active('events')" class="links" to="/events">Events</NuxtLink>
-    <NuxtLink :class="active('pricing')" class="links" to="/pricing">Pricing</NuxtLink>
-    <NuxtLink :class="active('contacts')" class="links" to="/contacts"> Contacts </NuxtLink>
-  </div>
+    <AnimatePresence>
+      <motion.div
+        key="mobile-menu"
+        :variants="{
+          visible: { opacity: 1, transition: { when: 'beforeChildren' } },
+          hidden: { opacity: 0, transition: { when: 'afterChildren' } },
+        }"
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+      >
+        <NuxtLink :class="active('yogacenter')" class="links" to="/yogacenter"
+          >The Center</NuxtLink
+        >
+        <NuxtLink :class="active('teachers')" class="links" to="/teachers">
+          Our Team
+        </NuxtLink>
+        <NuxtLink :class="active('activities')" class="links" to="/activities">
+          Activities
+        </NuxtLink>
+        <NuxtLink :class="active('events')" class="links" to="/events"
+          >Events</NuxtLink
+        >
+        <NuxtLink :class="active('pricing')" class="links" to="/pricing"
+          >Pricing</NuxtLink
+        >
+        <NuxtLink :class="active('contacts')" class="links" to="/contacts">
+          Contacts
+        </NuxtLink>
+      </motion.div>
+    </AnimatePresence>
+  </nav>
 </template>
 
 <style scoped lang="scss">
 nav {
+  position: fixed;
+  z-index: 1000;
+  background-color: white;
+  width: 100vw;
+}
+
+header {
   display: flex;
-  overflow: hidden;
+  padding: 12px;
+}
+
+.logo {
+  height: 50px;
+  img {
+    height: 100%;
+  }
 }
 
 div {
@@ -52,13 +88,12 @@ div {
   flex-direction: column;
 }
 
-#icon{
+#icon {
   width: 50px;
   height: 50px;
 }
 
 .mdi {
-  float: right;
   margin-left: auto;
 }
 </style>

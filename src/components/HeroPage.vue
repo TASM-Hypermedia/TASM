@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useScroll } from "@/composables/useScroll"
+
 const props = defineProps<{
   /**
    * Hero page title
