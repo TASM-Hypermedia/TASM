@@ -23,7 +23,7 @@ const yogaCenter = res.data.value
     </section>
 
     <section class="rooms">
-      <h2>AVAILABLE ROOMS</h2>
+      <p>AVAILABLE ROOMS</p>
       <div v-for="(room, index) in yogaCenter!.rooms" :key="index">
         <content-card :content-card-prop="room"></content-card>
       </div>
@@ -39,5 +39,11 @@ const yogaCenter = res.data.value
 
 .rooms {
   margin-top: 50px;
+  p {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: bold;
+  }
 }
 </style>

@@ -29,7 +29,6 @@ div {
 
   .mobile-layout & {
     flex-direction: column;
-    background-color: red;
     align-items: center;
   }
 }
