@@ -38,14 +38,15 @@
 
 <style scoped>
 footer {
-  background-color: #f3f3f3;
+  background-color: var(--color-background);
+  outline: 1px solid var(--color-accent);
   padding: 32px 128px;
   gap: 16px;
   display: flex;
   justify-content: space-between;
   padding-bottom: 64px;
   font-size: 14px;
-  box-shadow: 0 -1px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -1px 16px var(--color-shadow);
 }
 
 img {

@@ -26,15 +26,9 @@ defineProps<{
 .card {
   width: 100%;
   max-width: 375px;
-  height: 100%;
   padding: 11px;
-  background: rgb(255, 255, 255);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
   overflow: hidden;
-  border-radius: 15px;
   cursor: pointer;
-  outline: 1px rgba(0, 0, 0, 0.17) solid;
-  outline-offset: -1px;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -50,7 +44,7 @@ defineProps<{
   transform-origin: top left;
   object-fit: cover;
   background: #d9d9d9;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 8px var(--color-shadow);
   border-radius: 114px;
 }
 

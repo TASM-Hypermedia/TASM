@@ -23,7 +23,7 @@
         padding-right: 10px; 
         padding-top: 4px; 
         padding-bottom: 4px; 
-        background: rgb(24, 25, 24); 
+        background: var(--color-main); 
         overflow: hidden; 
         border-radius: 10px; 
         justify-content: center; 
@@ -37,7 +37,6 @@
         justify-content: center; 
         display: flex; 
         flex-direction: column; 
-        color: white; 
         font-size: 12px; 
         font-family: Instrument Sans; 
         font-weight: 400; 

@@ -48,7 +48,6 @@ const teachersList: Teacher[] = data.value.map((teacher) => {
 
 <style scoped>
 div {
-  background-color: #a2a2a2;
   flex: 1;
   width: 100%;
 }

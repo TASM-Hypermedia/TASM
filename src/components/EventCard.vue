@@ -112,12 +112,7 @@ import type { Event } from '~/types';
         /* padding-left: 11px; 
         padding-bottom: 11px; 
         padding-right: 11px;  */
-        background: white; 
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12); 
         overflow: hidden; 
-        border-radius: 15px; 
-        outline: 1px rgba(0, 0, 0, 0.17) solid; 
-        outline-offset: -1px; 
         flex-direction: column; 
         justify-content: flex-start; 
         align-items: center; 
@@ -151,7 +146,7 @@ import type { Event } from '~/types';
        height: 87px; 
        position: relative; 
        background: white; 
-       box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.25); 
+       box-shadow: 0px 4px 5px 1px var(--color-shadow); 
        overflow: hidden; 
        border-radius: 16px;
        display: flex;
@@ -165,8 +160,8 @@ import type { Event } from '~/types';
         width: 220px; 
         height: 87px; 
         position: relative; 
-        background: rgba(255, 255, 255, 0.60); 
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+        background: var(--color-background); 
+        box-shadow: 0px 4px 4px var(--color-shadow); 
         overflow: hidden; 
         border-radius: 16px; 
         backdrop-filter: blur(2px);
@@ -206,7 +201,6 @@ import type { Event } from '~/types';
     }
 
     .host_box {
-        background: white; 
         overflow: hidden;
         display: flex;
         gap: 16px;
@@ -236,4 +230,9 @@ import type { Event } from '~/types';
         border: 0px solid black;
     }
 
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 </style>

@@ -122,6 +122,7 @@ const backwards = throttle(() => {
         <img
           v-if="image !== null"
           :src="image.url"
+          class="card"
           :style="{
             display: image.opacity > 0 ? 'block' : 'none', // improves render performance
             width: `${image.width}px`,
@@ -149,9 +150,7 @@ const backwards = throttle(() => {
 
   img {
     height: 100%;
-    border-radius: 16px;
     object-fit: cover;
-    box-shadow: 0 4px 12px 0px rgba(0, 0, 0, 0.3);
   }
 }
 

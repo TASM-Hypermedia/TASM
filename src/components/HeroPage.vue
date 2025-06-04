@@ -41,9 +41,9 @@ const scrollAmount = computed(() => clamp(y.value, 0, 600))
 
 <style scoped>
 .hero-page {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: lch(from var(--color-background) l c h / 60%);
   backdrop-filter: blur(12px);
-  box-shadow: 0px 4px 24px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 24px 2px var(--color-shadow);
   text-align: center;
   font-weight: 700;
   max-width: 1080px;

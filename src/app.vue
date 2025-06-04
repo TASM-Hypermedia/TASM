@@ -1,14 +1,44 @@
 <script setup lang="ts">
+import { useColors } from "@/stores/colors"
 import { useNuxtApp } from "#app"
+
 const { $viewport } = useNuxtApp()
 
-watch($viewport.breakpoint, (newBreakpoint, oldBreakpoint) => {
-  console.log("Breakpoint updated:", oldBreakpoint, "->", newBreakpoint)
-})
+const CATEGORY_COLORS: Record<string, string> = {
+  teachers: "#A375BD",
+  activities: "#FFAFCC",
+  events: "#FFD275",
+  pricing: "#9BDAED",
+  contacts: "#41A64B",
+}
+
+const store = useColors()
+const { rootStyle } = storeToRefs(store)
+
+function updateRootStyle() {
+  if (!document) return
+  for (const [key, value] of Object.entries(rootStyle.value)) {
+    document.documentElement.style.setProperty(key, value ?? null)
+  }
+}
+
+watch(rootStyle, () => updateRootStyle())
+onPrehydrate(() => updateRootStyle())
+
+const route = useRoute()
+watch(
+  route,
+  () => {
+    if (!document) return
+    const section = route.path.split("/")[1]
+    store.setColor(CATEGORY_COLORS[section] ?? "#E7564B")
+  },
+  { immediate: true }
+)
 </script>
 
 <template>
-  <v-app>
+  <div id="app-container">
     <LoadingIndicator />
     <template v-if="$viewport.isLessThan('tablet')">
       <NuxtLayout name="mobile"></NuxtLayout>
@@ -20,5 +50,5 @@ watch($viewport.breakpoint, (newBreakpoint, oldBreakpoint) => {
 
     <NuxtPage />
     <AppFooter />
-  </v-app>
+  </div>
 </template>

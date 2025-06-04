@@ -88,7 +88,7 @@ const setDifficulty = (n: number) => {
         <div
           v-for="(lesson, index) in activity.nextLessons"
           :key="index"
-          class="next-lesson"
+          class="next-lesson card"
         >
           <img class="logo" src="../../assets/images/calendar.svg" alt="logo" />
           <div>
@@ -193,29 +193,25 @@ div.buttons {
     flex: 1;
     border-radius: 8px;
     font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px var(--color-shadow);
     transition: all 0.2s ease-in-out;
     padding: 2px;
-    outline: 1px rgba(0, 0, 0, 0.17) solid;
+    outline: 1px var(--color-accent) solid;
     outline-offset: -1px;
 
     &.selected {
-      background-color: #e2e2e2;
+      background-color: var(--color-main);
     }
   }
 }
 
 .next-lesson {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
   padding: 12px 16px;
   display: flex;
   flex-direction: row;
   align-items: stretch;
   gap: 12px;
   margin: 4px;
-  outline: 1px rgba(0, 0, 0, 0.17) solid;
-  outline-offset: -1px;
 
   img {
     flex: 0;
@@ -241,13 +237,14 @@ div.temp-grid {
   width: 100%;
   padding: 24px 0;
   flex-direction: row;
+  align-items: stretch;
   gap: 32px;
   justify-content: space-between;
 }
 
 .link-button {
   color: white;
-  background-color: #020202;
+  background-color: var(--color-main);
   border-radius: 8px;
   padding: 8px 32px;
   margin: 16px;

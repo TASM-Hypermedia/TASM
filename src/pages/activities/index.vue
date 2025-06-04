@@ -32,7 +32,6 @@ const activitiesList = res.data.value
 
 <style scoped>
 div {
-  background-color: #f0f0f0;
   flex: 1;
   width: 100%;
 }

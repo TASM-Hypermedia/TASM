@@ -28,18 +28,12 @@ div {
   height: 275px;
   text-decoration: none;
   padding: 10px;
-  background: inherit;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);
   overflow: hidden;
-  border-radius: 15px;
-  outline: 1px rgba(0, 0, 0, 0.17) solid;
-  outline-offset: -1px;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   display: inline-flex;
   gap: 10px;
-  border: 0px solid black;
 }
 
 .card-image {

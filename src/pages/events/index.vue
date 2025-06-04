@@ -22,7 +22,6 @@ const eventsList: Event[] = data.value
 
 <style scoped>
 div {
-  background-color: #d9d9d9;
   flex: 1;
   width: 100%;
 }

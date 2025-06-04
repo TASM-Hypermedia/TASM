@@ -2,7 +2,9 @@
 import { NuxtLink } from "#components"
 
 const { y } = useScroll()
-const opacity = computed(() => maprange(clamp(y.value, 0, 600), 0, 600, 0.6, 1))
+const opacity = computed(() =>
+  maprange(clamp(y.value, 0, 600), 0, 600, 60, 100)
+)
 
 const route = useRoute()
 
@@ -15,7 +17,9 @@ function active(thisRoute: string) {
 <template>
   <nav
     class="header-div"
-    :style="{ backgroundColor: `rgba(240, 240, 240, ${opacity})` }"
+    :style="{
+      backgroundColor: `lch(from var(--color-background) l c h / ${opacity}%)`,
+    }"
   >
     <NuxtLink to="/" class="logo">
       <img
@@ -48,9 +52,9 @@ function active(thisRoute: string) {
   width: 100vw;
   padding: 16px;
   gap: 8px;
-  background-color: #f0f0f0;
+  background-color: var(--color-accent);
   backdrop-filter: blur(12px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px var(--color-shadow);
 }
 
 .logo {

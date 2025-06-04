@@ -23,7 +23,7 @@ const loading = useLoadingIndicator({
   top: 80px;
 
   .loading-bar {
-    background-color: #b8f2e6;
+    background-color: var(--color-main);
     transition: all 0.1s linear;
     height: 100%;
     // width: 0%;

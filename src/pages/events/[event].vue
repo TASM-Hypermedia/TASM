@@ -80,7 +80,7 @@ const programPoints: {
     <section v-if="event.guest" class="guest">
       <h1>Special Guest</h1>
       <div>
-        <img :src="event.guest.imageURL" :alt="event.guest.name" />
+        <img class="card" :src="event.guest.imageURL" :alt="event.guest.name" />
         <div>
           <h2>{{ event.guest.name }}</h2>
           <p>{{ event.guest.description }}</p>
@@ -182,8 +182,6 @@ section.guest {
       max-width: 200px;
       max-height: 300px;
       object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
     }
     div {
       flex: 1 1 auto;
@@ -205,7 +203,7 @@ div.temp-grid {
 
 .link-button {
   color: white;
-  background-color: #020202;
+  background-color: var(--color-main);
   border-radius: 8px;
   padding: 8px 32px;
   margin: 16px;
