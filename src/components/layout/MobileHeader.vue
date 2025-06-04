@@ -14,12 +14,16 @@ const open = ref(false)
 function toggleMenu() {
   open.value = !open.value
 }
+
+function closeMenu() {
+  open.value = false
+}
 </script>
 
 <template>
   <nav>
     <header>
-      <NuxtLink to="/src/public" class="logo">
+      <NuxtLink to="/" class="logo">
         <img
           class="header-img"
           src="../../assets/images/headerIcon.svg"
@@ -32,30 +36,46 @@ function toggleMenu() {
     <AnimatePresence>
       <motion.div
         key="mobile-menu"
+        class="mobile-menu"
         :variants="{
-          visible: { opacity: 1, transition: { when: 'beforeChildren' } },
-          hidden: { opacity: 0, transition: { when: 'afterChildren' } },
+          visible: {
+            opacity: 1,
+            display: 'flex',
+            y: 0,
+            transition: {
+              when: 'beforeChildren',
+              staggerChildren: 0.1,
+              duration: 0.3,
+              ease: 'easeInOut',
+            },
+          },
+          hidden: {
+            opacity: 0,
+            display: 'none',
+            y: '-100%',
+            transition: {
+              when: 'afterChildren',
+              duration: 0.3,
+              ease: 'easeInOut',
+            },
+          },
         }"
         initial="hidden"
-        animate="visible"
-        exit="hidden"
+        :animate="open ? 'visible' : 'hidden'"
+        @click="closeMenu"
       >
-        <NuxtLink :class="active('yogacenter')" class="links" to="/yogacenter"
+        <NuxtLink :class="active('yogacenter')" to="/yogacenter"
           >The Center</NuxtLink
         >
-        <NuxtLink :class="active('teachers')" class="links" to="/teachers">
+        <NuxtLink :class="active('teachers')" to="/teachers">
           Our Team
         </NuxtLink>
-        <NuxtLink :class="active('activities')" class="links" to="/activities">
+        <NuxtLink :class="active('activities')" to="/activities">
           Activities
         </NuxtLink>
-        <NuxtLink :class="active('events')" class="links" to="/events"
-          >Events</NuxtLink
-        >
-        <NuxtLink :class="active('pricing')" class="links" to="/pricing"
-          >Pricing</NuxtLink
-        >
-        <NuxtLink :class="active('contacts')" class="links" to="/contacts">
+        <NuxtLink :class="active('events')" to="/events">Events</NuxtLink>
+        <NuxtLink :class="active('pricing')" to="/pricing">Pricing</NuxtLink>
+        <NuxtLink :class="active('contacts')" to="/contacts">
           Contacts
         </NuxtLink>
       </motion.div>
@@ -66,9 +86,46 @@ function toggleMenu() {
 <style scoped lang="scss">
 nav {
   position: fixed;
-  z-index: 1000;
+  top: 0;
+  left: 0;
+  z-index: 1;
   background-color: white;
   width: 100vw;
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  align-items: stretch;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  background-color: white;
+  z-index: -1;
+
+  .link {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 8px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+
+    &.active-link {
+      background-color: #e2e2e2f0;
+      font-weight: bold;
+    }
+    &:hover {
+      background-color: #e2e2e2a0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border: 1px solid #fffc;
+    }
+  }
 }
 
 header {
@@ -77,14 +134,15 @@ header {
 }
 
 .logo {
-  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   img {
-    height: 100%;
+    width: 64px;
   }
 }
 
 div {
-  display: none;
   flex-direction: column;
 }
 

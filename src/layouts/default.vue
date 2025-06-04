@@ -12,10 +12,6 @@ import AppFooter from "@/components/layout/AppFooter.vue"
 </template>
 
 <style scoped>
-p {
-  text-align: center;
-}
-
 .desktop-layout {
   display: flex;
   flex-direction: column;
