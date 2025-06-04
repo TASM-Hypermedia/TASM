@@ -37,6 +37,10 @@ const theme = priceProp.darkMode ? 'dark-theme' : 'light-theme'
   margin: auto;
   width: 100%;
   text-align: center;
+
+  .mobile-layout & {
+    margin-bottom: 100px;
+  }
 }
 
 .pricingTitle {

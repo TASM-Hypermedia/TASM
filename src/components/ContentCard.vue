@@ -12,7 +12,7 @@ const { contentCardProp } = defineProps<{
     <div class="row">
       <div class="leftElement writtenContent">
         <p class="contentTitle">{{ contentCardProp.title }}</p>
-        <p class="contentSubtitle">{{ contentCardProp.subtitle }}</p>
+        <p v-if="contentCardProp.subtitle" class="contentSubtitle">{{ contentCardProp.subtitle }}</p>
         <p>{{ contentCardProp.description }}</p>
       </div>
       <div class="rightElement">

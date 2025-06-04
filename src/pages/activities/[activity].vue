@@ -147,6 +147,11 @@ section {
 
 .description {
   text-align: center;
+
+  .mobile-layout & {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 h1 {
@@ -171,6 +176,10 @@ section.pair {
     display: flex;
     flex-direction: column;
     gap: 8px;
+  }
+
+  .mobile-layout & {
+    flex-direction: column;
   }
 }
 

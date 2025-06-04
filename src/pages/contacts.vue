@@ -1,20 +1,14 @@
 <script setup lang="ts">
 
-const { data, error } = await useAPI<
-    {
-      ContactId: number
-      ContactInfo: string
-    }[]
->("/getContacts", {
-  method: "GET",
-})
+const res = await useAPI<
+  {
+    contactId: number
+    contactInfo: string
+  }[]
+>("/getContacts")
 
-if (error.value || !data.value) {
-  console.error("Error in loading contacts:", error.value)
-  throw new Error("Contacts not found")
-}
-
-const contacts = data.value
+if (res.error.value) throw res.error.value
+const contactsList = res.data.value
 </script>
 
 <template>
@@ -22,24 +16,23 @@ const contacts = data.value
     title="Contacts"
     img-src="./banners/contacts-banner.jpg"
   >
-
     <section class="contact-section">
       <div class="row">
         <div class="column"></div>
         <div class="column">
           <img src="../assets/socials/wa.png" alt="Whatsapp number" class="contact-image" />
           <br/>
-          <span>{{contacts[0].ContactInfo}}</span>
+          <p class="contact-info">{{contactsList![0].contactInfo}}</p>
         </div>
         <div class="column">
           <img src="../public/images/icons/phone.png" alt="Phone number" class="contact-image" />
           <br/>
-          <span>{{contacts[0].ContactInfo}}</span>
+          <p class="contact-info">{{contactsList![0].contactInfo}}</p>
         </div>
         <div class="column">
           <img src="../public/images/icons/mail.png" alt="Mail" class="contact-image" />
           <br/>
-          <span>{{contacts[1].ContactInfo}}</span>
+          <p class="contact-info">{{contactsList![1].contactInfo}}</p>
         </div>
         <div class="column"></div>
       </div>
@@ -72,11 +65,14 @@ const contacts = data.value
 </template>
 
 <style scoped>
-
 .row {
   width: 80%;
   margin: auto;
   display: flex;
+
+  .mobile-layout & {
+    flex-direction: column;
+  }
 }
 
 .column {
@@ -86,6 +82,16 @@ const contacts = data.value
 
 .contact-image {
   width: 50%;
+
+  .mobile-layout & {
+    width: 20%;
+  }
+}
+
+.contact-info {
+  .mobile-layout & {
+    margin-bottom: 20px;
+  }
 }
 
 .map-section {
@@ -95,6 +101,11 @@ const contacts = data.value
   color: #1E1E1E;
   padding: 20px;
   margin-top: 40px;
+
+  .mobile-layout & {
+    width: 90%;
+    margin: auto;
+  }
 }
 
 .map-title {

@@ -49,7 +49,13 @@ const teachersList: Teacher[] = data.value.map((teacher) => {
 <style scoped>
 div {
   background-color: #a2a2a2;
-  flex: 1;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+
+  .mobile-layout & {
+    width: 90%;
+    flex-direction: column;
+  }
 }
 </style>

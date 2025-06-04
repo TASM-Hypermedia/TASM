@@ -23,7 +23,14 @@ const eventsList: Event[] = data.value
 <style scoped>
 div {
   background-color: #d9d9d9;
-  flex: 1;
+  display: flex;
+  flex-direction: row;
   width: 100%;
+
+  .mobile-layout & {
+    flex-direction: column;
+    background-color: red;
+    align-items: center;
+  }
 }
 </style>
