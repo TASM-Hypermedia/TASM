@@ -94,13 +94,7 @@ import { useAPI } from "~/composables/useAPI"
 
 const route = useRoute()
 const teacherName = route.params.teacher
-//console.log(teacherName)
 
-//const teacher = ref()
-
-// Chiamata all’API per ottenere i dettagli della teacher
-
-//console.log("teacherName che sto passando:", teacherName)
 const { data, error } = await useAPI<
   {
     TeacherId: number
@@ -154,7 +148,6 @@ if (error.value || !data.value) {
   console.error("Errore nel caricamento teacher:", error.value)
   throw new Error("Teacher non trovato")
 }
-//console.log(data.value)
 const teacher = data.value[0]
 
 const txtSpecialization = computed(() => {
@@ -204,7 +197,6 @@ const txtCertification = computed(() => {
 }
 
 .SpecCert {
-
 }
 
 .link-button {

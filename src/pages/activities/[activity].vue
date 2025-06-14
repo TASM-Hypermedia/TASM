@@ -14,10 +14,10 @@ const response = await useAPI<ActivityType>("/postActivity", {
 if (response.error.value || !response.data.value)
   throw createError({
     fatal: true,
-    ...(response.error.value ?? {
-      statusCode: 404,
-      message: `${ActivityTitle}\nNo one with this name works with us!`,
-    }),
+    ...response.error.value,
+    statusCode: 404,
+    statusMessage: "Activity not found",
+    message: `"${ActivityTitle}" - We don't offer this attivity yet!`,
   })
 
 const activity = response.data.value
