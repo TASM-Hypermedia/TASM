@@ -13,7 +13,7 @@ export type Activity = {
 
 export type Event = {
   title: string
-  eventId: number
+  eventId?: number
   eventImage: string
   hostImage: string
   hostName: string

@@ -46,7 +46,9 @@ const setDifficulty = (n: number) => {
         {{ activity.description }}
       </p>
     </section>
-    <SlideCarousel :width="1000" :images="activity.images" />
+
+    <!--SlideCarousel :width="1000" :images="activity.images" />-->
+
     <section class="pair">
       <div>
         <h1>What You'll Do</h1>
@@ -83,7 +85,8 @@ const setDifficulty = (n: number) => {
           </li>
         </ol>
       </div>
-      <div>
+
+      <div class="lessons">
         <h1>Next Lessons</h1>
         <div
           v-for="(lesson, index) in activity.nextLessons"
@@ -104,6 +107,7 @@ const setDifficulty = (n: number) => {
         </div>
       </div>
     </section>
+
     <section style="align-items: center; text-align: center">
       <h1>Teaching {{ activity.title }}</h1>
       <div class="temp-grid">
@@ -118,6 +122,7 @@ const setDifficulty = (n: number) => {
         />
       </div>
     </section>
+
     <section style="align-items: center; text-align: center">
       <h2>Similar Activities</h2>
       <div class="temp-grid">
@@ -198,6 +203,10 @@ div.buttons {
   justify-content: stretch;
   gap: 8px;
 
+  .mobile-layout & {
+    margin-bottom: 15px;
+  }
+
   button {
     flex: 1;
     border-radius: 8px;
@@ -211,6 +220,12 @@ div.buttons {
     &.selected {
       background-color: #e2e2e2;
     }
+  }
+}
+
+.lessons {
+  .mobile-layout & {
+    width: 100%;
   }
 }
 
@@ -252,6 +267,10 @@ div.temp-grid {
   flex-direction: row;
   gap: 32px;
   justify-content: space-between;
+
+  .mobile-layout & {
+    flex-direction: column;
+  }
 }
 
 .link-button {

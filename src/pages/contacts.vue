@@ -38,11 +38,12 @@ const contactsList = res.data.value
       </div>
     </section>
 
+    <h1 class="map-title">Come and join us</h1>
     <section class="map-section">
-      <div class="map-title">COME AND JOIN US</div>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89509.5532925476!2d9.043172443359369!3d45.486450000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c12dfe45ee8f%3A0x6528954343c34fd4!2sMilano%20Yoga%20Space!5e0!3m2!1sit!2sit!4v1746451557377!5m2!1sit!2sit" width="600" height="450" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89509.5532925476!2d9.043172443359369!3d45.486450000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c12dfe45ee8f%3A0x6528954343c34fd4!2sMilano%20Yoga%20Space!5e0!3m2!1sit!2sit!4v1746451557377!5m2!1sit!2sit" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
+    <h1>Contact us</h1>
     <section class="form-section">
       <form action="mailto:simone.pedroni@mail.polimi.it" method="post" enctype="text/plain" class="contact-form">
         <label for="fname" class="form-label">Name</label> <br/>
@@ -81,24 +82,25 @@ const contactsList = res.data.value
 }
 
 .contact-image {
-  width: 50%;
+  width: 70%;
 
   .mobile-layout & {
-    width: 20%;
+    width: 30%;
   }
 }
 
 .contact-info {
+  font-size: 17px;
+
   .mobile-layout & {
     margin-bottom: 20px;
+    font-size: 20px;
   }
 }
 
 .map-section {
-  background-color: #F5F5F5;
   width: 100%;
   text-align: center;
-  color: #1E1E1E;
   padding: 20px;
   margin-top: 40px;
 
@@ -108,12 +110,34 @@ const contactsList = res.data.value
   }
 }
 
-.map-title {
-  margin-bottom: 20px;
+h1 {
+  margin-top: 70px;
+
+  .mobile-layout & {
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+}
+
+.map{
+  width: 600px;
+  height: 450px;
+  border: 0;
+  margin-top: -15px;
+
+  .mobile-layout & {
+    max-width: 90%;
+    max-height: 30%;
+    margin: auto;
+  }
 }
 
 .form-section {
   margin-top: 40px;
+
+  .mobile-layout & {
+    margin-top: 15px;
+  }
 }
 
 .contact-form {
