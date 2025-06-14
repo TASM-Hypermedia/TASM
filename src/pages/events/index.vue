@@ -21,9 +21,9 @@ const eventsList: Event[] = data.value
 </script>
 
 <style scoped>
-div {
-  background-color: #d9d9d9;
-  flex: 1;
-  width: 100%;
-}
+  div {
+    background-color: #d9d9d9;
+    flex: 1;
+    width: 100%;
+  }
 </style>

@@ -1,3 +1,4 @@
+//Teacher card type
 export type Teacher = {
   teacherId: number
   name: string
@@ -6,11 +7,13 @@ export type Teacher = {
   activityTags: Array<{ text: string }>
 }
 
+// Activity card type
 export type Activity = {
   title: string
   image: string
 }
 
+// Event card type
 export type Event = {
   title: string
   eventId: number

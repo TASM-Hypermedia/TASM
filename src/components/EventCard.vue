@@ -4,14 +4,14 @@
             <div class="calendar" style="">
                 <div style="width: 87px; height: 25px; background: rgba(223.86, 84.16, 84.16, 0.83); overflow: hidden; border-bottom: 1px #B94646 solid">
                     <div style="height: 100%; text-align: center; justify-content: center; display: flex; flex-direction: column; color: rgba(137.55, 21.03, 21.03, 0.72); font-size: 20px; font-family: Instrument Sans; font-weight: 700; line-height: 20px; word-wrap: break-word">
-                        AUG
+                        {{calendar_month}}
                     </div>
                 </div>
                 <div style=" height: 35px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #2B2B2B; font-size: 40px; font-family: Instrument Sans; font-weight: 500; line-height: 40px; word-wrap: break-word">
-                    12
+                    {{calendar_day}}
                 </div>
                 <div style=" height: 18px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #7A7A7A; font-size: 15px; font-family: Instrument Sans; font-weight: 500; line-height: 15px; word-wrap: break-word">
-                    MON
+                    {{calendar_day_name}}
                 </div>
             </div>
             <div class="title_box" style="">
@@ -59,41 +59,17 @@
 
 <script setup lang="ts">
     import { NuxtLink } from '#components';
-import type { Event } from '~/types';
-
-    // const actTags = [
-    //     { text: "Meditazione" },
-    //     { text: "Shower" },
-    //     { text: "Kebab" },
-    //     { text: "Kebab" },
-    //     { text: "Kebab" },
-    //     { text: "Kebab" },
-    //     { text: "Kebab" },
-    //     { text: "Meditazione" },
-    //     { text: "Meditazione" },
-    //     { text: "Meditazione" },
-    //     { text: "Yogashi" },
-    //     { text: "Senso Unico" },
-    // ];
+    import type { Event } from '~/types';
     
-    // const eventProps: Event = {
-    //     title: "Prova di evento numero 1",
-    //     eventImage: "",
-    //     hostImage: "https://images.generated.photos/SjuKv9Sz8wkQuT4eeN_7FaoE09Wq8j6qd8LeTkcrjCA/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NzAzNTU3LmpwZw.jpg",
-    //     hostName: "Nirvana Guatamala",
-    //     date: "August 12, 4PM - 6PM",
-    //     startTime: "string",
-    //     endTime: "string",
-    //     location: "Sunset Blv, LA",
-    //     activityTags: [
-    //         { text: "Meditazione" },
-    //         { text: "Meditazione" },           
-    //     ],
-    // };
-    
-    defineProps<{
+    const props = defineProps<{
         eventProp: Event,
     }>();
+
+    const calendar_date = new Date(props.eventProp.date);
+    const calendar_month = calendar_date.toLocaleString("en-US", { month: "short" }).toUpperCase();
+    const calendar_day = calendar_date.getDate();
+    const calendar_day_name = calendar_date.toLocaleString("en-US", { weekday: "short" }).toUpperCase();
+     
 </script>
 
 <style scoped>
@@ -187,22 +163,6 @@ import type { Event } from '~/types';
         line-height: 24px;
         word-wrap: break-word;
         border: 0px solid black;
-
-        /* left: 25px; 
-        justify-content: center; 
-        width: 193px; 
-        top: 20px; 
-        position: absolute; 
-        text-align: center; 
-        align-items: center;
-        display: flex; 
-        flex-direction: column; 
-        color: black; 
-        font-size: 24px; 
-        font-family: Instrument Sans; 
-        font-weight: 500; 
-        line-height: 24px; 
-        word-wrap: break-word; */ 
     }
 
     .host_box {
