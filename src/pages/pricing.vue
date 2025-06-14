@@ -1,74 +1,33 @@
 <script setup lang="ts">
 
-const { data:faqData, error:faqError } = await useAPI<
-  [
-    {
-      Question: string,
-      Answer: string
-    },
-  ]
->("/getFaqs.js", {
-  method: "GET",
-})
+const resFaqs = await useAPI<
+  {
+    question: string
+    answer: string
+  }[]
+>("/getFaqs")
 
-if (faqError.value || !faqData.value) {
-  console.error("Error in loading yoga center:", faqError.value)
-  throw new Error("Yoga center not found")
-}
+if (resFaqs.error.value) throw resFaqs.error.value
+const faqList = resFaqs.data.value
 
-const faqList = faqData.value
-const faqContent: {
-  question: string
-  answer: string
-}[] = []
+//console.log(faqList)
 
-for (let i = 0; i < faqList.length; i++) {
-  faqContent.push({
-    question: faqList[i].Question,
-    answer: faqList[i].Answer,
-  })
-}
+const resPricing = await useAPI<
+  {
+    title: string
+    subtitle: string
+    price: number
+    pricingItems: {
+      item: string
+    }[]
+    darkMode: boolean
+  }[]
+>("/getPricing")
 
-const { data:pricingData, error:pricingError } = await useAPI<
-  [
-    {
-      PricingId: number
-      Title: string
-      Subtitle: string
-      Price: number
-      PricingListItem: Array<{
-        Item: string
-      }>
-    }
-  ]
->("/getPricing.js", {
-  method: "GET",
-})
+if (resPricing.error.value) throw resPricing.error.value
+const pricingList = resPricing.data.value
 
-if (pricingError.value || !pricingData.value) {
-  console.error("Error in loading yoga center:", pricingError.value)
-  throw new Error("Yoga center not found")
-}
-
-const pricingList = pricingData.value
-const pricingContent: {
-  title: string,
-  subtitle: string,
-  price: number,
-  pricingItems: Array<{ Item: string }>,
-  darkMode: boolean,
-}[] = []
-
-for (let i = 0; i < pricingList.length; i++) {
-  const flag = i % 2 !== 0
-  pricingContent.push({
-    title: pricingList[i].Title,
-    subtitle: pricingList[i].Subtitle,
-    price: pricingList[i].Price,
-    pricingItems: pricingList[i].PricingListItem,
-    darkMode: flag,
-  })
-}
+console.log(pricingList![0].pricingItems)
 
 </script>
 
@@ -79,15 +38,15 @@ for (let i = 0; i < pricingList.length; i++) {
     img-src="./banners/pricing-banner.jpg"
   >
 
-    <section>
-      <div v-for="(item, index) in pricingContent" :key="index">
-        <price-card :price-prop="item" />
-      </div>
+    <section class="priceSection">
+        <div v-for="(item, index) in pricingList" :key="index">
+          <price-card class="priceCard" :price-prop="item" />
+        </div>
     </section>
 
     <section class="faqSection">
       <h2>FAQs</h2>
-      <div v-for="(item, index) in faqContent" :key="index">
+      <div v-for="(item, index) in faqList" :key="index">
         <faq-card :faq-prop="item"/>
       </div>
     </section>
@@ -95,14 +54,41 @@ for (let i = 0; i < pricingList.length; i++) {
 </template>
 
 <style scoped>
+.priceSection {
+  display: flex;
+  flex-direction: row;
+  max-width: 1080px;
+
+  div {
+    width: 90%;
+
+    .priceCard {
+      .mobile-layout & {
+        margin-bottom: 10px;
+      }
+    }
+
+    .mobile-layout & {
+      margin: auto;
+    }
+  }
+
+  .mobile-layout & {
+    flex-direction: column;
+  }
+}
+
 .faqSection {
   width: 60%;
   margin-top: 50px;
 
-
   h2 {
     text-align: center;
     margin-bottom: 20px;
+  }
+
+  .mobile-layout & {
+    width: 80%;
   }
 }
 </style>

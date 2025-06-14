@@ -40,6 +40,10 @@ div {
   display: inline-flex;
   gap: 10px;
   border: 0px solid black;
+
+  .mobile-layout & {
+    max-width: 1080px;
+  }
 }
 
 .card-image {

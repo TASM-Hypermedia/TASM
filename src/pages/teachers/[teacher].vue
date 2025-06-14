@@ -67,19 +67,22 @@
     </div>
     <!-- IL MIO PERCORSO -->
 
-    <h3>Il mio percorso:</h3>
-    <p>{{ teacher.History }}</p>
+    <div class="myJourney">
+      <h3>My history:</h3>
+      <p>{{ teacher.History }}</p>
+    </div>
 
     <!-- SPECIALIZZAZIONI & CERTIFICAZIONI -->
 
-    <p><b>Specializzazioni: </b> {{ txtSpecialization }}</p>
-    <p><b>Certificazioni: </b> {{ txtCertification }}</p>
+    <div class="SpecCert"></div>
+    <p><b>Specializations: </b> {{ txtSpecialization }}</p>
+    <p><b>Certifications: </b> {{ txtCertification }}</p>
     <!-- CAROSELLO -->
 
-    <SlideCarousel
+    <!--<SlideCarousel
       :images="teacher.TeacherImages.map((img) => img.Image)"
       :width="1000"
-    ></SlideCarousel>
+    ></SlideCarousel>-->
 
     <NuxtLink class="link-button" to="/teachers"> View all teachers </NuxtLink>
   </PageWrap>
@@ -145,7 +148,6 @@ if (error.value || !data.value) {
   console.error("Errore nel caricamento teacher:", error.value)
   throw new Error("Teacher non trovato")
 }
-
 const teacher = data.value[0]
 
 const txtSpecialization = computed(() => {
@@ -153,6 +155,8 @@ const txtSpecialization = computed(() => {
     (activity: { Activity: { Title: string } }) => activity.Activity.Title
   ).join(", ")
 })
+
+console.log(teacher.TeacherActivity)
 
 const txtCertification = computed(() => {
   return teacher.TeacherCert.map(
@@ -163,7 +167,38 @@ const txtCertification = computed(() => {
 <style scoped>
 .divWithMe {
   width: 100%;
+  text-align: center;
+
+  h3 {
+    margin-top: 60px;
+
+    .mobile-layout & {
+      text-align: center;
+    }
+  }
 }
+
+.myJourney {
+  width: 100%;
+
+  h3 {
+    margin-top: 60px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  p {
+    .mobile-layout & {
+      width: 90%;
+      margin: auto;
+      text-align: center;
+    }
+  }
+}
+
+.SpecCert {
+}
+
 .link-button {
   color: white;
   background-color: #020202;
