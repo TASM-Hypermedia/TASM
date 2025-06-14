@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useAPI } from "~/composables/useAPI"
 import type { ResponseData } from "~/types"
+import { motion } from "motion-v"
 
 const response = await useAPI<ResponseData>("/getHomePage", {
   method: "GET",
@@ -49,18 +50,36 @@ const { data } = response
       </v-carousel>
     </div>
 
-    <NuxtLink to="/teachers" class="cardYogaCenter">
-      <ContentCard
-        :content-card-prop="{
-          title: data?.yogaCenter.title || 'Yoga Center',
-          //subtitle: data?.yogaCenter.Mantra,
-          description: data?.yogaCenter.description,
-          imgUrl: '/images/center/yogaCenter.jpg',
-          altDescription: 'Yoga center image',
-          imageOnTheRight: false,
-        }"
-      ></ContentCard>
-    </NuxtLink>
+    <motion.div
+      :style="{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+      }"
+      :transition="{
+        duration: 0.5,
+        ease: 'easeInOut',
+      }"
+      :variants="{
+        initial: { opacity: 0, y: -50 },
+        animate: { opacity: 1, y: 0 },
+      }"
+      initial="initial"
+      while-in-view="animate"
+    >
+      <NuxtLink to="/teachers" class="cardYogaCenter">
+        <ContentCard
+          :content-card-prop="{
+            title: data?.yogaCenter.title || 'Yoga Center',
+            //subtitle: data?.yogaCenter.Mantra,
+            description: data?.yogaCenter.description,
+            imgUrl: '/images/center/yogaCenter.jpg',
+            altDescription: 'Yoga center image',
+            imageOnTheRight: false,
+          }"
+        ></ContentCard>
+      </NuxtLink>
+    </motion.div>
 
     <NuxtLink to="/teachers" class="cardYogaCenter">
       <HomePageElement
