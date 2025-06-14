@@ -42,6 +42,10 @@ defineProps<{
   display: inline-flex;
   color: rgb(0, 0, 0);
   text-decoration: none;
+
+  .mobile-layout & {
+    max-width: 1080px;
+  }
 }
 
 .teacher_image {

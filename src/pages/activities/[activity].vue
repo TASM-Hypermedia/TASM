@@ -14,10 +14,10 @@ const response = await useAPI<ActivityType>("/postActivity", {
 if (response.error.value || !response.data.value)
   throw createError({
     fatal: true,
-    ...(response.error.value ?? {
-      statusCode: 404,
-      message: `${ActivityTitle}\nNo one with this name works with us!`,
-    }),
+    ...response.error.value,
+    statusCode: 404,
+    statusMessage: "Activity not found",
+    message: `"${ActivityTitle}" - We don't offer this attivity yet!`,
   })
 
 const activity = response.data.value
@@ -147,6 +147,11 @@ section {
 
 .description {
   text-align: center;
+
+  .mobile-layout & {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 h1 {
@@ -171,6 +176,10 @@ section.pair {
     display: flex;
     flex-direction: column;
     gap: 8px;
+  }
+
+  .mobile-layout & {
+    flex-direction: column;
   }
 }
 

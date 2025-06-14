@@ -16,10 +16,6 @@ if (response.error.value || !response.data.value)
   })
 
 const { data } = response
-
-console.log(data.value)
-
-//const activity = response.data.value
 </script>
 
 <template>

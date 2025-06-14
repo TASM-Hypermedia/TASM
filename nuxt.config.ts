@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "vuetify-nuxt-module",
     "nuxt-viewport",
+    "motion-v/nuxt",
   ],
   vuetify: {
     moduleOptions: {},
@@ -45,20 +46,20 @@ export default defineNuxtConfig({
 
     cookie: {
       expires: 365, // 365 days
-      name: 'viewport',
-      path: '/',
-      sameSite: 'Strict',
+      name: "viewport",
+      path: "/",
+      sameSite: "Strict",
       secure: true,
     },
 
     defaultBreakpoints: {
-      desktop: 'desktop',
-      mobile: 'mobile',
-      tablet: 'tablet',
+      desktop: "desktop",
+      mobile: "mobile",
+      tablet: "tablet",
     },
 
-    fallbackBreakpoint: 'desktop',
+    fallbackBreakpoint: "desktop",
 
-    feature: 'minWidth',
+    feature: "minWidth",
   },
 })

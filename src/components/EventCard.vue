@@ -122,6 +122,10 @@ import type { Event } from '~/types';
         justify-content: flex-start; 
         align-items: center; 
         display: inline-flex;
+
+        .mobile-layout & {
+          max-width: 1080px;
+        }
     }
 
     .top {
