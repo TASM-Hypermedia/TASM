@@ -24,6 +24,35 @@ console.log(data.value)
 
 <template>
   <PageWrap title="Namaste" img-src="HomePage 1.jpeg">
+    <AnimatedTitle />
+    <div height="400px" width="100%">
+      <v-sheet class="mx-auto" elevation="0" max-width="1080px">
+        <v-slide-group class="pa-4" selected-class="bg-success" show-arrows>
+          <v-slide-group-item
+            v-for="(item, index) in data?.highlights.highlightActivities || []"
+            :key="index"
+          >
+            <div class="d-flex fill-height justify-center align-center">
+              <ActivityCard :activity-prop="item" />
+            </div>
+          </v-slide-group-item>
+        </v-slide-group>
+      </v-sheet>
+    </div>
+
+    <div height="400px" width="100%">
+      <v-carousel :autoplay="true" :interval="5000">
+        <v-carousel-item
+          v-for="(item, index) in data?.highlights.highlightEvents || []"
+          :key="index"
+        >
+          <div class="d-flex fill-height justify-center align-center">
+            <EventCard :event-prop="item" />
+          </div>
+        </v-carousel-item>
+      </v-carousel>
+    </div>
+
     <NuxtLink to="/teachers" class="cardYogaCenter">
       <ContentCard
         :content-card-prop="{
@@ -35,6 +64,19 @@ console.log(data.value)
           imageOnTheRight: false,
         }"
       ></ContentCard>
+    </NuxtLink>
+
+    <NuxtLink to="/teachers" class="cardYogaCenter">
+      <HomePageElement
+        :content-card-prop="{
+          title: data?.yogaCenter.title || 'Yoga Center',
+          subtitle: data?.yogaCenter.subtitle || 'Namaste',
+          description: data?.yogaCenter.description,
+          imgUrl: '/images/center/yogaCenter.jpg',
+          altDescription: 'Yoga center image',
+          imageOnTheRight: false,
+        }"
+      />
     </NuxtLink>
 
     <h2 class="titleSubsection">OUR TEACHERS</h2>

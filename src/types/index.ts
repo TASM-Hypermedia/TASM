@@ -99,4 +99,8 @@ export type  ResponseData = {
   activities: Activity[],
   events: Event[],
   teachers: Teacher[],
+  highlights: {
+     highlightEvents: Event[],
+     highlightActivities: Activity[]
+  }
 }
