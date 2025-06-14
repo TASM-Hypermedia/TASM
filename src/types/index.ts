@@ -25,11 +25,13 @@ export type Event = {
 }
 
 export type Price = {
-  title: string,
-  subtitle?: string,
-  price: number,
-  pricingItems?: Array<{ Item: string }>,
-  darkMode: boolean,
+  title: string
+  subtitle: string
+  price: number
+  pricingItems: {
+    item: string
+  }[]
+  darkMode: boolean
 };
 
 export type Faq = {

@@ -1,58 +1,33 @@
 <script setup lang="ts">
 
-const res = await useAPI<
+const resFaqs = await useAPI<
   {
     question: string
     answer: string
   }[]
 >("/getFaqs")
 
-if (res.error.value) throw res.error.value
-const faqList = res.data.value
+if (resFaqs.error.value) throw resFaqs.error.value
+const faqList = resFaqs.data.value
 
 console.log(faqList)
 
+const resPricing = await useAPI<
+  {
+    title: string
+    subtitle: string
+    price: number
+    pricingItems: {
+      item: string
+    }[]
+    darkMode: boolean
+  }[]
+>("/getPricing")
 
-const { data:pricingData, error:pricingError } = await useAPI<
-  [
-    {
-      PricingId: number
-      Title: string
-      Subtitle: string
-      Price: number
-      PricingListItem: Array<{
-        Item: string
-      }>
-    }
-  ]
->("/getPricing.js", {
-  method: "GET",
-})
+if (resPricing.error.value) throw resPricing.error.value
+const pricingList = resPricing.data.value
 
-if (pricingError.value || !pricingData.value) {
-  console.error("Error in loading yoga center:", pricingError.value)
-  throw new Error("Yoga center not found")
-}
-
-const pricingList = pricingData.value
-const pricingContent: {
-  title: string,
-  subtitle: string,
-  price: number,
-  pricingItems: Array<{ Item: string }>,
-  darkMode: boolean,
-}[] = []
-
-for (let i = 0; i < pricingList.length; i++) {
-  const flag = i % 2 !== 0
-  pricingContent.push({
-    title: pricingList[i].Title,
-    subtitle: pricingList[i].Subtitle,
-    price: pricingList[i].Price,
-    pricingItems: pricingList[i].PricingListItem,
-    darkMode: flag,
-  })
-}
+console.log(pricingList)
 
 </script>
 
@@ -64,7 +39,7 @@ for (let i = 0; i < pricingList.length; i++) {
   >
 
     <section class="priceSection">
-        <div v-for="(item, index) in pricingContent" :key="index">
+        <div v-for="(item, index) in pricingList" :key="index">
           <price-card class="priceCard" :price-prop="item" />
         </div>
     </section>
