@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { NuxtLink } from "#components"
-import { useScroll } from "@/composables/useScroll"
 
-const { y } = useScroll()
+const { y } = useCustomScroll()
 const opacity = computed(() => maprange(clamp(y.value, 0, 600), 0, 600, 0.6, 1))
 
 const route = useRoute()

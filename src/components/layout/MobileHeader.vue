@@ -11,6 +11,11 @@ function active(thisRoute: string) {
 
 const open = ref(false)
 
+const { y } = useCustomScroll()
+const opacity = computed(() =>
+  open.value ? 1 : maprange(clamp(y.value, 0, 600), 0, 600, 0.6, 1)
+)
+
 function toggleMenu() {
   open.value = !open.value
 }
@@ -18,10 +23,29 @@ function toggleMenu() {
 function closeMenu() {
   open.value = false
 }
+
+const linkVariants = {
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.2,
+      ease: "easeInOut",
+    },
+  },
+  hidden: {
+    opacity: 0,
+    y: "-10%",
+    transition: {
+      duration: 0.2,
+      ease: "easeInOut",
+    },
+  },
+}
 </script>
 
 <template>
-  <nav>
+  <nav :style="{ opacity: opacity }">
     <header>
       <NuxtLink to="/" class="logo">
         <img
@@ -35,7 +59,6 @@ function closeMenu() {
 
     <AnimatePresence>
       <motion.div
-        key="mobile-menu"
         class="mobile-menu"
         :variants="{
           visible: {
@@ -44,8 +67,8 @@ function closeMenu() {
             y: 0,
             transition: {
               when: 'beforeChildren',
-              staggerChildren: 0.1,
-              duration: 0.3,
+              staggerChildren: 0.08,
+              duration: 0.2,
               ease: 'easeInOut',
             },
           },
@@ -64,20 +87,32 @@ function closeMenu() {
         :animate="open ? 'visible' : 'hidden'"
         @click="closeMenu"
       >
-        <NuxtLink :class="active('yogacenter')" to="/yogacenter"
-          >The Center</NuxtLink
-        >
-        <NuxtLink :class="active('teachers')" to="/teachers">
-          Our Team
-        </NuxtLink>
-        <NuxtLink :class="active('activities')" to="/activities">
-          Activities
-        </NuxtLink>
-        <NuxtLink :class="active('events')" to="/events">Events</NuxtLink>
-        <NuxtLink :class="active('pricing')" to="/pricing">Pricing</NuxtLink>
-        <NuxtLink :class="active('contacts')" to="/contacts">
-          Contacts
-        </NuxtLink>
+        <motion.div :variants="linkVariants">
+          <NuxtLink :class="active('yogacenter')" to="/yogacenter">
+            The Center
+          </NuxtLink>
+        </motion.div>
+        <motion.div :variants="linkVariants">
+          <NuxtLink :class="active('teachers')" to="/teachers">
+            Our Team
+          </NuxtLink>
+        </motion.div>
+        <motion.div :variants="linkVariants">
+          <NuxtLink :class="active('activities')" to="/activities">
+            Activities
+          </NuxtLink>
+        </motion.div>
+        <motion.div :variants="linkVariants">
+          <NuxtLink :class="active('events')" to="/events">Events</NuxtLink>
+        </motion.div>
+        <motion.div :variants="linkVariants">
+          <NuxtLink :class="active('pricing')" to="/pricing">Pricing</NuxtLink>
+        </motion.div>
+        <motion.div :variants="linkVariants">
+          <NuxtLink :class="active('contacts')" to="/contacts">
+            Contacts
+          </NuxtLink>
+        </motion.div>
       </motion.div>
     </AnimatePresence>
   </nav>
@@ -91,6 +126,8 @@ nav {
   z-index: 1;
   background-color: white;
   width: 100vw;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .mobile-menu {
@@ -131,6 +168,7 @@ nav {
 header {
   display: flex;
   padding: 12px;
+  z-index: 2;
 }
 
 .logo {

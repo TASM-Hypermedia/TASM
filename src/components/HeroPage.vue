@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useScroll } from "@/composables/useScroll"
+import { motion, useScroll } from "motion-v"
 
 const props = defineProps<{
   /**
@@ -20,24 +20,26 @@ const props = defineProps<{
   urlImg?: string
 }>()
 
-const { y } = useScroll()
-const scrollAmount = computed(() => clamp(y.value, 0, 600))
+const { scrollY } = useScroll()
+const y = useTransform(() => scrollY.get() / 3)
+const hero = useTransform(() => scrollY.get() / 2)
+const marginTop = useMotionTemplate`${hero}px`
 </script>
 
 <template>
   <div class="copertina-page">
-    <img
+    <motion.img
       v-if="props.urlImg !== undefined"
       :src="`/images/${props.urlImg}`"
       :alt="`Background Image - ${title}`"
       class="background-image"
-      :style="{ top: scrollAmount / 3 + 'px' }"
+      :style="{ y }"
     />
-    <div class="hero-page" :style="{ marginTop: scrollAmount / 2 + 'px' }">
+    <motion.div class="hero-page" :style="{ marginTop }">
       <p v-if="tagline">{{ tagline }}</p>
       <h1>{{ title }}</h1>
       <h2 v-if="subtitle">{{ subtitle }}</h2>
-    </div>
+    </motion.div>
   </div>
 </template>
 
