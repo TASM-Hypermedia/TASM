@@ -20,7 +20,7 @@ const { data } = response
 
 <template>
   <PageWrap title="Namaste" img-src="HomePage 1.jpeg">
-    <AnimatedTitle />
+    <AnimatedTitle title="Namaste" />
     <div height="400px" width="100%">
       <v-sheet class="mx-auto" elevation="0" max-width="1080px">
         <v-slide-group class="pa-4" selected-class="bg-success" show-arrows>
