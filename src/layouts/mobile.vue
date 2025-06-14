@@ -1,14 +1,20 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import MobileHeader from "~/components/layout/MobileHeader.vue"
+import AppFooter from "~/components/layout/AppFooter.vue"
+</script>
 
 <template>
-  <div>
-    <p>Mobile ahahahhahahaa</p>
-    <slot />
+  <div class="mobile-layout">
+    <MobileHeader />
+    <NuxtPage />
+    <AppFooter />
   </div>
 </template>
 
 <style scoped>
-p {
-  text-align: center;
+.mobile-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 </style>

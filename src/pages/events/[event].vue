@@ -157,6 +157,9 @@ section.pair {
     flex-direction: column;
     gap: 8px;
   }
+  .mobile-layout & {
+    flex-direction: column;
+  }
 }
 
 ul {
@@ -190,6 +193,9 @@ section.guest {
       display: flex;
       flex-direction: column;
       gap: 8px;
+    }
+    .mobile-layout & {
+      flex-direction: column;
     }
   }
 }

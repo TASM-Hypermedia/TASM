@@ -1,12 +1,12 @@
 <template>
   <footer>
     <div>
-      <img class="logo" src="../assets/images/headerIcon.svg" alt="logo" />
+      <img class="logo" src="../../assets/images/headerIcon.svg" alt="logo" />
       <div class="socials">
-        <img src="../assets/socials/fb.svg" alt="facebook" />
-        <img src="../assets/socials/tw.svg" alt="twitter" />
-        <img src="../assets/socials/ig.svg" alt="instagram" />
-        <img src="../assets/socials/yt.svg" alt="youtube" />
+        <img src="../../assets/socials/fb.svg" alt="facebook" />
+        <img src="../../assets/socials/tw.svg" alt="twitter" />
+        <img src="../../assets/socials/ig.svg" alt="instagram" />
+        <img src="../../assets/socials/yt.svg" alt="youtube" />
       </div>
     </div>
     <div>
@@ -48,6 +48,11 @@ footer {
   box-shadow: 0 -1px 16px rgba(0, 0, 0, 0.1);
 }
 
+.mobile-layout footer {
+  padding: 16px;
+  flex-direction: column;
+}
+
 img {
   cursor: pointer;
 }
@@ -56,6 +61,7 @@ footer div {
   display: flex;
   flex-direction: column;
   margin-right: 32px;
+  flex: 1;
 }
 
 .logo {
