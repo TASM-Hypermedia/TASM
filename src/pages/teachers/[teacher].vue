@@ -67,19 +67,22 @@
     </div>
     <!-- IL MIO PERCORSO -->
 
-    <h3>Il mio percorso:</h3>
-    <p>{{ teacher.History }}</p>
+    <div class="myJourney">
+      <h3>My history:</h3>
+      <p>{{ teacher.History }}</p>
+    </div>
 
     <!-- SPECIALIZZAZIONI & CERTIFICAZIONI -->
 
-    <p><b>Specializzazioni: </b> {{ txtSpecialization }}</p>
-    <p><b>Certificazioni: </b> {{ txtCertification }}</p>
+    <div class="SpecCert"></div>
+    <p><b>Specializations: </b> {{ txtSpecialization }}</p>
+    <p><b>Certifications: </b> {{ txtCertification }}</p>
     <!-- CAROSELLO -->
 
-    <SlideCarousel
+    <!--<SlideCarousel
       :images="teacher.TeacherImages.map((img) => img.Image)"
       :width="1000"
-    ></SlideCarousel>
+    ></SlideCarousel>-->
 
     <NuxtLink class="link-button" to="/teachers"> View all teachers </NuxtLink>
   </PageWrap>
@@ -91,13 +94,13 @@ import { useAPI } from "~/composables/useAPI"
 
 const route = useRoute()
 const teacherName = route.params.teacher
-console.log(teacherName)
+//console.log(teacherName)
 
 //const teacher = ref()
 
 // Chiamata all’API per ottenere i dettagli della teacher
 
-console.log("teacherName che sto passando:", teacherName)
+//console.log("teacherName che sto passando:", teacherName)
 const { data, error } = await useAPI<
   {
     TeacherId: number
@@ -151,7 +154,7 @@ if (error.value || !data.value) {
   console.error("Errore nel caricamento teacher:", error.value)
   throw new Error("Teacher non trovato")
 }
-console.log(data.value)
+//console.log(data.value)
 const teacher = data.value[0]
 
 const txtSpecialization = computed(() => {
@@ -159,6 +162,8 @@ const txtSpecialization = computed(() => {
     (activity: { Activity: { Title: string } }) => activity.Activity.Title
   ).join(", ")
 })
+
+console.log(teacher.TeacherActivity)
 
 const txtCertification = computed(() => {
   return teacher.TeacherCert.map(
@@ -169,7 +174,39 @@ const txtCertification = computed(() => {
 <style scoped>
 .divWithMe {
   width: 100%;
+  text-align: center;
+
+  h3 {
+    margin-top: 60px;
+
+    .mobile-layout & {
+      text-align: center;
+    }
+  }
 }
+
+.myJourney {
+  width: 100%;
+
+  h3 {
+    margin-top: 60px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  p {
+    .mobile-layout & {
+      width: 90%;
+      margin: auto;
+      text-align: center;
+    }
+  }
+}
+
+.SpecCert {
+
+}
+
 .link-button {
   color: white;
   background-color: #020202;
