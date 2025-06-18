@@ -55,8 +55,27 @@ const benefits = [
             v-for="(item, index) in data?.highlights.highlightActivities || []"
             :key="index"
           >
-            <div class="d-flex fill-height justify-center align-center">
+            <div
+              class="ma-4 pa-4 d-flex fill-height justify-center align-center"
+            >
               <ActivityCard :activity-prop="item" />
+            </div>
+          </v-slide-group-item>
+        </v-slide-group>
+      </v-sheet>
+    </div>
+
+    <div height="400px" width="100%">
+      <v-sheet class="mx-auto" elevation="0" max-width="1080px">
+        <v-slide-group class="pa-4" selected-class="bg-success" show-arrows>
+          <v-slide-group-item
+            v-for="(item, index) in data?.highlights.highlightEvents || []"
+            :key="index"
+          >
+            <div
+              class="ma-4 pa-4 d-flex fill-height justify-center align-center"
+            >
+              <EventCard :event-prop="item" />
             </div>
           </v-slide-group-item>
         </v-slide-group>
@@ -143,7 +162,6 @@ const benefits = [
         <activity-card :activity-prop="data?.activities[index]!" />
       </template>
     </card-grid>
-
     <div class="benefitsSection">
       <AnimatedTitle title="BENEFITS" />
 
@@ -162,6 +180,10 @@ const benefits = [
           </v-col>
         </v-row>
       </div>
+    </div>
+
+    <div style="width: 100%; height: 100%; background-color: #f0f0f0">
+      <HomePage3Slides></HomePage3Slides>
     </div>
   </PageWrap>
 </template>
