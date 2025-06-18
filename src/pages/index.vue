@@ -17,6 +17,32 @@ if (response.error.value || !response.data.value)
   })
 
 const { data } = response
+
+const benefits = [
+  {
+    title: "CONNECTION",
+    description:
+      "Reconnect with yourself, others, and the world around you—on and off the mat.",
+    image: "Connessione.svg",
+  },
+  {
+    title: "CLARITY",
+    description:
+      "Find mental focus and inner stillness through breath and mindful movement.",
+    image: "Lampadina.svg",
+  },
+  {
+    title: "STRENGTH",
+    description:
+      "Build physical resilience and emotional balance from the inside out.",
+    image: "Forza.svg",
+  },
+  {
+    title: "FREEDOM",
+    description: "Release tension in the body and let go of limiting thoughts.",
+    image: "Liberta.svg",
+  },
+]
 </script>
 
 <template>
@@ -67,6 +93,7 @@ const { data } = response
       initial="initial"
       while-in-view="animate"
     >
+      <!-- Usare transizione MATCH CUT per andare nello yoga center-->
       <NuxtLink to="/teachers" class="cardYogaCenter">
         <ContentCard
           :content-card-prop="{
@@ -116,6 +143,26 @@ const { data } = response
         <activity-card :activity-prop="data?.activities[index]!" />
       </template>
     </card-grid>
+
+    <div class="benefitsSection">
+      <AnimatedTitle title="BENEFITS" />
+
+      <div class="cardBenefits">
+        <v-row no-gutters>
+          <v-col
+            v-for="i in benefits.length || 0"
+            :key="i"
+            class="pa-3"
+            cols="12"
+            sm="12"
+            md="6"
+            lg="3"
+          >
+            <BenefitsContentCard :benefits-prop="benefits[i - 1]" />
+          </v-col>
+        </v-row>
+      </div>
+    </div>
   </PageWrap>
 </template>
 
@@ -139,7 +186,7 @@ const { data } = response
   color: rgb(0, 0, 0);
   text-decoration: none;
 }
-.titleSubsection {
-  padding: 20px;
+.benefitsSection {
+  background-color: #a2d2ff;
 }
 </style>
