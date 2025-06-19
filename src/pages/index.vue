@@ -46,122 +46,125 @@ const benefits = [
 </script>
 
 <template>
-  <PageWrap title="Namaste" img-src="HomePage 1.jpeg">
-    <AnimatedTitle title="Namaste" />
-    <div height="400px" width="100%">
-      <v-sheet class="mx-auto" elevation="0" max-width="1080px">
-        <v-slide-group class="pa-4" selected-class="bg-success" show-arrows>
-          <v-slide-group-item
-            v-for="(item, index) in data?.highlights.highlightActivities || []"
-            :key="index"
-          >
-            <div
-              class="ma-4 pa-4 d-flex fill-height justify-center align-center"
+  <div>
+    <PageWrap title="Namaste" img-src="HomePage 1.jpeg">
+      <AnimatedTitle title="Namaste" />
+      <div height="400px" width="100%">
+        <v-sheet class="mx-auto" elevation="0" max-width="1080px">
+          <v-slide-group class="pa-4" selected-class="bg-success" show-arrows>
+            <v-slide-group-item
+              v-for="(item, index) in data?.highlights.highlightActivities ||
+              []"
+              :key="index"
             >
-              <ActivityCard :activity-prop="item" />
-            </div>
-          </v-slide-group-item>
-        </v-slide-group>
-      </v-sheet>
-    </div>
+              <div
+                class="ma-4 pa-4 d-flex fill-height justify-center align-center"
+              >
+                <ActivityCard :activity-prop="item" />
+              </div>
+            </v-slide-group-item>
+          </v-slide-group>
+        </v-sheet>
+      </div>
 
-    <div height="400px" width="100%">
-      <v-sheet class="mx-auto" elevation="0" max-width="1080px">
-        <v-slide-group class="pa-4" selected-class="bg-success" show-arrows>
-          <v-slide-group-item
+      <div height="400px" width="100%">
+        <v-sheet class="mx-auto" elevation="0" max-width="1080px">
+          <v-slide-group class="pa-4" selected-class="bg-success" show-arrows>
+            <v-slide-group-item
+              v-for="(item, index) in data?.highlights.highlightEvents || []"
+              :key="index"
+            >
+              <div
+                class="ma-4 pa-4 d-flex fill-height justify-center align-center"
+              >
+                <EventCard :event-prop="item" />
+              </div>
+            </v-slide-group-item>
+          </v-slide-group>
+        </v-sheet>
+      </div>
+
+      <div height="400px" width="100%">
+        <v-carousel :autoplay="true" :interval="5000">
+          <v-carousel-item
             v-for="(item, index) in data?.highlights.highlightEvents || []"
             :key="index"
           >
-            <div
-              class="ma-4 pa-4 d-flex fill-height justify-center align-center"
-            >
+            <div class="d-flex fill-height justify-center align-center">
               <EventCard :event-prop="item" />
             </div>
-          </v-slide-group-item>
-        </v-slide-group>
-      </v-sheet>
-    </div>
+          </v-carousel-item>
+        </v-carousel>
+      </div>
 
-    <div height="400px" width="100%">
-      <v-carousel :autoplay="true" :interval="5000">
-        <v-carousel-item
-          v-for="(item, index) in data?.highlights.highlightEvents || []"
-          :key="index"
-        >
-          <div class="d-flex fill-height justify-center align-center">
-            <EventCard :event-prop="item" />
-          </div>
-        </v-carousel-item>
-      </v-carousel>
-    </div>
+      <motion.div
+        :style="{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+        }"
+        :transition="{
+          duration: 0.5,
+          ease: 'easeInOut',
+        }"
+        :variants="{
+          initial: { opacity: 0, y: -50 },
+          animate: { opacity: 1, y: 0 },
+        }"
+        initial="initial"
+        while-in-view="animate"
+      >
+        <!-- Usare transizione MATCH CUT per andare nello yoga center-->
+        <NuxtLink to="/teachers" class="cardYogaCenter">
+          <ContentCard
+            :content-card-prop="{
+              title: data?.yogaCenter.title || 'Yoga Center',
+              //subtitle: data?.yogaCenter.Mantra,
+              description: data?.yogaCenter.description,
+              imgUrl: '/images/center/yogaCenter.jpg',
+              altDescription: 'Yoga center image',
+              imageOnTheRight: false,
+            }"
+          ></ContentCard>
+        </NuxtLink>
+      </motion.div>
 
-    <motion.div
-      :style="{
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-      }"
-      :transition="{
-        duration: 0.5,
-        ease: 'easeInOut',
-      }"
-      :variants="{
-        initial: { opacity: 0, y: -50 },
-        animate: { opacity: 1, y: 0 },
-      }"
-      initial="initial"
-      while-in-view="animate"
-    >
-      <!-- Usare transizione MATCH CUT per andare nello yoga center-->
       <NuxtLink to="/teachers" class="cardYogaCenter">
-        <ContentCard
+        <HomePageElement
           :content-card-prop="{
             title: data?.yogaCenter.title || 'Yoga Center',
-            //subtitle: data?.yogaCenter.Mantra,
+            subtitle: data?.yogaCenter.subtitle || 'Namaste',
             description: data?.yogaCenter.description,
             imgUrl: '/images/center/yogaCenter.jpg',
             altDescription: 'Yoga center image',
             imageOnTheRight: false,
           }"
-        ></ContentCard>
+        />
       </NuxtLink>
-    </motion.div>
 
-    <NuxtLink to="/teachers" class="cardYogaCenter">
-      <HomePageElement
-        :content-card-prop="{
-          title: data?.yogaCenter.title || 'Yoga Center',
-          subtitle: data?.yogaCenter.subtitle || 'Namaste',
-          description: data?.yogaCenter.description,
-          imgUrl: '/images/center/yogaCenter.jpg',
-          altDescription: 'Yoga center image',
-          imageOnTheRight: false,
-        }"
-      />
-    </NuxtLink>
+      <h2 class="titleSubsection">OUR TEACHERS</h2>
 
-    <h2 class="titleSubsection">OUR TEACHERS</h2>
+      <card-grid :length="data?.teachers.length || 0">
+        <template #card="{ index }">
+          <teacher-card :teacher-prop="data?.teachers[index]!" />
+        </template>
+      </card-grid>
 
-    <card-grid :length="data?.teachers.length || 0">
-      <template #card="{ index }">
-        <teacher-card :teacher-prop="data?.teachers[index]!" />
-      </template>
-    </card-grid>
+      <h2 class="titleSubsection">OUR EVENTS</h2>
 
-    <h2 class="titleSubsection">OUR EVENTS</h2>
+      <card-grid :length="data?.events.length || 0">
+        <template #card="{ index }">
+          <event-card :event-prop="data?.events[index]!" />
+        </template>
+      </card-grid>
 
-    <card-grid :length="data?.events.length || 0">
-      <template #card="{ index }">
-        <event-card :event-prop="data?.events[index]!" />
-      </template>
-    </card-grid>
-
-    <h2 class="titleSubsection">OUR ACTIVITIES</h2>
-    <card-grid :length="data?.activities.length || 0">
-      <template #card="{ index }">
-        <activity-card :activity-prop="data?.activities[index]!" />
-      </template>
-    </card-grid>
+      <h2 class="titleSubsection">OUR ACTIVITIES</h2>
+      <card-grid :length="data?.activities.length || 0">
+        <template #card="{ index }">
+          <activity-card :activity-prop="data?.activities[index]!" />
+        </template>
+      </card-grid>
+    </PageWrap>
     <div class="benefitsSection">
       <AnimatedTitle title="BENEFITS" />
 
@@ -185,7 +188,7 @@ const benefits = [
     <div style="width: 100%; height: 100%; background-color: #f0f0f0">
       <HomePage3Slides></HomePage3Slides>
     </div>
-  </PageWrap>
+  </div>
 </template>
 
 <style scoped>
