@@ -76,9 +76,9 @@
 import { ref } from "vue"
 import { motion } from "motion-v"
 
-const image1 = ref("./images/homepage/Team-1.jpg")
-const image2 = ref("./images/homepage/Team-2.jpg")
-const image3 = ref("./images/homepage/Team-3.jpg")
+const image1 = ref("./images/homepage/Team-1.png")
+const image2 = ref("./images/homepage/Team-2.png")
+const image3 = ref("./images/homepage/Team-3.png")
 
 function mouseOver(i: number) {
   console.log("Mouse over image:", i)

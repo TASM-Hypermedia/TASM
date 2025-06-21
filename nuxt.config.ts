@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     "vuetify-nuxt-module",
     "nuxt-viewport",
     "motion-v/nuxt",
+    "nuxt-svgo",
   ],
   vuetify: {
     moduleOptions: {},
@@ -62,4 +63,7 @@ export default defineNuxtConfig({
 
     feature: "minWidth",
   },
+  svgo: { autoImportPath: '~/assets/homepage/' 
+    , defaultImport: "component"
+  }
 })

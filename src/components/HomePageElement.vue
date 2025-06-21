@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import SvgImage from "~/assets/images/homepage/Sfondo-yogacenter-homepage.svg"
+import SvgTizia from "~/assets/images/homepage/Yogacenter-image.svg"
+
 const { homePageElement } = defineProps<{
   homePageElement: {
     imgUrl: string
@@ -10,74 +13,91 @@ const { homePageElement } = defineProps<{
 </script>
 
 <template>
-  <nuxt-link to="/yogacenter" class="textImg"
-    ><v-img
-      :src="homePageElement.imgUrl"
-      :alt="homePageElement.altDescription"
-      height="100%"
-      width="100%"
-      contain
-    >
-      <v-sheet class="sheetImg">
-        <div class="text-center">
-          <h1>{{ homePageElement.title }}</h1>
+  <nuxt-link to="/yogacenter" class="textImg">
+    <div class="container">
+      <div class="sheet"></div>
+      <SvgImage class="svg-image" />
 
-          {{ homePageElement.description }}
+      <div
+        style="
+          display: flex;
+          width: 100%;
+          max-width: 1080px;
+          z-index: 1;
+          gap: 64px;
+          align-items: center;
+        "
+      >
+        <SvgTizia class="svg-tizia" />
+
+        <div
+          style="
+            width: 100%;
+            height: 100%;
+            background: none;
+            overflow: hidden;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 18px;
+            display: inline-flex;
+            flex: 1.5;
+          "
+        >
+          <div
+            style="
+              align-self: stretch;
+              color: black;
+              font-size: 50px;
+              font-family: Inter;
+              font-weight: 400;
+              word-wrap: break-word;
+            "
+          >
+            YOGA CENTER
+          </div>
+          <div
+            style="
+              align-self: stretch;
+              text-align: right;
+              color: black;
+              font-size: 60px;
+              font-family: Inter;
+              font-weight: 700;
+              word-wrap: break-word;
+            "
+          >
+            {{ homePageElement.title }}
+          </div>
+          <div
+            style="
+              align-self: stretch;
+              height: 216px;
+              color: black;
+              font-size: 30px;
+              font-family: Inter;
+              font-weight: 400;
+              word-wrap: break-word;
+            "
+          >
+            {{ homePageElement.description }}
+          </div>
         </div>
-      </v-sheet>
-    </v-img></nuxt-link
-  >
+      </div>
+    </div>
+  </nuxt-link>
 </template>
 
 <style scoped>
-.row {
-  display: flex;
-}
-
-.leftElement {
-  flex: 50%;
-  text-align: right;
-}
-
-.rightElement {
-  flex: 50%;
-  text-align: left;
-}
-
-.writtenContent {
-  padding: 10px;
-}
-
-.contentTitle {
-  font-size: 1.8em;
-  font-weight: bold;
-}
-
-.contentSubtitle {
-  font-size: 1.2em;
-  font-weight: 550;
-}
-
-img {
+.container {
   width: 100%;
-  object-fit: cover;
-  -webkit-mask-image: radial-gradient(
-    ellipse at center,
-    rgba(0, 0, 0, 1) 50%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  mask-image: radial-gradient(
-    ellipse at center,
-    rgba(0, 0, 0, 1) 50%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  -webkit-mask-size: cover;
-  mask-size: cover;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  border-radius: 15px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 300px;
 }
 
 .sheetImg {
@@ -92,5 +112,25 @@ img {
 .textImg {
   color: white;
   text-decoration: none;
+}
+.svg-image {
+  width: 100vw;
+  height: auto;
+  left: 0;
+  top: 300px;
+  position: absolute;
+}
+.sheet {
+  width: 100vw;
+  height: 300px;
+  left: 0;
+  top: 140px;
+  position: absolute;
+  background-color: #d9cfe7;
+}
+.svg-tizia {
+  width: 100%;
+  height: auto;
+  flex: 1;
 }
 </style>

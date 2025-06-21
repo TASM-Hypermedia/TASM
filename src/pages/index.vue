@@ -67,7 +67,7 @@ const benefits = [
           </v-row>
         </div>
       </div>
-      <ParallaxText txt="       HIGHLIGHTS       " :base-velocity="20" />
+
       <!--<AnimatedTitle title="Highlights" />-->
       <div height="400px" width="100%">
         <v-sheet class="mx-auto" elevation="0" max-width="1400px">
@@ -81,6 +81,23 @@ const benefits = [
                 class="ma-4 pa-4 d-flex fill-height justify-center align-center"
               >
                 <ActivityCard :activity-prop="item" />
+              </div>
+            </v-slide-group-item>
+          </v-slide-group>
+        </v-sheet>
+      </div>
+
+      <div height="400px" width="100%">
+        <v-sheet class="mx-auto" elevation="0" max-width="1400px">
+          <v-slide-group class="pa-4" selected-class="bg-success" show-arrows>
+            <v-slide-group-item
+              v-for="(item, index) in data?.highlights.highlightEvents || []"
+              :key="index"
+            >
+              <div
+                class="ma-4 pa-4 d-flex fill-height justify-center align-center"
+              >
+                <eventCard :event-prop="item" />
               </div>
             </v-slide-group-item>
           </v-slide-group>
@@ -104,37 +121,34 @@ const benefits = [
         initial="initial"
         while-in-view="animate"
       >
-        <!-- Usare transizione MATCH CUT per andare nello yoga center-->
-        <div>
-          <NuxtLink to="/yogacenter" class="cardYogaCenter">
-            <ContentCard
-              :content-card-prop="{
-                title: data?.yogaCenter.title || 'Yoga Center',
-                //subtitle: data?.yogaCenter.Mantra,
-                description: data?.yogaCenter.description,
-                imgUrl: '/images/center/yogaCenter.jpg',
-                altDescription: 'Yoga center image',
-                imageOnTheRight: false,
-              }"
-            ></ContentCard>
-          </NuxtLink>
-        </div>
-        <div>
-          <HomePageElement
-            :home-page-element="{
-              title: data?.yogaCenter.title || 'Yoga Center',
+        <!-- Usare transizione MATCH CUT per andare nello yoga center
 
-              description:
-                data?.yogaCenter.description ||
-                'Discover our Yoga Center, a serene space for relaxation and rejuvenation.',
-              imgUrl: '/images/center/yogaCenter.jpg',
-              altDescription: 'Yoga center image',
-            }"
-          ></HomePageElement>
-        </div>
+        <HomePageElement
+          :home-page-element="{
+            title: data?.yogaCenter.title || 'Yoga Center',
+
+            description:
+              data?.yogaCenter.description ||
+              'Discover our Yoga Center, a serene space for relaxation and rejuvenation.',
+            imgUrl: '/images/center/yogaCenter.jpg',
+            altDescription: 'Yoga center image',
+          }"
+        ></HomePageElement>-->
       </motion.div>
     </PageWrap>
 
+    <HomePageElement
+      :home-page-element="{
+        title: data?.yogaCenter.title || 'Yoga Center',
+
+        description:
+          data?.yogaCenter.description ||
+          'Discover our Yoga Center, a serene space for relaxation and rejuvenation.',
+        imgUrl: '/images/center/yogaCenter.jpg',
+        altDescription: 'Yoga center image',
+      }"
+    ></HomePageElement>
+    <ParallaxText txt="       HIGHLIGHTS       " :base-velocity="20" />
     <div class="slideSection">
       <HomePage3Slides></HomePage3Slides>
     </div>
