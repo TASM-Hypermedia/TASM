@@ -48,9 +48,29 @@ const benefits = [
 <template>
   <div>
     <PageWrap title="Namaste" img-src="HomePage 1.jpeg">
-      <AnimatedTitle title="Namaste" />
+      <div class="benefitsSection">
+        <AnimatedTitle title="BENEFITS" />
+
+        <div class="cardBenefits">
+          <v-row no-gutters>
+            <v-col
+              v-for="i in benefits.length || 0"
+              :key="i"
+              class="pa-3"
+              cols="12"
+              sm="12"
+              md="6"
+              lg="3"
+            >
+              <BenefitsContentCard :benefits-prop="benefits[i - 1]" />
+            </v-col>
+          </v-row>
+        </div>
+      </div>
+      <ParallaxText txt="       HIGHLIGHTS       " :base-velocity="20" />
+      <!--<AnimatedTitle title="Highlights" />-->
       <div height="400px" width="100%">
-        <v-sheet class="mx-auto" elevation="0" max-width="1080px">
+        <v-sheet class="mx-auto" elevation="0" max-width="1400px">
           <v-slide-group class="pa-4" selected-class="bg-success" show-arrows>
             <v-slide-group-item
               v-for="(item, index) in data?.highlights.highlightActivities ||
@@ -65,36 +85,6 @@ const benefits = [
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
-      </div>
-
-      <div height="400px" width="100%">
-        <v-sheet class="mx-auto" elevation="0" max-width="1080px">
-          <v-slide-group class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item
-              v-for="(item, index) in data?.highlights.highlightEvents || []"
-              :key="index"
-            >
-              <div
-                class="ma-4 pa-4 d-flex fill-height justify-center align-center"
-              >
-                <EventCard :event-prop="item" />
-              </div>
-            </v-slide-group-item>
-          </v-slide-group>
-        </v-sheet>
-      </div>
-
-      <div height="400px" width="100%">
-        <v-carousel :autoplay="true" :interval="5000">
-          <v-carousel-item
-            v-for="(item, index) in data?.highlights.highlightEvents || []"
-            :key="index"
-          >
-            <div class="d-flex fill-height justify-center align-center">
-              <EventCard :event-prop="item" />
-            </div>
-          </v-carousel-item>
-        </v-carousel>
       </div>
 
       <motion.div
@@ -115,77 +105,37 @@ const benefits = [
         while-in-view="animate"
       >
         <!-- Usare transizione MATCH CUT per andare nello yoga center-->
-        <NuxtLink to="/teachers" class="cardYogaCenter">
-          <ContentCard
-            :content-card-prop="{
+        <div>
+          <NuxtLink to="/yogacenter" class="cardYogaCenter">
+            <ContentCard
+              :content-card-prop="{
+                title: data?.yogaCenter.title || 'Yoga Center',
+                //subtitle: data?.yogaCenter.Mantra,
+                description: data?.yogaCenter.description,
+                imgUrl: '/images/center/yogaCenter.jpg',
+                altDescription: 'Yoga center image',
+                imageOnTheRight: false,
+              }"
+            ></ContentCard>
+          </NuxtLink>
+        </div>
+        <div>
+          <HomePageElement
+            :home-page-element="{
               title: data?.yogaCenter.title || 'Yoga Center',
-              //subtitle: data?.yogaCenter.Mantra,
-              description: data?.yogaCenter.description,
+
+              description:
+                data?.yogaCenter.description ||
+                'Discover our Yoga Center, a serene space for relaxation and rejuvenation.',
               imgUrl: '/images/center/yogaCenter.jpg',
               altDescription: 'Yoga center image',
-              imageOnTheRight: false,
             }"
-          ></ContentCard>
-        </NuxtLink>
+          ></HomePageElement>
+        </div>
       </motion.div>
-
-      <NuxtLink to="/teachers" class="cardYogaCenter">
-        <HomePageElement
-          :content-card-prop="{
-            title: data?.yogaCenter.title || 'Yoga Center',
-            subtitle: data?.yogaCenter.subtitle || 'Namaste',
-            description: data?.yogaCenter.description,
-            imgUrl: '/images/center/yogaCenter.jpg',
-            altDescription: 'Yoga center image',
-            imageOnTheRight: false,
-          }"
-        />
-      </NuxtLink>
-
-      <h2 class="titleSubsection">OUR TEACHERS</h2>
-
-      <card-grid :length="data?.teachers.length || 0">
-        <template #card="{ index }">
-          <teacher-card :teacher-prop="data?.teachers[index]!" />
-        </template>
-      </card-grid>
-
-      <h2 class="titleSubsection">OUR EVENTS</h2>
-
-      <card-grid :length="data?.events.length || 0">
-        <template #card="{ index }">
-          <event-card :event-prop="data?.events[index]!" />
-        </template>
-      </card-grid>
-
-      <h2 class="titleSubsection">OUR ACTIVITIES</h2>
-      <card-grid :length="data?.activities.length || 0">
-        <template #card="{ index }">
-          <activity-card :activity-prop="data?.activities[index]!" />
-        </template>
-      </card-grid>
     </PageWrap>
-    <div class="benefitsSection">
-      <AnimatedTitle title="BENEFITS" />
 
-      <div class="cardBenefits">
-        <v-row no-gutters>
-          <v-col
-            v-for="i in benefits.length || 0"
-            :key="i"
-            class="pa-3"
-            cols="12"
-            sm="12"
-            md="6"
-            lg="3"
-          >
-            <BenefitsContentCard :benefits-prop="benefits[i - 1]" />
-          </v-col>
-        </v-row>
-      </div>
-    </div>
-
-    <div style="width: 100%; height: 100%; background-color: #f0f0f0">
+    <div class="slideSection">
       <HomePage3Slides></HomePage3Slides>
     </div>
   </div>
@@ -197,12 +147,12 @@ const benefits = [
   height: 100%;
   padding: 11px;
   background: rgb(255, 255, 255);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  /*box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);*/
   overflow: hidden;
   border-radius: 15px;
   cursor: pointer;
-  outline: 1px rgba(0, 0, 0, 0.17) solid;
-  outline-offset: -1px;
+  /*outline: 1px rgba(0, 0, 0, 0.17) solid;
+  outline-offset: -1px;*/
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -213,5 +163,17 @@ const benefits = [
 }
 .benefitsSection {
   background-color: #a2d2ff;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  border-top-left-radius: 250px;
+  border-top-right-radius: 250px;
+}
+.slideSection {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  padding: 5%;
 }
 </style>

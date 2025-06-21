@@ -1,42 +1,32 @@
 <script setup lang="ts">
-import type { ContentCard } from "~/types"
-
-const { contentCardProp } = defineProps<{
-  contentCardProp: ContentCard
+const { homePageElement } = defineProps<{
+  homePageElement: {
+    imgUrl: string
+    altDescription: string
+    title: string
+    description: string
+  }
 }>()
 </script>
 
 <template>
-  <div v-if="contentCardProp.imageOnTheRight">
-    <div class="row">
-      <div class="leftElement writtenContent">
-        <p class="contentTitle">{{ contentCardProp.title }}</p>
-        <p class="contentSubtitle">{{ contentCardProp.subtitle }}</p>
-        <p>{{ contentCardProp.description }}</p>
-      </div>
-      <div class="rightElement">
-        <img
-          :src="contentCardProp.imgUrl"
-          :alt="contentCardProp.altDescription"
-        />
-      </div>
-    </div>
-  </div>
-  <div v-else>
-    <div class="row">
-      <div class="leftElement">
-        <img
-          :src="contentCardProp.imgUrl"
-          :alt="contentCardProp.altDescription"
-        />
-      </div>
-      <div class="rightElement writtenContent">
-        <p class="contentTitle">{{ contentCardProp.title }}</p>
-        <p class="contentSubtitle">{{ contentCardProp.subtitle }}</p>
-        <p>{{ contentCardProp.description }}</p>
-      </div>
-    </div>
-  </div>
+  <nuxt-link to="/yogacenter" class="textImg"
+    ><v-img
+      :src="homePageElement.imgUrl"
+      :alt="homePageElement.altDescription"
+      height="100%"
+      width="100%"
+      contain
+    >
+      <v-sheet class="sheetImg">
+        <div class="text-center">
+          <h1>{{ homePageElement.title }}</h1>
+
+          {{ homePageElement.description }}
+        </div>
+      </v-sheet>
+    </v-img></nuxt-link
+  >
 </template>
 
 <style scoped>
@@ -88,5 +78,19 @@ img {
   -webkit-mask-position: center;
   mask-position: center;
   border-radius: 15px;
+}
+
+.sheetImg {
+  width: 50%;
+  height: 100%;
+  background-color: rgba(92, 91, 91, 0.388);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.textImg {
+  color: white;
+  text-decoration: none;
 }
 </style>

@@ -33,6 +33,7 @@ if (!data.value || data.value.length === 0) {
   throw new Error("No data found")
 }
 
+console.log("Teachers data:", data.value)
 const teachersList: Teacher[] = data.value.map((teacher) => {
   return {
     teacherId: teacher.TeacherId,
