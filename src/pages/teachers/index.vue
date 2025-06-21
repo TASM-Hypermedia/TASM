@@ -6,6 +6,7 @@ const res = await useAPI<{
   name: string,
   image: string,
   mantra: string,
+  url: string,
   activityTags: Array<{ text: string }>,
 }[]>("/getAllTeachers")
 

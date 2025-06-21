@@ -1,63 +1,109 @@
+<script setup lang="ts">
+import { useRoute } from "vue-router"
+import { useAPI } from "~/composables/useAPI"
+
+const route = useRoute()
+const TeacherName = route.params.teacher
+
+const data = await useAPI<{
+  name: string
+  mantra: string
+  description: string
+  history: string
+  bannerImageURL: string
+  mainImageURL: string
+  certifications: Array<{
+    title: string
+  }>
+  activities: Array<{
+    title: string
+    bannerImageURL: string
+  }>
+  images: Array<{
+    URL: string
+    alt: string
+  }>
+  events: Array<{
+    name: string
+    shortIntroduction: string
+    date: string
+    startTime: string
+    endTime: string
+    location: string
+    guests: Array<{
+      name: string
+      mainImageURL: string
+    }>
+    bannerImageURL: string
+  }>
+}>("/postTeacher", {
+  method: "POST",
+  body: JSON.stringify({ TeacherName }),
+})
+
+if (data.error.value || !data.data.value)
+  throw createError({
+    fatal: true,
+    ...(data.error.value ?? {
+      statusCode: 404,
+    }),
+  })
+
+const teacher = data.data.value
+
+console.log(teacher.certifications)
+</script>
+
 <template>
   <PageWrap
-    :title="teacher.Name"
-    :subtitle="teacher.Mantra"
+    :title="teacher.name"
+    :subtitle="teacher.mantra"
     tagline="The Teachers:"
-    :img-src="teacher.BannerImageURL"
+    :img-src="teacher.bannerImageURL"
   >
-    <!-- QUI CI ANDRA' CONTENT CARD -->
     <ContentCard
       :content-card-prop="{
-        title: teacher.Name,
-        //subtitle: teacher.Mantra,
-        description: teacher.Description,
-        imgUrl: '/images/' + teacher.MainImageURL,
+        title: teacher.name,
+        description: teacher.description,
+        imgUrl: teacher.mainImageURL,
         altDescription: 'Teacher Image',
         imageOnTheRight: true,
       }"
     ></ContentCard>
 
     <!-- ACTIVITIES WITH ME - CONTENT PREVIEW-->
-    <div v-if="teacher.TeacherActivity.length > 0" class="divWithMe">
+    <div v-if="teacher.activities.length > 0" class="divWithMe">
       <h3>ACTIVITIES WITH ME</h3>
-      <card-grid :length="teacher.TeacherActivity.length">
+      <card-grid :length="teacher.activities.length">
         <template #card="{ index }">
           <ActivityCard
             :activity-prop="{
-              title: teacher.TeacherActivity[index].Activity.Title,
-              image:
-                '/images/' +
-                teacher.TeacherActivity[index].Activity.BannerImageURL,
+              title: teacher.activities[index].title,
+              image: teacher.activities[index].bannerImageURL,
             }"
           >
           </ActivityCard>
         </template>
       </card-grid>
     </div>
-    <!-- EVENTS WITH ME -->
 
-    <div v-if="teacher.TeacherEvent.length > 0" class="divWithMe">
+    <!-- EVENTS WITH ME -->
+    <div v-if="teacher.events.length > 0" class="divWithMe">
       <h3>EVENTS WITH ME</h3>
-      <card-grid :length="teacher.TeacherEvent.length">
+      <card-grid :length="teacher.events.length">
         <template #card="{ index }">
           <EventCard
             :event-prop="{
-              date: teacher.TeacherEvent[index].Event.Date,
-              title: teacher.TeacherEvent[index].Event.Name,
-              endTime: teacher.TeacherEvent[index].Event.EndTime,
-              eventId: teacher.TeacherEvent[index].Event.EventId,
-              location: teacher.TeacherEvent[index].Event.Location,
-              startTime: teacher.TeacherEvent[index].Event.StartTime,
-              eventImage:
-                '/images/' + teacher.TeacherEvent[index].Event.BannerImageURL,
-              hostImage:
-                '/images/' +
-                teacher.TeacherEvent[index].Event.GuestEvent[0].Guest
-                  .MainImageURL,
-              hostName:
-                teacher.TeacherEvent[index].Event.GuestEvent[0].Guest.Name,
-              activityTags: teacher.TeacherActivity.map((ta) => ({
-                text: ta.Activity.Title,
+              date: teacher.events[index].date,
+              title: teacher.events[index].name,
+              endTime: teacher.events[index].endTime,
+              location: teacher.events[index].location,
+              startTime: teacher.events[index].startTime,
+              eventImage: teacher.events[index].bannerImageURL,
+              hostImage: teacher.events[index].guests[0].mainImageURL,
+              hostName: teacher.events[index].guests[0].name,
+              activityTags: teacher.activities.map((ta) => ({
+                text: ta.title,
               })),
             }"
           >
@@ -65,20 +111,19 @@
         </template>
       </card-grid>
     </div>
-    <!-- IL MIO PERCORSO -->
 
+    <!-- IL MIO PERCORSO -->
     <div class="myJourney">
       <h3>My history:</h3>
-      <p>{{ teacher.History }}</p>
+      <p>{{ teacher.history }}</p>
     </div>
 
     <!-- SPECIALIZZAZIONI & CERTIFICAZIONI -->
-
     <div class="SpecCert"></div>
-    <p><b>Specializations: </b> {{ txtSpecialization }}</p>
-    <p><b>Certifications: </b> {{ txtCertification }}</p>
-    <!-- CAROSELLO -->
+    <p><b>Specializations: </b> {{ teacher.activities.map((a) => a.title).join(",") }}</p>
+    <p><b>Certifications: </b> {{ teacher.certifications.join(",") }}</p>
 
+    <!-- CAROSELLO -->
     <!--<SlideCarousel
       :images="teacher.TeacherImages.map((img) => img.Image)"
       :width="1000"
@@ -88,82 +133,6 @@
   </PageWrap>
 </template>
 
-<script setup lang="ts">
-import { useRoute } from "vue-router"
-import { useAPI } from "~/composables/useAPI"
-
-const route = useRoute()
-const teacherName = route.params.teacher
-
-const { data, error } = await useAPI<
-  {
-    TeacherId: number
-    Name: string
-    Mantra: string
-    Description: string
-    History: string
-    BannerImageURL: string
-    MainImageURL: string
-    TeacherCert: Array<{
-      Certification: { Title: string; CertificationId: number }
-    }>
-    TeacherActivity: Array<{
-      Activity: {
-        Title: string
-        ActivityId: number
-        BannerImageURL: string
-        Description: string
-      }
-    }>
-    TeacherImages: Array<{
-      Image: { URL: string }
-    }>
-    TeacherEvent: Array<{
-      Event: {
-        Date: string
-        Name: string
-        EndTime: string
-        EventId: number
-        Location: string
-        StartTime: string
-        GuestEvent: [
-          {
-            Guest: {
-              Name: string
-              MainImageURL: string
-            }
-          },
-        ]
-        BannerImageURL: string
-        ShortIntroduction: string
-      }
-    }>
-  }[]
->("/postTeacherInfo", {
-  method: "POST",
-  body: JSON.stringify({ TeacherName: teacherName }),
-})
-
-if (error.value || !data.value) {
-  console.error("Errore nel caricamento teacher:", error.value)
-  throw new Error("Teacher non trovato")
-}
-const teacher = data.value[0]
-
-const txtSpecialization = computed(() => {
-  return teacher.TeacherActivity.map(
-    (activity: { Activity: { Title: string } }) => activity.Activity.Title
-  ).join(", ")
-})
-
-console.log(teacher.TeacherActivity)
-
-const txtCertification = computed(() => {
-  return teacher.TeacherCert.map(
-    (c: { Certification: { Title: string } }) => c.Certification.Title
-  ).join(", ")
-})
-</script>
 <style scoped>
 .divWithMe {
   width: 100%;
