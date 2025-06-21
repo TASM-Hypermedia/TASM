@@ -21,7 +21,6 @@ const { data } = response
 <template>
   <PageWrap title="Namaste" img-src="HomePage 1.jpeg">
     <AnimatedCarousel
-      :width="1000"
       :images="[
         { URL: 'HomePage 1.jpeg' },
         { URL: 'HomePage.jpg' },

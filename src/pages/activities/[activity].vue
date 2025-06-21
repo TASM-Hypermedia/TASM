@@ -47,7 +47,7 @@ const setDifficulty = (n: number) => {
       </p>
     </section>
 
-    <!--SlideCarousel :width="1000" :images="activity.images" />-->
+    <AnimatedCarousel :images="activity.images" />
 
     <section class="pair">
       <div>

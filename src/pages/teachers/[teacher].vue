@@ -120,14 +120,14 @@ console.log(teacher.certifications)
 
     <!-- SPECIALIZZAZIONI & CERTIFICAZIONI -->
     <div class="SpecCert"></div>
-    <p><b>Specializations: </b> {{ teacher.activities.map((a) => a.title).join(",") }}</p>
+    <p>
+      <b>Specializations: </b>
+      {{ teacher.activities.map((a) => a.title).join(",") }}
+    </p>
     <p><b>Certifications: </b> {{ teacher.certifications.join(",") }}</p>
 
     <!-- CAROSELLO -->
-    <!--<SlideCarousel
-      :images="teacher.TeacherImages.map((img) => img.Image)"
-      :width="1000"
-    ></SlideCarousel>-->
+    <AnimatedCarousel :images="teacher.images" />
 
     <NuxtLink class="link-button" to="/teachers"> View all teachers </NuxtLink>
   </PageWrap>
