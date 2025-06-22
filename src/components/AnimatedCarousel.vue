@@ -261,6 +261,9 @@ onMounted(() => {
             />
             <span>{{ modalImage.alt ?? "Fullscreen Image" }}</span>
           </div>
+          <button class="close-button" @click="closeModal">
+            <v-icon icon="mdi-close" size="large" />
+          </button>
         </motion.div>
       </AnimatePresence>
     </ClientOnly>
@@ -281,6 +284,16 @@ onMounted(() => {
   align-items: center;
   z-index: 1000;
   cursor: pointer;
+
+  .close-button {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+  }
 
   .modal-content {
     position: relative;
