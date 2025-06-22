@@ -16,14 +16,20 @@ if (response.error.value || !response.data.value)
   })
 
 const { data } = response
-
-console.log(data.value)
-
-//const activity = response.data.value
 </script>
 
 <template>
   <PageWrap title="Namaste" img-src="HomePage 1.jpeg">
+    <AnimatedCarousel
+      :images="[
+        { URL: 'HomePage 1.jpeg' },
+        { URL: 'HomePage.jpg' },
+        { URL: 'HomePage 1.jpeg' },
+        { URL: 'HomePage.jpg' },
+        { URL: 'HomePage 1.jpeg' },
+        { URL: 'HomePage.jpg' },
+      ]"
+    />
     <NuxtLink to="/teachers" class="cardYogaCenter">
       <ContentCard
         :content-card-prop="{

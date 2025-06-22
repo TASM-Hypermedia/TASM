@@ -20,8 +20,8 @@ const theme = priceProp.darkMode ? 'dark-theme' : 'light-theme'
     </div>
     <div class="pricingItemList">
       <ul>
-        <li v-for="item in priceProp.pricingItems" :key="item.Item">
-          {{item.Item}}
+        <li v-for="item in priceProp.pricingItems" :key="item.item">
+          {{item.item}}
         </li>
       </ul>
     </div>
@@ -37,6 +37,10 @@ const theme = priceProp.darkMode ? 'dark-theme' : 'light-theme'
   margin: auto;
   width: 100%;
   text-align: center;
+
+  .mobile-layout & {
+    margin-bottom: 100px;
+  }
 }
 
 .pricingTitle {

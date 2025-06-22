@@ -3,17 +3,19 @@ export type Teacher = {
   name: string
   image: string
   mantra: string
+  url: string
   activityTags: Array<{ text: string }>
 }
 
 export type Activity = {
   title: string
   image: string
+  url: string
 }
 
 export type Event = {
   title: string
-  eventId: number
+  eventId?: number
   eventImage: string
   hostImage: string
   hostName: string
@@ -21,15 +23,18 @@ export type Event = {
   startTime: string
   endTime: string
   location: string
+  url: string
   activityTags: Array<{ text: string }>
 }
 
 export type Price = {
-  title: string,
-  subtitle?: string,
-  price: number,
-  pricingItems?: Array<{ Item: string }>,
-  darkMode: boolean,
+  title: string
+  subtitle: string
+  price: number
+  pricingItems: {
+    item: string
+  }[]
+  darkMode: boolean
 };
 
 export type Faq = {
@@ -46,6 +51,14 @@ export type YogaCenter = {
   imageOnTheRight: boolean
 }
 
+export type Room = {
+  name: string
+  text: string
+  urlImage: string
+  altDescription: string
+  imageOnTheRight: boolean
+}
+
 export type ContentCard = {
   title: string
   subtitle?: string
@@ -59,6 +72,7 @@ export type ContentCard = {
 export interface EventType {
   title: string
   subtitle?: string
+  url: string
   mainImageURL: string
   shortDesc: string
   description: string
@@ -77,6 +91,7 @@ export interface ActivityType {
   title: string
   mainImageURL: string
   description: string
+  url: string
   nextLessons: {
     date: string
     time: string

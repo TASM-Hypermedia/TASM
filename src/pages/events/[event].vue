@@ -4,11 +4,11 @@ import type { EventType } from "~/types"
 const route = useRoute()
 
 const a = route.params.event
-const EventName = typeof a === "string" ? a : a.join("")
+const EventURL = typeof a === "string" ? a : a.join("")
 
 const response = await useAPI<EventType>("/postEvent", {
   method: "POST",
-  body: JSON.stringify({ EventName }),
+  body: JSON.stringify({ EventURL }),
 })
 
 if (response.error.value || !response.data.value)
@@ -16,7 +16,7 @@ if (response.error.value || !response.data.value)
     fatal: true,
     ...(response.error.value ?? {
       statusCode: 404,
-      message: `${EventName} - Event not found`,
+      message: `${EventURL} - Event not found`,
     }),
   })
 
@@ -46,7 +46,7 @@ const programPoints: {
   >
     <section>
       <p class="shortDesc">
-        {{ event.shortDesc }}
+        "{{ event.shortDesc }}"
       </p>
       <p class="description">
         {{ event.description }}
@@ -97,13 +97,13 @@ const programPoints: {
         />
       </div>
     </section>
-    <section style="align-items: center; text-align: center">
-      <h2>Similar Events</h2>
+    <section class="events">
+      <!--<h2>Similar Events</h2>
       <div class="temp-grid">
-        <!-- <activity-card :activity-prop="eventsList[0]" />
+        <activity-card :activity-prop="eventsList[0]" />
         <activity-card :activity-prop="eventsList[1]" />
-        <activity-card :activity-prop="eventsList[2]" /> -->
-      </div>
+        <activity-card :activity-prop="eventsList[2]" />
+      </div>-->
       <NuxtLink class="link-button" to="/events"> View all events </NuxtLink>
     </section>
   </PageWrap>
@@ -128,6 +128,10 @@ section {
   font-size: 1.2em;
   text-align: center;
   margin: 48px 0;
+
+  .mobile-layout & {
+    margin-top: -15px;
+  }
 }
 
 .description {
@@ -157,6 +161,9 @@ section.pair {
     flex-direction: column;
     gap: 8px;
   }
+  .mobile-layout & {
+    flex-direction: column;
+  }
 }
 
 ul {
@@ -172,13 +179,19 @@ section.guest {
   flex-direction: column;
   align-items: center;
 
+  h1 {
+    .mobile-layout & {
+      margin-bottom: 20px;
+    }
+  }
+
   & > div {
     display: flex;
     align-items: center;
     gap: 64px;
     padding: 0 128px;
     img {
-      flex: 0 1 0px;
+      flex: 0 1 0;
       max-width: 200px;
       max-height: 300px;
       object-fit: cover;
@@ -190,6 +203,16 @@ section.guest {
       display: flex;
       flex-direction: column;
       gap: 8px;
+
+      .mobile-layout & {
+        width: 100%;
+        text-align: center;
+        margin-top: -40px;
+      }
+    }
+    .mobile-layout & {
+      flex-direction: column;
+      padding: 0;
     }
   }
 }
@@ -201,6 +224,15 @@ div.temp-grid {
   flex-direction: row;
   gap: 32px;
   justify-content: space-between;
+}
+
+.events {
+  align-items: center;
+  text-align: center;
+
+  .mobile-layout & {
+    margin-top: -50px;
+  }
 }
 
 .link-button {
@@ -216,6 +248,10 @@ div.temp-grid {
 
   .attend {
     filter: brightness(100);
+  }
+
+  .mobile-layout & {
+    margin-top: 50px;
   }
 }
 </style>
