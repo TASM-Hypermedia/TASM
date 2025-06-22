@@ -17,7 +17,7 @@ function active(thisRoute: string) {
     class="header-div"
     :style="{ backgroundColor: `rgba(240, 240, 240, ${opacity})` }"
   >
-    <NuxtLink to="/src/public" class="logo">
+    <NuxtLink to="/" class="logo">
       <img
         class="header-img"
         src="../../assets/images/headerIcon.svg"

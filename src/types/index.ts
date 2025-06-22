@@ -10,6 +10,7 @@ export type Teacher = {
 export type Activity = {
   title: string
   image: string
+  url: string
 }
 
 export type Event = {
@@ -22,6 +23,7 @@ export type Event = {
   startTime: string
   endTime: string
   location: string
+  url: string
   activityTags: Array<{ text: string }>
 }
 
@@ -70,6 +72,7 @@ export type ContentCard = {
 export interface EventType {
   title: string
   subtitle?: string
+  url: string
   mainImageURL: string
   shortDesc: string
   description: string
@@ -88,6 +91,7 @@ export interface ActivityType {
   title: string
   mainImageURL: string
   description: string
+  url: string
   nextLessons: {
     date: string
     time: string

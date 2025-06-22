@@ -4,11 +4,11 @@ import type { EventType } from "~/types"
 const route = useRoute()
 
 const a = route.params.event
-const EventName = typeof a === "string" ? a : a.join("")
+const EventURL = typeof a === "string" ? a : a.join("")
 
 const response = await useAPI<EventType>("/postEvent", {
   method: "POST",
-  body: JSON.stringify({ EventName }),
+  body: JSON.stringify({ EventURL }),
 })
 
 if (response.error.value || !response.data.value)
@@ -16,7 +16,7 @@ if (response.error.value || !response.data.value)
     fatal: true,
     ...(response.error.value ?? {
       statusCode: 404,
-      message: `${EventName} - Event not found`,
+      message: `${EventURL} - Event not found`,
     }),
   })
 
@@ -191,7 +191,7 @@ section.guest {
     gap: 64px;
     padding: 0 128px;
     img {
-      flex: 0 1 0px;
+      flex: 0 1 0;
       max-width: 200px;
       max-height: 300px;
       object-fit: cover;
