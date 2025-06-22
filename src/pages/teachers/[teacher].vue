@@ -3,7 +3,7 @@ import { useRoute } from "vue-router"
 import { useAPI } from "~/composables/useAPI"
 
 const route = useRoute()
-const TeacherName = route.params.teacher
+const TeacherURL = route.params.teacher
 
 const data = await useAPI<{
   name: string
@@ -18,6 +18,7 @@ const data = await useAPI<{
   activities: Array<{
     title: string
     bannerImageURL: string
+    url: string
   }>
   images: Array<{
     URL: string
@@ -30,6 +31,7 @@ const data = await useAPI<{
     startTime: string
     endTime: string
     location: string
+    url: string
     guests: Array<{
       name: string
       mainImageURL: string
@@ -38,7 +40,7 @@ const data = await useAPI<{
   }>
 }>("/postTeacher", {
   method: "POST",
-  body: JSON.stringify({ TeacherName }),
+  body: JSON.stringify({ TeacherURL }),
 })
 
 if (data.error.value || !data.data.value)
@@ -80,6 +82,7 @@ console.log(teacher.certifications)
             :activity-prop="{
               title: teacher.activities[index].title,
               image: teacher.activities[index].bannerImageURL,
+              url: teacher.activities[index].url,
             }"
           >
           </ActivityCard>
@@ -98,6 +101,7 @@ console.log(teacher.certifications)
               title: teacher.events[index].name,
               endTime: teacher.events[index].endTime,
               location: teacher.events[index].location,
+              url: teacher.events[index].url,
               startTime: teacher.events[index].startTime,
               eventImage: teacher.events[index].bannerImageURL,
               hostImage: teacher.events[index].guests[0].mainImageURL,
@@ -163,9 +167,6 @@ console.log(teacher.certifications)
       text-align: center;
     }
   }
-}
-
-.SpecCert {
 }
 
 .link-button {

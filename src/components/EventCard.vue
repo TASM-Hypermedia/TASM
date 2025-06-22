@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink :to="`/events/${eventProp.title}`" class="card" style="">
+    <NuxtLink :to="`/events/${eventProp.url}`" class="card" style="">
         <div class="top" style="">
             <div class="calendar" style="">
                 <div style="width: 87px; height: 25px; background: rgba(223.86, 84.16, 84.16, 0.83); overflow: hidden; border-bottom: 1px #B94646 solid">
@@ -58,42 +58,12 @@
 </template>
 
 <script setup lang="ts">
-    import { NuxtLink } from '#components';
+import { NuxtLink } from '#components';
 import type { Event } from '~/types';
-
-    // const actTags = [
-    //     { text: "Meditazione" },
-    //     { text: "Shower" },
-    //     { text: "Kebab" },
-    //     { text: "Kebab" },
-    //     { text: "Kebab" },
-    //     { text: "Kebab" },
-    //     { text: "Kebab" },
-    //     { text: "Meditazione" },
-    //     { text: "Meditazione" },
-    //     { text: "Meditazione" },
-    //     { text: "Yogashi" },
-    //     { text: "Senso Unico" },
-    // ];
     
-    // const eventProps: Event = {
-    //     title: "Prova di evento numero 1",
-    //     eventImage: "",
-    //     hostImage: "https://images.generated.photos/SjuKv9Sz8wkQuT4eeN_7FaoE09Wq8j6qd8LeTkcrjCA/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NzAzNTU3LmpwZw.jpg",
-    //     hostName: "Nirvana Guatamala",
-    //     date: "August 12, 4PM - 6PM",
-    //     startTime: "string",
-    //     endTime: "string",
-    //     location: "Sunset Blv, LA",
-    //     activityTags: [
-    //         { text: "Meditazione" },
-    //         { text: "Meditazione" },           
-    //     ],
-    // };
-    
-    defineProps<{
-        eventProp: Event,
-    }>();
+defineProps<{
+    eventProp: Event,
+}>();
 </script>
 
 <style scoped>
@@ -109,11 +79,8 @@ import type { Event } from '~/types';
         width: 100%;
         max-width: 361px; 
         text-decoration: none;
-        /* padding-left: 11px; 
-        padding-bottom: 11px; 
-        padding-right: 11px;  */
         background: white; 
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12); 
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.12);
         overflow: hidden; 
         border-radius: 15px; 
         outline: 1px rgba(0, 0, 0, 0.17) solid; 
@@ -155,7 +122,7 @@ import type { Event } from '~/types';
        height: 87px; 
        position: relative; 
        background: white; 
-       box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.25); 
+       box-shadow: 0 4px 5px 1px rgba(0, 0, 0, 0.25);
        overflow: hidden; 
        border-radius: 16px;
        display: flex;
@@ -170,7 +137,7 @@ import type { Event } from '~/types';
         height: 87px; 
         position: relative; 
         background: rgba(255, 255, 255, 0.60); 
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         overflow: hidden; 
         border-radius: 16px; 
         backdrop-filter: blur(2px);
@@ -190,23 +157,7 @@ import type { Event } from '~/types';
         font-weight: 500;
         line-height: 24px;
         word-wrap: break-word;
-        border: 0px solid black;
-
-        /* left: 25px; 
-        justify-content: center; 
-        width: 193px; 
-        top: 20px; 
-        position: absolute; 
-        text-align: center; 
-        align-items: center;
-        display: flex; 
-        flex-direction: column; 
-        color: black; 
-        font-size: 24px; 
-        font-family: Instrument Sans; 
-        font-weight: 500; 
-        line-height: 24px; 
-        word-wrap: break-word; */ 
+        border: 0 solid black;
     }
 
     .host_box {
@@ -214,7 +165,7 @@ import type { Event } from '~/types';
         overflow: hidden;
         display: flex;
         gap: 16px;
-        border: 0px solid black;
+        border: 0 solid black;
     }
 
     .host_image {
@@ -227,7 +178,7 @@ import type { Event } from '~/types';
 
     .info_box {
         height: 48px; 
-        border: solid black 0px ; 
+        border: solid black 0 ;
     }
 
     .tag_container{
@@ -237,7 +188,7 @@ import type { Event } from '~/types';
         flex-wrap: wrap; 
         gap: 10px; 
         justify-content: flex-start;
-        border: 0px solid black;
+        border: 0 solid black;
     }
 
 </style>

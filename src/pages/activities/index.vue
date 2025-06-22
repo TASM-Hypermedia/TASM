@@ -23,6 +23,7 @@ const res = await useAPI<
   {
     title: string
     image: string
+    url: string
   }[]
 >("/getAllActivities")
 

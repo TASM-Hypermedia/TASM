@@ -4,11 +4,13 @@ import type { Activity, ActivityType } from "~/types"
 const route = useRoute()
 
 const a = route.params.activity
-const ActivityTitle = typeof a === "string" ? a : a.join("")
+const ActivityURL = typeof a === "string" ? a : a.join("")
+
+console.log(ActivityURL)
 
 const response = await useAPI<ActivityType>("/postActivity", {
   method: "POST",
-  body: JSON.stringify({ ActivityTitle }),
+  body: JSON.stringify({ ActivityURL }),
 })
 
 if (response.error.value || !response.data.value)
@@ -17,7 +19,7 @@ if (response.error.value || !response.data.value)
     ...response.error.value,
     statusCode: 404,
     statusMessage: "Activity not found",
-    message: `"${ActivityTitle}" - We don't offer this attivity yet!`,
+    message: `"${ActivityURL}" - We don't offer this activity yet!`,
   })
 
 const activity = response.data.value
@@ -25,6 +27,7 @@ const activity = response.data.value
 const activityProp: Activity = {
   title: activity.title,
   image: `/images/${activity.mainImageURL}`,
+  url: activity.url,
 }
 
 const defaultDifficulty =
