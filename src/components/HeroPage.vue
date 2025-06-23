@@ -22,7 +22,7 @@ const props = defineProps<{
 
 const { scrollY } = useScroll()
 const y = useTransform(() => scrollY.get() / 3)
-const hero = useTransform(() => scrollY.get() / 2)
+const hero = useTransform(() => clamp(scrollY.get() / 2, 0, 100))
 const marginTop = useMotionTemplate`${hero}px`
 </script>
 

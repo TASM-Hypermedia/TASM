@@ -20,6 +20,16 @@ const { data } = response
 
 <template>
   <PageWrap title="Namaste" img-src="HomePage 1.jpeg">
+    <AnimatedCarousel
+      :images="[
+        { URL: 'HomePage 1.jpeg' },
+        { URL: 'HomePage.jpg' },
+        { URL: 'HomePage 1.jpeg' },
+        { URL: 'HomePage.jpg' },
+        { URL: 'HomePage 1.jpeg' },
+        { URL: 'HomePage.jpg' },
+      ]"
+    />
     <NuxtLink to="/teachers" class="cardYogaCenter">
       <ContentCard
         :content-card-prop="{

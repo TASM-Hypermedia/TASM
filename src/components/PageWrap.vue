@@ -64,6 +64,7 @@ main {
   justify-content: center;
   align-items: center;
   width: 100%;
+  max-width: 100vw;
   height: 100%;
   gap: 32px;
   margin-bottom: 32px;
@@ -81,7 +82,6 @@ main {
   margin: auto;
   width: 65vw;
   height: 75px;
-  background-color: white;
   user-select: none;
   font-size: 1em;
 

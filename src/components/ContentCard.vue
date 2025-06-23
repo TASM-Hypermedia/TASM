@@ -4,28 +4,38 @@ import type { ContentCard } from "~/types"
 const { contentCardProp } = defineProps<{
   contentCardProp: ContentCard
 }>()
-
 </script>
 
 <template>
-  <div v-if="contentCardProp.imageOnTheRight">
+  <div
+    v-if="contentCardProp.imageOnTheRight"
+    :class="`contentCard ${contentCardProp.imageOnTheRight ? 'reverse' : ''}`"
+  >
     <div class="row">
-      <div class="leftElement writtenContent">
+      <div class="writtenContent">
         <p class="contentTitle">{{ contentCardProp.title }}</p>
-        <p v-if="contentCardProp.subtitle" class="contentSubtitle">{{ contentCardProp.subtitle }}</p>
+        <p v-if="contentCardProp.subtitle" class="contentSubtitle">
+          {{ contentCardProp.subtitle }}
+        </p>
         <p>{{ contentCardProp.description }}</p>
       </div>
-      <div class="rightElement">
-        <img :src="contentCardProp.imgUrl" :alt="contentCardProp.altDescription" />
+      <div>
+        <img
+          :src="contentCardProp.imgUrl"
+          :alt="contentCardProp.altDescription"
+        />
       </div>
     </div>
   </div>
-  <div v-else>
+  <div v-else class="contentCard">
     <div class="row invertElementsOnMobile">
-      <div class="leftElement">
-        <img :src="contentCardProp.imgUrl" :alt="contentCardProp.altDescription" />
+      <div>
+        <img
+          :src="contentCardProp.imgUrl"
+          :alt="contentCardProp.altDescription"
+        />
       </div>
-      <div class="rightElement writtenContent">
+      <div class="writtenContent">
         <p class="contentTitle">{{ contentCardProp.title }}</p>
         <p class="contentSubtitle">{{ contentCardProp.subtitle }}</p>
         <p>{{ contentCardProp.description }}</p>
@@ -35,33 +45,44 @@ const { contentCardProp } = defineProps<{
 </template>
 
 <style scoped>
+.contentCard {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  width: 100%;
+  overflow: hidden;
+  margin: 0 16px;
+}
+
 .row {
   display: flex;
+  width: 100%;
   flex-direction: row;
+
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+
+  div {
+    flex: 1;
+    padding: 10px;
+  }
 
   .mobile-layout & {
     flex-direction: column;
+    &.reverse {
+      flex-direction: column-reverse;
+    }
   }
-}
-
-.invertElementsOnMobile {
-  .mobile-layout & {
-    flex-direction: column-reverse;
-  }
-}
-
-.leftElement {
-  flex: 50%;
-  text-align: right;
-}
-
-.rightElement {
-  flex: 50%;
-  text-align: left;
 }
 
 .writtenContent {
-  padding: 10px;
+  .reverse & {
+    text-align: left;
+  }
+  .mobile-layout & {
+    text-align: center;
+  }
 }
 
 .contentTitle {
@@ -77,6 +98,7 @@ const { contentCardProp } = defineProps<{
 img {
   width: 100%;
   height: 100%;
+  border-radius: 8px;
   object-fit: cover;
   overflow: hidden;
 }
