@@ -18,7 +18,7 @@ if (response.error.value || !response.data.value)
 
 const { data } = response
 
-const benefits = [
+/*const benefits = [
   {
     title: "CONNECTION",
     description:
@@ -42,33 +42,12 @@ const benefits = [
     description: "Release tension in the body and let go of limiting thoughts.",
     image: "Liberta.svg",
   },
-]
+]*/
 </script>
 
 <template>
   <div>
     <PageWrap title="Namaste" img-src="HomePage 1.jpeg">
-      <div class="benefitsSection">
-        <AnimatedTitle title="BENEFITS" />
-
-        <div class="cardBenefits">
-          <v-row no-gutters>
-            <v-col
-              v-for="i in benefits.length || 0"
-              :key="i"
-              class="pa-3"
-              cols="12"
-              sm="12"
-              md="6"
-              lg="3"
-            >
-              <BenefitsContentCard :benefits-prop="benefits[i - 1]" />
-            </v-col>
-          </v-row>
-        </div>
-      </div>
-
-      <!--<AnimatedTitle title="Highlights" />-->
       <div height="400px" width="100%">
         <v-sheet class="mx-auto" elevation="0" max-width="1400px">
           <v-slide-group class="pa-4" selected-class="bg-success" show-arrows>
@@ -121,19 +100,6 @@ const benefits = [
         initial="initial"
         while-in-view="animate"
       >
-        <!-- Usare transizione MATCH CUT per andare nello yoga center
-
-        <HomePageElement
-          :home-page-element="{
-            title: data?.yogaCenter.title || 'Yoga Center',
-
-            description:
-              data?.yogaCenter.description ||
-              'Discover our Yoga Center, a serene space for relaxation and rejuvenation.',
-            imgUrl: '/images/center/yogaCenter.jpg',
-            altDescription: 'Yoga center image',
-          }"
-        ></HomePageElement>-->
       </motion.div>
     </PageWrap>
 
@@ -148,10 +114,12 @@ const benefits = [
         altDescription: 'Yoga center image',
       }"
     ></HomePageElement>
-    <ParallaxText txt="       HIGHLIGHTS       " :base-velocity="20" />
+
     <div class="slideSection">
       <HomePage3Slides></HomePage3Slides>
     </div>
+
+    <BenefitsWrapper />
   </div>
 </template>
 
