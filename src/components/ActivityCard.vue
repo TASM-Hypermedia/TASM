@@ -5,14 +5,15 @@
       :style="{ backgroundImage: `url(${activityProp.image})` }"
     ></div>
     <div class="card-title">{{ activityProp.title }}</div>
+    <div v-if="activityProp.shortDescription !== null" class="card-description" >{{ activityProp.shortDescription }}</div>
   </NuxtLink>
 </template>
 
 <script setup lang="ts">
-import type { Activity } from "~/types"
+import type { ActivityCard } from "~/types"
 
 const { activityProp } = defineProps<{
-  activityProp: Activity
+  activityProp: ActivityCard
 }>()
 </script>
 

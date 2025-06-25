@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Activity, ActivityType } from "~/types"
+import type { ActivityCard, ActivityType } from "~/types"
 
 const route = useRoute()
 
@@ -24,10 +24,12 @@ if (response.error.value || !response.data.value)
 
 const activity = response.data.value
 
-const activityProp: Activity = {
+const activityProp: ActivityCard = {
   title: activity.title,
+  shortDescription: "",
   image: `/images/${activity.mainImageURL}`,
   url: activity.url,
+  yogaCategory: 0
 }
 
 const defaultDifficulty =

@@ -38,7 +38,7 @@ const { data } = response
           description: data?.yogaCenter.description,
           imgUrl: '/images/center/yogaCenter.jpg',
           altDescription: 'Yoga center image',
-          imageOnTheRight: false,
+          imageOnTheRight: false
         }"
       ></ContentCard>
     </NuxtLink>
@@ -61,9 +61,9 @@ const { data } = response
 
     <h2 class="titleSubsection">OUR ACTIVITIES</h2>
     <card-grid :length="data?.activities.length || 0">
-      <template #card="{ index }">
+      <!--<template #card="{ index }">
         <activity-card :activity-prop="data?.activities[index]!" />
-      </template>
+      </template>-->
     </card-grid>
   </PageWrap>
 </template>
@@ -74,7 +74,7 @@ const { data } = response
   height: 100%;
   padding: 11px;
   background: rgb(255, 255, 255);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   border-radius: 15px;
   cursor: pointer;

@@ -7,6 +7,15 @@ export type Teacher = {
   activityTags: Array<{ text: string }>
 }
 
+export type ActivityCard = {
+  title: string
+  shortDescription: string
+  image: string
+  url: string
+  yogaCategory: number
+}
+
+
 export type Activity = {
   title: string
   image: string

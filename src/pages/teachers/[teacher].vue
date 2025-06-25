@@ -69,7 +69,7 @@ console.log(teacher.certifications)
         description: teacher.description,
         imgUrl: teacher.mainImageURL,
         altDescription: 'Teacher Image',
-        imageOnTheRight: true,
+        imageOnTheRight: true
       }"
     ></ContentCard>
 
@@ -81,8 +81,10 @@ console.log(teacher.certifications)
           <ActivityCard
             :activity-prop="{
               title: teacher.activities[index].title,
+              shortDescription: '',
               image: teacher.activities[index].bannerImageURL,
               url: teacher.activities[index].url,
+              yogaCategory: 0
             }"
           >
           </ActivityCard>
@@ -107,8 +109,8 @@ console.log(teacher.certifications)
               hostImage: teacher.events[index].guests[0].mainImageURL,
               hostName: teacher.events[index].guests[0].name,
               activityTags: teacher.activities.map((ta) => ({
-                text: ta.title,
-              })),
+                text: ta.title
+              }))
             }"
           >
           </EventCard>
