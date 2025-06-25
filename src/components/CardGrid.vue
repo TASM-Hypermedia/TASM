@@ -1,31 +1,31 @@
 <template>
-    <v-container class="">
-        <v-row no-gutters>
-            <v-col
-                v-for=" i in length"
-                :key="i"
-                class="pa-3"
-                cols="12"
-                sm="12"
-                md="6"
-                lg="4"
-            >
-
-                <slot name="card" v-bind="{ index: i - 1 }">
-                </slot>
-                    
-            </v-col>
-        </v-row>
-    </v-container>
+  <div class="card-grid">
+    <div v-for="i in length" :key="i" class="card-grid__item">
+      <slot name="card" v-bind="{ index: i - 1 }"> </slot>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-    defineProps<{
-        length: number,
-    }>();
-
+defineProps<{
+  length: number
+}>()
 </script>
 
 <style scoped>
-    
+.card-grid {
+  width: 100%;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.card-grid__item {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: center;
+  align-items: stretch;
+}
 </style>

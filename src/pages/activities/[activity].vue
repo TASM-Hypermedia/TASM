@@ -115,27 +115,20 @@ const setDifficulty = (n: number) => {
 
     <section style="align-items: center; text-align: center">
       <h1>Teaching {{ activity.title }}</h1>
-      <div class="temp-grid">
-        <teacher-card :teacher-prop="activity.teachers[0]" />
-        <teacher-card
-          v-if="activity.teachers[1]"
-          :teacher-prop="activity.teachers[1]"
-        />
-        <teacher-card
-          v-if="activity.teachers[2]"
-          :teacher-prop="activity.teachers[2]"
-        />
-      </div>
+      <CardGrid :length="activity.teachers.length">
+        <template #card="{ index }">
+          <teacher-card :teacher-prop="activity.teachers[index]" />
+        </template>
+      </CardGrid>
     </section>
 
     <section style="align-items: center; text-align: center">
       <h2>Similar Activities</h2>
-      <div class="temp-grid">
-        <!-- TODO: similar activities -->
-        <activity-card :activity-prop="activityProp" />
-        <activity-card :activity-prop="activityProp" />
-        <activity-card :activity-prop="activityProp" />
-      </div>
+      <CardGrid :length="3">
+        <template #card="{}">
+          <activity-card :activity-prop="activityProp" />
+        </template>
+      </CardGrid>
       <NuxtLink class="link-button" to="/activities">
         View all activities
       </NuxtLink>
@@ -262,19 +255,6 @@ div.buttons {
       flex-direction: row;
       justify-content: space-between;
     }
-  }
-}
-
-div.temp-grid {
-  display: flex;
-  width: 100%;
-  padding: 24px 0;
-  flex-direction: row;
-  gap: 32px;
-  justify-content: space-between;
-
-  .mobile-layout & {
-    flex-direction: column;
   }
 }
 
