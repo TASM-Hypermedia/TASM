@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="`/teachers/${teacherProp.name}`" class="card">
+  <NuxtLink :to="`/teachers/${teacherProp.url}`" class="card">
     <img class="teacher_image" style="" :src="'/images/' + teacherProp.image" />
     <div class="teacher_name" style="">{{ teacherProp.name }}</div>
     <div class="mantra" style="">&ldquo;{{ teacherProp.mantra }}&rdquo;</div>
@@ -29,7 +29,7 @@ defineProps<{
   height: 100%;
   padding: 11px;
   background: rgb(255, 255, 255);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   border-radius: 15px;
   cursor: pointer;
@@ -42,6 +42,10 @@ defineProps<{
   display: inline-flex;
   color: rgb(0, 0, 0);
   text-decoration: none;
+
+  .mobile-layout & {
+    max-width: 1080px;
+  }
 }
 
 .teacher_image {
@@ -50,7 +54,7 @@ defineProps<{
   transform-origin: top left;
   object-fit: cover;
   background: #d9d9d9;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
   border-radius: 114px;
 }
 
@@ -77,7 +81,7 @@ defineProps<{
   display: flex;
   font-style: italic;
   flex-direction: column;
-  color: var(--Text-Default-Default, #1e1e1e);
+  color: #1e1e1e;
   font-size: 24px;
   font-family: Inter;
   font-weight: 600;

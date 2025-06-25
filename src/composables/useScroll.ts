@@ -1,7 +1,7 @@
 import { onBeforeUnmount, onMounted, ref } from "vue"
 import { withFramerate } from "~/utils"
 
-export function useScroll() {
+export function useCustomScroll() {
   const x = ref(0)
   const y = ref(0)
 

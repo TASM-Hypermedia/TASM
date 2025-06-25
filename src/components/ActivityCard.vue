@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="`/activities/${activityProp.title}`" class="card">
+  <NuxtLink :to="`/activities/${activityProp.url}`" class="card">
     <div
       class="card-image"
       :style="{ backgroundImage: `url(${activityProp.image})` }"
@@ -18,7 +18,7 @@ const { activityProp } = defineProps<{
 
 <style scoped>
 div {
-  border: 0px solid black;
+  border: 0 solid black;
 }
 
 .card {
@@ -39,7 +39,11 @@ div {
   align-items: flex-start;
   display: inline-flex;
   gap: 10px;
-  border: 0px solid black;
+  border: 0 solid black;
+
+  .mobile-layout & {
+    max-width: 1080px;
+  }
 }
 
 .card-image {
@@ -48,7 +52,7 @@ div {
   border-radius: 7px;
   align-self: stretch;
   background-size: cover;
-  border: 0px solid black;
+  border: 0 solid black;
   background-position: center; /* Centers the image both vertically and horizontally */
   background-repeat: no-repeat; /* Prevents the image from repeating */
   /*flex: none

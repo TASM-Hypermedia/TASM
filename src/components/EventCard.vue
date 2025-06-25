@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink :to="`/events/${eventProp.title}`" class="card" style="">
+    <NuxtLink :to="`/events/${eventProp.url}`" class="card" style="">
         <div class="top" style="">
             <div class="calendar" style="">
                 <div style="width: 87px; height: 25px; background: rgba(223.86, 84.16, 84.16, 0.83); overflow: hidden; border-bottom: 1px #B94646 solid">
@@ -85,11 +85,8 @@
         width: 100%;
         max-width: 361px; 
         text-decoration: none;
-        /* padding-left: 11px; 
-        padding-bottom: 11px; 
-        padding-right: 11px;  */
         background: white; 
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12); 
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.12);
         overflow: hidden; 
         border-radius: 15px; 
         outline: 1px rgba(0, 0, 0, 0.17) solid; 
@@ -98,6 +95,10 @@
         justify-content: flex-start; 
         align-items: center; 
         display: inline-flex;
+
+        .mobile-layout & {
+          max-width: 1080px;
+        }
     }
 
     .top {
@@ -127,7 +128,7 @@
        height: 87px; 
        position: relative; 
        background: white; 
-       box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.25); 
+       box-shadow: 0 4px 5px 1px rgba(0, 0, 0, 0.25);
        overflow: hidden; 
        border-radius: 16px;
        display: flex;
@@ -142,7 +143,7 @@
         height: 87px; 
         position: relative; 
         background: rgba(255, 255, 255, 0.60); 
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         overflow: hidden; 
         border-radius: 16px; 
         backdrop-filter: blur(2px);
@@ -170,7 +171,7 @@
         overflow: hidden;
         display: flex;
         gap: 16px;
-        border: 0px solid black;
+        border: 0 solid black;
     }
 
     .host_image {
@@ -183,7 +184,7 @@
 
     .info_box {
         height: 48px; 
-        border: solid black 0px ; 
+        border: solid black 0 ;
     }
 
     .tag_container{
@@ -193,7 +194,7 @@
         flex-wrap: wrap; 
         gap: 10px; 
         justify-content: flex-start;
-        border: 0px solid black;
+        border: 0 solid black;
     }
 
 </style>

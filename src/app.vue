@@ -1,24 +1,27 @@
 <script setup lang="ts">
-import { useNuxtApp } from "#app"
-const { $viewport } = useNuxtApp()
-
-watch($viewport.breakpoint, (newBreakpoint, oldBreakpoint) => {
-  console.log("Breakpoint updated:", oldBreakpoint, "->", newBreakpoint)
-})
+const viewport = useViewport()
+const layout = computed(() =>
+  viewport.isLessThan("tablet") ? "mobile" : "default"
+)
 </script>
 
 <template>
-  <v-app>
+  <div id="app-container">
     <LoadingIndicator />
-    <template v-if="$viewport.isLessThan('tablet')">
-      <NuxtLayout name="mobile"></NuxtLayout>
-    </template>
-
-    <template v-else>
-      <NuxtLayout name="default"></NuxtLayout>
-    </template>
-
-    <NuxtPage />
-    <AppFooter />
-  </v-app>
+    <NuxtLayout :name="layout">
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
 </template>
+
+<style scoped>
+#app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+</style>
