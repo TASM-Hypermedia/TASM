@@ -31,16 +31,4 @@ if (res.error.value) throw res.error.value
 const activitiesList = res.data.value
 </script>
 
-<style scoped>
-div {
-  background-color: #f0f0f0;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-
-  .mobile-layout & {
-    width: 90%;
-    flex-direction: column;
-  }
-}
-</style>
+<style scoped></style>
