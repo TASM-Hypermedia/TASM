@@ -11,7 +11,7 @@
         <div class="line" style=""></div>
         <div class="text_div" style="">
             <div class="text" style="">
-                Activities
+                {{ separatorTitle }}
             </div>
         </div>
     </div>
@@ -20,6 +20,10 @@
 </template>
 
 <script setup lang="ts">
+    
+    defineProps<{
+        separatorTitle: string,
+    }>();
 
 </script>
 
@@ -71,7 +75,8 @@
     .line {
         width: 100%; 
         height: 1px; 
-        
+        position: absolute;
+        top: 70px;
         outline: 1px #9DE43A solid; 
         outline-offset: -2.50px
     }
@@ -99,8 +104,5 @@
         font-weight: 400; 
         word-wrap: break-word
     }
-
-
-
 
 </style>

@@ -59,7 +59,7 @@ const { data } = response
       </template>
     </card-grid>
 
-    <ActivitySeparator/>
+    <SeparatorComponent :separator-title="'Events'"/>
 
     <h2 class="titleSubsection">OUR ACTIVITIES</h2>
     <card-grid :length="data?.activities.length || 0">
