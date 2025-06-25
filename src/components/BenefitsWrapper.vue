@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import SvgBottom from "~/assets/images/homepage/Bottom-wrapper-benefits.svg"
 import SvgTop from "~/assets/images/homepage/Top-wrapper-benefits.svg"
-
+import { onMounted } from "vue"
 const benefits = [
   {
     title: "CONNECTION",
@@ -27,13 +27,38 @@ const benefits = [
     image: "Liberta.svg",
   },
 ]
+onMounted(() => {
+  console.log(window.innerWidth)
+  clientWidth.value = window.innerWidth
+
+  window.addEventListener("resize", () => {
+    clientWidth.value = window.innerWidth
+  })
+})
+
+const clientWidth = ref(0)
+//window.innerWidth
+
+console.log(clientWidth)
+
+const ratioTop = 1200 / 178
+
+const ratioBottom = 1200 / 229
+
+const topHeight = computed(() => -clientWidth.value / ratioTop)
+const bottomHeight = computed(() => -clientWidth.value / ratioBottom)
+console.log(topHeight, bottomHeight)
 </script>
 
 <template>
   <div class="container">
     <div class="sheet"></div>
-    <SvgBottom class="svg-imageBottom" />
-    <SvgTop class="svg-imageTop" />
+    <SvgBottom
+      class="svg-imageBottom"
+      :style="{ bottom: bottomHeight + 'px' }"
+    />
+    <SvgTop class="svg-imageTop" :style="{ top: topHeight + 'px' }" />
+
     <div
       style="
         display: flex;
@@ -41,9 +66,8 @@ const benefits = [
         width: 100%;
         max-width: 1080px;
         z-index: 1;
-
         align-items: center;
-        top: 140px;
+        padding: 50px;
         position: relative;
       "
     >
@@ -57,9 +81,10 @@ const benefits = [
           <v-col
             v-for="i in benefits.length || 0"
             :key="i"
-            class="pa-3"
+            class="pa-1"
             cols="12"
-            sm="12"
+            xs="3"
+            sm="3"
             md="6"
             lg="3"
           >
@@ -81,27 +106,29 @@ const benefits = [
   align-items: center;
   position: relative;
   margin-bottom: 300px;
+  margin-top: 250px;
 }
 
 .svg-imageBottom {
   width: 100vw;
   height: auto;
   left: 0;
-  top: 550px;
+  /*bottom: 0;*/
   position: absolute;
 }
 .svg-imageTop {
   width: 100vw;
   height: auto;
   left: 0;
-  top: 0px;
+  /*top: 0px;*/
   position: absolute;
 }
 .sheet {
   width: 100vw;
-  height: 350px;
+  bottom: 0;
+  top: -10px;
   left: 0;
-  top: 200px;
+  /*top: 200px;*/
   position: absolute;
   background-color: #f0e2f9;
 }

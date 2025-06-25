@@ -48,7 +48,7 @@ const { data } = response
 <template>
   <div>
     <PageWrap title="Namaste" img-src="HomePage 1.jpeg">
-      <div height="400px" width="100%">
+      <!--<div height="400px" width="100%">
         <v-sheet class="mx-auto" elevation="0" max-width="1400px">
           <v-slide-group class="pa-4" selected-class="bg-success" show-arrows>
             <v-slide-group-item
@@ -81,7 +81,7 @@ const { data } = response
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
-      </div>
+      </div>-->
 
       <motion.div
         :style="{
