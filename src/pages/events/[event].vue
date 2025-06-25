@@ -214,6 +214,9 @@ section.guest {
       flex-direction: column;
       padding: 0;
     }
+    .mobile-layout & {
+      flex-direction: column;
+    }
   }
 }
 

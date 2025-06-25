@@ -25,6 +25,7 @@ div {
   cursor: pointer;
   width: 100%;
   max-width: 400px;
+  min-width: 300px;
   height: 275px;
   text-decoration: none;
   padding: 10px;
@@ -39,7 +40,7 @@ div {
   align-items: flex-start;
   display: inline-flex;
   gap: 10px;
-  border: 0 solid black;
+  border: 0px solid black;
 
   .mobile-layout & {
     max-width: 1080px;
