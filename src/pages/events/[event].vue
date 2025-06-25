@@ -45,9 +45,7 @@ const programPoints: {
     :subtitle="event.subtitle"
   >
     <section>
-      <p class="shortDesc">
-        "{{ event.shortDesc }}"
-      </p>
+      <p class="shortDesc">"{{ event.shortDesc }}"</p>
       <p class="description">
         {{ event.description }}
       </p>
@@ -89,13 +87,11 @@ const programPoints: {
     </section>
     <section style="align-items: center; text-align: center">
       <h1>Teachers in This Event</h1>
-      <div class="temp-grid">
-        <teacher-card
-          v-for="(teacher, i) in event.teachers.toSpliced(3)"
-          :key="`teacher${i}`"
-          :teacher-prop="teacher"
-        />
-      </div>
+      <CardGrid :length="event.teachers.length">
+        <template #card="{ index }">
+          <teacher-card :teacher-prop="event.teachers[index]" />
+        </template>
+      </CardGrid>
     </section>
     <section class="events">
       <!--<h2>Similar Events</h2>
@@ -215,15 +211,6 @@ section.guest {
       padding: 0;
     }
   }
-}
-
-div.temp-grid {
-  display: flex;
-  width: 100%;
-  padding: 24px 0;
-  flex-direction: row;
-  gap: 32px;
-  justify-content: space-between;
 }
 
 .events {

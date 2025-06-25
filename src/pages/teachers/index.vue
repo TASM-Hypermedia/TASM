@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { useAPI } from "~/composables/useAPI"
 
-const res = await useAPI<{
-  teacherId: number,
-  name: string,
-  image: string,
-  mantra: string,
-  url: string,
-  activityTags: Array<{ text: string }>,
-}[]>("/getAllTeachers")
+const res = await useAPI<
+  {
+    teacherId: number
+    name: string
+    image: string
+    mantra: string
+    url: string
+    activityTags: Array<{ text: string }>
+  }[]
+>("/getAllTeachers")
 
 if (res.error.value) throw res.error.value
 const teachersList = res.data.value
@@ -29,16 +31,4 @@ const teachersList = res.data.value
   </page-wrap>
 </template>
 
-<style scoped>
-div {
-  background-color: #a2a2a2;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-
-  .mobile-layout & {
-    width: 90%;
-    flex-direction: column;
-  }
-}
-</style>
+<style scoped></style>
