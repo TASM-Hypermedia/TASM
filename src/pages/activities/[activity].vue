@@ -123,8 +123,7 @@ const setDifficulty = (n: number) => {
     <section style="align-items: center; text-align: center">
       <h2>Similar Activities</h2>
       <CardGrid :length="3">
-        <!-- // eslint-disable-next-line vue/no-unused-vars -->
-        <template #card="{ index: _ }">
+        <template #card="{}">
           <activity-card :activity-prop="activityProp" />
         </template>
       </CardGrid>
