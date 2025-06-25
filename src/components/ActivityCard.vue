@@ -28,7 +28,7 @@ div {
   height: 275px;
   text-decoration: none;
   padding: 10px;
-  background: inherit;
+  background: rgb(147, 210, 158);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   border-radius: 15px;
@@ -61,7 +61,7 @@ div {
   justify-content: center;
   display: flex;
   flex-direction: column;
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 110%;
   font-family: Instrument Sans;
   font-weight: 400;
