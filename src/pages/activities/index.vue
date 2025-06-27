@@ -34,8 +34,10 @@ const activitiesListModern = resActivites.data.value!.filter((a) => a.yogaCatego
     img-src="/banners/activities-banner.jpg"
   >
     <section>
-      <h2>{{ categoriesList![0].title }}</h2>
-      <p>{{ categoriesList![0].description }}</p>
+      <div class="category">
+        <h1>{{ categoriesList![0].title }}</h1>
+        <p>{{ categoriesList![0].description }}</p>
+      </div>
       <template v-if="activitiesListTraditional.length > 0">
         <card-grid :length="activitiesListTraditional.length">
           <template #card="{ index }">
@@ -48,11 +50,11 @@ const activitiesListModern = resActivites.data.value!.filter((a) => a.yogaCatego
       </template>
     </section>
 
-    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-
     <section>
-      <h2>{{ categoriesList![1].title }}</h2>
-      <p>{{ categoriesList![1].description }}</p>
+      <div class="category">
+        <h1 id="dynamic">{{ categoriesList![1].title }}</h1>
+        <p>{{ categoriesList![1].description }}</p>
+      </div>
       <template v-if="activitiesListModern.length > 0">
         <card-grid :length="activitiesListModern.length">
           <template #card="{ index }">
@@ -75,7 +77,30 @@ div {
 
   .mobile-layout & {
     width: 90%;
+    margin: auto;
     flex-direction: column;
+  }
+}
+
+.category {
+  width: 80%;
+  display: block;
+  margin: auto;
+  text-align: center;
+
+  h1 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #7265b4;
+  }
+
+  #dynamic {
+    margin-top: 60px;
+  }
+
+  p {
+    margin-bottom: 20px;
+    justify-content: center;
   }
 }
 </style>

@@ -20,8 +20,9 @@
                 </div>
             </div>
         </div>
+
         <div class="bottom">
-            <div class="host_box" style="">
+            <div v-if="eventProp.hostName !== 'No Name'" class="host_box" style="">
                 <img class="host_image" :src="eventProp.hostImage" />
                 <div style="display: flex; gap: 6px; flex-direction: column; justify-content: start; width: 100%; color: black;">
                     <span style="color: black; font-size: 13px; font-family: Instrument Sans; font-weight: 700; line-height: 15px; word-wrap: break-word">HOST:</span>
@@ -68,11 +69,11 @@ defineProps<{
 
 <style scoped>
     div {
-        border: 0px solid black;
+        border: 0 solid black;
     }
 
     span {
-        border: 0px solid black;
+        border: 0 solid black;
     }   
 
     .card {
