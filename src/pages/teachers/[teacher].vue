@@ -81,8 +81,10 @@ console.log(teacher.certifications)
           <ActivityCard
             :activity-prop="{
               title: teacher.activities[index].title,
+              shortDescription: '',
               image: teacher.activities[index].bannerImageURL,
               url: teacher.activities[index].url,
+              yogaCategory: 0,
             }"
           >
           </ActivityCard>
@@ -127,13 +129,17 @@ console.log(teacher.certifications)
       <div class="column">
         <h4>Specializations:</h4>
         <div v-for="(item, index) in teacher.activities" :key="index">
-          <ul><li>{{ item.title }}</li></ul>
+          <ul>
+            <li>{{ item.title }}</li>
+          </ul>
         </div>
       </div>
       <div class="column">
         <h4>Certifications:</h4>
         <div v-for="(item, index) in teacher.certifications" :key="index">
-          <ul><li>{{ item }}</li></ul>
+          <ul>
+            <li>{{ item }}</li>
+          </ul>
         </div>
       </div>
     </div>
