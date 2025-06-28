@@ -38,7 +38,7 @@ const { data } = response
           description: data?.yogaCenter.description,
           imgUrl: '/images/center/yogaCenter.jpg',
           altDescription: 'Yoga center image',
-          imageOnTheRight: false
+          imageOnTheRight: false,
         }"
       ></ContentCard>
     </NuxtLink>

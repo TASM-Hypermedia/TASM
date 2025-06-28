@@ -7,14 +7,13 @@ export type Teacher = {
   activityTags: Array<{ text: string }>
 }
 
-export type ActivityCard = {
+export type ActivityCardProps = {
   title: string
   shortDescription: string
   image: string
   url: string
   yogaCategory: number
 }
-
 
 export type Activity = {
   title: string
@@ -44,7 +43,7 @@ export type Price = {
     item: string
   }[]
   darkMode: boolean
-};
+}
 
 export type Faq = {
   question: string
@@ -52,11 +51,11 @@ export type Faq = {
 }
 
 export type YogaCenter = {
-  title: string,
-  subtitle?: string,
-  description?: string,
-  imgUrl?: string,
-  altDescription?: string,
+  title: string
+  subtitle?: string
+  description?: string
+  imgUrl?: string
+  altDescription?: string
   imageOnTheRight: boolean
 }
 
@@ -118,9 +117,9 @@ export interface ActivityType {
   }[]
 }
 
-export type  ResponseData = {
-  yogaCenter: YogaCenter,
-  activities: Activity[],
-  events: Event[],
-  teachers: Teacher[],
+export type ResponseData = {
+  yogaCenter: YogaCenter
+  activities: Activity[]
+  events: Event[]
+  teachers: Teacher[]
 }
