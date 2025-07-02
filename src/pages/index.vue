@@ -120,6 +120,7 @@ const { data } = response
     </div>
     <SeparatorComponent :separator-title="'Events'" />
     <BenefitsWrapper />
+    <TrendingActivities/>
   </div>
 </template>
 
