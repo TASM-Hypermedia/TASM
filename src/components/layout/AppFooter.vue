@@ -12,12 +12,12 @@
       </div>
       <div>
         <h3>The School</h3>
-        <NuxtLink to="#">The Center</NuxtLink>
-        <NuxtLink to="#">Our Team</NuxtLink>
-        <NuxtLink to="#">Activities</NuxtLink>
-        <NuxtLink to="#">Events</NuxtLink>
-        <NuxtLink to="#">Pricing</NuxtLink>
-        <NuxtLink to="#">Contacts</NuxtLink>
+        <NuxtLink to="/yogacenter">The Center</NuxtLink>
+        <NuxtLink to="/teachers">Our Team</NuxtLink>
+        <NuxtLink to="/activities">Activities</NuxtLink>
+        <NuxtLink to="/events">Events</NuxtLink>
+        <NuxtLink to="/pricing">Pricing</NuxtLink>
+        <NuxtLink to="/contacts">Contacts</NuxtLink>
       </div>
       <div>
         <h3>Policies</h3>
@@ -45,6 +45,7 @@ footer {
   padding-bottom: 64px;
   font-size: 14px;
   box-shadow: 0 -1px 16px rgba(0, 0, 0, 0.1);
+  order: 1000;
 
   .footer-content {
     margin: auto;
@@ -52,7 +53,6 @@ footer {
     gap: 16px;
     justify-content: space-between;
     padding: 32px 128px;
-    justify-content: space-between;
 
     .mobile-layout & {
       padding: 16px;
