@@ -45,6 +45,7 @@ footer {
   padding-bottom: 64px;
   font-size: 14px;
   box-shadow: 0 -1px 16px rgba(0, 0, 0, 0.1);
+  order: 1000;
 
   .footer-content {
     margin: auto;
