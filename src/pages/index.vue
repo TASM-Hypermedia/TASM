@@ -16,7 +16,9 @@ if (response.error.value || !response.data.value)
     }),
   })
 
-const { data } = response
+const { data } = response;
+
+console.log(response);
 
 /*const benefits = [
   {
@@ -118,9 +120,10 @@ const { data } = response
     <div class="slideSection">
       <HomePage3Slides></HomePage3Slides>
     </div>
-    <SeparatorComponent :separator-title="'Events'" />
+    <!-- <SeparatorComponent :separator-title="'Events'" /> -->
     <BenefitsWrapper />
-    <TrendingActivities/>
+
+    <TrendingActivities :activities-prop="response.data.value?.highlights.highlightActivities"/>
   </div>
 </template>
 

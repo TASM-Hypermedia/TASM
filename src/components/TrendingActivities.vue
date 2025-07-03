@@ -5,37 +5,22 @@
     </div>
     
     <div class="activities">
-        <div class="card">
-			      <img class="card_image" src="/images/activities/yogaTherapy-banner.jpg"/>
-            <div class="card_title">
-                01 Yoga Therapy
-            </div>
+        
+        <div v-for="(trendingActivity, i) in activitiesProp" :key="i" :class="(i%2==0) ? 'reverse_card': 'normal_card'">
+            <img class="card_image" :src="trendingActivity.image"/>
+            <div class="card_title"> {{"0" + (i+1).toString() + " " + trendingActivity.title}} </div>
         </div>
-        <div class="card">
-            <div class="card_title">
-                02 Ayurveda Yoga
-            </div>
-			      <img class="card_image" src="/images/activities/ayurvedaYoga-banner.jpg"/>
-        </div>
-      <div class="card">
-        <img class="card_image" src="/images/activities/sensitYogaSomatics-banner.jpg"/>
-        <div class="card_title">
-            03 Sensit Yoga
-        </div>
-      </div>
-      <div class="card">
-          <div class="card_title">
-              04 Vinyasa Yoga
-          </div>
-          <img class="card_image" src="/images/activities/vinyasaYoga-banner.jpg"/>
-      </div>
         
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+  import type { Activity } from "~/types"
 
+  defineProps<{
+    activitiesProp?: Array<Activity>;
+  }>()
 
 </script>
 
@@ -70,24 +55,35 @@ div {
 
 .activities {
     width: 100%;
-    height: 475px;
     max-width: 1200px;
-    padding: 40px 50px;
-    align-content: center;
+    height: fit-content;
+    padding: 40px 2.5%;
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row;  */
+    justify-content: space-around;
+    align-items: center;
     gap: 1%;
     flex-wrap: wrap;
 }
 
-.card {
+.normal_card {
     width: 24.25%;
-    min-width: 250px;
-    height: 100%;
+    min-width: 260px;
+    height: 375px;
     padding: 20px;
-	display: flex;
-	flex-direction: column;
-	gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.reverse_card {
+    width: 24.25%;
+    min-width: 260px;
+    height: 375px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 15px;
 }
 
 .card_image {
@@ -103,69 +99,9 @@ div {
     text-align: center;
     color: black; 
     font-size: 24px;
-	font-weight: 600;
+	  font-weight: 600;
     font-family: Italiana;
 }
 
-/* 
-.media_div {
-  padding: 20px;
-}
 
-.ellipse {
-  width: 100px;
-  height: 100px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-  background: #0b4e0f;
-  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 9999px;
-}
-
-.flower_img {
-  width: 86px;
-  height: 51px;
-  left: 7px;
-  top: 22px;
-  position: absolute;
-}
-
-.graphics_div {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.line {
-  width: 100%;
-  height: 1px;
-  position: absolute;
-  top: 70px;
-  outline: 1px #9de43a solid;
-  outline-offset: -2.5px;
-}
-
-.text_div {
-  width: fit-content;
-  height: fit-content;
-  left: 225px;
-  top: 26px;
-  position: absolute;
-  background: white;
-  overflow: hidden;
-}
-
-.text {
-  width: fit-content;
-  height: fit-content;
-  color: #0b4e0f;
-  font-size: 48px;
-  font-family: Palanquin;
-  font-weight: 400;
-  word-wrap: break-word;
-} */
 </style>
