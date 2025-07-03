@@ -6,8 +6,6 @@ const route = useRoute()
 const a = route.params.activity
 const ActivityURL = typeof a === "string" ? a : a.join("")
 
-console.log(ActivityURL)
-
 const response = await useAPI<ActivityType>("/postActivity", {
   method: "POST",
   body: JSON.stringify({ ActivityURL }),
@@ -24,13 +22,13 @@ if (response.error.value || !response.data.value)
 
 const activity = response.data.value
 
-const activityProp: ActivityCard = {
+/*const activityProp: ActivityCard = {
   title: activity.title,
   shortDescription: "",
   image: `/images/${activity.mainImageURL}`,
   url: activity.url,
   yogaCategory: 0
-}
+}*/
 
 const defaultDifficulty =
   activity.info[0].length > 0 ? 0 : activity.info[1].length ? 1 : 2
@@ -39,6 +37,32 @@ const selectedDifficulty = ref(defaultDifficulty)
 const setDifficulty = (n: number) => {
   selectedDifficulty.value = n
 }
+
+
+const resActivities = await useAPI<
+  {
+    title: string
+    shortDescription: string
+    image: string
+    url: string
+    yogaCategory: number
+  }[]
+>("/getAllActivities")
+
+if (resActivities.error.value) throw resActivities.error.value
+let activitiesList = resActivities.data.value!
+  .filter((a) => a.yogaCategory === activity.yogaCategory)
+  .filter((a) => a.url !== activity.url)
+console.log(activitiesList)
+
+const similarActivities: typeof activitiesList = []
+
+for (let i = 0; i < 3; i++) {
+  const randomIndex = Math.floor(Math.random() * activitiesList.length)
+  similarActivities.push(activitiesList[randomIndex])
+  activitiesList = activitiesList.filter((a) => a.url !== similarActivities[i].url)
+}
+
 </script>
 <template>
   <PageWrap
@@ -124,11 +148,11 @@ const setDifficulty = (n: number) => {
 
     <section style="align-items: center; text-align: center">
       <h2>Similar Activities</h2>
-      <CardGrid :length="3">
-        <template #card="{}">
-          <activity-card :activity-prop="activityProp" />
+      <card-grid :length="similarActivities.length">
+        <template #card="{ index }">
+          <activity-card :activity-prop="similarActivities[index]" />
         </template>
-      </CardGrid>
+      </card-grid>
       <NuxtLink class="link-button" to="/activities">
         View all activities
       </NuxtLink>

@@ -15,8 +15,12 @@ const data = await useAPI<{
   certifications: Array<{
     title: string
   }>
+  specializations: Array<{
+    title: string
+  }>
   activities: Array<{
     title: string
+    shortDescription: string
     bannerImageURL: string
     url: string
   }>
@@ -81,7 +85,7 @@ console.log(teacher.certifications)
           <ActivityCard
             :activity-prop="{
               title: teacher.activities[index].title,
-              shortDescription: '',
+              shortDescription: teacher.activities[index].shortDescription,
               image: teacher.activities[index].bannerImageURL,
               url: teacher.activities[index].url,
               yogaCategory: 0
@@ -106,8 +110,8 @@ console.log(teacher.certifications)
               url: teacher.events[index].url,
               startTime: teacher.events[index].startTime,
               eventImage: teacher.events[index].bannerImageURL,
-              hostImage: teacher.events[index].guests[0].mainImageURL,
-              hostName: teacher.events[index].guests[0].name,
+              hostImage: teacher.events[index].guests[0]?.mainImageURL  ?? teacher.mainImageURL,
+              hostName: teacher.events[index].guests[0]?.name ?? teacher.name,
               activityTags: teacher.activities.map((ta) => ({
                 text: ta.title
               }))
@@ -128,7 +132,7 @@ console.log(teacher.certifications)
     <div class="specCert">
       <div class="column">
         <h4>Specializations:</h4>
-        <div v-for="(item, index) in teacher.activities" :key="index">
+        <div v-for="(item, index) in teacher.specializations" :key="index">
           <ul><li>{{ item.title }}</li></ul>
         </div>
       </div>
