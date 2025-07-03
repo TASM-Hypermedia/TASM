@@ -73,7 +73,7 @@ console.log(teacher.certifications)
         description: teacher.description,
         imgUrl: teacher.mainImageURL,
         altDescription: 'Teacher Image',
-        imageOnTheRight: true
+        imageOnTheRight: true,
       }"
     ></ContentCard>
 
@@ -88,7 +88,7 @@ console.log(teacher.certifications)
               shortDescription: teacher.activities[index].shortDescription,
               image: teacher.activities[index].bannerImageURL,
               url: teacher.activities[index].url,
-              yogaCategory: 0
+              yogaCategory: 0,
             }"
           >
           </ActivityCard>
@@ -113,8 +113,8 @@ console.log(teacher.certifications)
               hostImage: teacher.events[index].guests[0]?.mainImageURL  ?? teacher.mainImageURL,
               hostName: teacher.events[index].guests[0]?.name ?? teacher.name,
               activityTags: teacher.activities.map((ta) => ({
-                text: ta.title
-              }))
+                text: ta.title,
+              })),
             }"
           >
           </EventCard>
@@ -139,7 +139,9 @@ console.log(teacher.certifications)
       <div class="column">
         <h4>Certifications:</h4>
         <div v-for="(item, index) in teacher.certifications" :key="index">
-          <ul><li>{{ item }}</li></ul>
+          <ul>
+            <li>{{ item }}</li>
+          </ul>
         </div>
       </div>
     </div>
