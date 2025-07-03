@@ -22,8 +22,12 @@ const resActivities = await useAPI<
 >("/getAllActivities")
 
 if (resActivities.error.value) throw resActivities.error.value
-const activitiesListTraditional = resActivities.data.value!.filter((a) => a.yogaCategory === 1)
-const activitiesListModern = resActivities.data.value!.filter((a) => a.yogaCategory === 2)
+const activitiesListTraditional = resActivities.data.value!.filter(
+  (a) => a.yogaCategory === 1
+)
+const activitiesListModern = resActivities.data.value!.filter(
+  (a) => a.yogaCategory === 2
+)
 </script>
 
 <template>

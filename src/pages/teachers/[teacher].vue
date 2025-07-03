@@ -110,7 +110,9 @@ console.log(teacher.certifications)
               url: teacher.events[index].url,
               startTime: teacher.events[index].startTime,
               eventImage: teacher.events[index].bannerImageURL,
-              hostImage: teacher.events[index].guests[0]?.mainImageURL  ?? teacher.mainImageURL,
+              hostImage:
+                teacher.events[index].guests[0]?.mainImageURL ??
+                teacher.mainImageURL,
               hostName: teacher.events[index].guests[0]?.name ?? teacher.name,
               activityTags: teacher.activities.map((ta) => ({
                 text: ta.title,
@@ -133,7 +135,9 @@ console.log(teacher.certifications)
       <div class="column">
         <h4>Specializations:</h4>
         <div v-for="(item, index) in teacher.specializations" :key="index">
-          <ul><li>{{ item.title }}</li></ul>
+          <ul>
+            <li>{{ item.title }}</li>
+          </ul>
         </div>
       </div>
       <div class="column">
