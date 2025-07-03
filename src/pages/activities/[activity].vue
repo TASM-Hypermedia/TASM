@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ActivityCardProps, ActivityType } from "~/types"
+import type { ActivityType } from "~/types"
 
 const route = useRoute()
 
@@ -22,14 +22,6 @@ if (response.error.value || !response.data.value)
 
 const activity = response.data.value
 
-const activityProp: ActivityCardProps = {
-  title: activity.title,
-  shortDescription: "",
-  image: `/images/${activity.mainImageURL}`,
-  url: activity.url,
-  yogaCategory: 0,
-}
-
 const defaultDifficulty =
   activity.info[0].length > 0 ? 0 : activity.info[1].length ? 1 : 2
 
@@ -37,7 +29,6 @@ const selectedDifficulty = ref(defaultDifficulty)
 const setDifficulty = (n: number) => {
   selectedDifficulty.value = n
 }
-
 
 const resActivities = await useAPI<
   {
@@ -50,8 +41,8 @@ const resActivities = await useAPI<
 >("/getAllActivities")
 
 if (resActivities.error.value) throw resActivities.error.value
-let activitiesList = resActivities.data.value!
-  .filter((a) => a.yogaCategory === activity.yogaCategory)
+let activitiesList = resActivities.data
+  .value!.filter((a) => a.yogaCategory === activity.yogaCategory)
   .filter((a) => a.url !== activity.url)
 console.log(activitiesList)
 
@@ -60,9 +51,10 @@ const similarActivities: typeof activitiesList = []
 for (let i = 0; i < 3; i++) {
   const randomIndex = Math.floor(Math.random() * activitiesList.length)
   similarActivities.push(activitiesList[randomIndex])
-  activitiesList = activitiesList.filter((a) => a.url !== similarActivities[i].url)
+  activitiesList = activitiesList.filter(
+    (a) => a.url !== similarActivities[i].url
+  )
 }
-
 </script>
 <template>
   <PageWrap
