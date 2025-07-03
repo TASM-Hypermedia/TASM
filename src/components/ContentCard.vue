@@ -29,7 +29,7 @@ const { contentCardProp } = defineProps<{
   </div>
   <div v-else class="contentCard">
     <div class="row invertElementsOnMobile">
-      <div>
+      <div class="imageOnTheLeft">
         <img
           :src="contentCardProp.imgUrl"
           :alt="contentCardProp.altDescription"
@@ -56,8 +56,9 @@ const { contentCardProp } = defineProps<{
 
 .row {
   display: flex;
-  width: 100%;
+  width: 90%;
   flex-direction: row;
+  margin: auto;
 
   &.reverse {
     flex-direction: row-reverse;
@@ -78,7 +79,7 @@ const { contentCardProp } = defineProps<{
 
 .writtenContent {
   .reverse & {
-    text-align: left;
+    text-align: right;
   }
   .mobile-layout & {
     text-align: center;
@@ -95,11 +96,19 @@ const { contentCardProp } = defineProps<{
   font-weight: 550;
 }
 
+.imageOnTheLeft {
+  img {
+    float: right
+  }
+}
+
 img {
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  object-fit: cover;
-  overflow: hidden;
+  max-height: 300px;
+  max-width: 500px;
+  border-radius: 7px;
+  align-self: stretch;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 </style>
