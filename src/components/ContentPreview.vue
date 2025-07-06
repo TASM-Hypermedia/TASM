@@ -9,7 +9,7 @@
       data-variant="Stroke"
     >
       <v-col cols="12">
-        <img class="imgPreview" :src="url" />
+        <img class="imgPreview" :src="url" alt="" />
       </v-col>
       <v-col>
         <div class="firtsContainer">

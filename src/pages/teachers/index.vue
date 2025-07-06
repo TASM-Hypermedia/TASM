@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { useAPI } from "~/composables/useAPI"
 
+definePageMeta({
+  title: "Our Team",
+  description:
+    "Meet our dedicated instructors and learn about their unique approaches to yoga.",
+})
+
 const res = await useAPI<
   {
     teacherId: number

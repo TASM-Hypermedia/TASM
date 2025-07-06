@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import ActivityCard from "~/components/ActivityCard.vue"
 
+definePageMeta({
+  title: "Activities",
+  description: "Explore the various types of yoga we offer.",
+})
+
 const resCategories = await useAPI<
   {
     title: string
@@ -72,7 +77,7 @@ const activitiesListModern = resActivities.data.value!.filter(
   </page-wrap>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 div {
   width: 100%;
   display: flex;

@@ -19,7 +19,7 @@ const { activityProp } = defineProps<{
 }>()
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 div {
   border: 0 solid black;
 }
