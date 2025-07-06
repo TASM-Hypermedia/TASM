@@ -30,7 +30,11 @@ console.log(pricingList![0].pricingItems)
 </script>
 
 <template>
-  <PageWrap title="Pricing" img-src="./banners/pricing-banner.jpg">
+  <PageWrap
+    title="Pricing"
+    img-src="./banners/pricing-banner.jpg"
+    subtitle="Find the perfect plan for you"
+  >
     <section class="priceSection">
       <div v-for="(item, index) in pricingList" :key="index">
         <price-card :price-prop="item" />
@@ -46,7 +50,7 @@ console.log(pricingList![0].pricingItems)
   </PageWrap>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .priceSection {
   display: flex;
   flex-direction: row;
@@ -54,16 +58,6 @@ console.log(pricingList![0].pricingItems)
 
   div {
     width: 90%;
-
-    .priceCard {
-      .mobile-layout & {
-        margin-bottom: 10px;
-      }
-    }
-
-    .mobile-layout & {
-      margin: auto;
-    }
   }
 
   .mobile-layout & {
@@ -78,6 +72,7 @@ console.log(pricingList![0].pricingItems)
   h2 {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 2.5rem;
   }
 
   .mobile-layout & {

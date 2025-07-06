@@ -80,7 +80,7 @@ const roty = useSpring(useTransform(() => x.get() * 8))
           </li>
         </ul>
       </div>
-      <button class="pricingButton">Prenota</button>
+      <button class="pricingButton">Subscribe</button>
     </motion.div>
   </div>
 </template>
@@ -88,25 +88,29 @@ const roty = useSpring(useTransform(() => x.get() * 8))
 <style scoped lang="scss">
 .price-card-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: stretch;
+  align-items: stretch;
+  height: 100%;
 }
 
 .mostPopularBadgeContainer {
   padding: 5px 10px;
   border-radius: 10px;
+  font-size: 0.9rem;
 }
 
 .priceCard {
-  border: 1px solid black;
   border-radius: 20px;
   padding: 10px;
-  margin: auto;
   width: 100%;
   text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 
   .mobile-layout & {
-    margin-bottom: 100px;
+    margin-bottom: 32px;
   }
 }
 
@@ -130,7 +134,8 @@ const roty = useSpring(useTransform(() => x.get() * 8))
 
 .pricingItemList {
   text-align: left;
-  margin: auto;
+  margin: 0 auto;
+  margin-bottom: 12px;
   width: 80%;
 }
 
@@ -139,11 +144,12 @@ const roty = useSpring(useTransform(() => x.get() * 8))
   width: 100%;
   padding: 10px;
   border-radius: 10px;
+  margin-top: auto;
 }
 
 .dark-theme {
   background-color: #020202;
-  border: 1px solid white;
+  outline: 1px solid black;
   color: white;
 
   .pricingButton {
@@ -154,7 +160,7 @@ const roty = useSpring(useTransform(() => x.get() * 8))
 
 .light-theme {
   color: black;
-  border: 1px solid black;
+  outline: 1px solid black;
 
   .pricingButton {
     background-color: black;
