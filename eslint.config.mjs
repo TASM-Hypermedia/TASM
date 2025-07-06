@@ -14,4 +14,18 @@ a11yConfig.forEach((x) => {
   delete x.languageOptions.globals
 })
 
-export default withNuxt(prettier, ...a11yConfig)
+export default withNuxt(prettier, ...a11yConfig, {
+  rules: {
+    "no-unused-vars": [
+      "warn",
+      {
+        vars: "all",
+        args: "none",
+        ignoreRestSiblings: true,
+        caughtErrors: "none",
+      },
+    ],
+    "import/no-unused-modules": "warn",
+    "vuejs-accessibility/no-static-element-interactions": "off",
+  },
+})
