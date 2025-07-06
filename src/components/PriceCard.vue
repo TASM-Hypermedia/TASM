@@ -30,8 +30,6 @@ const y = useMotionValue(0)
 
 const rotx = useSpring(useTransform(() => -y.get() * 8))
 const roty = useSpring(useTransform(() => x.get() * 8))
-
-const transform = useMotionTemplate`perspective(1000px) rotateX(${rotx}deg) rotateY(${roty}deg)`
 </script>
 
 <template>
