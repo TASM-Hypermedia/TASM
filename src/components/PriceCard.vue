@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { motion } from "motion-v"
+import { easeOut, motion } from "motion-v"
 import type { Price } from "~/types"
 
 const { priceProp } = defineProps<{
@@ -41,7 +41,31 @@ const transform = useMotionTemplate`perspective(1000px) rotateX(${rotx}deg) rota
     @mousemove="handleMouse"
     @mouseleave="mouseLeave"
   >
-    <motion.div class="priceCard" :class="theme" :style="{ transform }">
+    <motion.div
+      :initial="{
+        filter: 'blur(32px)',
+        opacity: 0.5,
+        scale: 0.9,
+        y: -20,
+      }"
+      :animate="{
+        filter: 'blur(0px)',
+        opacity: 1,
+        scale: 1,
+        y: 0,
+      }"
+      class="priceCard"
+      :class="theme"
+      :style="{
+        transformPerspective: 1000,
+        rotateX: rotx,
+        rotateY: roty,
+      }"
+      :transition="{
+        duration: 0.5,
+        ease: easeOut,
+      }"
+    >
       <div v-if="!priceProp.darkMode" class="mostPopularBadgeContainer">
         <span class="mostPopularBadge">⭐️ Most Popular</span>
       </div>
