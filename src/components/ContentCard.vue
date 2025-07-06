@@ -44,7 +44,7 @@ const { contentCardProp } = defineProps<{
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .contentCard {
   display: flex;
   justify-content: stretch;
@@ -98,7 +98,7 @@ const { contentCardProp } = defineProps<{
 
 .imageOnTheLeft {
   img {
-    float: right
+    float: right;
   }
 }
 

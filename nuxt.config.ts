@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     "vuetify-nuxt-module",
     "nuxt-viewport",
     "motion-v/nuxt",
+    "@nuxtjs/seo",
   ],
   vuetify: {
     moduleOptions: {},
@@ -61,5 +62,14 @@ export default defineNuxtConfig({
     fallbackBreakpoint: "desktop",
 
     feature: "minWidth",
+  },
+  sitemap: {
+    sources: ["/api/__sitemap__/vercel"],
+  },
+  site: {
+    url: "tasm.it",
+    name: "TASM",
+    description:
+      "TASM is a yoga studio in City, Country, offering classes, workshops, and teacher training.",
   },
 })

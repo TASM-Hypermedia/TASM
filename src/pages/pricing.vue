@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  title: "Pricing",
+  description: "Explore our pricing plans and find the perfect fit for your yoga journey.",
+})
 
 const resFaqs = await useAPI<
   {
@@ -53,7 +57,7 @@ console.log(pricingList![0].pricingItems)
   </PageWrap>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .priceSection {
   display: flex;
   flex-direction: row;

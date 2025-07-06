@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  title: "Contacts",
+  description: "Get in touch with us for any inquiries or information.",
+})
 
 const res = await useAPI<
   {
@@ -65,7 +69,7 @@ const contactsList = res.data.value
   </PageWrap>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .row {
   width: 80%;
   margin: auto;

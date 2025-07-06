@@ -12,6 +12,11 @@
 import type { Event } from "~/types"
 import { useAPI } from "~/composables/useAPI"
 
+definePageMeta({
+  title: "Events",
+  description: "Explore our upcoming events and workshops.",
+})
+
 const { data, error } = await useAPI<Event[]>("/getAllEvents")
 
 if (error.value) throw error.value

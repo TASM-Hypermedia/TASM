@@ -29,7 +29,7 @@ const theme = priceProp.darkMode ? 'dark-theme' : 'light-theme'
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .priceCard {
   border: 1px solid black;
   border-radius: 20px;

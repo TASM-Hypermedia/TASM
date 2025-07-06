@@ -24,7 +24,7 @@ function toggle() {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .faqContainer {
   border: 1px solid #919090;
   border-radius: 10px;

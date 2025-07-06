@@ -1,4 +1,9 @@
 <script setup lang="ts">
+definePageMeta({
+  title: "Yoga Center",
+  description: "Explore our Yoga Center, where tranquility meets practice.",
+})
+
 const res = await useAPI<{
   title: string
   subtitle: string
@@ -31,7 +36,7 @@ const yogaCenter = res.data.value
   </PageWrap>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .description {
   margin: auto;
   width: 75%;
