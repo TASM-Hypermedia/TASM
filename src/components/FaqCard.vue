@@ -16,7 +16,7 @@ function toggle() {
   <div class="faqContainer">
     <button type="button" class="faqQuestion" @click="toggle">
       {{ faqProp.question }}
-      <img src="/images/arrow-icon.png" :style="`rotate: ${open? '270deg' : '90deg'}`" />
+      <img src="/images/arrow-icon.png" :style="`rotate: ${open? '270deg' : '90deg'}`" alt="" />
     </button>
     <div class="faqAnswer" :style="`display: ${open? 'block' : 'none'}; margin-top: ${open? '10px' : '0'}`">
       <p>{{ faqProp.answer }}</p>

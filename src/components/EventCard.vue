@@ -23,7 +23,7 @@
 
         <div class="bottom">
             <div v-if="eventProp.hostName !== 'No Name'" class="host_box" style="">
-                <img class="host_image" :src="eventProp.hostImage" />
+                <img class="host_image" :src="eventProp.hostImage" :alt="eventProp.hostName" />
                 <div style="display: flex; gap: 6px; flex-direction: column; justify-content: start; width: 100%; color: black;">
                     <span style="color: black; font-size: 13px; font-family: Instrument Sans; font-weight: 700; line-height: 15px; word-wrap: break-word">HOST:</span>
                     <div class="host_name" style="color: black; font-size: 18px; font-family: Instrument Sans; font-weight: 400; line-height: 18px; word-wrap: break-word">
