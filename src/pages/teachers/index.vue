@@ -21,7 +21,7 @@ const teachersList = res.data.value
     title="Our Team"
     subtitle="Discover our instructors"
     tagline="The Teachers:"
-    img-src="Team.jpg"
+    img-src="/banners/team-banner.jpg"
   >
     <card-grid :length="teachersList!.length">
       <template #card="{ index }">
