@@ -20,8 +20,9 @@ function active(thisRoute: string) {
     <NuxtLink to="/" class="logo">
       <img
         class="header-img"
+        aria-label="Link to Homepage"
         src="../../assets/images/headerIcon.svg"
-        alt="logo"
+        alt="Logo"
       />
     </NuxtLink>
     <NuxtLink :class="active('yogacenter')" to="/yogacenter"

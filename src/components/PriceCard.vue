@@ -38,6 +38,7 @@ const roty = useSpring(useTransform(() => x.get() * 8))
     class="price-card-container"
     @mousemove="handleMouse"
     @mouseleave="mouseLeave"
+    @blur="mouseLeave"
   >
     <motion.div
       :initial="{

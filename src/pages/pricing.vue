@@ -1,4 +1,10 @@
 <script setup lang="ts">
+definePageMeta({
+  title: "Pricing",
+  description:
+    "Explore our pricing plans and find the perfect fit for your yoga journey.",
+})
+
 const resFaqs = await useAPI<
   {
     question: string

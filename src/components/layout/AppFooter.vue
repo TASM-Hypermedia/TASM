@@ -21,9 +21,9 @@
       </div>
       <div>
         <h3>Policies</h3>
-        <NuxtLink to="#">Privacy Policy</NuxtLink>
-        <NuxtLink to="#">Terms of Service</NuxtLink>
-        <NuxtLink to="#">Cookies Policy</NuxtLink>
+        <NuxtLink to="/">Privacy Policy</NuxtLink>
+        <NuxtLink to="/">Terms of Service</NuxtLink>
+        <NuxtLink to="/">Cookies Policy</NuxtLink>
       </div>
       <div>
         <h3>Legal Information</h3>

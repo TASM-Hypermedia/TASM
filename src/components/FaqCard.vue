@@ -20,6 +20,7 @@ function toggle() {
       <img
         src="/images/arrow-icon.png"
         :style="`rotate: ${open ? '270deg' : '90deg'}`"
+        alt=""
       />
     </button>
     <motion.div
@@ -44,7 +45,7 @@ function toggle() {
   </motion.div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .faqContainer {
   border: 1px solid #919090;
   border-radius: 10px;

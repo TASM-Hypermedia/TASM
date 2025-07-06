@@ -157,7 +157,7 @@ console.log(teacher.certifications)
   </PageWrap>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .divWithMe {
   width: 100%;
   text-align: center;

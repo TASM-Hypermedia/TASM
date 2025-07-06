@@ -92,6 +92,7 @@ onMounted(() => {
         :style="{ display: 'flex', flex: 1 }"
         @mousemove="handleMouse"
         @mouseleave="mouseLeave"
+        @blur="mouseLeave"
       >
         <motion.img
           :variants="variants"
