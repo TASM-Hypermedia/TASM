@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { motion } from "motion-v"
 import type { Faq } from "~/types"
 
 const { faqProp } = defineProps<{
@@ -13,15 +14,35 @@ function toggle() {
 </script>
 
 <template>
-  <div class="faqContainer">
+  <motion.div class="faqContainer">
     <button type="button" class="faqQuestion" @click="toggle">
       {{ faqProp.question }}
-      <img src="/images/arrow-icon.png" :style="`rotate: ${open? '270deg' : '90deg'}`" alt="" />
+      <img
+        src="/images/arrow-icon.png"
+        :style="`rotate: ${open ? '270deg' : '90deg'}`"
+        alt=""
+      />
     </button>
-    <div class="faqAnswer" :style="`display: ${open? 'block' : 'none'}; margin-top: ${open? '10px' : '0'}`">
+    <motion.div
+      :variants="{
+        open: {
+          marginTop: 10,
+          opacity: 1,
+          height: 'auto',
+        },
+        closed: {
+          marginTop: 0,
+          opacity: 0,
+          height: 0,
+        },
+      }"
+      initial="closed"
+      :animate="open ? 'open' : 'closed'"
+      class="faqAnswer"
+    >
       <p>{{ faqProp.answer }}</p>
-    </div>
-  </div>
+    </motion.div>
+  </motion.div>
 </template>
 
 <style scoped lang="scss">
@@ -30,6 +51,7 @@ function toggle() {
   border-radius: 10px;
   margin-bottom: 10px;
   padding: 15px;
+  overflow: hidden;
 }
 
 .faqQuestion {
@@ -37,6 +59,8 @@ function toggle() {
   text-align: left;
   justify-content: space-between;
   font-weight: 500;
+  font-size: 1.1rem;
+  font-style: italic;
 
   img {
     align-self: center;

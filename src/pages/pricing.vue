@@ -1,7 +1,8 @@
 <script setup lang="ts">
 definePageMeta({
   title: "Pricing",
-  description: "Explore our pricing plans and find the perfect fit for your yoga journey.",
+  description:
+    "Explore our pricing plans and find the perfect fit for your yoga journey.",
 })
 
 const resFaqs = await useAPI<
@@ -32,26 +33,24 @@ if (resPricing.error.value) throw resPricing.error.value
 const pricingList = resPricing.data.value
 
 console.log(pricingList![0].pricingItems)
-
 </script>
 
 <template>
-
   <PageWrap
     title="Pricing"
     img-src="./banners/pricing-banner.jpg"
+    subtitle="Find the perfect plan for you"
   >
-
     <section class="priceSection">
-        <div v-for="(item, index) in pricingList" :key="index">
-          <price-card class="priceCard" :price-prop="item" />
-        </div>
+      <div v-for="(item, index) in pricingList" :key="index">
+        <price-card :price-prop="item" />
+      </div>
     </section>
 
     <section class="faqSection">
       <h2>FAQs</h2>
       <div v-for="(item, index) in faqList" :key="index">
-        <faq-card :faq-prop="item"/>
+        <faq-card :faq-prop="item" />
       </div>
     </section>
   </PageWrap>
@@ -65,16 +64,6 @@ console.log(pricingList![0].pricingItems)
 
   div {
     width: 90%;
-
-    .priceCard {
-      .mobile-layout & {
-        margin-bottom: 10px;
-      }
-    }
-
-    .mobile-layout & {
-      margin: auto;
-    }
   }
 
   .mobile-layout & {
@@ -89,6 +78,7 @@ console.log(pricingList![0].pricingItems)
   h2 {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 2.5rem;
   }
 
   .mobile-layout & {

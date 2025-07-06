@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import type { LayoutKey } from "#build/types/layouts"
+
 const viewport = useViewport()
-const layout = computed(() =>
+const getLayout: () => LayoutKey = () =>
   viewport.isLessThan("tablet") ? "mobile" : "default"
-)
 
 const route = useRoute()
 
@@ -19,6 +20,12 @@ useSeoMeta({
   ogDescription:
     (route.meta.description as string) ??
     "Welcome to TASM Yoga, your journey to wellness begins here.",
+})
+
+const layout = ref<LayoutKey>(getLayout())
+
+onMounted(() => {
+  window.addEventListener("resize", () => (layout.value = getLayout()))
 })
 </script>
 
