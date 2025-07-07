@@ -25,16 +25,24 @@ function active(thisRoute: string) {
         alt="Logo"
       />
     </NuxtLink>
-    <NuxtLink :class="active('yogacenter')" to="/yogacenter"
-      >The Center</NuxtLink
-    >
-    <NuxtLink :class="active('teachers')" to="/teachers"> Our Team </NuxtLink>
-    <NuxtLink :class="active('activities')" to="/activities">
-      Activities
+    <NuxtLink :class="active('yogacenter')" to="/yogacenter">
+      <img src="../../assets/icons/center-icon.png" alt="" width="17px" style="vertical-align: text-bottom; margin-bottom: 2px" /> The Center
     </NuxtLink>
-    <NuxtLink :class="active('events')" to="/events">Events</NuxtLink>
-    <NuxtLink :class="active('pricing')" to="/pricing">Pricing</NuxtLink>
-    <NuxtLink :class="active('contacts')" to="/contacts"> Contacts </NuxtLink>
+    <NuxtLink :class="active('teachers')" to="/teachers">
+      <img src="../../assets/icons/team-icon.png" alt="" width="17px" style="vertical-align: text-bottom; margin-bottom: 2px" /> Our Team
+    </NuxtLink>
+    <NuxtLink :class="active('activities')" to="/activities">
+      <img src="../../assets/icons/activities-icon.png" alt="" width="17px" style="vertical-align: text-bottom; margin-bottom: 2px" /> Activities
+    </NuxtLink>
+    <NuxtLink :class="active('events')" to="/events">
+      <img src="../../assets/icons/events-icons.png" alt="" width="17px" style="vertical-align: text-bottom; margin-bottom: 2px" /> Events
+    </NuxtLink>
+    <NuxtLink :class="active('pricing')" to="/pricing">
+      <img src="../../assets/icons/pricing-icon.png" alt="" width="17px" style="vertical-align: text-bottom; margin-bottom: 2px" /> Pricing
+    </NuxtLink>
+    <NuxtLink :class="active('contacts')" to="/contacts">
+      <img src="../../assets/icons/contact-icon.png" alt="" width="17px" style="vertical-align: text-bottom; margin-bottom: 2px" /> Contacts
+    </NuxtLink>
   </nav>
 </template>
 

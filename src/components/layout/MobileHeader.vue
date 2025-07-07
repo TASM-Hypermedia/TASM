@@ -89,28 +89,32 @@ const linkVariants = {
       >
         <motion.div :variants="linkVariants">
           <NuxtLink :class="active('yogacenter')" to="/yogacenter">
-            The Center
+            <img src="../../assets/icons/center-icon.png" alt="" width="17px" style="vertical-align: text-bottom; margin-bottom: 2px" /> The Center
           </NuxtLink>
         </motion.div>
         <motion.div :variants="linkVariants">
           <NuxtLink :class="active('teachers')" to="/teachers">
-            Our Team
+            <img src="../../assets/icons/team-icon.png" alt="" width="17px" style="vertical-align: text-bottom; margin-bottom: 2px" /> Our Team
           </NuxtLink>
         </motion.div>
         <motion.div :variants="linkVariants">
           <NuxtLink :class="active('activities')" to="/activities">
-            Activities
+            <img src="../../assets/icons/activities-icon.png" alt="" width="17px" style="vertical-align: text-bottom; margin-bottom: 2px" /> Activities
           </NuxtLink>
         </motion.div>
         <motion.div :variants="linkVariants">
-          <NuxtLink :class="active('events')" to="/events">Events</NuxtLink>
+          <NuxtLink :class="active('events')" to="/events">
+            <img src="../../assets/icons/events-icons.png" alt="" width="17px" style="vertical-align: text-bottom; margin-bottom: 2px" /> Events
+          </NuxtLink>
         </motion.div>
         <motion.div :variants="linkVariants">
-          <NuxtLink :class="active('pricing')" to="/pricing">Pricing</NuxtLink>
+          <NuxtLink :class="active('pricing')" to="/pricing">
+            <img src="../../assets/icons/pricing-icon.png" alt="" width="17px" style="vertical-align: text-bottom; margin-bottom: 2px" /> Pricing
+          </NuxtLink>
         </motion.div>
         <motion.div :variants="linkVariants">
           <NuxtLink :class="active('contacts')" to="/contacts">
-            Contacts
+            <img src="../../assets/icons/contact-icon.png" alt="" width="17px" style="vertical-align: text-bottom; margin-bottom: 2px" /> Contacts
           </NuxtLink>
         </motion.div>
       </motion.div>

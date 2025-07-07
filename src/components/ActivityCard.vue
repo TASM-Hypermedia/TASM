@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="`/activities/${activityProp.url}`" class="card">
+  <NuxtLink npm run dev class="card">
     <div
       class="card-image"
       :style="{ backgroundImage: `url(${activityProp.image})` }"
