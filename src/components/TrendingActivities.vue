@@ -1,26 +1,66 @@
 <template>
-  <div class="component" style="">
+  <div ref="containerRef" class="component" style="">
     <div class="title">
         Trending Activities
     </div>
     
     <div class="activities">
         
-        <div v-for="(trendingActivity, i) in activitiesProp" :key="i" :class="(i%2==0) ? 'reverse_card': 'normal_card'">
+        <motion.div 
+            v-for="(trendingActivity, i) in activitiesProp"
+            :key="i" 
+            :class="(i%2==0) ? 'reverse_card': 'normal_card'"
+            :initial="{x: -150, opacity: 0}"
+            :animate="isTotallyVisible? {x: 0, opacity: 1} : {x: -150, opacity: 0 }"
+            :transition="{
+              type: 'tween',
+              duration: 0.6,
+              delay: i * 0.05, 
+              ease: 'linear',
+            }"
+            >
+            
             <img class="card_image" :src="trendingActivity.image"/>
             <div class="card_title"> {{"0" + (i+1).toString() + " " + trendingActivity.title}} </div>
-        </div>
+
+        </motion.div>
         
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+  import { ref, onMounted } from "vue"
+  import { motion } from "motion-v"
   import type { Activity } from "~/types"
 
   defineProps<{
     activitiesProp?: Array<Activity>;
   }>()
+
+  const isTotallyVisible = ref(false)
+  const containerRef = ref<HTMLElement | null>(null)
+  const intersectionParam = ref(0);
+
+  onMounted(() => {
+    if (!containerRef.value) {
+      console.log("Container reference is null")
+      return 
+    } 
+	  const observer = new IntersectionObserver(
+      ([entry]) => {
+        // console.log("Intersection ratio:", entry.intersectionRatio)
+        intersectionParam.value = 1 - entry.intersectionRatio
+
+        if(entry.intersectionRatio >= 0.2){
+          isTotallyVisible.value = true;
+        }
+        
+      },
+      { threshold: Array.from({length: 101}, (_, i) => i / 100) } //Array.from({length: 101}, (_, i) => i / 100)
+    )
+    observer.observe(containerRef.value)
+  })
 
 </script>
 
@@ -38,6 +78,8 @@ div {
     display: flex;
     flex-direction: column;
     gap: 0px;
+  	border: 0px solid black;
+
 }
 
 .title {
@@ -64,6 +106,7 @@ div {
     align-items: center;
     gap: 1%;
     flex-wrap: wrap;
+    border: 0px solid black;
 }
 
 .normal_card {
