@@ -19,72 +19,11 @@ if (response.error.value || !response.data.value)
 const { data } = response
 
 console.log(response)
-
-/*const benefits = [
-  {
-    title: "CONNECTION",
-    description:
-      "Reconnect with yourself, others, and the world around you—on and off the mat.",
-    image: "Connessione.svg",
-  },
-  {
-    title: "CLARITY",
-    description:
-      "Find mental focus and inner stillness through breath and mindful movement.",
-    image: "Lampadina.svg",
-  },
-  {
-    title: "STRENGTH",
-    description:
-      "Build physical resilience and emotional balance from the inside out.",
-    image: "Forza.svg",
-  },
-  {
-    title: "FREEDOM",
-    description: "Release tension in the body and let go of limiting thoughts.",
-    image: "Liberta.svg",
-  },
-]*/
 </script>
 
 <template>
   <div>
     <PageWrap title="Namaste" img-src="HomePage 1.jpeg">
-      <!--<div height="400px" width="100%">
-        <v-sheet class="mx-auto" elevation="0" max-width="1400px">
-          <v-slide-group class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item
-              v-for="(item, index) in data?.highlights.highlightActivities ||
-              []"
-              :key="index"
-            >
-              <div
-                class="ma-4 pa-4 d-flex fill-height justify-center align-center"
-              >
-                <ActivityCard :activity-prop="item" />
-              </div>
-            </v-slide-group-item>
-          </v-slide-group>
-        </v-sheet>
-      </div>
-
-      <div height="400px" width="100%">
-        <v-sheet class="mx-auto" elevation="0" max-width="1400px">
-          <v-slide-group class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item
-              v-for="(item, index) in data?.highlights.highlightEvents || []"
-              :key="index"
-            >
-              <div
-                class="ma-4 pa-4 d-flex fill-height justify-center align-center"
-              >
-                <eventCard :event-prop="item" />
-              </div>
-            </v-slide-group-item>
-          </v-slide-group>
-        </v-sheet>
-      </div>-->
-
       <motion.div
         :style="{
           width: '100%',
@@ -125,6 +64,16 @@ console.log(response)
 
     <TrendingActivities
       :activities-prop="response.data.value?.highlights.highlightActivities"
+    />
+
+    <HighlightedEvents
+      v-if="
+        response.data.value?.highlights.highlightEvents &&
+        response.data.value.highlights.highlightEvents.length
+      "
+      :highlighted-events="
+        response.data.value?.highlights.highlightEvents ?? []
+      "
     />
     <ReviewsComponent />
   </div>
