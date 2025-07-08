@@ -1,10 +1,10 @@
 <template>
-  <div ref="containerRef" class="component" style="">
+  <div class="component" style="">
     <div class="title">
         Trending Activities
     </div>
     
-    <div class="activities">
+    <div ref="containerRef" class="activities">
         
         <motion.div 
             v-for="(trendingActivity, i) in activitiesProp"
@@ -52,7 +52,7 @@
         // console.log("Intersection ratio:", entry.intersectionRatio)
         intersectionParam.value = 1 - entry.intersectionRatio
 
-        if(entry.intersectionRatio >= 0.2){
+        if(entry.intersectionRatio >= 0.25){
           isTotallyVisible.value = true;
         }
         
@@ -78,7 +78,7 @@ div {
     display: flex;
     flex-direction: column;
     gap: 0px;
-  	border: 0px solid black;
+  	/* border: 0px solid black; */
 
 }
 
@@ -99,18 +99,18 @@ div {
     width: 100%;
     max-width: 1200px;
     height: fit-content;
-    padding: 40px 2.5%;
+    padding: 40px 1.75%;
     display: flex;
     /* flex-direction: row;  */
     justify-content: space-around;
     align-items: center;
-    gap: 1%;
+    gap: 2%;
     flex-wrap: wrap;
-    border: 0px solid black;
+    /* border: 0px solid black; */
 }
 
 .normal_card {
-    width: 24.25%;
+    width: 23.5%;
     min-width: 260px;
     height: 375px;
     padding: 20px;
@@ -120,7 +120,7 @@ div {
 }
 
 .reverse_card {
-    width: 24.25%;
+    width: 23.5%;
     min-width: 260px;
     height: 375px;
     padding: 20px;

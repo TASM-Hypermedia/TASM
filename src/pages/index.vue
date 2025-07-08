@@ -124,6 +124,7 @@ console.log(response);
     <BenefitsWrapper />
 
     <TrendingActivities :activities-prop="response.data.value?.highlights.highlightActivities"/>
+    <ReviewsComponent/>
   </div>
 </template>
 
