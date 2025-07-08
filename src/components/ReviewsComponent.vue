@@ -1,0 +1,174 @@
+<template>
+  <div class="component" style="">
+    <div class="title">
+        Customer Reviews
+    </div>
+    
+    <div ref="containerRef" class="reviews">
+        
+        <motion.div 
+        v-for="(trendingActivity, i) in reviewsProp"
+        :key="i" 
+        class="card"
+        >
+        <!--             
+            :initial="{x: -150, opacity: 0}"
+            :animate="isTotallyVisible? {x: 0, opacity: 1} : {x: -150, opacity: 0 }"
+            :transition="{
+                type: 'tween',
+                duration: 0.6,
+                delay: i * 0.05, 
+                ease: 'linear',
+                }"
+                >
+                -->
+            <div class="body"> As their name implies, ExpressVPN is fast. Their high-quality network of VPN servers has more than enough speed to stream HD video from iPlayer without buffering or stuttering. This network spans 94 countries, with excellent speed results in all the locations we tested.  </div> 
+            <img class="image" src="https://placehold.co/100x100/png?text=&shape=circle"/>
+            <div class="name"> Name Surname</div>
+            <div class="rating">
+                <img 
+                v-for="k in 5"
+                :key="k"
+                src="https://www.svgrepo.com/show/513408/star.svg" 
+                style="
+                    height: 25px;
+                    width: 25px;
+                "/>
+            </div>
+        </motion.div>
+        
+
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+  import { ref, onMounted } from "vue"
+  import { motion } from "motion-v"
+
+//   defineProps<{
+//     reviewsProp?: Array<object>;
+//   }>()
+
+  const reviewsProp = [{},{},{},{},];
+  const isTotallyVisible = ref(false)
+  const containerRef = ref<HTMLElement | null>(null)
+  const intersectionParam = ref(0);
+
+  onMounted(() => {
+    if (!containerRef.value) {
+      console.log("Container reference is null")
+      return 
+    } 
+	  const observer = new IntersectionObserver(
+      ([entry]) => {
+        // console.log("Intersection ratio:", entry.intersectionRatio)
+        intersectionParam.value = 1 - entry.intersectionRatio
+
+        if(entry.intersectionRatio >= 0.25){
+          isTotallyVisible.value = true;
+        }
+        
+      },
+      { threshold: 0.25 } //Array.from({length: 101}, (_, i) => i / 100)
+    )
+    observer.observe(containerRef.value)
+  })
+
+</script>
+
+<style scoped>
+div {
+  border: 1px solid black;
+}
+
+.component {
+    width: 100%;
+    height: fit-content;
+    align-items: center; 
+    /* position: relative; */
+    background: white;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    padding: 4% 10%;
+  	/* border: 1px solid black; */
+
+}
+
+.title {
+    height: fit-content;
+    text-align: center; 
+    justify-content: center; 
+    /* display: flex;  */
+    flex-direction: column; 
+    color: black; 
+    font-size: 40px; 
+    font-family: Italiana; 
+    font-weight: 400; 
+    /* line-height: 96px;  */
+    word-wrap: break-word;
+}
+
+.reviews {
+    width: 100%;
+    max-width: 1200px;
+    height: fit-content;
+    padding: 45px 2.5%;
+    display: flex;
+    /* flex-direction: row;  */
+    justify-content: space-around;
+    align-items: center;
+    gap: 2%;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 23.5%;
+    min-width: 260px;
+    height: fit-content;
+    padding: 27.5px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    border-radius: 5px;
+    background-color: antiquewhite; 
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
+}
+
+.body{
+    height: 100%;
+    text-align: left;
+    color: black; 
+    font-size: 14px;
+    font-family: 'Roboto';
+}
+
+.image {
+	width: 60px;
+    height: 60px;
+	box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
+	border-radius: 60px;
+	object-fit: cover;
+}
+
+
+.name {
+    width: fit-content;
+    text-align: center;
+    color: black; 
+    font-size: 22px;
+    font-family: 'Roboto';
+    font-weight: 500;
+}
+
+.rating {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 1px;  
+}
+
+</style>
