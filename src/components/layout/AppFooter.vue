@@ -4,9 +4,15 @@
       <div>
         <img class="logo" src="../../assets/images/headerIcon.svg" alt="logo" />
         <div class="socials">
-          <NuxtLink to="https://www.facebook.com/milanoyogaspace"><img src="../../assets/socials/fb.svg" alt="facebook" /></NuxtLink>
-          <NuxtLink to="https://www.instagram.com/milanoyogaspace/"><img src="../../assets/socials/ig.svg" alt="instagram" /></NuxtLink>
-          <NuxtLink to="https://www.youtube.com/@MilanoYogaSpace"><img src="../../assets/socials/yt.svg" alt="youtube" /></NuxtLink>
+          <NuxtLink to="https://www.facebook.com/milanoyogaspace"
+            ><img src="../../assets/socials/fb.svg" alt="facebook"
+          /></NuxtLink>
+          <NuxtLink to="https://www.instagram.com/milanoyogaspace/"
+            ><img src="../../assets/socials/ig.svg" alt="instagram"
+          /></NuxtLink>
+          <NuxtLink to="https://www.youtube.com/@MilanoYogaSpace"
+            ><img src="../../assets/socials/yt.svg" alt="youtube"
+          /></NuxtLink>
         </div>
       </div>
       <div>
@@ -20,7 +26,9 @@
       </div>
       <div>
         <h3>Policies</h3>
-        <NuxtLink to="https://www.milanoyogaspace.com/privacy/privacy-policy/">Privacy Policy</NuxtLink>
+        <NuxtLink to="https://www.milanoyogaspace.com/privacy/privacy-policy/"
+          >Privacy Policy</NuxtLink
+        >
       </div>
       <div>
         <h3>Legal Information</h3>
@@ -95,5 +103,3 @@ p {
   margin-bottom: 4px;
 }
 </style>
-<script setup lang="ts">
-</script>
