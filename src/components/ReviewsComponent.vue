@@ -10,18 +10,14 @@
         v-for="(trendingActivity, i) in reviewsProp"
         :key="i" 
         class="card"
+        :while-hover="{ scale: 1.015 }"
+        :transition="{
+            type: 'tween',
+            duration: 0.1,
+            ease: 'linear',
+        }"
         >
-        <!--             
-            :initial="{x: -150, opacity: 0}"
-            :animate="isTotallyVisible? {x: 0, opacity: 1} : {x: -150, opacity: 0 }"
-            :transition="{
-                type: 'tween',
-                duration: 0.6,
-                delay: i * 0.05, 
-                ease: 'linear',
-                }"
-                >
-                -->
+                
             <div class="body"> As their name implies, ExpressVPN is fast. Their high-quality network of VPN servers has more than enough speed to stream HD video from iPlayer without buffering or stuttering. This network spans 94 countries, with excellent speed results in all the locations we tested.  </div> 
             <img class="image" src="https://placehold.co/100x100/png?text=&shape=circle"/>
             <div class="name"> Name Surname</div>
@@ -79,7 +75,7 @@
 
 <style scoped>
 div {
-  border: 1px solid black;
+  border: 0px solid black;
 }
 
 .component {
@@ -135,6 +131,12 @@ div {
     background-color: antiquewhite; 
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
 }
+
+/* .card:hover {
+    transform: scale(1.02);
+    background-color: #ffdaa9; 
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
+} */
 
 .body{
     height: 100%;
