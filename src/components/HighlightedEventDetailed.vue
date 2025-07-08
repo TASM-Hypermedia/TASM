@@ -56,6 +56,7 @@
 //import { NuxtLink } from "#components"
 import type { Event } from "~/types"
 import SvgIcon from "~/assets/images/homepage/icon-location2.svg"
+
 import { computed, onMounted, ref } from "vue"
 const props = defineProps<{
   eventProp: Event
@@ -216,13 +217,40 @@ const calendar_day_name = computed(() =>
   border-radius: 20px;
   background-size: cover;
   background-position: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
-
+.desktop-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
 .event-info-rows {
   width: 70%;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+
+  background: #bdb2d4;
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgba(191, 164, 209, 0.5);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.event-info-rows:hover {
+  transform: scale(1.02);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.15),
+    0 0 0 3px rgba(191, 164, 209, 0.6);
 }
 
 .info-row {
@@ -274,9 +302,8 @@ const calendar_day_name = computed(() =>
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    border-radius: 24px;
-    background: rgba(178, 153, 236, 0.692);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /*border-radius: 24px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);*/
   }
 }
 </style>

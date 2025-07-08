@@ -4,6 +4,8 @@ import SvgArrow from "~/assets/images/homepage/HearArrow.svg"
 import { onMounted } from "vue"
 import type { Event } from "~/types"
 import { motion } from "motion-v"
+//import SvgBlob from "~/assets/images/homepage/blob-event.svg"
+//import SvgBlob from "~/assets/images/homepage/blob-event.svg"
 const { highlightedEvents } = defineProps<{
   highlightedEvents: Array<Event>
 }>()
@@ -71,7 +73,7 @@ function hideEvent() {
 }
 </script>
 <template>
-  <div class="container">
+  <div class="container" :style="{ height: svgheight + 'px' }">
     <div class="sheet-event-wrapper">
       <SvgRoadmap
         class="svg-image"
@@ -160,10 +162,10 @@ function hideEvent() {
   width: 100%;
   height: 100%;
 
-  background-color: #f0e2f9;
+  /*background-color: #f0e2f9;*/
 }
 .sheet-event {
-  background-color: #f0e2f9;
+  /*background-color: #f0e2f9;*/
   flex: 1;
   height: 100%;
   left: 0;
@@ -171,10 +173,11 @@ function hideEvent() {
   top: 0;
   display: flex;
   justify-content: center;
+  /*background-image: url("~/assets/images/homepage/blob-event.svg");*/
 }
 
 .svg-image {
-  background-color: #f0e2f9;
+  /*background-color: #f0e2f9;*/
   max-width: 750px;
   min-width: 450px;
   position: relative;

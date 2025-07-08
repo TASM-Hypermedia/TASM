@@ -73,12 +73,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref, onMounted } from "vue"
 import { motion } from "motion-v"
 
 const image1 = ref("./images/homepage/Team-1.png")
 const image2 = ref("./images/homepage/Team-2.png")
 const image3 = ref("./images/homepage/Team-3.png")
+
+onMounted(() => {
+  // Initialize images to default state
+  image1.value = `./images/homepage/Team-1.png`
+  image2.value = `./images/homepage/Team-2.png`
+  image3.value = `./images/homepage/Team-3.png`
+})
 
 function mouseOver(i: number) {
   console.log("Mouse over image:", i)
