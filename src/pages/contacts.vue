@@ -21,31 +21,37 @@ const contactsList = res.data.value
       <div class="row">
         <div class="column"></div>
         <div class="column">
-          <img
-            src="../assets/socials/wa.png"
-            alt="Whatsapp number"
-            class="contact-image"
-          />
-          <br />
-          <p class="contact-info">{{ contactsList![0].contactInfo }}</p>
+          <a href="tel:+391234567890">
+            <img
+              src="../assets/socials/wa.png"
+              alt="Whatsapp number"
+              class="contact-image"
+            />
+            <br />
+            <p class="contact-info">{{ contactsList![0].contactInfo }}</p>
+          </a>
         </div>
         <div class="column">
-          <img
-            src="../public/images/icons/phone.png"
-            alt="Phone number"
-            class="contact-image"
-          />
-          <br />
-          <p class="contact-info">{{ contactsList![0].contactInfo }}</p>
+          <a href="tel:+391234567890">
+            <img
+              src="../public/images/icons/phone.png"
+              alt="Phone number"
+              class="contact-image"
+            />
+            <br />
+            <p class="contact-info">{{ contactsList![0].contactInfo }}</p>
+          </a>
         </div>
         <div class="column">
-          <img
-            src="../public/images/icons/mail.png"
-            alt="Mail"
-            class="contact-image"
-          />
-          <br />
-          <p class="contact-info">{{ contactsList![1].contactInfo }}</p>
+          <a href="mailto:simone.pedroni@mail.polimi.it">
+            <img
+              src="../public/images/icons/mail.png"
+              alt="Mail"
+              class="contact-image"
+            />
+            <br />
+            <p class="contact-info">{{ contactsList![1].contactInfo }}</p>
+          </a>
         </div>
         <div class="column"></div>
       </div>
@@ -70,52 +76,38 @@ const contactsList = res.data.value
         enctype="text/plain"
         class="contact-form"
       >
-        <label for="fname" class="form-label">
-          Name <br />
+        <label for="FirstName" class="form-label">
+          First name:<br />
           <input
             id="fname"
             class="form-input"
             type="text"
-            name="fname"
-            placeholder="Value"
+            name="FirstName"
+            placeholder="Insert name here"
             required
           />
           <br /><br />
         </label>
 
-        <label for="lname" class="form-label">
-          Surname<br />
+        <label for="LastName" class="form-label">
+          Last name:<br />
           <input
             id="lname"
             class="form-input"
             type="text"
-            name="lname"
-            placeholder="Value"
-            required
-          />
-        </label>
-        <br />
-        <br />
-
-        <label for="mail" class="form-label">
-          Mail <br />
-          <input
-            id="mail"
-            class="form-input"
-            type="email"
-            name="mail"
-            placeholder="Value"
+            name="LastName"
+            placeholder="Insert surname here"
             required
           />
         </label>
         <br /><br />
 
-        <label for="message" class="form-label">
-          Message <br />
+        <label for="Message" class="form-label">
+          Message:<br />
           <textarea
             id="message"
             class="form-input"
-            name="message"
+            name="Message"
             placeholder="Insert your message here"
             cols="70"
             rows="3"
@@ -146,6 +138,16 @@ const contactsList = res.data.value
 .column {
   flex: 20%;
   text-align: center;
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: black;
+    text-decoration: none;
+  }
 }
 
 .contact-image {

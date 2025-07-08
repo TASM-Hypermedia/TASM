@@ -81,7 +81,7 @@ const roty = useSpring(useTransform(() => x.get() * 8))
           </li>
         </ul>
       </div>
-      <button class="pricingButton">Subscribe</button>
+      <NuxtLink to="https://paypal.me/Pedroni28?country.x=IT&locale.x=it_IT" class="pricingButton">Subscribe</NuxtLink>
     </motion.div>
   </div>
 </template>
@@ -141,11 +141,11 @@ const roty = useSpring(useTransform(() => x.get() * 8))
 }
 
 .pricingButton {
-  margin-top: 15px;
   width: 100%;
   padding: 10px;
   border-radius: 10px;
   margin-top: auto;
+  text-decoration: none;
 }
 
 .dark-theme {

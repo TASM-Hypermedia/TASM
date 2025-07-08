@@ -1,6 +1,6 @@
 <template>
     <NuxtLink :to="`/events/${eventProp.url}`" class="card" style="">
-        <div class="top" style="">
+        <div class="top" :style="{ backgroundImage: `url(${eventProp.eventImage})`}">
             <div class="calendar" style="">
                 <div style="width: 87px; height: 25px; background: rgba(223.86, 84.16, 84.16, 0.83); overflow: hidden; border-bottom: 1px #B94646 solid">
                     <div style="height: 100%; text-align: center; justify-content: center; display: flex; flex-direction: column; color: rgba(137.55, 21.03, 21.03, 0.72); font-size: 20px; font-family: Instrument Sans; font-weight: 700; line-height: 20px; word-wrap: break-word">
@@ -100,9 +100,11 @@ defineProps<{
         width: 100%; 
         height: 291px; 
         padding: 14px 10px;
-        overflow: hidden; 
-        background-image: url(https://media.post.rvohealth.io/wp-content/uploads/2024/09/multiracial-group-practicing-yoga-in-studio-732x549-thumbnail.jpg); 
-        justify-content: flex-start; 
+        overflow: hidden;
+        justify-content: flex-start;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         align-items: flex-end; 
         gap: 10px; 
         display: inline-flex
