@@ -120,6 +120,10 @@ const { data } = response
     </div>
     <SeparatorComponent :separator-title="'Events'" />
     <BenefitsWrapper />
+
+    <highlightedEvents
+      :highlighted-events="data?.highlights.highlightEvents || []"
+    />
   </div>
 </template>
 

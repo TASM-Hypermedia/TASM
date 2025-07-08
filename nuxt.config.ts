@@ -63,7 +63,22 @@ export default defineNuxtConfig({
 
     feature: "minWidth",
   },
-  svgo: { autoImportPath: '~/assets/homepage/' 
-    , defaultImport: "component"
-  }
+  svgo: {
+    autoImportPath: '~/assets/homepage/',
+    defaultImport: 'component',
+
+    // Configurazione svgo vera e propria
+    svgoConfig: {
+      plugins: [
+        {
+          name: 'preset-default',
+          params: {
+            overrides: {
+              cleanupIds: false, 
+            },
+          },
+        },
+      ],
+    },
+  },
 })

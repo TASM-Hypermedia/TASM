@@ -55,9 +55,12 @@ console.log(topHeight, bottomHeight)
     <div class="sheet"></div>
     <SvgBottom
       class="svg-imageBottom"
-      :style="{ bottom: bottomHeight + 'px' }"
+      :style="{ bottom: bottomHeight + 'px', width: '100vw' }"
     />
-    <SvgTop class="svg-imageTop" :style="{ top: topHeight + 'px' }" />
+    <SvgTop
+      class="svg-imageTop"
+      :style="{ top: topHeight + 'px', width: '100vw' }"
+    />
 
     <div
       style="
@@ -98,7 +101,7 @@ console.log(topHeight, bottomHeight)
 
 <style scoped>
 .container {
-  width: 100%;
+  width: 100vw;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -111,14 +114,14 @@ console.log(topHeight, bottomHeight)
 
 .svg-imageBottom {
   width: 100vw;
-  height: auto;
+  /*height: auto;*/
   left: 0;
   /*bottom: 0;*/
   position: absolute;
 }
 .svg-imageTop {
   width: 100vw;
-  height: auto;
+  /*height: auto;*/
   left: 0;
   /*top: 0px;*/
   position: absolute;
@@ -126,7 +129,7 @@ console.log(topHeight, bottomHeight)
 .sheet {
   width: 100vw;
   bottom: 0;
-  top: -10px;
+  top: -20px;
   left: 0;
   /*top: 200px;*/
   position: absolute;
