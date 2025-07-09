@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ActivityCardProps, ActivityType } from "~/types"
+import type { ActivityType } from "~/types"
 
 const route = useRoute()
 
