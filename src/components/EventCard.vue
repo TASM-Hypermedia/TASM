@@ -1,17 +1,17 @@
 <template>
     <NuxtLink :to="`/events/${eventProp.url}`" class="card" style="">
-        <div class="top" style="">
+        <div class="top" :style="{ backgroundImage: `url(${eventProp.eventImage})`}">
             <div class="calendar" style="">
                 <div style="width: 87px; height: 25px; background: rgba(223.86, 84.16, 84.16, 0.83); overflow: hidden; border-bottom: 1px #B94646 solid">
                     <div style="height: 100%; text-align: center; justify-content: center; display: flex; flex-direction: column; color: rgba(137.55, 21.03, 21.03, 0.72); font-size: 20px; font-family: Instrument Sans; font-weight: 700; line-height: 20px; word-wrap: break-word">
-                        AUG
+                        {{ calendar_month }}
                     </div>
                 </div>
                 <div style=" height: 35px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #2B2B2B; font-size: 40px; font-family: Instrument Sans; font-weight: 500; line-height: 40px; word-wrap: break-word">
-                    12
+                    {{ calendar_day }}
                 </div>
                 <div style=" height: 18px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #7A7A7A; font-size: 15px; font-family: Instrument Sans; font-weight: 500; line-height: 15px; word-wrap: break-word">
-                    MON
+                    {{ calendar_day_name }}
                 </div>
             </div>
             <div class="title_box" style="">
@@ -23,7 +23,7 @@
 
         <div class="bottom">
             <div v-if="eventProp.hostName !== 'No Name'" class="host_box" style="">
-                <img class="host_image" :src="eventProp.hostImage" />
+                <img class="host_image" :src="eventProp.hostImage" :alt="eventProp.hostName" />
                 <div style="display: flex; gap: 6px; flex-direction: column; justify-content: start; width: 100%; color: black;">
                     <span style="color: black; font-size: 13px; font-family: Instrument Sans; font-weight: 700; line-height: 15px; word-wrap: break-word">HOST:</span>
                     <div class="host_name" style="color: black; font-size: 18px; font-family: Instrument Sans; font-weight: 400; line-height: 18px; word-wrap: break-word">
@@ -59,12 +59,21 @@
 </template>
 
 <script setup lang="ts">
-import { NuxtLink } from '#components';
-import type { Event } from '~/types';
+    import { NuxtLink } from '#components';
+    import type { Event } from '~/types';
+        
+    const props = defineProps<{
+	  eventProp: Event
+	}>()
     
-defineProps<{
-    eventProp: Event,
-}>();
+    const calendar_date = new Date(props.eventProp.date)
+	const calendar_month = calendar_date
+	  .toLocaleString("en-US", { month: "short" })
+	  .toUpperCase()
+	const calendar_day = calendar_date.getDate()
+	const calendar_day_name = calendar_date
+	  .toLocaleString("en-US", { weekday: "short" })
+	  .toUpperCase()
 </script>
 
 <style scoped>
@@ -96,13 +105,19 @@ defineProps<{
         }
     }
 
+    .mobile-layout & {
+          max-width: 1080px;
+    }
+
     .top {
         width: 100%; 
         height: 291px; 
         padding: 14px 10px;
-        overflow: hidden; 
-        background-image: url(https://media.post.rvohealth.io/wp-content/uploads/2024/09/multiracial-group-practicing-yoga-in-studio-732x549-thumbnail.jpg); 
-        justify-content: flex-start; 
+        overflow: hidden;
+        justify-content: flex-start;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         align-items: flex-end; 
         gap: 10px; 
         display: inline-flex

@@ -4,35 +4,40 @@
       <div>
         <img class="logo" src="../../assets/images/headerIcon.svg" alt="logo" />
         <div class="socials">
-          <img src="../../assets/socials/fb.svg" alt="facebook" />
-          <img src="../../assets/socials/tw.svg" alt="twitter" />
-          <img src="../../assets/socials/ig.svg" alt="instagram" />
-          <img src="../../assets/socials/yt.svg" alt="youtube" />
+          <NuxtLink to="https://www.facebook.com/milanoyogaspace"
+            ><img src="../../assets/socials/fb.svg" alt="facebook"
+          /></NuxtLink>
+          <NuxtLink to="https://www.instagram.com/milanoyogaspace/"
+            ><img src="../../assets/socials/ig.svg" alt="instagram"
+          /></NuxtLink>
+          <NuxtLink to="https://www.youtube.com/@MilanoYogaSpace"
+            ><img src="../../assets/socials/yt.svg" alt="youtube"
+          /></NuxtLink>
         </div>
       </div>
       <div>
         <h3>The School</h3>
-        <NuxtLink to="#">The Center</NuxtLink>
-        <NuxtLink to="#">Our Team</NuxtLink>
-        <NuxtLink to="#">Activities</NuxtLink>
-        <NuxtLink to="#">Events</NuxtLink>
-        <NuxtLink to="#">Pricing</NuxtLink>
-        <NuxtLink to="#">Contacts</NuxtLink>
+        <NuxtLink to="/yogacenter">The Center</NuxtLink>
+        <NuxtLink to="/teachers">Our Team</NuxtLink>
+        <NuxtLink to="/activities">Activities</NuxtLink>
+        <NuxtLink to="/events">Events</NuxtLink>
+        <NuxtLink to="/pricing">Pricing</NuxtLink>
+        <NuxtLink to="/contacts">Contacts</NuxtLink>
       </div>
       <div>
         <h3>Policies</h3>
-        <NuxtLink to="#">Privacy Policy</NuxtLink>
-        <NuxtLink to="#">Terms of Service</NuxtLink>
-        <NuxtLink to="#">Cookies Policy</NuxtLink>
+        <NuxtLink to="https://www.milanoyogaspace.com/privacy/privacy-policy/"
+          >Privacy Policy</NuxtLink
+        >
       </div>
       <div>
         <h3>Legal Information</h3>
         <p>+39 123 456 7890</p>
-        <p>info@example.com</p>
-        <p>1234 Yoga St, Wellness City, Country</p>
+        <p>info@inner-bloom.com</p>
+        <p>Via Pastrengo, 7, 20159 Milan (MI), Italy</p>
         <p>CF: 123456789</p>
         <p>P.IVA: 12345678901</p>
-        <p>© 2023 The School. All rights reserved.</p>
+        <p>© 2025 The School. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -45,6 +50,7 @@ footer {
   padding-bottom: 64px;
   font-size: 14px;
   box-shadow: 0 -1px 16px rgba(0, 0, 0, 0.1);
+  order: 1000;
 
   .footer-content {
     margin: auto;
@@ -52,7 +58,6 @@ footer {
     gap: 16px;
     justify-content: space-between;
     padding: 32px 128px;
-    justify-content: space-between;
 
     .mobile-layout & {
       padding: 16px;

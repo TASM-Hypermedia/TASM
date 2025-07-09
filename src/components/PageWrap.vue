@@ -10,7 +10,7 @@ const layout = computed(() =>
 const { y } = useCustomScroll()
 const seen = computed(() => y.value > 600)
 
-defineProps<{
+const { title } = defineProps<{
   /**
    * Hero page title
    */
@@ -28,6 +28,9 @@ defineProps<{
    */
   imgSrc?: string
 }>()
+
+// Dynamic page title
+useHead({ title })
 </script>
 
 <template>
