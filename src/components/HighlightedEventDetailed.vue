@@ -3,10 +3,10 @@
     <div class="event-desktop" :style="{ width: `${width}px` }">
       <h2 class="event-title desktop-title">{{ eventProp.title }}</h2>
 
-      <div
+      <!-- <div
         class="event-image desktop-image"
         :style="{ backgroundImage: `url('${eventProp.eventImage}')` }"
-      ></div>
+      ></div> -->
 
       <div class="event-info-rows">
         <!-- Calendario -->
@@ -72,7 +72,7 @@ onMounted(() => {
   })
 })
 
-const width = computed(() => clientWidth.value / 3)
+const width = computed(() => clientWidth.value / 2)
 
 const calendar_date = computed(() => new Date(props.eventProp.date))
 //const calendar_date = new Date(props.eventProp.date)
@@ -99,7 +99,7 @@ const calendar_day_name = computed(() =>
 
 .calendar-box {
   width: 80px;
-  background: #f7f0ff;
+  background: #f7f0fffe;
   border-radius: 16px;
   text-align: center;
   padding: 0.5rem 0.2rem;
@@ -157,7 +157,7 @@ const calendar_day_name = computed(() =>
 }
 
 .event-image {
-  width: 100%;
+  width: 50%;
   height: 200px;
   background-size: cover;
   background-position: center;
@@ -175,6 +175,7 @@ const calendar_day_name = computed(() =>
   font-weight: 600;
   margin: 0;
   text-align: center;
+  color: #ffffff;
 }
 
 .event-host {
@@ -199,9 +200,12 @@ const calendar_day_name = computed(() =>
   display: none;
   flex-direction: column;
   display: flex;
-  gap: 10px;
+  gap: 30px;
   align-items: center;
   justify-content: center;
+  padding: 5%;
+
+  height: 100%;
 }
 
 .desktop-title {
@@ -211,7 +215,7 @@ const calendar_day_name = computed(() =>
 }
 
 .desktop-image {
-  width: 100%;
+  width: 70%;
   height: 250px;
   margin-bottom: 1rem;
   border-radius: 20px;
@@ -227,7 +231,7 @@ const calendar_day_name = computed(() =>
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 .event-info-rows {
-  width: 70%;
+  width: 65%;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -235,7 +239,7 @@ const calendar_day_name = computed(() =>
   padding: 20px;
   border-radius: 20px;
 
-  background: #bdb2d4;
+  background: #6052a754;
   backdrop-filter: blur(12px);
   box-shadow:
     0 8px 24px rgba(0, 0, 0, 0.1),
@@ -282,14 +286,14 @@ const calendar_day_name = computed(() =>
 
 .info-label {
   font-size: 1rem;
-  color: #7a7a7a;
+  color: #d8d8d8;
   font-weight: 500;
 }
 
 .info-value {
   font-size: 1.7rem;
   font-weight: 600;
-  color: #2b2b2b;
+  color: #ffffff;
 }
 
 /* ---------- RESPONSIVE LOGIC ---------- */
@@ -301,8 +305,8 @@ const calendar_day_name = computed(() =>
   .event-desktop {
     display: flex;
     flex-direction: column;
-    padding: 2rem;
-    /*border-radius: 24px;
+    /*padding: 2rem;
+    border-radius: 24px;
 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);*/
   }
 }
