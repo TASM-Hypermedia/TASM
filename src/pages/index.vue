@@ -77,6 +77,8 @@ console.log(response)
       "
     />
     <ReviewsComponent :reviews-prop="response.data.value?.reviews"/>
+
+    <CertificationComponent :certification-prop="response.data.value?.certifications" />
   </div>
 </template>
 

@@ -118,6 +118,12 @@ export type Review = {
   stars: number,
 }
 
+export type Certification = {
+  imageURL: string,
+}
+
+
+
 export type  ResponseData = {
   yogaCenter: YogaCenter,
   activities: Activity[],
@@ -128,4 +134,5 @@ export type  ResponseData = {
      highlightActivities: Activity[]
   },
   reviews: Review[],
+  certifications: Certification[],
 } 
