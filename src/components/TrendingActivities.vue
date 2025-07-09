@@ -8,13 +8,12 @@
         :key="i"
         :while-hover="{ scale: 1.015 }"
         :while-hover-transition="{
-          duration: 0.1,
+          type: 'tween',
+          duration: 0.3,
           ease: 'linear',
         }"
         :initial="{ x: -150, opacity: 0 }"
-        :animate="
-          isTotallyVisible ? { x: 0, opacity: 1 } : { x: -150, opacity: 0 }
-        "
+        :animate="isTotallyVisible ? { x: 0, opacity: 1 } : { x: -150, opacity: 0 }"
         :animate-transition="{
           type: 'tween',
           duration: 0.6,
