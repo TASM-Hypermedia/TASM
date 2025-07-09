@@ -112,6 +112,12 @@ export interface ActivityType {
   }[]
 }
 
+export type Review = {
+  person: string,
+  text: string,
+  stars: number,
+}
+
 export type  ResponseData = {
   yogaCenter: YogaCenter,
   activities: Activity[],
@@ -120,5 +126,6 @@ export type  ResponseData = {
   highlights: {
      highlightEvents: Event[],
      highlightActivities: Activity[]
-  }
-}
+  },
+  reviews: Review[],
+} 

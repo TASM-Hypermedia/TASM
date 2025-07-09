@@ -76,7 +76,7 @@ console.log(response)
         response.data.value?.highlights.highlightEvents ?? []
       "
     />
-    <ReviewsComponent />
+    <ReviewsComponent :reviews-prop="response.data.value?.reviews"/>
   </div>
 </template>
 
