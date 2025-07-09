@@ -18,6 +18,7 @@ if (response.error.value || !response.data.value)
 
 const { data } = response
 
+console.log("ciaoooooo")
 console.log(response)
 </script>
 

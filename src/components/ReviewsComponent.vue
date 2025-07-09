@@ -7,7 +7,7 @@
         v-for="(trendingActivity, i) in reviewsProp"
         :key="i"
         class="card"
-        :while-hover="{ scale: 1.015 }"
+        :while-hover="{ scale: 1.015, backgroundColor: '#debbfb' }"
         :transition="{
           type: 'tween',
           duration: 0.1,
@@ -126,7 +126,7 @@ div {
   flex-direction: column;
   gap: 18px;
   border-radius: 5px;
-  background-color: antiquewhite;
+  background-color: #e8cbff;
   box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
 }
 

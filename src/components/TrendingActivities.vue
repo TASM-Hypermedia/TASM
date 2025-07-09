@@ -5,23 +5,67 @@
     </div>
     
     <div ref="containerRef" class="activities">
+      
         
         <motion.div 
-            v-for="(trendingActivity, i) in activitiesProp"
+            
+			v-for="(trendingActivity, i) in activitiesProp"
             :key="i" 
-            :class="(i%2==0) ? 'reverse_card': 'normal_card'"
-            :initial="{x: -150, opacity: 0}"
-            :animate="isTotallyVisible? {x: 0, opacity: 1} : {x: -150, opacity: 0 }"
-            :transition="{
-              type: 'tween',
-              duration: 0.6,
-              delay: i * 0.05, 
+            :while-hover="{ scale: 1.015,}"
+			:while-hover-transition="{
+              duration: 0.1,
               ease: 'linear',
             }"
+			:initial="{x: -150, opacity: 0}"
+
+            :animate="isTotallyVisible? {x: 0, opacity: 1} : {x: -150, opacity: 0 }"
+            :animate-transition="{
+				type: 'tween',
+				duration: 0.6,
+				delay: i * 0.05, 
+				ease: 'linear',
+            }"
+			class="card"
             >
+
+            <NuxtLink
+				:class="(i%2==0) ? 'reverse_card': 'normal_card'"
+				
+				:to="`/activities/${trendingActivity.url}`" style="
+				text-decoration: none;
+				height: 100%;
+				width: 100%;"
+					>
+
+					<img class="card_image" :src="trendingActivity.image">
+					
+					<div class="title_container">
+						
+						<div class="card_title"> {{"0" + (i+1).toString() + " " + trendingActivity.title}} </div>
+
+						<div 
+							id="motioncard"
+							class="right_arrow" 
+							style="
+								width: fit-content;
+								height: 100%;
+								overflow: hidden;
+								">
+							
+							<img 
+								src="../assets/images/right-arrow.svg" 
+								alt=""
+								style="
+									width: 100%;
+									height: 100%;
+									rotate: -45deg;
+								"
+							/>	
+						</div>
+
+					</div>
             
-            <img class="card_image" :src="trendingActivity.image"/>
-            <div class="card_title"> {{"0" + (i+1).toString() + " " + trendingActivity.title}} </div>
+			</NuxtLink>
 
         </motion.div>
         
@@ -33,6 +77,7 @@
   import { ref, onMounted } from "vue"
   import { motion } from "motion-v"
   import type { Activity } from "~/types"
+//   import rightArrow from "@/assets/images/right-arrow.svg"
 
   defineProps<{
     activitiesProp?: Array<Activity>;
@@ -73,7 +118,7 @@ div {
     width: 100%;
     height: fit-content;
     align-items: center;
-    /* position: relative; */
+    
     background: white;
     display: flex;
     flex-direction: column;
@@ -99,7 +144,7 @@ div {
     width: 100%;
     max-width: 1200px;
     height: fit-content;
-    padding: 40px 1.75%;
+    padding: 3% 1.75% 6% 1.75%;  /*top right bottom left*/
     display: flex;
     /* flex-direction: row;  */
     justify-content: space-around;
@@ -109,21 +154,60 @@ div {
     /* border: 0px solid black; */
 }
 
-.normal_card {
-    width: 23.5%;
+.card{
+	width: 23.5%;
     min-width: 260px;
     height: 375px;
     padding: 20px;
+	border-radius: 10px;
+	background-color: rgb(183, 152, 184);
+
+	.right_arrow {
+		img{	
+			animation: rightArrowOut 0.3s;
+			
+		}
+	}
+}
+
+@keyframes rightArrowOut {
+	from {
+		rotate: 0deg;
+	}
+	to {
+		rotate: -45deg;
+	}
+}
+
+.card:hover{
+	.right_arrow {
+		img{	
+			animation: rightArrow 0.3s;
+			animation-fill-mode: forwards;
+		}
+	}
+}
+
+@keyframes rightArrow {
+	from {
+		rotate: -45deg;
+	}
+	to {
+		rotate: 0deg;
+	}
+}
+
+.normal_card {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
 .reverse_card {
-    width: 23.5%;
-    min-width: 260px;
-    height: 375px;
-    padding: 20px;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column-reverse;
     gap: 15px;
@@ -138,11 +222,22 @@ div {
 	
 }
 
+
+.title_container {
+	width: 100%;
+	height: 35px;
+	display: flex;
+	flex-direction: row;
+	justify-content:space-between;
+	align-items: start;
+}
+
 .card_title{
+	height: 100%;
     text-align: center;
-    color: black; 
-    font-size: 24px;
-	  font-weight: 600;
+    color: white; 
+    font-size: 20px;
+	font-weight: 600;
     font-family: Italiana;
 }
 
