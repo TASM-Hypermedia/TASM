@@ -93,15 +93,15 @@ div {
 }
 
 .component {
-  width: 100%;
-  height: fit-content;
-  align-items: center;
-
-  background: white;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  /* border: 0px solid black; */
+	width: 100%;
+	height: fit-content;
+	align-items: center;
+	padding: 8% 0px;
+	background: white;
+	display: flex;
+	flex-direction: column;
+	gap: 0px;
+	/* border: 0px solid black; */
 }
 
 .title {

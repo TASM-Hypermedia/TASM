@@ -80,7 +80,7 @@ div {
   display: flex;
   flex-direction: column;
   gap: 0px;
-  padding: 4% 10%;
+  padding: 10% 10%;
   /* border: 1px solid black; */
 }
 
@@ -119,7 +119,7 @@ div {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #e8cbff;
   box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
 }
