@@ -4,10 +4,10 @@
 
     <div ref="containerRef" class="reviews">
       <motion.div
-        v-for="(trendingActivity, i) in reviewsProp"
+        v-for="(review, i) in reviewsProp"
         :key="i"
         class="card"
-        :while-hover="{ scale: 1.015 }"
+        :while-hover="{ scale: 1.015, backgroundColor: '#debbfb' }"
         :transition="{
           type: 'tween',
           duration: 0.1,
@@ -15,20 +15,14 @@
         }"
       >
         <div class="body">
-          As their name implies, ExpressVPN is fast. Their high-quality network
-          of VPN servers has more than enough speed to stream HD video from
-          iPlayer without buffering or stuttering. This network spans 94
-          countries, with excellent speed results in all the locations we
-          tested.
+          {{review.text}}
         </div>
-        <img
-          class="image"
-          src="https://placehold.co/100x100/png?text=&shape=circle"
-        />
-        <div class="name">Name Surname</div>
+        
+        <div class="name">{{ review.person }}</div>
+
         <div class="rating">
           <img
-            v-for="k in 5"
+            v-for="k in review.stars"
             :key="k"
             src="https://www.svgrepo.com/show/513408/star.svg"
             style="height: 25px; width: 25px"
@@ -42,12 +36,12 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue"
 import { motion } from "motion-v"
+import type { Review } from "~/types"
 
-//   defineProps<{
-//     reviewsProp?: Array<object>;
-//   }>()
+  defineProps<{
+    reviewsProp?: Array<Review>;
+  }>()
 
-const reviewsProp = [{}, {}, {}, {}]
 const isTotallyVisible = ref(false)
 const containerRef = ref<HTMLElement | null>(null)
 const intersectionParam = ref(0)
@@ -126,7 +120,7 @@ div {
   flex-direction: column;
   gap: 18px;
   border-radius: 5px;
-  background-color: antiquewhite;
+  background-color: #e8cbff;
   box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
 }
 

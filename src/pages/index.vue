@@ -18,6 +18,7 @@ if (response.error.value || !response.data.value)
 
 const { data } = response
 
+console.log("ciaoooooo")
 console.log(response)
 </script>
 
@@ -75,7 +76,7 @@ console.log(response)
         response.data.value?.highlights.highlightEvents ?? []
       "
     />
-    <ReviewsComponent />
+    <ReviewsComponent :reviews-prop="response.data.value?.reviews"/>
   </div>
 </template>
 
