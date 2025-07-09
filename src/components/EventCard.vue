@@ -70,7 +70,7 @@
         </div>
       </div>
     </div>
-    <div
+    <!-- <div
       style="
         height: 35px;
         text-align: center;
@@ -103,13 +103,14 @@
       "
     >
       MON
-    </div>
-
+    </div> 
+      
     <div class="title_box" style="">
       <div class="title_text" style="">
         {{ eventProp.title }}
       </div>
     </div>
+    -->
 
     <div class="bottom">
       <div class="host_box" style="">
@@ -294,6 +295,7 @@ span {
   gap: 10px;
   display: inline-flex;
 }
+
 
 .calendar {
   width: 87px;
