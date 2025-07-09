@@ -49,28 +49,6 @@
           </div>
         </NuxtLink>
       </motion.div>
-      <div ref="containerRef" class="activities">
-        <motion.div
-          v-for="(trendingActivity, i) in activitiesProp"
-          :key="i"
-          :class="i % 2 == 0 ? 'reverse_card' : 'normal_card'"
-          :initial="{ x: -150, opacity: 0 }"
-          :animate="
-            isTotallyVisible ? { x: 0, opacity: 1 } : { x: -150, opacity: 0 }
-          "
-          :transition="{
-            type: 'tween',
-            duration: 0.6,
-            delay: i * 0.05,
-            ease: 'linear',
-          }"
-        >
-          <img class="card_image" :src="trendingActivity.image" />
-          <div class="card_title">
-            {{ "0" + (i + 1).toString() + " " + trendingActivity.title }}
-          </div>
-        </motion.div>
-      </div>
     </div>
   </div>
 </template>
