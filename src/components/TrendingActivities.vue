@@ -9,7 +9,7 @@
         :while-hover="{ scale: 1.015 }"
         :while-hover-transition="{
           type: 'tween',
-          duration: 0.3,
+          duration: 0.6,
           ease: 'linear',
         }"
         :initial="{ x: -150, opacity: 0 }"
@@ -20,7 +20,7 @@
           delay: i * 0.05,
           ease: 'linear',
         }"
-        class="card"
+        class = "card"
       >
         <NuxtLink
           :class="i % 2 == 0 ? 'reverse_card' : 'normal_card'"
@@ -80,7 +80,7 @@ onMounted(() => {
         isTotallyVisible.value = true
       }
     },
-    { threshold: Array.from({ length: 101 }, (_, i) => i / 100) } //Array.from({length: 101}, (_, i) => i / 100)
+    { threshold: 0.7 } //Array.from({length: 101}, (_, i) => i / 100)
   )
   observer.observe(containerRef.value)
 })
