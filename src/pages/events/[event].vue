@@ -22,6 +22,20 @@ if (response.error.value || !response.data.value)
 
 const event = response.data.value
 
+const calendar_date = new Date(event.date)
+const calendar_year = calendar_date.getFullYear()
+const calendar_month = calendar_date.toLocaleString("en-US", { month: "long" })
+const calendar_month_short = calendar_date
+  .toLocaleString("en-US", { month: "short" })
+  .toUpperCase()
+const calendar_day = calendar_date.getDate()
+const calendar_day_name = calendar_date
+  .toLocaleString("en-US", { weekday: "short" })
+  .toUpperCase()
+
+console.log(calendar_day)
+console.log(calendar_day_name)
+
 const learnPoints = event.infostr
   .split("\n")
   .map((s) => s.replace(";", "").trim())
@@ -49,6 +63,88 @@ const programPoints: {
       <p class="description">
         {{ event.description }}
       </p>
+    </section>
+    <section class="eventInfo">
+      <div class="eventInfoRow">
+        <div class="eventInfoColumn">
+          <div class="eventWhenIcon" style="">
+            <div
+              style="
+                width: 87px;
+                height: 25px;
+                background: rgba(223.86, 84.16, 84.16, 0.83);
+                overflow: hidden;
+                border-bottom: 1px #b94646 solid;
+              "
+            >
+              <div
+                style="
+                  height: 100%;
+                  text-align: center;
+                  justify-content: center;
+                  display: flex;
+                  flex-direction: column;
+                  color: rgba(137.55, 21.03, 21.03, 0.72);
+                  font-size: 20px;
+                  font-family: Instrument Sans;
+                  font-weight: 700;
+                  line-height: 20px;
+                  word-wrap: break-word;
+                "
+              >
+                {{ calendar_month_short }}
+              </div>
+            </div>
+            <div
+              style="
+                height: 35px;
+                text-align: center;
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+                color: #2b2b2b;
+                font-size: 40px;
+                font-family: Instrument Sans;
+                font-weight: 500;
+                line-height: 40px;
+                word-wrap: break-word;
+              "
+            >
+              {{ calendar_day }}
+            </div>
+            <div
+              style="
+                height: 18px;
+                text-align: center;
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+                color: #7a7a7a;
+                font-size: 15px;
+                font-family: Instrument Sans;
+                font-weight: 500;
+                line-height: 15px;
+                word-wrap: break-word;
+              "
+            >
+              {{ calendar_day_name }}
+            </div>
+          </div>
+          <div class="eventWhenText">
+            <h3>When:</h3>
+            <p>{{calendar_day}} {{calendar_month}} {{calendar_year}}</p>
+          </div>
+        </div>
+        <div class="eventInfoColumn">
+          <div class="eventWhereIcon"><img src="../../assets/icons/location-icon.jpg" alt="" width="75%" /></div>
+          <div class="eventWhereText">
+            <h3>Where:</h3>
+            <p>{{event.location}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="attendButton">
       <NuxtLink class="link-button" to="#">
         <img class="attend" src="../../assets/images/calendar.svg" alt="logo" />
         Attend This Event
@@ -136,6 +232,98 @@ section {
 
 h1 {
   font-size: 2.5em;
+}
+
+.eventInfoRow {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+
+  .mobile-layout & {
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+  }
+}
+
+.eventInfoColumn {
+  flex: 40%;
+  padding: 10px;
+  display: flex;
+
+  .mobile-layout & {
+    margin: auto;
+  }
+}
+
+.eventWhenIcon {
+  width: 87px;
+  height: 87px;
+  position: relative;
+  box-shadow: 0 4px 5px 1px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  border-radius: 16px;
+  flex: 30%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+
+  .mobile-layout & {
+    flex: 35%;
+  }
+}
+
+.eventWhenText {
+  flex: 70%;
+  margin: auto;
+  padding: 0 15px;
+
+  h3 { font-size: 25px; }
+
+  p { font-size: 20px; }
+
+  .mobile-layout & {
+    flex: 65%;
+  }
+}
+
+.eventWhereIcon {
+  width: 87px;
+  height: 87px;
+  position: relative;
+  overflow: hidden;
+  flex: 30%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+
+  .mobile-layout & {
+    flex: 35%;
+  }
+}
+
+.eventWhereText {
+  flex: 70%;
+  margin: auto;
+  padding: 0 15px;
+
+  h3 { font-size: 25px; }
+
+  p { font-size: 20px; }
+
+  .mobile-layout & {
+    flex: 65%;
+  }
+}
+
+.attendButton {
+  margin-top: -20px;
+
+  .mobile-layout & {
+    margin-top: -60px;
+  }
 }
 
 span.label {
