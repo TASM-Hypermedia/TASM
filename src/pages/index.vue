@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useAPI } from "~/composables/useAPI"
 import type { ResponseData } from "~/types"
-import { motion } from "motion-v"
 
 definePageMeta({
   title: "TASM Yoga",
@@ -28,27 +27,8 @@ console.log(response)
 </script>
 
 <template>
-  <div>
-    <PageWrap title="Namaste" img-src="HomePage 1.jpeg">
-      <motion.div
-        :style="{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-        }"
-        :transition="{
-          duration: 0.5,
-          ease: 'easeInOut',
-        }"
-        :variants="{
-          initial: { opacity: 0, y: -50 },
-          animate: { opacity: 1, y: 0 },
-        }"
-        initial="initial"
-        while-in-view="animate"
-      >
-      </motion.div>
-    </PageWrap>
+  <main>
+    <HeroPage title="Namaste" url-img="HomePage 1.jpeg" />
 
     <HomePageElement
       :home-page-element="{
@@ -85,10 +65,23 @@ console.log(response)
     <CertificationComponent
       :certification-prop="response.data.value?.certifications"
     />
-  </div>
+  </main>
 </template>
 
 <style scoped>
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 100vw;
+  height: 100%;
+  gap: 32px;
+  margin-bottom: 32px;
+  border: 0px solid black;
+}
+
 .cardYogaCenter {
   width: 100%;
   height: 100%;

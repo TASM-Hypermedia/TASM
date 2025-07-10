@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import SvgImage from "~/assets/images/homepage/waves-cute1.svg"
 import SvgTizia from "~/assets/images/homepage/Yogacenter-image.svg"
-import { onMounted } from "vue"
 const { homePageElement } = defineProps<{
   homePageElement: {
     imgUrl: string
@@ -15,8 +13,7 @@ const { homePageElement } = defineProps<{
 <template>
   <nuxt-link to="/yogacenter" class="textImg">
     <div class="container">
-      <SvgImage class="svg-image" />
-
+      <AnimWaves />
       <div
         style="
           display: flex;
@@ -80,8 +77,8 @@ const { homePageElement } = defineProps<{
   justify-content: center;
   align-items: center;
   position: relative;
-  /* margin-top: 140px; */
-  margin-bottom: calc(100vw / 5);
+  margin-top: 50px;
+  margin-bottom: 280px;
 }
 
 .sheetImg {

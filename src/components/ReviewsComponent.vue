@@ -68,20 +68,16 @@ onMounted(() => {
 </script>
 
 <style scoped>
-div {
-  border: 0px solid black;
-}
-
 .component {
-  width: 100%;
-  height: fit-content;
+  width: 100vw;
+  margin: 0 auto;
+  max-width: 1200px;
   align-items: center;
-  /* position: relative; */
   background: white;
   display: flex;
   flex-direction: column;
-  gap: 0px;
-  padding: 10% 10%;
+  gap: 16px;
+  padding: 0 32px;
   /* border: 1px solid black; */
 }
 
@@ -103,20 +99,18 @@ div {
   width: 100%;
   max-width: 1200px;
   height: fit-content;
-  padding: 45px 2.5%;
+  margin: 0 16px;
   display: flex;
-  /* flex-direction: row;  */
-  justify-content: space-around;
-  align-items: center;
-  gap: 2%;
+  justify-content: space-evenly;
+  align-items: stretch;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
 .card {
-  width: 23.5%;
-  min-width: 260px;
-  height: fit-content;
-  padding: 27.5px;
+  flex: 1;
+  min-width: 240px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -124,12 +118,6 @@ div {
   background-color: #e8cbff;
   box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
 }
-
-/* .card:hover {
-    transform: scale(1.02);
-    background-color: #ffdaa9; 
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
-} */
 
 .body {
   height: 100%;
