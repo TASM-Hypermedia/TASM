@@ -60,9 +60,6 @@ const programPoints: {
   >
     <section>
       <p class="shortDesc">"{{ event.shortDesc }}"</p>
-      <p class="description">
-        {{ event.description }}
-      </p>
     </section>
     <section class="eventInfo">
       <div class="eventInfoRow">
@@ -132,23 +129,28 @@ const programPoints: {
           </div>
           <div class="eventWhenText">
             <h3>When:</h3>
-            <p>{{calendar_day}} {{calendar_month}} {{calendar_year}}</p>
+            <p>{{ calendar_day }} {{ calendar_month }} {{ calendar_year }}</p>
           </div>
         </div>
         <div class="eventInfoColumn">
-          <div class="eventWhereIcon"><img src="../../assets/icons/location-icon.jpg" alt="" width="75%" /></div>
+          <div class="eventWhereIcon">
+            <img src="../../assets/icons/location-icon.jpg" alt="" />
+          </div>
           <div class="eventWhereText">
             <h3>Where:</h3>
-            <p>{{event.location}}</p>
+            <p>{{ event.location }}</p>
           </div>
         </div>
       </div>
-    </section>
-    <section class="attendButton">
       <NuxtLink class="link-button" to="#">
         <img class="attend" src="../../assets/images/calendar.svg" alt="logo" />
         Attend This Event
       </NuxtLink>
+    </section>
+    <section>
+      <p class="description">
+        {{ event.description }}
+      </p>
     </section>
     <section class="pair">
       <div>
@@ -171,32 +173,25 @@ const programPoints: {
         </template>
       </div>
     </section>
-    <section v-if="event.guest" class="guest">
+    <section v-if="event.guest">
       <h1>Special Guest</h1>
-      <div>
-        <img :src="event.guest.imageURL" :alt="event.guest.name" />
-        <div>
-          <h2>{{ event.guest.name }}</h2>
-          <p>{{ event.guest.description }}</p>
-        </div>
-      </div>
+      <ContentCard
+        :content-card-prop="{
+          title: event.guest.name,
+          description: event.guest.description,
+          imgUrl: event.guest.imageURL,
+        }"
+        separator
+      />
     </section>
-    <section style="align-items: center; text-align: center">
+    <section>
       <h1>Teachers in This Event</h1>
       <CardGrid :length="event.teachers.length">
         <template #card="{ index }">
           <teacher-card :teacher-prop="event.teachers[index]" />
         </template>
       </CardGrid>
-    </section>
-    <section class="events">
-      <!--<h2>Similar Events</h2>
-      <div class="temp-grid">
-        <activity-card :activity-prop="eventsList[0]" />
-        <activity-card :activity-prop="eventsList[1]" />
-        <activity-card :activity-prop="eventsList[2]" />
-      </div>-->
-      <NuxtLink class="link-button" to="/events"> View all events </NuxtLink>
+      <NuxtLink class="link-button" to="/events"> View other events </NuxtLink>
     </section>
   </PageWrap>
 </template>
@@ -219,11 +214,6 @@ section {
   font-style: italic;
   font-size: 1.2em;
   text-align: center;
-  margin: 48px 0;
-
-  .mobile-layout & {
-    margin-top: -15px;
-  }
 }
 
 .description {
@@ -231,29 +221,30 @@ section {
 }
 
 h1 {
+  text-align: center;
   font-size: 2.5em;
 }
 
+.eventInfo {
+  gap: 32px;
+}
+
 .eventInfoRow {
-  width: 60%;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 16px;
 
   .mobile-layout & {
     flex-direction: column;
-    width: 90%;
+    align-items: start;
     margin: auto;
   }
 }
 
 .eventInfoColumn {
-  flex: 40%;
-  padding: 10px;
   display: flex;
-
-  .mobile-layout & {
-    margin: auto;
-  }
 }
 
 .eventWhenIcon {
@@ -263,28 +254,23 @@ h1 {
   box-shadow: 0 4px 5px 1px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   border-radius: 16px;
-  flex: 30%;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   text-align: center;
-
-  .mobile-layout & {
-    flex: 35%;
-  }
 }
 
 .eventWhenText {
-  flex: 70%;
   margin: auto;
   padding: 0 15px;
 
-  h3 { font-size: 25px; }
+  h3 {
+    font-size: 25px;
+  }
 
-  p { font-size: 20px; }
-
-  .mobile-layout & {
-    flex: 65%;
+  p {
+    font-size: 20px;
   }
 }
 
@@ -293,36 +279,32 @@ h1 {
   height: 87px;
   position: relative;
   overflow: hidden;
-  flex: 30%;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   text-align: center;
+  box-shadow: 0 4px 5px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  padding: 8px;
 
-  .mobile-layout & {
-    flex: 35%;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
   }
 }
 
 .eventWhereText {
-  flex: 70%;
   margin: auto;
   padding: 0 15px;
 
-  h3 { font-size: 25px; }
-
-  p { font-size: 20px; }
-
-  .mobile-layout & {
-    flex: 65%;
+  h3 {
+    font-size: 25px;
   }
-}
 
-.attendButton {
-  margin-top: -20px;
-
-  .mobile-layout & {
-    margin-top: -60px;
+  p {
+    font-size: 20px;
   }
 }
 
@@ -355,58 +337,6 @@ ul {
 
   li::marker {
     font-weight: bold;
-  }
-}
-
-section.guest {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  h1 {
-    .mobile-layout & {
-      margin-bottom: 20px;
-    }
-  }
-
-  & > div {
-    display: flex;
-    align-items: center;
-    gap: 64px;
-    padding: 0 128px;
-    img {
-      flex: 0 1 0;
-      max-width: 200px;
-      max-height: 300px;
-      object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
-    }
-    div {
-      flex: 1 1 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-
-      .mobile-layout & {
-        width: 100%;
-        text-align: center;
-        margin-top: -40px;
-      }
-    }
-    .mobile-layout & {
-      flex-direction: column;
-      padding: 0;
-    }
-  }
-}
-
-.events {
-  align-items: center;
-  text-align: center;
-
-  .mobile-layout & {
-    margin-top: -50px;
   }
 }
 

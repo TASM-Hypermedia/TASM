@@ -1,6 +1,11 @@
 <template>
   <NuxtLink :to="`/teachers/${teacherProp.url}`" class="card">
-    <img class="teacher_image" style="" :src="'/images/' + teacherProp.image" :alt="teacherProp.name" />
+    <img
+      class="teacher_image"
+      style=""
+      :src="'/images/' + teacherProp.image"
+      :alt="teacherProp.name"
+    />
     <div class="teacher_name" style="">{{ teacherProp.name }}</div>
     <div class="mantra" style="">&ldquo;{{ teacherProp.mantra }}&rdquo;</div>
 
@@ -42,10 +47,6 @@ defineProps<{
   display: inline-flex;
   color: rgb(0, 0, 0);
   text-decoration: none;
-
-  .mobile-layout & {
-    max-width: 1080px;
-  }
 }
 
 .teacher_image {

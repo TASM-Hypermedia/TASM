@@ -65,7 +65,7 @@ export type ContentCard = {
   description?: string
   imgUrl?: string
   altDescription?: string
-  imageOnTheRight: boolean
+  imageOnTheRight?: boolean
 }
 
 // type for a single event page
