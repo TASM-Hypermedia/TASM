@@ -1,5 +1,8 @@
 <template>
-  <NuxtLink :to="`/teachers/${teacherProp.url}`" class="card">
+  <NuxtLink 
+    :to="`/teachers/${teacherProp.url}`" 
+    class="card">
+
     <img class="teacher_image" style="" :src="'/images/' + teacherProp.image" :alt="teacherProp.name" />
     <div class="teacher_name" style="">{{ teacherProp.name }}</div>
     <div class="mantra" style="">&ldquo;{{ teacherProp.mantra }}&rdquo;</div>
@@ -12,6 +15,10 @@
       />
     </v-container>
   </NuxtLink>
+  <!-- 
+   1-motion wrapping 
+   2-hover in css
+   -->
 </template>
 
 <script setup lang="ts">
@@ -29,7 +36,7 @@ defineProps<{
   height: 100%;
   padding: 11px;
   background: rgb(255, 255, 255);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   border-radius: 15px;
   cursor: pointer;
@@ -42,10 +49,17 @@ defineProps<{
   display: inline-flex;
   color: rgb(0, 0, 0);
   text-decoration: none;
+  transform: scale(1);
+  transition: all 0.2s ease-in-out;
 
   .mobile-layout & {
     max-width: 1080px;
   }
+}
+
+.card:hover {
+  transform: scale(1.02);
+  background-color: #bfa4d1;
 }
 
 .teacher_image {
