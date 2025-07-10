@@ -4,6 +4,7 @@ import { cubicBezier, motion, type Variant } from "motion-v"
 
 const { contentCardProp } = defineProps<{
   contentCardProp: ContentCard
+  separator?: boolean
 }>()
 
 const modalImage = ref<{ URL: string; alt?: string } | null>(null)
@@ -78,7 +79,10 @@ onMounted(() => {
         staggerChildren: 0.1,
       }"
       class="row"
-      :class="{ invertElementsOnMobile: !contentCardProp.imageOnTheRight }"
+      :class="{
+        invertElementsOnMobile: !contentCardProp.imageOnTheRight,
+        bordered: separator,
+      }"
     >
       <motion.div class="writtenContent" :variants="variants">
         <p class="contentTitle">{{ contentCardProp.title }}</p>
@@ -89,6 +93,7 @@ onMounted(() => {
       </motion.div>
       <div
         ref="image-ref"
+        class="imageContainer"
         :style="{ display: 'flex', flex: 1 }"
         @mousemove="handleMouse"
         @mouseleave="mouseLeave"
@@ -140,19 +145,20 @@ onMounted(() => {
 .contentCard {
   display: flex;
   justify-content: stretch;
-  width: 100%;
-  padding: 16px 64px;
-  margin: 32px;
+  margin: 32px 0;
 }
 
 .row {
-  border-top: 1px solid #e0e0e0;
   padding: 16px;
   gap: 16px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   margin: auto;
+
+  &.bordered {
+    border-top: 1px solid #e0e0e0;
+  }
 
   .reverse & {
     flex-direction: row-reverse;
@@ -198,14 +204,23 @@ onMounted(() => {
   }
 }
 
-img {
-  max-height: 300px;
-  max-width: 500px;
-  object-fit: cover;
-  border-radius: 8px;
-  align-self: stretch;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
+.imageContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    align-self: stretch;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
 }
 
 // i now regret not using tailwind
