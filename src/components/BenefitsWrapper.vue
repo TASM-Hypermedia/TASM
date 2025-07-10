@@ -2,29 +2,32 @@
 import SvgBottom from "~/assets/images/homepage/Bottom-wrapper-benefits.svg"
 import SvgTop from "~/assets/images/homepage/Top-wrapper-benefits.svg"
 import { onMounted } from "vue"
+import { motion } from "motion-v"
 const benefits = [
   {
     title: "CONNECTION",
-    description:
-      "Reconnect with yourself, others, and the world around you—on and off the mat.",
+    description: "Reconnect with yourself, others, and the world around you",
     image: "Connessione.svg",
+    position: 0,
   },
   {
     title: "CLARITY",
     description:
-      "Find mental focus and inner stillness through breath and mindful movement.",
+      "Find mental focus and inner stillness through breath and mindful movement",
     image: "Lampadina.svg",
+    position: 1,
   },
   {
     title: "STRENGTH",
-    description:
-      "Build physical resilience and emotional balance from the inside out.",
+    description: "Build physical resilience and emotional balance",
     image: "Forza.svg",
+    position: 2,
   },
   {
     title: "FREEDOM",
-    description: "Release tension in the body and let go of limiting thoughts.",
+    description: "Release tension in the body and let go of limiting thoughts",
     image: "Liberta.svg",
+    position: 3,
   },
 ]
 onMounted(() => {
@@ -51,7 +54,7 @@ console.log(topHeight, bottomHeight)
 </script>
 
 <template>
-  <div class="container">
+  <div class="container-benefits">
     <div class="sheet"></div>
     <SvgBottom
       class="svg-imageBottom"
@@ -66,42 +69,40 @@ console.log(topHeight, bottomHeight)
       style="
         display: flex;
         flex-direction: column;
-        width: 100%;
-        max-width: 1080px;
+        justify-content: center;
         z-index: 1;
         align-items: center;
         padding: 50px;
         position: relative;
       "
     >
-      <!--<SvgTizia class="svg-tizia" />-->
-
       <div style="display: flex">
         <AnimatedTitle title="BENEFITS" />
       </div>
-      <div style="display: flex">
-        <v-row no-gutters>
-          <v-col
-            v-for="i in benefits.length || 0"
-            :key="i"
-            class="pa-1"
-            cols="12"
-            xs="3"
-            sm="3"
-            md="6"
-            lg="3"
-          >
-            <BenefitsContentCard :benefits-prop="benefits[i - 1]" />
-          </v-col>
-        </v-row>
-      </div>
+
+      <motion.div
+        class="benefits-cards-wrapper"
+        initial="hidden"
+        animate="shown"
+        :transition="{
+          duration: 0.2,
+          staggerChildren: 0.2,
+        }"
+      >
+        <BenefitsContentCard
+          style="flex: 1"
+          :benefits-prop="benefits[i - 1]"
+          v-for="i in benefits.length || 0"
+          :key="i"
+        />
+      </motion.div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.container {
-  z-index: -1;
+.container-benefits {
+  z-index: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -135,5 +136,14 @@ console.log(topHeight, bottomHeight)
   /*top: 200px;*/
   position: absolute;
   background-color: #f0e2f9;
+}
+.benefits-cards-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 20px;
 }
 </style>

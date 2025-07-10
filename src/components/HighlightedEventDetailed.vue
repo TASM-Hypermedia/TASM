@@ -186,8 +186,8 @@ const calendar_day_name = computed(() =>
 }
 
 .host-avatar {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
 }
 
@@ -210,8 +210,9 @@ const calendar_day_name = computed(() =>
 
 .desktop-title {
   font-size: 2rem;
+  margin-top: 2rem;
   text-align: center;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 .desktop-image {

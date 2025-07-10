@@ -107,7 +107,7 @@ onMounted(() => {
 const clientWidth = ref(0)
 const clientHeight = ref(0)
 //window.innerWidth
-
+const svgwidth = computed(() => clientWidth.value / 2)
 console.log(clientWidth)
 
 const selectedIndex = ref<number | null>(null)
@@ -118,7 +118,7 @@ const ratioBottom = 1200 / 229
 
 const topHeight = computed(() => -clientWidth.value / ratioTop)
 const bottomHeight = computed(() => -clientWidth.value / ratioBottom)*/
-const svgwidth = computed(() => clientWidth.value / 2)
+
 //const svgheight = computed(() => svgwidth.value / ratio)
 
 console.log(svgwidth)
@@ -153,9 +153,10 @@ function hideEvent() {
           :initial="{ opacity: 0 }"
           :animate="{ opacity: 1 }"
           :exit="{ opacity: 0 }"
-          :transition="{ duration: 1 }"
+          :transition="{ delay: 0.3, duration: 1 }"
           :style="{
             height: (clientHeight * 2) / 3 + 'px',
+            padding: '20px',
           }"
         >
           <HighlightedEventDetailed
@@ -167,13 +168,14 @@ function hideEvent() {
           :initial="{ opacity: 0 }"
           :animate="{ opacity: 1 }"
           :exit="{ opacity: 0 }"
-          :transition="{ delay: 0.7, duration: 1 }"
+          :transition="{ delay: 0.3, duration: 1 }"
         >
           <div
             class="default-event"
             :style="{
               width: svgwidth + 'px',
               height: (clientHeight * 2) / 3 + 'px',
+              padding: '20px',
             }"
           >
             <div

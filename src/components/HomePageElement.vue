@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import SvgImage from "~/assets/images/homepage/Sfondo-yogacenter-homepage.svg"
+import SvgImage from "~/assets/images/homepage/waves-cute1.svg"
 import SvgTizia from "~/assets/images/homepage/Yogacenter-image.svg"
-
+import { onMounted } from "vue"
 const { homePageElement } = defineProps<{
   homePageElement: {
     imgUrl: string
@@ -15,14 +15,13 @@ const { homePageElement } = defineProps<{
 <template>
   <nuxt-link to="/yogacenter" class="textImg">
     <div class="container">
-      <div class="sheet"></div>
       <SvgImage class="svg-image" />
 
       <div
         style="
           display: flex;
           width: 100%;
-          max-width: 1080px;
+          max-width: 900px;
           z-index: 1;
           gap: 64px;
           align-items: center;
@@ -32,53 +31,36 @@ const { homePageElement } = defineProps<{
 
         <div
           style="
-            width: 100%;
-            height: 100%;
             background: none;
-            overflow: hidden;
+            /* overflow: hidden; */
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
             gap: 18px;
             display: inline-flex;
-            flex: 1.5;
+            flex: 1;
           "
         >
           <div
-            style="
-              align-self: stretch;
-              color: black;
-              font-size: 50px;
-              font-family: Inter;
-              font-weight: 400;
-              word-wrap: break-word;
-            "
+            class="title"
+            style="align-self: stretch; color: black; font-weight: bold"
           >
             YOGA CENTER
           </div>
           <div
+            class="title"
             style="
               align-self: stretch;
               text-align: right;
               color: black;
-              font-size: 60px;
-              font-family: Inter;
-              font-weight: 700;
-              word-wrap: break-word;
+              font-weight: bolder;
             "
           >
             {{ homePageElement.title }}
           </div>
           <div
-            style="
-              align-self: stretch;
-              height: 216px;
-              color: black;
-              font-size: 30px;
-              font-family: Inter;
-              font-weight: 400;
-              word-wrap: break-word;
-            "
+            class="body-text"
+            style="align-self: stretch; height: 216px; color: black"
           >
             {{ homePageElement.description }}
           </div>
@@ -90,7 +72,7 @@ const { homePageElement } = defineProps<{
 
 <style scoped>
 .container {
-  z-index: -1;
+  z-index: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -98,7 +80,8 @@ const { homePageElement } = defineProps<{
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-bottom: 300px;
+  /* margin-top: 140px; */
+  margin-bottom: calc(100vw / 5);
 }
 
 .sheetImg {
@@ -116,22 +99,11 @@ const { homePageElement } = defineProps<{
 }
 .svg-image {
   width: 100vw;
-  height: auto;
+  top: 50%;
+
+  /* height: auto; */
   left: 0;
-  top: 300px;
+  /* top: 300px; */
   position: absolute;
-}
-.sheet {
-  width: 100vw;
-  height: 300px;
-  left: 0;
-  top: 140px;
-  position: absolute;
-  background-color: #d9cfe7;
-}
-.svg-tizia {
-  width: 100%;
-  height: auto;
-  flex: 1;
 }
 </style>

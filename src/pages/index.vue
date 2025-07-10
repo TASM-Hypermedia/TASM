@@ -62,12 +62,6 @@ console.log(response)
       }"
     ></HomePageElement>
 
-    <div class="slideSection">
-      <HomePage3Slides></HomePage3Slides>
-    </div>
-    <!-- <SeparatorComponent :separator-title="'Events'" /> -->
-    <BenefitsWrapper />
-
     <TrendingActivities
       :activities-prop="response.data.value?.highlights.highlightActivities"
     />
@@ -81,6 +75,11 @@ console.log(response)
         response.data.value?.highlights.highlightEvents ?? []
       "
     />
+    <div class="slideSection">
+      <HomePage3Slides></HomePage3Slides>
+    </div>
+    <!-- <SeparatorComponent :separator-title="'Events'" /> -->
+    <BenefitsWrapper />
     <ReviewsComponent :reviews-prop="response.data.value?.reviews" />
 
     <CertificationComponent
