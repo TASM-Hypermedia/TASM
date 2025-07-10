@@ -143,7 +143,7 @@ div {
   min-width: 260px;
   height: 375px;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 20px;
   background-color: rgb(183, 152, 184);
 }
 
