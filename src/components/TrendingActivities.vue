@@ -7,20 +7,19 @@
         v-for="(trendingActivity, i) in activitiesProp"
         :key="i"
         :while-hover="{ scale: 1.015 }"
-        :while-hover-transition="{
-          type: 'tween',
-          duration: 0.6,
-          ease: 'linear',
-        }"
         :initial="{ x: -150, opacity: 0 }"
         :animate="isTotallyVisible ? { x: 0, opacity: 1 } : { x: -150, opacity: 0 }"
-        :animate-transition="{
-          type: 'tween',
-          duration: 0.6,
-          delay: i * 0.05,
-          ease: 'linear',
+        :transition="{
+          scale: { duration: 0.2, ease: 'linear' },
+          x: { type: 'tween', duration: 0.2, delay: i * 0.1, ease: 'linear' },
+          opacity: { type: 'tween', duration: 0.2, delay: i * 0.1, ease: 'linear' }
         }"
+
         class = "card"
+        
+        @mouseenter="setHoveredCard(i)"
+        @mouseleave="setHoveredCard(null)"
+        
       >
         <NuxtLink
           :class="i % 2 == 0 ? 'reverse_card' : 'normal_card'"
@@ -33,18 +32,21 @@
             <div class="card_title">
               {{ "0" + (i + 1).toString() + " " + trendingActivity.title }}
             </div>
-
-            <div
+            
+            <!-- This should became a motion div -->
+            <motion.div
               id="motioncard"
               class="right_arrow"
               style="width: fit-content; height: 100%; overflow: hidden"
+              :animate="{ rotate: hoveredCard === i ? 0 : -45 }"
+              :transition="{ duration: 0.3, ease: 'easeInOut' }"
             >
               <img
                 src="../assets/images/right-arrow.svg"
                 alt=""
-                style="width: 100%; height: 100%; rotate: -45deg"
+                style="width: 100%; height: 100%; rotate: 0deg"
               />
-            </div>
+            </motion.div>
           </div>
         </NuxtLink>
       </motion.div>
@@ -57,6 +59,12 @@ import { ref, onMounted } from "vue"
 import { motion } from "motion-v"
 import type { Activity } from "~/types"
 //   import rightArrow from "@/assets/images/right-arrow.svg"
+
+const hoveredCard = ref<number | null>(null);
+
+const setHoveredCard = (index: number | null) => {
+  hoveredCard.value = index;
+};
 
 defineProps<{
   activitiesProp?: Array<Activity>
@@ -137,40 +145,8 @@ div {
   padding: 20px;
   border-radius: 10px;
   background-color: rgb(183, 152, 184);
-
-  .right_arrow {
-    img {
-      animation: rightArrowOut 0.3s;
-    }
-  }
 }
 
-@keyframes rightArrowOut {
-  from {
-    rotate: 0deg;
-  }
-  to {
-    rotate: -45deg;
-  }
-}
-
-.card:hover {
-  .right_arrow {
-    img {
-      animation: rightArrow 0.3s;
-      animation-fill-mode: forwards;
-    }
-  }
-}
-
-@keyframes rightArrow {
-  from {
-    rotate: -45deg;
-  }
-  to {
-    rotate: 0deg;
-  }
-}
 
 .normal_card {
   width: 100%;
