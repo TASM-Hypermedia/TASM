@@ -1,4 +1,9 @@
 <script setup lang="ts">
+definePageMeta({
+  title: "Yoga Center",
+  description: "Explore our Yoga Center, where tranquility meets practice.",
+})
+
 const res = await useAPI<{
   title: string
   subtitle: string
@@ -23,7 +28,7 @@ const yogaCenter = res.data.value
     </section>
 
     <section class="rooms">
-      <p>AVAILABLE ROOMS</p>
+      <p>Available Rooms</p>
       <div v-for="(room, index) in yogaCenter!.rooms" :key="index">
         <content-card :content-card-prop="room"></content-card>
       </div>
@@ -31,9 +36,10 @@ const yogaCenter = res.data.value
   </PageWrap>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .description {
   margin: auto;
+  text-align: center;
   width: 75%;
 }
 
@@ -42,7 +48,7 @@ const yogaCenter = res.data.value
   p {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 2em;
+    font-size: 2.8rem;
     font-weight: bold;
   }
 }

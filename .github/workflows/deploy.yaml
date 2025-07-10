@@ -17,7 +17,7 @@ jobs:
           node-version: "22"
       # Pick your own package manager and build script
       - run: npm install
-      - run: NUXT_APP_BASE_URL=/TASM/ npx nuxt build --preset github_pages
+      - run: npx nuxt build --preset github_pages
       - name: Commit and Push to pages repository
         uses: actions/upload-pages-artifact@v3
         with:

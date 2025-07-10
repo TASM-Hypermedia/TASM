@@ -1,5 +1,5 @@
 <template>
-  <page-wrap :title="'Events'">
+  <page-wrap :title="'Events'" img-src="/banners/events-banner.jpg">
     <card-grid :length="eventsList.length">
       <template #card="{ index }">
         <event-card :event-prop="eventsList[index]" />
@@ -12,6 +12,11 @@
 import type { Event } from "~/types"
 import { useAPI } from "~/composables/useAPI"
 
+definePageMeta({
+  title: "Events",
+  description: "Explore our upcoming events and workshops.",
+})
+
 const { data, error } = await useAPI<Event[]>("/getAllEvents")
 
 if (error.value) throw error.value
@@ -20,16 +25,4 @@ if (!data.value || data.value.length === 0) throw new Error("No data found")
 const eventsList: Event[] = data.value
 </script>
 
-<style scoped>
-div {
-  background-color: #d9d9d9;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-
-  .mobile-layout & {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-</style>
+<style scoped></style>

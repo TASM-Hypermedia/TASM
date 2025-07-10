@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { motion } from "motion-v"
 import type { Faq } from "~/types"
 
 const { faqProp } = defineProps<{
@@ -13,31 +14,65 @@ function toggle() {
 </script>
 
 <template>
-  <button type="button" class="faqQuestion" @click="toggle">
-    {{ faqProp.question }}
-  </button>
-  <div class="faqAnswer" :style="`display: ${open? 'block' : 'none' }`">
-    <p>{{ faqProp.answer }}</p>
-  </div>
+  <motion.div class="faqContainer">
+    <button type="button" class="faqQuestion" @click="toggle">
+      {{ faqProp.question }}
+      <img
+        src="/images/arrow-icon.png"
+        :style="`rotate: ${open ? '270deg' : '90deg'}`"
+        alt=""
+      />
+    </button>
+    <motion.div
+      :variants="{
+        open: {
+          marginTop: 10,
+          opacity: 1,
+          height: 'auto',
+        },
+        closed: {
+          marginTop: 0,
+          opacity: 0,
+          height: 0,
+        },
+      }"
+      initial="closed"
+      :animate="open ? 'open' : 'closed'"
+      class="faqAnswer"
+    >
+      <p>{{ faqProp.answer }}</p>
+    </motion.div>
+  </motion.div>
 </template>
 
-<style scoped>
-.faqQuestion {
-  background-color: gray;
-  padding: 10px;
+<style scoped lang="scss">
+.faqContainer {
+  border: 1px solid #919090;
   border-radius: 10px;
-  display: block;
-  width: 100%;
+  margin-bottom: 10px;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.faqQuestion {
+  display: flex;
   text-align: left;
-  margin-top: 10px;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 1.1rem;
+  font-style: italic;
+
+  img {
+    align-self: center;
+    width: 2%;
+
+    .mobile-layout & {
+      width: 4%;
+    }
+  }
 }
 
 .faqAnswer {
-  background-color: #B94646;
-  padding: 10px;
-  border-radius: 10px;
-  display: block;
   text-align: left;
-  margin-bottom: 10px;
 }
 </style>

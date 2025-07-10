@@ -165,13 +165,15 @@ onMounted(() => {
 </script>
 
 <template>
+  <!-- eslint-disable vuejs-accessibility/no-static-element-interactions -->
+  <!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
   <div class="carousel">
     <ClientOnly fallback="Loading images...">
       <div
         class="images-container"
         @pointerdown="dragStart"
         @pointermove="
-          (e) => {
+          (e: PointerEvent) => {
             if (startingX !== null) {
               const deltaX = e.clientX - startingX
               setDrag(deltaX)

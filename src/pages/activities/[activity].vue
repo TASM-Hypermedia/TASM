@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import type { Activity, ActivityType } from "~/types"
+import type { ActivityType } from "~/types"
 
 const route = useRoute()
 
 const a = route.params.activity
 const ActivityURL = typeof a === "string" ? a : a.join("")
-
-console.log(ActivityURL)
 
 const response = await useAPI<ActivityType>("/postActivity", {
   method: "POST",
@@ -24,18 +22,38 @@ if (response.error.value || !response.data.value)
 
 const activity = response.data.value
 
-const activityProp: Activity = {
-  title: activity.title,
-  image: `/images/${activity.mainImageURL}`,
-  url: activity.url,
-}
-
 const defaultDifficulty =
   activity.info[0].length > 0 ? 0 : activity.info[1].length ? 1 : 2
 
 const selectedDifficulty = ref(defaultDifficulty)
 const setDifficulty = (n: number) => {
   selectedDifficulty.value = n
+}
+
+const resActivities = await useAPI<
+  {
+    title: string
+    shortDescription: string
+    image: string
+    url: string
+    yogaCategory: number
+  }[]
+>("/getAllActivities")
+
+if (resActivities.error.value) throw resActivities.error.value
+let activitiesList = resActivities.data
+  .value!.filter((a) => a.yogaCategory === activity.yogaCategory)
+  .filter((a) => a.url !== activity.url)
+console.log(activitiesList)
+
+const similarActivities: typeof activitiesList = []
+
+for (let i = 0; i < 3; i++) {
+  const randomIndex = Math.floor(Math.random() * activitiesList.length)
+  similarActivities.push(activitiesList[randomIndex])
+  activitiesList = activitiesList.filter(
+    (a) => a.url !== similarActivities[i].url
+  )
 }
 </script>
 <template>
@@ -113,27 +131,20 @@ const setDifficulty = (n: number) => {
 
     <section style="align-items: center; text-align: center">
       <h1>Teaching {{ activity.title }}</h1>
-      <div class="temp-grid">
-        <teacher-card :teacher-prop="activity.teachers[0]" />
-        <teacher-card
-          v-if="activity.teachers[1]"
-          :teacher-prop="activity.teachers[1]"
-        />
-        <teacher-card
-          v-if="activity.teachers[2]"
-          :teacher-prop="activity.teachers[2]"
-        />
-      </div>
+      <CardGrid :length="activity.teachers.length">
+        <template #card="{ index }">
+          <teacher-card :teacher-prop="activity.teachers[index]" />
+        </template>
+      </CardGrid>
     </section>
 
     <section style="align-items: center; text-align: center">
       <h2>Similar Activities</h2>
-      <div class="temp-grid">
-        <!-- TODO: similar activities -->
-        <activity-card :activity-prop="activityProp" />
-        <activity-card :activity-prop="activityProp" />
-        <activity-card :activity-prop="activityProp" />
-      </div>
+      <card-grid :length="similarActivities.length">
+        <template #card="{ index }">
+          <activity-card :activity-prop="similarActivities[index]" />
+        </template>
+      </card-grid>
       <NuxtLink class="link-button" to="/activities">
         View all activities
       </NuxtLink>
@@ -260,19 +271,6 @@ div.buttons {
       flex-direction: row;
       justify-content: space-between;
     }
-  }
-}
-
-div.temp-grid {
-  display: flex;
-  width: 100%;
-  padding: 24px 0;
-  flex-direction: row;
-  gap: 32px;
-  justify-content: space-between;
-
-  .mobile-layout & {
-    flex-direction: column;
   }
 }
 

@@ -8,31 +8,41 @@
         :key="i"
         :while-hover="{ scale: 1.015 }"
         :initial="{ x: -150, opacity: 0 }"
-        :animate="isTotallyVisible ? { x: 0, opacity: 1 } : { x: -150, opacity: 0 }"
+        :animate="
+          isTotallyVisible ? { x: 0, opacity: 1 } : { x: -150, opacity: 0 }
+        "
         :transition="{
           scale: { duration: 0.15, ease: 'linear' },
-          x: { type: 'tween' , duration: 0.4, delay: i * 0.1, ease: 'linear' },
-          opacity: { type: 'tween', duration: 0.5, delay: i * 0.05, ease: 'linear' }
+          x: { type: 'tween', duration: 0.4, delay: i * 0.1, ease: 'linear' },
+          opacity: {
+            type: 'tween',
+            duration: 0.5,
+            delay: i * 0.05,
+            ease: 'linear',
+          },
         }"
-
-        class = "card"
-        
+        class="card"
         @mouseenter="setHoveredCard(i)"
+        @focus="setHoveredCard(i)"
         @mouseleave="setHoveredCard(null)"
-        
+        @blur="setHoveredCard(null)"
       >
         <NuxtLink
           :class="i % 2 == 0 ? 'reverse_card' : 'normal_card'"
           :to="`/activities/${trendingActivity.url}`"
           style="text-decoration: none; height: 100%; width: 100%"
         >
-          <img class="card_image" :src="trendingActivity.image" />
+          <img
+            class="card_image"
+            :src="trendingActivity.image"
+            :alt="trendingActivity.title"
+          />
 
           <div class="title_container">
             <div class="card_title">
               {{ "0" + (i + 1).toString() + " " + trendingActivity.title }}
             </div>
-            
+
             <!-- This should became a motion div -->
             <motion.div
               id="motioncard"
@@ -60,11 +70,11 @@ import { motion } from "motion-v"
 import type { Activity } from "~/types"
 //   import rightArrow from "@/assets/images/right-arrow.svg"
 
-const hoveredCard = ref<number | null>(null);
+const hoveredCard = ref<number | null>(null)
 
 const setHoveredCard = (index: number | null) => {
-  hoveredCard.value = index;
-};
+  hoveredCard.value = index
+}
 
 defineProps<{
   activitiesProp?: Array<Activity>
@@ -100,15 +110,15 @@ div {
 }
 
 .component {
-	width: 100%;
-	height: fit-content;
-	align-items: center;
-	padding: 8% 0px;
-	background: white;
-	display: flex;
-	flex-direction: column;
-	gap: 0px;
-	/* border: 0px solid black; */
+  width: 100%;
+  height: fit-content;
+  align-items: center;
+  padding: 8% 0px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  /* border: 0px solid black; */
 }
 
 .title {
@@ -146,7 +156,6 @@ div {
   border-radius: 20px;
   background-color: rgb(183, 152, 184);
 }
-
 
 .normal_card {
   width: 100%;

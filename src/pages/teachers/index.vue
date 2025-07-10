@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { useAPI } from "~/composables/useAPI"
 
+definePageMeta({
+  title: "Our Team",
+  description:
+    "Meet our dedicated instructors and learn about their unique approaches to yoga.",
+})
+
 const res = await useAPI<
   {
     teacherId: number
@@ -21,7 +27,7 @@ const teachersList = res.data.value
     title="Our Team"
     subtitle="Discover our instructors"
     tagline="The Teachers:"
-    img-src="Team.jpg"
+    img-src="/banners/team-banner.jpg"
   >
     <card-grid :length="teachersList!.length">
       <template #card="{ index }">
@@ -31,16 +37,4 @@ const teachersList = res.data.value
   </page-wrap>
 </template>
 
-<style scoped>
-div {
-  background-color: #a2a2a2;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-
-  .mobile-layout & {
-    width: 90%;
-    flex-direction: column;
-  }
-}
-</style>
+<style scoped></style>

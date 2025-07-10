@@ -10,7 +10,12 @@
             transition: { duration: 0.2 },
           }"
         >
-          <div @mouseover="mouseOver(1)" @mouseleave="mouseLeave">
+          <div
+            @mouseover="mouseOver(1)"
+            @focus="mouseOver(1)"
+            @mouseleave="mouseLeave"
+            @blur="mouseLeave"
+          >
             <v-img :src="image1" height="100%" width="100%" contain>
               <v-sheet class="sheetImg">
                 <nuxt-link to="/teachers" class="textImg"
@@ -32,7 +37,12 @@
             transition: { duration: 0.2 },
           }"
         >
-          <div @mouseover="mouseOver(2)" @mouseleave="mouseLeave">
+          <div
+            @mouseover="mouseOver(2)"
+            @focus="mouseOver(2)"
+            @mouseleave="mouseLeave"
+            @blur="mouseLeave"
+          >
             <v-img :src="image2" height="100%" width="100%" contain>
               <v-sheet class="sheetImg">
                 <nuxt-link to="/events" class="textImg"
@@ -54,7 +64,12 @@
             transition: { duration: 0.2 },
           }"
         >
-          <div @mouseover="mouseOver(3)" @mouseleave="mouseLeave">
+          <div
+            @mouseover="mouseOver(3)"
+            @focus="mouseOver(3)"
+            @mouseleave="mouseLeave"
+            @blur="mouseLeave"
+          >
             <v-img :src="image3" height="100%" width="100%" contain>
               <v-sheet class="sheetImg">
                 <nuxt-link to="/activities" class="textImg"
