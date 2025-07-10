@@ -56,8 +56,6 @@ if (data.error.value || !data.data.value)
   })
 
 const teacher = data.data.value
-
-console.log(teacher.certifications)
 </script>
 
 <template>

@@ -35,36 +35,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue"
 import { motion } from "motion-v"
 import type { Review } from "~/types"
 
 defineProps<{
   reviewsProp?: Array<Review>
 }>()
-
-const isTotallyVisible = ref(false)
-const containerRef = ref<HTMLElement | null>(null)
-const intersectionParam = ref(0)
-
-onMounted(() => {
-  if (!containerRef.value) {
-    console.log("Container reference is null")
-    return
-  }
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      // console.log("Intersection ratio:", entry.intersectionRatio)
-      intersectionParam.value = 1 - entry.intersectionRatio
-
-      if (entry.intersectionRatio >= 0.25) {
-        isTotallyVisible.value = true
-      }
-    },
-    { threshold: 0.25 } //Array.from({length: 101}, (_, i) => i / 100)
-  )
-  observer.observe(containerRef.value)
-})
 </script>
 
 <style scoped>

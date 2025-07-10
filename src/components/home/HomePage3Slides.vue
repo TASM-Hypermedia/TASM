@@ -103,7 +103,6 @@ onMounted(() => {
 })
 
 function mouseOver(i: number) {
-  console.log("Mouse over image:", i)
   let img = "Activities"
 
   if (i === 1) {

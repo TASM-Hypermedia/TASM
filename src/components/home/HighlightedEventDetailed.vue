@@ -53,20 +53,17 @@
 </template>
 
 <script setup lang="ts">
-//import { NuxtLink } from "#components"
+import { computed, onMounted, ref } from "vue"
 import type { Event } from "~/types"
 import SvgIcon from "~/assets/images/homepage/icon-location2.svg"
 
-import { computed, onMounted, ref } from "vue"
 const props = defineProps<{
   eventProp: Event
 }>()
 const clientWidth = ref(0)
 
 onMounted(() => {
-  console.log(window.innerWidth)
   clientWidth.value = window.innerWidth
-
   window.addEventListener("resize", () => {
     clientWidth.value = window.innerWidth
   })
@@ -75,8 +72,6 @@ onMounted(() => {
 const width = computed(() => clientWidth.value / 2)
 
 const calendar_date = computed(() => new Date(props.eventProp.date))
-//const calendar_date = new Date(props.eventProp.date)
-console.log("calendar_date", calendar_date)
 const calendar_month = computed(() =>
   calendar_date.value.toLocaleString("en-US", { month: "short" }).toUpperCase()
 )

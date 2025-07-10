@@ -15,8 +15,6 @@ const resFaqs = await useAPI<
 if (resFaqs.error.value) throw resFaqs.error.value
 const faqList = resFaqs.data.value
 
-//console.log(faqList)
-
 const resPricing = await useAPI<
   {
     title: string
@@ -31,8 +29,6 @@ const resPricing = await useAPI<
 
 if (resPricing.error.value) throw resPricing.error.value
 const pricingList = resPricing.data.value
-
-console.log(pricingList![0].pricingItems)
 </script>
 
 <template>

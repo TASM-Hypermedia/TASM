@@ -44,7 +44,6 @@ if (resActivities.error.value) throw resActivities.error.value
 let activitiesList = resActivities.data
   .value!.filter((a) => a.yogaCategory === activity.yogaCategory)
   .filter((a) => a.url !== activity.url)
-console.log(activitiesList)
 
 const similarActivities: typeof activitiesList = []
 

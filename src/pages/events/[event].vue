@@ -33,9 +33,6 @@ const calendar_day_name = calendar_date
   .toLocaleString("en-US", { weekday: "short" })
   .toUpperCase()
 
-console.log(calendar_day)
-console.log(calendar_day_name)
-
 const learnPoints = event.infostr
   .split("\n")
   .map((s) => s.replace(";", "").trim())

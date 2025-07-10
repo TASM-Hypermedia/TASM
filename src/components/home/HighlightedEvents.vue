@@ -13,7 +13,6 @@ const { highlightedEvents } = defineProps<{
 let currentAnimation: ReturnType<typeof animate> | null = null
 
 onMounted(() => {
-  console.log(window.innerWidth)
   clientWidth.value = window.innerWidth
   clientHeight.value = window.innerHeight
 
@@ -44,28 +43,8 @@ onMounted(() => {
 
     // imposta il centro di trasformazione sul centro del cerchio
     dot.style.transformOrigin = "center center"
-
-    //pulseDotSequence()
   }
-  // function pulseDotSequence() {
-  //   const dots = ["dot1", "dot2", "dot3"]
-  //   let i = 0
-  //   const interval = setInterval(() => {
-  //     const current = document.getElementById(dots[i % dots.length])
-  //     if (current) {
-  //       animate(
-  //         current,
-  //         { transform: ["scale(1)", "scale(1.2)", "scale(1)"] },
-  //         {
-  //           duration: 1.2,
-  //           easing: "ease-in-out",
-  //         }
-  //       )
-  //     }
-  //     i++
-  //     if (i >= dots.length * 2) clearInterval(interval)
-  //   }, 800)
-  // }
+
   function showEventWithAnimation(index: number, dot: HTMLElement | null) {
     animateDot(dot)
     showEvent(index)
@@ -89,44 +68,22 @@ onMounted(() => {
   dot3?.addEventListener("mouseover", () => {
     showEventWithAnimation(2, dot3)
   })
-  dot1?.addEventListener("touchstart", () => console.log("touchstart dot1"))
-  dot1?.addEventListener("touchend", () => console.log("touchend dot1"))
-
-  dot2?.addEventListener("touchstart", () => console.log("touchstart dot2"))
-  dot2?.addEventListener("touchend", () => console.log("touchend dot2"))
-
-  dot3?.addEventListener("touchstart", () => console.log("touchstart dot3"))
-  dot3?.addEventListener("touchend", () => console.log("touchend dot3"))
 
   div?.addEventListener("mouseleave", () => {
     hideEvent()
   })
-  //animateDot(dot1)
 })
 
 const clientWidth = ref(0)
 const clientHeight = ref(0)
-//window.innerWidth
 const svgwidth = computed(() => clientWidth.value / 2)
-console.log(clientWidth)
 
 const selectedIndex = ref<number | null>(null)
-//const ratio = 600 / 750
-/*const ratioTop = 1200 / 178
-
-const ratioBottom = 1200 / 229
-
-const topHeight = computed(() => -clientWidth.value / ratioTop)
-const bottomHeight = computed(() => -clientWidth.value / ratioBottom)*/
-
-//const svgheight = computed(() => svgwidth.value / ratio)
-
-console.log(svgwidth)
 
 function showEvent(i: number) {
-  console.log(highlightedEvents[i])
   selectedIndex.value = i
 }
+
 function hideEvent() {
   selectedIndex.value = null //:style="{ height: '100%', width: svgwidth + 'px' }"
   currentAnimation?.cancel()

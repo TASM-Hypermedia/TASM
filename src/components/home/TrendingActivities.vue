@@ -1,25 +1,27 @@
 <template>
-  <div class="component" style="">
+  <motion.div
+    initial="hidden"
+    while-in-view="visible"
+    :transition="{
+      duration: 0.8,
+      ease: easeOut,
+      staggerChildren: 0.1,
+    }"
+    class="component"
+  >
     <div class="title">Trending Activities</div>
-
     <div ref="containerRef" class="activities">
       <motion.div
         v-for="(trendingActivity, i) in activitiesProp"
         :key="i"
-        :while-hover="{ scale: 1.015 }"
-        :initial="{ x: -150, opacity: 0 }"
-        :animate="
-          isTotallyVisible ? { x: 0, opacity: 1 } : { x: -150, opacity: 0 }
-        "
+        :while-hover="{
+          scale: 1.015,
+          transition: { duration: 0.15, ease: easeInOut },
+        }"
+        :variants="variants"
         :transition="{
-          scale: { duration: 0.15, ease: 'linear' },
-          x: { type: 'tween', duration: 0.4, delay: i * 0.1, ease: 'linear' },
-          opacity: {
-            type: 'tween',
-            duration: 0.5,
-            delay: i * 0.05,
-            ease: 'linear',
-          },
+          duration: 0.8,
+          ease: easeOut,
         }"
         class="card"
         @mouseenter="setHoveredCard(i)"
@@ -61,17 +63,15 @@
         </NuxtLink>
       </motion.div>
     </div>
-  </div>
+  </motion.div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue"
-import { motion } from "motion-v"
+import { ref } from "vue"
+import { easeInOut, easeOut, motion } from "motion-v"
 import type { Activity } from "~/types"
-//   import rightArrow from "@/assets/images/right-arrow.svg"
 
 const hoveredCard = ref<number | null>(null)
-
 const setHoveredCard = (index: number | null) => {
   hoveredCard.value = index
 }
@@ -80,28 +80,18 @@ defineProps<{
   activitiesProp?: Array<Activity>
 }>()
 
-const isTotallyVisible = ref(false)
-const containerRef = ref<HTMLElement | null>(null)
-const intersectionParam = ref(0)
-
-onMounted(() => {
-  if (!containerRef.value) {
-    console.log("Container reference is null")
-    return
-  }
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      // console.log("Intersection ratio:", entry.intersectionRatio)
-      intersectionParam.value = 1 - entry.intersectionRatio
-
-      if (entry.intersectionRatio >= 0.25) {
-        isTotallyVisible.value = true
-      }
-    },
-    { threshold: 0.7 } //Array.from({length: 101}, (_, i) => i / 100)
-  )
-  observer.observe(containerRef.value)
-})
+const variants = {
+  hidden: {
+    opacity: 0,
+    y: -50,
+    filter: `blur(32px)`,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: `blur(0px)`,
+  },
+}
 </script>
 
 <style scoped>

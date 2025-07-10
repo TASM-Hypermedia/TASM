@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import ActivityCard from "~/components/ActivityCard.vue"
-
 definePageMeta({
   title: "Activities",
   description: "Explore the various types of yoga we offer.",
