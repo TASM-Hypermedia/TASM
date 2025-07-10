@@ -2,7 +2,6 @@
 import SvgBlob from "~/assets/images/homepage/Blob-Fill.svg"
 import SvgBlobOutline from "~/assets/images/homepage/Blob-outline.svg"
 import { motion } from "motion-v"
-import { ref, computed } from "vue" //ref, computedimport { } from "vue"
 
 const { benefitsProp } = defineProps<{
   benefitsProp: {

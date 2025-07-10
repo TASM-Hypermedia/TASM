@@ -90,10 +90,10 @@ console.log(topHeight, bottomHeight)
         }"
       >
         <BenefitsContentCard
-          style="flex: 1"
-          :benefits-prop="benefits[i - 1]"
           v-for="i in benefits.length || 0"
           :key="i"
+          style="flex: 1"
+          :benefits-prop="benefits[i - 1]"
         />
       </motion.div>
     </div>
