@@ -2,6 +2,10 @@
   <div class="component" style="">
     <div class="title">Our Certifications</div>
 
+    <div class="text">
+      Our Yoga Center is an internationally recognized school accredited by the most prestigious certifying bodies, including RYT (Registered Yoga Teacher) and YACEP (Yoga Alliance Continuing Education Provider) certifications. These certifications are recognition of the exceptional quality of our teaching and our commitment to continuous professional development for our entire team of instructors. We pride ourselves on having assembled the finest yoga teachers in the country, ensuring that every student receives world-class instruction and guidance on their yoga journey.
+    </div>
+
     <div class="certifications"> 
         
           <img
@@ -50,7 +54,7 @@ defineProps<{
 </script>
 
 <style scoped>
-div {
+img,div {
   border: 1px solid black;
 }
 
@@ -79,11 +83,23 @@ div {
   word-wrap: break-word;
 }
 
+.text {
+  width: 100%;
+  max-width: 1200px;
+  height: fit-content;
+  padding: 3%;
+  font-size: 16px;
+  font-family: Roboto;
+  font-weight: 300; 
+  word-wrap: break-word;
+  text-align: justify;
+}
+
 .certifications {
   width: 100%;
   max-width: 1200px;
   height: fit-content;
-  padding: 3% 1.75% 6% 1.75%; /*top right bottom left*/
+  padding: 2% 1.75% 6% 1.75%; /*top right bottom left*/
   display: flex;
   /* flex-direction: row;  */
   justify-content: space-around;

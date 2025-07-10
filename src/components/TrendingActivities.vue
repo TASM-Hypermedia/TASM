@@ -10,9 +10,9 @@
         :initial="{ x: -150, opacity: 0 }"
         :animate="isTotallyVisible ? { x: 0, opacity: 1 } : { x: -150, opacity: 0 }"
         :transition="{
-          scale: { duration: 0.2, ease: 'linear' },
-          x: { type: 'tween', duration: 0.2, delay: i * 0.1, ease: 'linear' },
-          opacity: { type: 'tween', duration: 0.2, delay: i * 0.1, ease: 'linear' }
+          scale: { duration: 0.15, ease: 'linear' },
+          x: { type: 'tween' , duration: 0.4, delay: i * 0.1, ease: 'linear' },
+          opacity: { type: 'tween', duration: 0.5, delay: i * 0.05, ease: 'linear' }
         }"
 
         class = "card"
@@ -39,7 +39,7 @@
               class="right_arrow"
               style="width: fit-content; height: 100%; overflow: hidden"
               :animate="{ rotate: hoveredCard === i ? 0 : -45 }"
-              :transition="{ duration: 0.3, ease: 'easeInOut' }"
+              :transition="{ duration: 0.2, ease: 'easeInOut' }"
             >
               <img
                 src="../assets/images/right-arrow.svg"
