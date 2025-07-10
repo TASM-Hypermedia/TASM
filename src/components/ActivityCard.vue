@@ -5,18 +5,21 @@
       :style="{ backgroundImage: `url(${activityProp.image})` }"
     ></div>
     <div class="card-title">{{ activityProp.title }}</div>
+    <div v-if="activityProp.shortDescription !== null" class="card-description">
+      {{ activityProp.shortDescription }}
+    </div>
   </NuxtLink>
 </template>
 
 <script setup lang="ts">
-import type { Activity } from "~/types"
+import type { ActivityCardProps } from "~/types"
 
 const { activityProp } = defineProps<{
-  activityProp: Activity
+  activityProp: ActivityCardProps
 }>()
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 div {
   border: 0 solid black;
 }
@@ -25,8 +28,7 @@ div {
   cursor: pointer;
   width: 100%;
   max-width: 400px;
-  min-width: 300px;
-  height: 275px;
+  height: 445px;
   text-decoration: none;
   padding: 10px;
   background: rgb(147, 210, 158);
@@ -40,24 +42,26 @@ div {
   align-items: flex-start;
   display: inline-flex;
   gap: 10px;
-  border: 0px solid black;
+  border: 0 solid black;
+  transition: background-color 0.3s ease-out;
 
   .mobile-layout & {
     max-width: 1080px;
   }
 }
 
+.card:hover {
+  background-color: #bfa4d1;
+}
+
 .card-image {
   width: 100%;
-  height: 90%;
+  min-height: 300px;
   border-radius: 7px;
   align-self: stretch;
   background-size: cover;
-  border: 0 solid black;
-  background-position: center; /* Centers the image both vertically and horizontally */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
-  /*flex: none
-        */
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .card-title {
@@ -66,10 +70,17 @@ div {
   justify-content: center;
   display: flex;
   flex-direction: column;
-  color: rgb(255, 255, 255);
-  font-size: 110%;
-  font-family: Instrument Sans;
+  color: black;
+  font-size: 120%;
   font-weight: 400;
   word-wrap: break-word;
+  margin-top: 5px;
+}
+
+.card-description {
+  color: black;
+  font-size: 14px;
+  text-align: center;
+  justify-content: center;
 }
 </style>

@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     "nuxt-viewport",
     "motion-v/nuxt",
     "nuxt-svgo",
+    "@nuxtjs/seo",
   ],
   vuetify: {
     moduleOptions: {},
@@ -64,21 +65,30 @@ export default defineNuxtConfig({
     feature: "minWidth",
   },
   svgo: {
-    autoImportPath: '~/assets/homepage/',
-    defaultImport: 'component',
+    autoImportPath: "~/assets/homepage/",
+    defaultImport: "component",
 
     // Configurazione svgo vera e propria
     svgoConfig: {
       plugins: [
         {
-          name: 'preset-default',
+          name: "preset-default",
           params: {
             overrides: {
-              cleanupIds: false, 
+              cleanupIds: false,
             },
           },
         },
       ],
     },
+  },
+  sitemap: {
+    sources: ["/api/__sitemap__/vercel"],
+  },
+  site: {
+    url: "tasm.it",
+    name: "TASM",
+    description:
+      "TASM is a yoga studio in City, Country, offering classes, workshops, and teacher training.",
   },
 })

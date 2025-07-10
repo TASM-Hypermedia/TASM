@@ -15,8 +15,12 @@ const data = await useAPI<{
   certifications: Array<{
     title: string
   }>
+  specializations: Array<{
+    title: string
+  }>
   activities: Array<{
     title: string
+    shortDescription: string
     bannerImageURL: string
     url: string
   }>
@@ -81,8 +85,10 @@ console.log(teacher.certifications)
           <ActivityCard
             :activity-prop="{
               title: teacher.activities[index].title,
+              shortDescription: teacher.activities[index].shortDescription,
               image: teacher.activities[index].bannerImageURL,
               url: teacher.activities[index].url,
+              yogaCategory: 0,
             }"
           >
           </ActivityCard>
@@ -104,8 +110,10 @@ console.log(teacher.certifications)
               url: teacher.events[index].url,
               startTime: teacher.events[index].startTime,
               eventImage: teacher.events[index].bannerImageURL,
-              hostImage: teacher.events[index].guests[0].mainImageURL,
-              hostName: teacher.events[index].guests[0].name,
+              hostImage:
+                teacher.events[index].guests[0]?.mainImageURL ??
+                teacher.mainImageURL,
+              hostName: teacher.events[index].guests[0]?.name ?? teacher.name,
               activityTags: teacher.activities.map((ta) => ({
                 text: ta.title,
               })),
@@ -123,12 +131,24 @@ console.log(teacher.certifications)
     </div>
 
     <!-- SPECIALIZZAZIONI & CERTIFICAZIONI -->
-    <div class="SpecCert"></div>
-    <p>
-      <b>Specializations: </b>
-      {{ teacher.activities.map((a) => a.title).join(",") }}
-    </p>
-    <p><b>Certifications: </b> {{ teacher.certifications.join(",") }}</p>
+    <div class="specCert">
+      <div class="column">
+        <h4>Specializations:</h4>
+        <div v-for="(item, index) in teacher.specializations" :key="index">
+          <ul>
+            <li>{{ item.title }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="column">
+        <h4>Certifications:</h4>
+        <div v-for="(item, index) in teacher.certifications" :key="index">
+          <ul>
+            <li>{{ item }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <!-- CAROSELLO -->
     <AnimatedCarousel :images="teacher.images" />
@@ -137,7 +157,7 @@ console.log(teacher.certifications)
   </PageWrap>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .divWithMe {
   width: 100%;
   text-align: center;
@@ -152,7 +172,7 @@ console.log(teacher.certifications)
 }
 
 .myJourney {
-  width: 100%;
+  width: 60%;
 
   h3 {
     margin-top: 60px;
@@ -167,6 +187,35 @@ console.log(teacher.certifications)
       text-align: center;
     }
   }
+
+  .mobile-layout & {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+.specCert {
+  display: flex;
+  margin-top: 25px;
+  width: 60%;
+  flex-direction: row;
+
+  .column {
+    flex: 50%;
+
+    .mobile-layout & {
+      margin-bottom: 10px;
+    }
+  }
+
+  .mobile-layout & {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+ul {
+  list-style-type: none;
 }
 
 .link-button {

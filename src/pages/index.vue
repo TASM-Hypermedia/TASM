@@ -3,6 +3,11 @@ import { useAPI } from "~/composables/useAPI"
 import type { ResponseData } from "~/types"
 import { motion } from "motion-v"
 
+definePageMeta({
+  title: "TASM Yoga",
+  description: "Welcome to TASM Yoga, your journey to wellness begins here.",
+})
+
 const response = await useAPI<ResponseData>("/getHomePage", {
   method: "GET",
 })
@@ -76,9 +81,11 @@ console.log(response)
         response.data.value?.highlights.highlightEvents ?? []
       "
     />
-    <ReviewsComponent :reviews-prop="response.data.value?.reviews"/>
+    <ReviewsComponent :reviews-prop="response.data.value?.reviews" />
 
-    <CertificationComponent :certification-prop="response.data.value?.certifications" />
+    <CertificationComponent
+      :certification-prop="response.data.value?.certifications"
+    />
   </div>
 </template>
 

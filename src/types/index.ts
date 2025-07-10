@@ -8,7 +8,14 @@ export type Teacher = {
   activityTags: Array<{ text: string }>
 }
 
-// Activity card type
+export type ActivityCardProps = {
+  title: string
+  shortDescription: string
+  image: string
+  url: string
+  yogaCategory: number
+}
+
 export type Activity = {
   title: string
   image: string
@@ -38,7 +45,7 @@ export type Price = {
     item: string
   }[]
   darkMode: boolean
-};
+}
 
 export type Faq = {
   question: string
@@ -46,11 +53,11 @@ export type Faq = {
 }
 
 export type YogaCenter = {
-  title: string,
-  subtitle?: string,
-  description?: string,
-  imgUrl?: string,
-  altDescription?: string,
+  title: string
+  subtitle?: string
+  description?: string
+  imgUrl?: string
+  altDescription?: string
   imageOnTheRight: boolean
 }
 
@@ -95,6 +102,7 @@ export interface ActivityType {
   mainImageURL: string
   description: string
   url: string
+  yogaCategory: number
   nextLessons: {
     date: string
     time: string
@@ -113,26 +121,24 @@ export interface ActivityType {
 }
 
 export type Review = {
-  person: string,
-  text: string,
-  stars: number,
+  person: string
+  text: string
+  stars: number
 }
 
 export type Certification = {
-  imageURL: string,
+  imageURL: string
 }
 
-
-
-export type  ResponseData = {
-  yogaCenter: YogaCenter,
-  activities: Activity[],
-  events: Event[],
-  teachers: Teacher[],
+export type ResponseData = {
+  yogaCenter: YogaCenter
+  activities: Activity[]
+  events: Event[]
+  teachers: Teacher[]
   highlights: {
-     highlightEvents: Event[],
-     highlightActivities: Activity[]
-  },
-  reviews: Review[],
-  certifications: Certification[],
-} 
+    highlightEvents: Event[]
+    highlightActivities: Activity[]
+  }
+  reviews: Review[]
+  certifications: Certification[]
+}

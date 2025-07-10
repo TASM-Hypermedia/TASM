@@ -121,6 +121,7 @@ const backwards = throttle(() => {
       <template v-for="image in imgs.value" :key="image.id">
         <img
           v-if="image !== null"
+          :alt="`Carousel Image ${image.id}`"
           :src="image.url"
           :style="{
             display: image.opacity > 0 ? 'block' : 'none', // improves render performance
