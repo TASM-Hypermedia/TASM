@@ -2,7 +2,6 @@
   <NuxtLink :to="`/teachers/${teacherProp.url}`" class="card">
     <img
       class="teacher_image"
-      style=""
       :src="'/images/' + teacherProp.image"
       :alt="teacherProp.name"
     />
