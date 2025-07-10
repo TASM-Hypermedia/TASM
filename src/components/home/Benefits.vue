@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import SvgWave from "~/assets/images/homepage/wave-outline2.svg"
+import SvgWaveT from "~/assets/images/homepage/wave-top-fill.svg"
+import SvgWaveEmptyT from "~/assets/images/homepage/wave-top-outline.svg"
+import SvgWaveB from "~/assets/images/homepage/wave-bottom-fill.svg"
+import SvgWaveEmptyB from "~/assets/images/homepage/wave-bottom-outline.svg"
+
 import { onMounted } from "vue"
 import { motion } from "motion-v"
 
 const benefits = [
   {
     title: "CONNECTION",
-    description: "Reconnect with yourself, others, and the world around you",
+    description:
+      "Reconnect with yourself, others, and the world around you —on and off the mat",
     image: "Connessione.svg",
     position: 0,
   },
@@ -44,9 +49,9 @@ const clientWidth = ref(0)
 
 console.log(clientWidth)
 
-const ratioTop = 1200 / 178
+const ratioTop = 5000 / 288
 
-const ratioBottom = 1200 / 178
+const ratioBottom = 5000 / 288
 
 const topHeight = computed(() => -clientWidth.value / ratioTop)
 const bottomHeight = computed(() => -clientWidth.value / ratioBottom)
@@ -65,17 +70,33 @@ console.log(topHeight, bottomHeight)
       :style="{ top: topHeight + 'px', width: '100vw' }"
     /> -->
 
-    <SvgWave
+    <SvgWaveT
       class="svg-imageTop"
-      :style="{ top: topHeight + 'px', width: '100vw' }"
-    /><SvgWave
+      :style="{ top: +topHeight, width: '100vw' }"
+    /><SvgWaveEmptyT
       class="svg-imageTop"
-      :style="{ top: topHeight - topHeight * 0.2 + 'px', width: '100vw' }"
-    /><SvgWave
+      :style="{ top: topHeight * 4 + 'px', width: '100vw' }"
+    /><SvgWaveEmptyT
       class="svg-imageTop"
-      :style="{ top: topHeight - topHeight * 0.35 + 'px', width: '100vw' }"
+      :style="{
+        top: topHeight * 4.35 + 'px',
+        width: '100vw',
+      }"
     />
 
+    <SvgWaveB
+      class="svg-imageTop"
+      :style="{ bottom: +topHeight * 3.5, width: '100vw' }"
+    /><SvgWaveEmptyB
+      class="svg-imageTop"
+      :style="{ bottom: topHeight * 1.5 + 'px', width: '100vw' }"
+    /><SvgWaveEmptyB
+      class="svg-imageTop"
+      :style="{
+        bottom: topHeight * 2.35 + 'px',
+        width: '100vw',
+      }"
+    />
     <!-- <SvgWave
       class="svg-imageBottom"
       :style="{ bottom: bottomHeight + 'px', width: '100vw' }"
@@ -159,7 +180,8 @@ console.log(topHeight, bottomHeight)
   bottom: 0;
   top: -20px;
   left: 0;
-  /*top: 200px;*/
+  bottom: -10px;
+  /* top: -120px; */
   position: absolute;
   background-color: #f0e2f9;
 }
