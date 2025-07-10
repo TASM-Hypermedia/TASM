@@ -4,14 +4,14 @@
             <div class="calendar" style="">
                 <div style="width: 87px; height: 25px; background: rgba(223.86, 84.16, 84.16, 0.83); overflow: hidden; border-bottom: 1px #B94646 solid">
                     <div style="height: 100%; text-align: center; justify-content: center; display: flex; flex-direction: column; color: rgba(137.55, 21.03, 21.03, 0.72); font-size: 20px; font-family: Instrument Sans; font-weight: 700; line-height: 20px; word-wrap: break-word">
-                        AUG
+                        {{ calendar_month }}
                     </div>
                 </div>
                 <div style=" height: 35px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #2B2B2B; font-size: 40px; font-family: Instrument Sans; font-weight: 500; line-height: 40px; word-wrap: break-word">
-                    12
+                    {{ calendar_day }}
                 </div>
                 <div style=" height: 18px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #7A7A7A; font-size: 15px; font-family: Instrument Sans; font-weight: 500; line-height: 15px; word-wrap: break-word">
-                    MON
+                    {{ calendar_day_name }}
                 </div>
             </div>
             <div class="title_box" style="">
@@ -59,12 +59,21 @@
 </template>
 
 <script setup lang="ts">
-import { NuxtLink } from '#components';
-import type { Event } from '~/types';
+    import { NuxtLink } from '#components';
+    import type { Event } from '~/types';
+        
+    const props = defineProps<{
+	  eventProp: Event
+	}>()
     
-defineProps<{
-    eventProp: Event,
-}>();
+    const calendar_date = new Date(props.eventProp.date)
+	const calendar_month = calendar_date
+	  .toLocaleString("en-US", { month: "short" })
+	  .toUpperCase()
+	const calendar_day = calendar_date.getDate()
+	const calendar_day_name = calendar_date
+	  .toLocaleString("en-US", { weekday: "short" })
+	  .toUpperCase()
 </script>
 
 <style scoped>
@@ -94,6 +103,10 @@ defineProps<{
         .mobile-layout & {
           max-width: 1080px;
         }
+    }
+
+    .mobile-layout & {
+          max-width: 1080px;
     }
 
     .top {

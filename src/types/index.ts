@@ -59,14 +59,6 @@ export type YogaCenter = {
   imageOnTheRight: boolean
 }
 
-export type Room = {
-  name: string
-  text: string
-  urlImage: string
-  altDescription: string
-  imageOnTheRight: boolean
-}
-
 export type ContentCard = {
   title: string
   subtitle?: string
@@ -82,6 +74,8 @@ export interface EventType {
   subtitle?: string
   url: string
   mainImageURL: string
+  date: string
+  location: string
   shortDesc: string
   description: string
   infostr: string
