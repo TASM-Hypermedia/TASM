@@ -173,7 +173,7 @@ onMounted(() => {
         class="images-container"
         @pointerdown="dragStart"
         @pointermove="
-          (e) => {
+          (e: PointerEvent) => {
             if (startingX !== null) {
               const deltaX = e.clientX - startingX
               setDrag(deltaX)
