@@ -3,18 +3,25 @@
     <div class="title">Our Certifications</div>
 
     <div class="text">
-      Our Yoga Center is an internationally recognized school accredited by the most prestigious certifying bodies, including RYT (Registered Yoga Teacher) and YACEP (Yoga Alliance Continuing Education Provider) certifications. These certifications are recognition of the exceptional quality of our teaching and our commitment to continuous professional development for our entire team of instructors. We pride ourselves on having assembled the finest yoga teachers in the country, ensuring that every student receives world-class instruction and guidance on their yoga journey.
+      Our Yoga Center is an internationally recognized school accredited by the
+      most prestigious certifying bodies, including RYT (Registered Yoga
+      Teacher) and YACEP (Yoga Alliance Continuing Education Provider)
+      certifications. These certifications are recognition of the exceptional
+      quality of our teaching and our commitment to continuous professional
+      development for our entire team of instructors. We pride ourselves on
+      having assembled the finest yoga teachers in the country, ensuring that
+      every student receives world-class instruction and guidance on their yoga
+      journey.
     </div>
 
-    <div class="certifications"> 
-        
-          <img
-            v-for="(Certificate, i) in certificationProp"
-            :key="i"         
-            :src="Certificate.imageURL"
-            class="card_image" 
-            />
-     
+    <div class="certifications">
+      <img
+        v-for="(Certificate, i) in certificationProp"
+        :key="i"
+        :src="Certificate.imageURL"
+        class="card_image"
+        :alt="`Certification ${i + 1}`"
+      />
     </div>
   </div>
 </template>
@@ -54,20 +61,21 @@ defineProps<{
 </script>
 
 <style scoped>
-img,div {
+img,
+div {
   border: 1px solid black;
 }
 
 .component {
-	width: 100%;
-	height: fit-content;
-	align-items: center;
-	padding: 8% 0px;
-	background: white;
-	display: flex;
-	flex-direction: column;
-	gap: 0px;
-	/* border: 0px solid black; */
+  width: 100%;
+  height: fit-content;
+  align-items: center;
+  padding: 8% 0px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  /* border: 0px solid black; */
 }
 
 .title {
@@ -90,7 +98,7 @@ img,div {
   padding: 3%;
   font-size: 16px;
   font-family: Roboto;
-  font-weight: 300; 
+  font-weight: 300;
   word-wrap: break-word;
   text-align: justify;
 }
@@ -108,8 +116,4 @@ img,div {
   flex-wrap: wrap;
   /* border: 0px solid black; */
 }
-
-
 </style>
-
-

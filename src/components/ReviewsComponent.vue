@@ -15,17 +15,18 @@
         }"
       >
         <div class="body">
-          {{review.text}}
+          {{ review.text }}
         </div>
-        
+
         <div class="name">{{ review.person }}</div>
 
-        <div class="rating">
+        <div class="rating" :aria-label="`Rating: ${review.stars} out of 5`">
           <img
             v-for="k in review.stars"
             :key="k"
             src="https://www.svgrepo.com/show/513408/star.svg"
             style="height: 25px; width: 25px"
+            alt=""
           />
         </div>
       </motion.div>
@@ -38,9 +39,9 @@ import { ref, onMounted } from "vue"
 import { motion } from "motion-v"
 import type { Review } from "~/types"
 
-  defineProps<{
-    reviewsProp?: Array<Review>;
-  }>()
+defineProps<{
+  reviewsProp?: Array<Review>
+}>()
 
 const isTotallyVisible = ref(false)
 const containerRef = ref<HTMLElement | null>(null)
