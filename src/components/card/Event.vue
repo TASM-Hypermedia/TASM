@@ -46,7 +46,7 @@
             </div>
             
             <v-container class="tag_container">       
-                <activity-tag
+                <card-activity-tag
                     v-for="(tag, index) in eventProp.activityTags" 
                     :key="index"
                     :text="tag.text"

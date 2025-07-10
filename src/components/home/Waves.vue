@@ -5,7 +5,7 @@ const scrollSpeed = useVelocity(scrollY)
 
 const waves = Array.from({ length: 7 }, (_, i) => {
   const component = defineAsyncComponent(
-    () => import(`../assets/waves/Vector-${i}.svg?component`)
+    () => import(`~/assets/waves/Vector-${i}.svg?component`)
   )
   const scrollMultiplier = Math.random() + 0.1
 

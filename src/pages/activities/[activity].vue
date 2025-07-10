@@ -132,7 +132,7 @@ for (let i = 0; i < 3; i++) {
       <h1>Teaching {{ activity.title }}</h1>
       <CardGrid :length="activity.teachers.length">
         <template #card="{ index }">
-          <teacher-card :teacher-prop="activity.teachers[index]" />
+          <card-teacher :teacher-prop="activity.teachers[index]" />
         </template>
       </CardGrid>
     </section>
@@ -141,7 +141,7 @@ for (let i = 0; i < 3; i++) {
       <h2>Similar Activities</h2>
       <card-grid :length="similarActivities.length">
         <template #card="{ index }">
-          <activity-card :activity-prop="similarActivities[index]" />
+          <card-activity :activity-prop="similarActivities[index]" />
         </template>
       </card-grid>
       <NuxtLink class="link-button" to="/activities">

@@ -53,11 +53,7 @@
               :animate="{ rotate: hoveredCard === i ? 0 : -45 }"
               :transition="{ duration: 0.2, ease: 'easeInOut' }"
             >
-              <img
-                src="../assets/images/right-arrow.svg"
-                alt=""
-                style="width: 100%; height: 100%; rotate: 0deg"
-              />
+              <arrow style="width: 100%; height: 100%; rotate: 0deg" />
             </motion.div>
           </div>
         </NuxtLink>
@@ -70,6 +66,7 @@
 import { ref } from "vue"
 import { easeInOut, easeOut, motion } from "motion-v"
 import type { Activity } from "~/types"
+import arrow from "~/assets/images/right-arrow.svg"
 
 const hoveredCard = ref<number | null>(null)
 const setHoveredCard = (index: number | null) => {

@@ -31,7 +31,7 @@ const teachersList = res.data.value
   >
     <card-grid :length="teachersList!.length">
       <template #card="{ index }">
-        <teacher-card :teacher-prop="teachersList![index]" />
+        <card-teacher :teacher-prop="teachersList![index]" />
       </template>
     </card-grid>
   </page-wrap>

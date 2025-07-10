@@ -13,7 +13,7 @@ const { homePageElement } = defineProps<{
 <template>
   <nuxt-link to="/yogacenter" class="textImg">
     <div class="container">
-      <AnimWaves />
+      <HomeWaves />
       <div
         style="
           display: flex;

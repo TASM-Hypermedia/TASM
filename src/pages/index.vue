@@ -26,8 +26,7 @@ const { data } = response
 <template>
   <main>
     <HeroPage title="Namaste" url-img="HomePage 1.jpeg" />
-
-    <HomePageElement
+    <HomeCenter
       :home-page-element="{
         title: data?.yogaCenter.title || 'Yoga Center',
 
@@ -37,13 +36,13 @@ const { data } = response
         imgUrl: '/images/center/yogaCenter.jpg',
         altDescription: 'Yoga center image',
       }"
-    ></HomePageElement>
+    />
 
-    <TrendingActivities
+    <HomeTrendingActivities
       :activities-prop="response.data.value?.highlights.highlightActivities"
     />
 
-    <HighlightedEvents
+    <HomeHighlightedEvents
       v-if="
         response.data.value?.highlights.highlightEvents &&
         response.data.value.highlights.highlightEvents.length
@@ -52,14 +51,15 @@ const { data } = response
         response.data.value?.highlights.highlightEvents ?? []
       "
     />
+
     <div class="slideSection">
-      <HomePage3Slides></HomePage3Slides>
+      <HomeSlides />
     </div>
     <!-- <SeparatorComponent :separator-title="'Events'" /> -->
-    <BenefitsWrapper />
-    <ReviewsComponent :reviews-prop="response.data.value?.reviews" />
+    <HomeBenefits />
+    <HomeReviews :reviews-prop="response.data.value?.reviews" />
 
-    <CertificationComponent
+    <HomeCertifications
       :certification-prop="response.data.value?.certifications"
     />
   </main>

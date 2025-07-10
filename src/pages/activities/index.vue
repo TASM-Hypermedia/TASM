@@ -47,7 +47,7 @@ const activitiesListModern = resActivities.data.value!.filter(
       <template v-if="activitiesListTraditional.length > 0">
         <card-grid :length="activitiesListTraditional.length">
           <template #card="{ index }">
-            <activity-card :activity-prop="activitiesListTraditional[index]" />
+            <card-activity :activity-prop="activitiesListTraditional[index]" />
           </template>
         </card-grid>
       </template>
@@ -64,7 +64,7 @@ const activitiesListModern = resActivities.data.value!.filter(
       <template v-if="activitiesListModern.length > 0">
         <card-grid :length="activitiesListModern.length">
           <template #card="{ index }">
-            <activity-card :activity-prop="activitiesListModern[index]" />
+            <card-activity :activity-prop="activitiesListModern[index]" />
           </template>
         </card-grid>
       </template>

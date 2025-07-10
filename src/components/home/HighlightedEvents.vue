@@ -116,7 +116,7 @@ function hideEvent() {
             padding: '20px',
           }"
         >
-          <HighlightedEventDetailed
+          <HomeHighlightedEventDetailed
             :event-prop="highlightedEvents[selectedIndex]"
           />
         </motion.div>

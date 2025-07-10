@@ -185,7 +185,7 @@ const programPoints: {
       <h1>Teachers in This Event</h1>
       <CardGrid :length="event.teachers.length">
         <template #card="{ index }">
-          <teacher-card :teacher-prop="event.teachers[index]" />
+          <card-teacher :teacher-prop="event.teachers[index]" />
         </template>
       </CardGrid>
       <NuxtLink class="link-button" to="/events"> View other events </NuxtLink>

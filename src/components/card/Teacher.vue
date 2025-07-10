@@ -9,7 +9,7 @@
     <div class="mantra" style="">&ldquo;{{ teacherProp.mantra }}&rdquo;</div>
 
     <v-container class="tag_container">
-      <activity-tag
+      <card-activity-tag
         v-for="(tag, index) in teacherProp.activityTags"
         :key="index"
         :text="tag.text"

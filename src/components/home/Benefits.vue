@@ -1,10 +1,8 @@
 <script setup lang="ts">
-// import SvgBottom from "~/assets/images/homepage/Bottom-wrapper-benefits.svg"
-// import SvgTop from "~/assets/images/homepage/Top-wrapper-benefits.svg"
-
 import SvgWave from "~/assets/images/homepage/wave-outline2.svg"
 import { onMounted } from "vue"
 import { motion } from "motion-v"
+
 const benefits = [
   {
     title: "CONNECTION",
@@ -105,7 +103,7 @@ console.log(topHeight, bottomHeight)
       "
     >
       <div style="display: flex">
-        <AnimatedTitle title="BENEFITS" />
+        <HomeAnimatedTitle title="BENEFITS" />
       </div>
 
       <motion.div
@@ -117,7 +115,7 @@ console.log(topHeight, bottomHeight)
           staggerChildren: 0.2,
         }"
       >
-        <BenefitsContentCard
+        <HomeBenefitsContentCard
           v-for="i in benefits.length || 0"
           :key="i"
           style="flex: 1"

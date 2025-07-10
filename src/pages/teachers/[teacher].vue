@@ -80,7 +80,7 @@ const teacher = data.data.value
       <h3>ACTIVITIES WITH ME</h3>
       <card-grid :length="teacher.activities.length">
         <template #card="{ index }">
-          <ActivityCard
+          <CardActivity
             :activity-prop="{
               title: teacher.activities[index].title,
               shortDescription: teacher.activities[index].shortDescription,
@@ -89,7 +89,7 @@ const teacher = data.data.value
               yogaCategory: 0,
             }"
           >
-          </ActivityCard>
+          </CardActivity>
         </template>
       </card-grid>
     </div>
@@ -99,7 +99,7 @@ const teacher = data.data.value
       <h3>EVENTS WITH ME</h3>
       <card-grid :length="teacher.events.length">
         <template #card="{ index }">
-          <EventCard
+          <CardEvent
             :event-prop="{
               date: teacher.events[index].date,
               title: teacher.events[index].name,
@@ -116,8 +116,7 @@ const teacher = data.data.value
                 text: ta.title,
               })),
             }"
-          >
-          </EventCard>
+          />
         </template>
       </card-grid>
     </div>

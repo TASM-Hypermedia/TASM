@@ -39,14 +39,14 @@ const pricingList = resPricing.data.value
   >
     <section class="priceSection">
       <div v-for="(item, index) in pricingList" :key="index">
-        <price-card :price-prop="item" />
+        <card-price :price-prop="item" />
       </div>
     </section>
 
     <section class="faqSection">
       <h2>FAQs</h2>
       <div v-for="(item, index) in faqList" :key="index">
-        <faq-card :faq-prop="item" />
+        <card-faq :faq-prop="item" />
       </div>
     </section>
   </PageWrap>
