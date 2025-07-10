@@ -28,28 +28,27 @@ const yogaCenter = res.data.value
     </section>
 
     <section class="rooms">
-      <p>Available Rooms</p>
+      <h1>Available Rooms</h1>
       <div v-for="(room, index) in yogaCenter!.rooms" :key="index">
-        <content-card :content-card-prop="room"></content-card>
+        <content-card :content-card-prop="room" separator />
       </div>
     </section>
   </PageWrap>
 </template>
 
 <style scoped lang="scss">
-.description {
-  margin: auto;
+section {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   text-align: center;
-  width: 75%;
+  max-width: 900px;
 }
 
-.rooms {
-  margin-top: 50px;
-  p {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 2.8rem;
-    font-weight: bold;
-  }
+h1 {
+  text-align: center;
+  font-size: 2.5em;
 }
 </style>

@@ -69,7 +69,6 @@ main {
   width: 100%;
   max-width: 100vw;
   height: 100%;
-  gap: 32px;
   margin-bottom: 32px;
   border: 0px solid black;
 }
@@ -101,5 +100,6 @@ article {
   max-width: 1080px;
   height: 100%;
   border: 0px solid black;
+  margin: 24px 0;
 }
 </style>
