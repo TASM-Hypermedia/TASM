@@ -49,7 +49,6 @@ const fillerHeight = useTransform(() =>
   z-index: -1;
   position: absolute;
   top: 70%;
-  // right: 0;
   width: 100vw;
   height: 500px;
   overflow: hidden;
@@ -67,7 +66,7 @@ const fillerHeight = useTransform(() =>
   .wave {
     position: absolute;
     top: 0;
-    right: -100%;
+    right: -100px;
     pointer-events: none;
   }
 }
