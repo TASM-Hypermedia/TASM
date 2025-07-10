@@ -169,7 +169,7 @@ function hideEvent() {
                 word-wrap: break-word;
               "
             >
-              Click to explore our favorite events
+              click on the dots to discover more about our favourite events
             </div>
             <div style="width: 292px; height: 109px"><SvgArrow /></div>
           </div>

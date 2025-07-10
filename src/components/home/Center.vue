@@ -60,6 +60,8 @@ const { homePageElement } = defineProps<{
             style="align-self: stretch; height: 216px; color: black"
           >
             {{ homePageElement.description }}
+
+            <i style="color: gray">click to discover more about our center</i>
           </div>
         </div>
       </div>
