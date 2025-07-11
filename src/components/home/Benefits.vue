@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SvgWaveT from "~/assets/images/homepage/wave-top-fill.svg"
+import SvgWaveT from "~/assets/images/homepage/wave-top-fill3.svg"
 import SvgWaveEmptyT from "~/assets/images/homepage/wave-top-outline.svg"
 import SvgWaveB from "~/assets/images/homepage/wave-bottom-fill.svg"
 import SvgWaveEmptyB from "~/assets/images/homepage/wave-bottom-outline.svg"
