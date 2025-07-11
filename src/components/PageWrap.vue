@@ -45,7 +45,7 @@ useHead({ title })
       initial="hidden"
       :animate="seen ? 'visible' : 'hidden'"
     >
-      <span v-if="tagline" class="tagline">{{ tagline }}</span>
+      <span v-if="tagline" class="tagline body-text">{{ tagline }}</span>
       <h2 class="title">{{ title }}</h2>
     </motion.div>
     <HeroPage

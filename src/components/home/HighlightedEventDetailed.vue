@@ -1,7 +1,7 @@
 <template>
   <NuxtLink :to="`/events/${eventProp.url}`" class="event-card">
     <div class="event-desktop" :style="{ width: `${width}px` }">
-      <h2 class="event-title desktop-title">{{ eventProp.title }}</h2>
+      <h2 class="event-title desktop-title title">{{ eventProp.title }}</h2>
 
       <!-- <div
         class="event-image desktop-image"
@@ -11,7 +11,7 @@
       <div class="event-info-rows">
         <!-- Calendario -->
 
-        <div class="info-row">
+        <div class="info-row body-text">
           <div class="wrapper-div">
             <div class="calendar-box">
               <div class="calendar-month">{{ calendar_month }}</div>
@@ -19,7 +19,7 @@
               <div class="calendar-weekday">{{ calendar_day_name }}</div>
             </div>
           </div>
-          <div class="info-texts">
+          <div class="info-texts body-text">
             <div class="info-label">WHEN</div>
             <div class="info-value">
               {{ eventProp.date }}
@@ -28,13 +28,13 @@
         </div>
 
         <!-- Host -->
-        <div class="info-row">
+        <div class="info-row body-text">
           <div class="wrapper-div">
             <img :src="eventProp.hostImage" alt="Host" class="info-icon" />
           </div>
-          <div class="info-texts">
+          <div class="info-texts body-text">
             <div class="info-label">HOST</div>
-            <div class="info-value">{{ eventProp.hostName }}</div>
+            <div class="info-value body-text">{{ eventProp.hostName }}</div>
           </div>
         </div>
 
@@ -42,9 +42,9 @@
           <div class="wrapper-div">
             <svg-icon />
           </div>
-          <div class="info-texts">
+          <div class="info-texts body-text">
             <div class="info-label">WHERE</div>
-            <div class="info-value">{{ eventProp.location }}</div>
+            <div class="info-value body-text">{{ eventProp.location }}</div>
           </div>
         </div>
       </div>
@@ -145,7 +145,7 @@ const calendar_day_name = computed(() =>
   flex-direction: column;
   color: #7a7a7a;
   font-size: 15px;
-  font-family: Instrument Sans;
+
   font-weight: 500;
   line-height: 15px;
   word-wrap: break-word;
