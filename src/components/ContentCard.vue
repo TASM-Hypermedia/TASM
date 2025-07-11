@@ -8,36 +8,16 @@ const { contentCardProp } = defineProps<{
 }>()
 
 const modalImage = ref<{ URL: string; alt?: string } | null>(null)
-const openModal = (image: { URL: string; alt?: string }) => {
-  modalImage.value = image
+const openModal = (contentCardProp: ContentCard) => {
+  if (!contentCardProp.imgUrl) return
+  modalImage.value = {
+    URL: contentCardProp.imgUrl,
+    alt: contentCardProp.altDescription,
+  }
 }
 const closeModal = () => {
   modalImage.value = null
 }
-
-const hover = ref(false)
-
-const handleMouse = (event: MouseEvent) => {
-  const rect = imageRef.value?.getBoundingClientRect()
-  if (!rect) return
-  hover.value = true
-  x.set((event.clientX - rect.left) / rect.width - 0.5)
-  y.set((event.clientY - rect.top) / rect.height - 0.5)
-}
-
-const mouseLeave = () => {
-  hover.value = false
-  x.set(0)
-  y.set(0)
-}
-
-const imageRef = useTemplateRef<HTMLDivElement>("image-ref")
-
-const x = useMotionValue(0)
-const y = useMotionValue(0)
-
-const rotx = useSpring(useTransform(() => -y.get() * 5))
-const roty = useSpring(useTransform(() => x.get() * 5))
 
 const variants: Record<string, Variant> = {
   hidden: {
@@ -91,33 +71,15 @@ onMounted(() => {
         </p>
         <p class="body-text">{{ contentCardProp.description }}</p>
       </motion.div>
-      <div
-        ref="image-ref"
-        class="imageContainer"
-        :style="{ display: 'flex', flex: 1 }"
-        @mousemove="handleMouse"
-        @mouseleave="mouseLeave"
-        @blur="mouseLeave"
-      >
-        <motion.img
-          :variants="variants"
+      <GyroAnim class="imageContainer" :style="{ display: 'flex', flex: 1 }">
+        <img
           :class="{ imageOnTheLeft: !contentCardProp.imageOnTheRight }"
           :src="contentCardProp.imgUrl"
           :alt="contentCardProp.altDescription"
-          :style="{
-            transformPerspective: 1000,
-            rotateX: rotx,
-            rotateY: roty,
-          }"
-          @click="
-            contentCardProp.imgUrl &&
-            openModal({
-              URL: contentCardProp.imgUrl,
-              alt: contentCardProp.altDescription,
-            })
-          "
+          @click="openModal(contentCardProp)"
+          @keydown.enter="openModal(contentCardProp)"
         />
-      </div>
+      </GyroAnim>
     </motion.div>
     <AnimatePresence>
       <motion.div
@@ -216,6 +178,7 @@ onMounted(() => {
     max-width: 500px;
     max-height: 300px;
     object-fit: cover;
+    object-position: center 15%;
     border-radius: 8px;
     align-self: stretch;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);

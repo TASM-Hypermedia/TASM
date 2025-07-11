@@ -6,40 +6,11 @@ const { priceProp } = defineProps<{
   priceProp: Price
 }>()
 
-const hover = ref(false)
-
-const handleMouse = (event: MouseEvent) => {
-  const rect = priceCardRef.value?.getBoundingClientRect()
-  if (!rect) return
-  hover.value = true
-  x.set((event.clientX - rect.left) / rect.width - 0.5)
-  y.set((event.clientY - rect.top) / rect.height - 0.5)
-}
-
-const mouseLeave = () => {
-  hover.value = false
-  x.set(0)
-  y.set(0)
-}
-
-const priceCardRef = useTemplateRef<HTMLDivElement>("price-card-ref")
 const theme = priceProp.darkMode ? "dark-theme" : "light-theme"
-
-const x = useMotionValue(0)
-const y = useMotionValue(0)
-
-const rotx = useSpring(useTransform(() => -y.get() * 8))
-const roty = useSpring(useTransform(() => x.get() * 8))
 </script>
 
 <template>
-  <div
-    ref="price-card-ref"
-    class="price-card-container"
-    @mousemove="handleMouse"
-    @mouseleave="mouseLeave"
-    @blur="mouseLeave"
-  >
+  <GyroAnim class="price-card-container">
     <motion.div
       :initial="{
         filter: 'blur(32px)',
@@ -55,11 +26,6 @@ const roty = useSpring(useTransform(() => x.get() * 8))
       }"
       class="priceCard"
       :class="theme"
-      :style="{
-        transformPerspective: 1000,
-        rotateX: rotx,
-        rotateY: roty,
-      }"
       :transition="{
         duration: 0.5,
         ease: easeOut,
@@ -87,7 +53,7 @@ const roty = useSpring(useTransform(() => x.get() * 8))
         >Subscribe</NuxtLink
       >
     </motion.div>
-  </div>
+  </GyroAnim>
 </template>
 
 <style scoped lang="scss">
@@ -113,7 +79,7 @@ const roty = useSpring(useTransform(() => x.get() * 8))
   display: flex;
   flex-direction: column;
   justify-content: start;
-  box-shadow: rgb(88, 87, 87) 0px 5px 10px 0px;
+  box-shadow: 0px 5px 10px rgb(88, 87, 87, 0.5);
   .mobile-layout & {
     margin-bottom: 32px;
   }
@@ -125,7 +91,7 @@ const roty = useSpring(useTransform(() => x.get() * 8))
 
 .pricingSup {
   font-size: 30px;
-  font-weight:400;
+  font-weight: 400;
   font-family: "roboto", sans-serif;
   margin-right: 10px;
 }
@@ -155,11 +121,12 @@ const roty = useSpring(useTransform(() => x.get() * 8))
 }
 
 .dark-theme {
-  background-color: #9488B0;
+  background-color: #9488b0;
   outline: 1px solid #6572a5;
-  color:white;
+  color: white;
 
-  .pricingTitle, .pricingPrice {
+  .pricingTitle,
+  .pricingPrice {
     color: white;
   }
 
@@ -174,7 +141,7 @@ const roty = useSpring(useTransform(() => x.get() * 8))
   outline: 1px solid rgba(0, 0, 0, 0.205);
 
   .pricingButton {
-    background-color: #9488B0;
+    background-color: #9488b0;
     color: white;
   }
 }
