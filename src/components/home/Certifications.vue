@@ -52,7 +52,7 @@ defineProps<{
   text-align: center;
   font-size: 2.5rem;
   font-family: Italiana;
-  font-weight: 700;
+  font-weight: 400;
   word-wrap: break-word;
 }
 

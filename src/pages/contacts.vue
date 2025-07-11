@@ -228,9 +228,12 @@ h1 {
 .form-button {
   width: 100%;
   color: white;
-  background-color: black;
+  background-color: #7265B4;
   border-radius: 10px;
   padding: 10px;
   margin: 5px 0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  // font-size: 18px;
+  // font-weight: 500;
 }
 </style>

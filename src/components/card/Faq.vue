@@ -15,7 +15,7 @@ function toggle() {
 
 <template>
   <motion.div class="faqContainer">
-    <button type="button" class="faqQuestion" @click="toggle">
+    <button type="button" class="faqQuestion title" @click="toggle">
       {{ faqProp.question }}
       <img
         src="/images/arrow-icon.png"
@@ -38,7 +38,7 @@ function toggle() {
       }"
       initial="closed"
       :animate="open ? 'open' : 'closed'"
-      class="faqAnswer"
+      class="faqAnswer body-text"
     >
       <p>{{ faqProp.answer }}</p>
     </motion.div>

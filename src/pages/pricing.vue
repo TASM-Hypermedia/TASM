@@ -44,7 +44,7 @@ const pricingList = resPricing.data.value
     </section>
 
     <section class="faqSection">
-      <h2>FAQs</h2>
+      <h2 class="title">FAQs</h2>
       <div v-for="(item, index) in faqList" :key="index">
         <card-faq :faq-prop="item" />
       </div>

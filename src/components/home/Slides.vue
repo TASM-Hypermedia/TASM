@@ -19,7 +19,7 @@
             <v-img :src="image1" height="100%" width="100%" contain>
               <v-sheet class="sheetImg">
                 <nuxt-link to="/teachers" class="textImg"
-                  ><div class="text-center">
+                  ><div class="text-center title">
                     <h1>OUR TEAM</h1>
                     Click here to see our incredible teachers
                   </div>
@@ -46,7 +46,7 @@
             <v-img :src="image2" height="100%" width="100%" contain>
               <v-sheet class="sheetImg">
                 <nuxt-link to="/events" class="textImg"
-                  ><div class="text-center">
+                  ><div class="text-center title">
                     <h1>OUR EVENTS</h1>
                     Click here to see our incredible events
                   </div>
@@ -73,7 +73,7 @@
             <v-img :src="image3" height="100%" width="100%" contain>
               <v-sheet class="sheetImg">
                 <nuxt-link to="/activities" class="textImg"
-                  ><div class="text-center">
+                  ><div class="text-center title">
                     <h1>OUR ACTIVITIES</h1>
                     Click here to see our incredible activities
                   </div>
@@ -148,5 +148,9 @@ function mouseLeave() {
 .textImg {
   color: white;
   text-decoration: none;
+}
+.text-center {
+  color: white;
+  gap: 10%;
 }
 </style>

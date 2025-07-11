@@ -65,16 +65,16 @@ const roty = useSpring(useTransform(() => x.get() * 8))
         ease: easeOut,
       }"
     >
-      <div v-if="!priceProp.darkMode" class="mostPopularBadgeContainer">
-        <span class="mostPopularBadge">⭐️ Most Popular</span>
+      <div v-if="!priceProp.darkMode" class="mostPopularBadgeContainer title">
+        <span class="mostPopularBadge body-text">⭐️ Most Popular</span>
       </div>
-      <div class="pricingTitle" style="">{{ priceProp.title }}</div>
-      <div class="pricingPrice" style="">
+      <div class="pricingTitle title">{{ priceProp.title }}</div>
+      <div class="pricingPrice title" style="">
         <sup class="pricingSup">€</sup>
         <span class="pricingSpan">{{ priceProp.price }}</span>
         <sub class="pricingSub">/mo</sub>
       </div>
-      <div class="pricingItemList">
+      <div class="pricingItemList body-text">
         <ul>
           <li v-for="item in priceProp.pricingItems" :key="item.item">
             {{ item.item }}
@@ -83,7 +83,7 @@ const roty = useSpring(useTransform(() => x.get() * 8))
       </div>
       <NuxtLink
         to="https://paypal.me/Pedroni28?country.x=IT&locale.x=it_IT"
-        class="pricingButton"
+        class="pricingButton body-text"
         >Subscribe</NuxtLink
       >
     </motion.div>
@@ -113,7 +113,7 @@ const roty = useSpring(useTransform(() => x.get() * 8))
   display: flex;
   flex-direction: column;
   justify-content: start;
-
+  box-shadow: rgb(88, 87, 87) 0px 5px 10px 0px;
   .mobile-layout & {
     margin-bottom: 32px;
   }

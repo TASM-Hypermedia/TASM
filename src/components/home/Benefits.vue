@@ -97,21 +97,7 @@ console.log(topHeight, bottomHeight)
         width: '100vw',
       }"
     />
-    <!-- <SvgWave
-      class="svg-imageBottom"
-      :style="{ bottom: bottomHeight + 'px', width: '100vw' }"
-    />
-    <SvgWave
-      class="svg-imageBottom"
-      :style="{ bottom: bottomHeight - topHeight * 0.2 + 'px', width: '100vw' }"
-    />
-    <SvgWave
-      class="svg-imageBottom"
-      :style="{
-        bottom: bottomHeight - topHeight * 0.35 + 'px',
-        width: '100vw',
-      }"
-    /> -->
+
     <div
       style="
         display: flex;
@@ -123,7 +109,7 @@ console.log(topHeight, bottomHeight)
         position: relative;
       "
     >
-      <div style="display: flex">
+      <div style="display: flex; font-size: 20px" class="title">
         <HomeAnimatedTitle title="BENEFITS" />
       </div>
 

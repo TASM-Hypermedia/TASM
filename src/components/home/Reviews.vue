@@ -14,11 +14,11 @@
           ease: 'linear',
         }"
       >
-        <div class="body">
+        <div class="body body-text">
           {{ review.text }}
         </div>
 
-        <div class="name">{{ review.person }}</div>
+        <div class="name body-text">{{ review.person }}</div>
 
         <div class="rating" :aria-label="`Rating: ${review.stars} out of 5`">
           <img
@@ -65,7 +65,7 @@ defineProps<{
   flex-direction: column;
   color: black;
   font-size: 40px;
-  font-family: Italiana;
+
   font-weight: 400;
   /* line-height: 96px;  */
   word-wrap: break-word;
@@ -91,7 +91,7 @@ defineProps<{
   flex-direction: column;
   gap: 18px;
   border-radius: 10px;
-  background-color: #e8cbff;
+  background-color: #f0e2f9;
   box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
 }
 
@@ -100,7 +100,6 @@ defineProps<{
   text-align: left;
   color: black;
   font-size: 14px;
-  font-family: "Roboto";
 }
 
 .image {
@@ -116,8 +115,8 @@ defineProps<{
   text-align: center;
   color: black;
   font-size: 22px;
-  font-family: "Roboto";
-  font-weight: 500;
+  font-family: Italiana;
+  font-weight: 600;
 }
 
 .rating {

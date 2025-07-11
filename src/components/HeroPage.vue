@@ -36,9 +36,9 @@ const marginTop = useMotionTemplate`${hero}px`
       :style="{ y }"
     />
     <motion.div class="hero-page" :style="{ marginTop }">
-      <p v-if="tagline">{{ tagline }}</p>
-      <h1>{{ title }}</h1>
-      <h2 v-if="subtitle">{{ subtitle }}</h2>
+      <p v-if="tagline" class="body-text">{{ tagline }}</p>
+      <h1 class="title">{{ title }}</h1>
+      <h2 v-if="subtitle" class="body-text">{{ subtitle }}</h2>
     </motion.div>
   </div>
 </template>

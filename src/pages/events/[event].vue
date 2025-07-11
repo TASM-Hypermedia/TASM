@@ -343,7 +343,7 @@ ul {
 
 .link-button {
   color: white;
-  background-color: #020202;
+  background-color: #7265B4;
   border-radius: 8px;
   padding: 8px 32px;
   margin: 16px;
@@ -351,6 +351,7 @@ ul {
   display: flex;
   align-items: center;
   gap: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 
   .attend {
     filter: brightness(100);

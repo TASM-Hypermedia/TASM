@@ -110,7 +110,7 @@ const variations = {
   color: black;
   /*font-size: 48px;
   line-height: 57.6px;*/
-  font-family: Inter;
+
   font-weight: 700;
   word-wrap: break-word;
 }
@@ -124,7 +124,7 @@ const variations = {
   color: black;
   /*font-size: 32px;
   line-height: 38.4px;*/
-  font-family: Inter;
+
   font-weight: 400;
   height: 100%;
   word-wrap: break-word;

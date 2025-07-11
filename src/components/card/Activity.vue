@@ -31,7 +31,7 @@ div {
   height: 445px;
   text-decoration: none;
   padding: 10px;
-  background: rgb(147, 210, 158);
+  background: rgb(255, 255, 255);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   border-radius: 15px;
@@ -43,7 +43,8 @@ div {
   display: inline-flex;
   gap: 10px;
   border: 0 solid black;
-  transition: background-color 0.3s ease-out;
+  transform: scale(1);
+  transition: all 0.2s ease-in-out;
 
   .mobile-layout & {
     max-width: 1080px;
@@ -51,7 +52,8 @@ div {
 }
 
 .card:hover {
-  background-color: #bfa4d1;
+  transform: scale(1.02);
+  background-color: #D8CFE7;
 }
 
 .card-image {

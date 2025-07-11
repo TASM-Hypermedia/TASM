@@ -23,12 +23,12 @@ const yogaCenter = res.data.value
 
 <template>
   <PageWrap title="Yoga Center" img-src="./banners/yogaCenter-banner.jpg">
-    <section class="description">
+    <section class="body-text">
       <div>{{ yogaCenter!.description }}</div>
     </section>
 
     <section class="rooms">
-      <h1>Available Rooms</h1>
+      <h1 class="title">Available Rooms</h1>
       <div v-for="(room, index) in yogaCenter!.rooms" :key="index">
         <content-card :content-card-prop="room" separator />
       </div>

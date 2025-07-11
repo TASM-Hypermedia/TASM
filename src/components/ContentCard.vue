@@ -85,11 +85,11 @@ onMounted(() => {
       }"
     >
       <motion.div class="writtenContent" :variants="variants">
-        <p class="contentTitle">{{ contentCardProp.title }}</p>
-        <p v-if="contentCardProp.subtitle" class="contentSubtitle">
+        <p class="contentTitle title">{{ contentCardProp.title }}</p>
+        <p v-if="contentCardProp.subtitle" class="contentSubtitle body-text">
           {{ contentCardProp.subtitle }}
         </p>
-        <p>{{ contentCardProp.description }}</p>
+        <p class="body-text">{{ contentCardProp.description }}</p>
       </motion.div>
       <div
         ref="image-ref"

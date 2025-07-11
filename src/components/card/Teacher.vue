@@ -6,7 +6,9 @@
       :alt="teacherProp.name"
     />
     <div class="teacher_name" style="">{{ teacherProp.name }}</div>
-    <div class="mantra" style="">&ldquo;{{ teacherProp.mantra }}&rdquo;</div>
+    <!-- <div class="mantra" style="">&ldquo;{{ teacherProp.mantra }}&rdquo;</div> -->
+    <div class="mantra" style="">{{ teacherProp.mantra }}</div>
+
 
     <v-container class="tag_container">
       <card-activity-tag
@@ -35,7 +37,7 @@ defineProps<{
   width: 100%;
   max-width: 375px;
   height: 100%;
-  padding: 11px;
+  padding: 20px;
   background: rgb(255, 255, 255);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
   overflow: hidden;
@@ -56,7 +58,7 @@ defineProps<{
 
 .card:hover {
   transform: scale(1.02);
-  background-color: #bfa4d1;
+  background-color: #D8CFE7;
 }
 
 .teacher_image {
@@ -77,9 +79,9 @@ defineProps<{
   display: flex;
   flex-direction: column;
   color: black;
-  font-size: 24px;
+  font-size: 26px;
   font-family: Instrument Sans;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 24px;
   word-wrap: break-word;
   color: inherit;
@@ -93,9 +95,9 @@ defineProps<{
   font-style: italic;
   flex-direction: column;
   color: #1e1e1e;
-  font-size: 24px;
+  font-size: 20px;
   font-family: Inter;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 28.8px;
   word-wrap: break-word;
   color: inherit;

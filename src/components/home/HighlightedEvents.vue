@@ -11,6 +11,10 @@ const { highlightedEvents } = defineProps<{
 }>()
 
 let currentAnimation: ReturnType<typeof animate> | null = null
+let animationInterval: ReturnType<typeof setInterval> | null = null
+
+const dotIds = ["dot1", "dot2", "dot3"]
+let currentDotIndex = 0
 
 onMounted(() => {
   clientWidth.value = window.innerWidth
@@ -26,30 +30,6 @@ onMounted(() => {
   const dot3 = document.getElementById("dot3")
   const div = document.querySelector(".sheet-event")
 
-  function animateDot(dot: HTMLElement | null) {
-    if (!dot) return
-
-    currentAnimation?.cancel() // cancella l’animazione precedente
-
-    currentAnimation = animate(
-      dot,
-      { transform: ["scale(1)", "scale(1.2)", "scale(1)"] },
-      {
-        duration: 1.5,
-        repeat: Infinity,
-        easing: "ease-in-out",
-      }
-    )
-
-    // imposta il centro di trasformazione sul centro del cerchio
-    dot.style.transformOrigin = "center center"
-  }
-
-  function showEventWithAnimation(index: number, dot: HTMLElement | null) {
-    animateDot(dot)
-    showEvent(index)
-  }
-
   dot2?.addEventListener("click", () => {
     showEventWithAnimation(1, dot2)
   })
@@ -59,15 +39,15 @@ onMounted(() => {
   dot3?.addEventListener("click", () => {
     showEventWithAnimation(2, dot3)
   })
-  dot2?.addEventListener("mouseover", () => {
-    showEventWithAnimation(1, dot2)
-  })
-  dot1?.addEventListener("mouseover", () => {
-    showEventWithAnimation(0, dot1)
-  })
-  dot3?.addEventListener("mouseover", () => {
-    showEventWithAnimation(2, dot3)
-  })
+  // dot2?.addEventListener("mouseover", () => {
+  //   showEventWithAnimation(1, dot2)
+  // })
+  // dot1?.addEventListener("mouseover", () => {
+  //   showEventWithAnimation(0, dot1)
+  // })
+  // dot3?.addEventListener("mouseover", () => {
+  //   showEventWithAnimation(2, dot3)
+  // })
 
   div?.addEventListener("mouseleave", () => {
     hideEvent()
@@ -79,6 +59,12 @@ const clientHeight = ref(0)
 const svgwidth = computed(() => clientWidth.value / 2)
 
 const selectedIndex = ref<number | null>(null)
+function showEventWithAnimation(index: number, dot: HTMLElement | null) {
+  stopDotLoop() // <<<<< interrompe subito il loop prima dell'animazione
+  currentAnimation?.cancel() // se c'è già un'animazione in corso, fermala
+  animateDot(dot, true)
+  showEvent(index)
+}
 
 function showEvent(i: number) {
   selectedIndex.value = i
@@ -88,6 +74,71 @@ function hideEvent() {
   selectedIndex.value = null //:style="{ height: '100%', width: svgwidth + 'px' }"
   currentAnimation?.cancel()
 }
+function animateDot(dot: HTMLElement | null, repeat = true) {
+  if (!dot) return
+
+  currentAnimation?.cancel() // cancella l’animazione precedente
+  dot.setAttribute("transform-box", "fill-box")
+  dot.setAttribute("transform-origin", "center")
+
+  // Per compatibilità extra:
+  dot.style.transformBox = "fill-box"
+  dot.style.transformOrigin = "center"
+
+  currentAnimation = animate(
+    dot,
+    {
+      scale: [1, 1.3, 1],
+      filter: [
+        "drop-shadow(0 0 0 rgba(0,0,0,0))",
+        "drop-shadow(0 0 15px rgba(122, 65, 175,1))",
+        "drop-shadow(0 0 0 rgba(0,0,0,0))",
+      ],
+    },
+    {
+      duration: 1.3,
+      repeat: repeat ? Infinity : 0,
+      easing: "ease-in-out",
+    }
+  )
+}
+
+function startDotLoop() {
+  if (animationInterval) return // already running
+
+  if (selectedIndex.value !== null) {
+    return // don't start if an event is selected
+  }
+  animationInterval = setInterval(() => {
+    const dotId = dotIds[currentDotIndex]
+    const dot = document.getElementById(dotId)
+
+    if (dot) {
+      currentAnimation?.cancel()
+      animateDot(dot, false)
+    }
+
+    currentDotIndex = (currentDotIndex + 1) % dotIds.length
+  }, 2500) // every 2.5 seconds
+}
+
+function stopDotLoop() {
+  currentAnimation?.cancel()
+  currentAnimation = null
+
+  if (animationInterval) {
+    clearInterval(animationInterval)
+    animationInterval = null
+  }
+}
+
+watch(selectedIndex, (newVal) => {
+  if (newVal === null) {
+    startDotLoop()
+  } else {
+    stopDotLoop()
+  }
+})
 </script>
 <template>
   <div class="container" :style="{ height: (clientHeight * 2) / 3 + 'px' }">
@@ -136,6 +187,7 @@ function hideEvent() {
             }"
           >
             <div
+              class="title"
               style="
                 color: white;
                 /* align-self: stretch; */
@@ -143,9 +195,7 @@ function hideEvent() {
                 justify-content: center;
                 display: flex;
                 flex-direction: column;
-
                 font-size: 80px;
-                font-family: Italiana;
                 font-weight: 900;
                 line-height: 96px;
                 word-wrap: break-word;
@@ -154,6 +204,7 @@ function hideEvent() {
               Highlited events
             </div>
             <div
+              class="title"
               style="
                 color: white;
                 align-self: stretch;
@@ -161,9 +212,7 @@ function hideEvent() {
                 justify-content: center;
                 display: flex;
                 flex-direction: column;
-
                 font-size: 50px;
-                font-family: Italiana;
                 font-weight: 600;
                 line-height: 60px;
                 word-wrap: break-word;

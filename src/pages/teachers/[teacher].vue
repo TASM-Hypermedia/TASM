@@ -217,10 +217,11 @@ ul {
 
 .link-button {
   color: white;
-  background-color: #020202;
+  background-color: #7265B4;
   border-radius: 8px;
   padding: 8px 32px;
   margin: 16px;
   text-decoration: none;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 </style>

@@ -83,6 +83,7 @@ const variants = {
     y: -50,
     filter: `blur(32px)`,
   },
+  
   visible: {
     opacity: 1,
     y: 0,
@@ -141,7 +142,7 @@ div {
   height: 375px;
   padding: 20px;
   border-radius: 20px;
-  background-color: rgb(183, 152, 184);
+  background-color: #BDB2D4;
 }
 
 .normal_card {
