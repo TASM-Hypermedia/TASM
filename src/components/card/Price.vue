@@ -125,6 +125,8 @@ const roty = useSpring(useTransform(() => x.get() * 8))
 
 .pricingSup {
   font-size: 30px;
+  font-weight:400;
+  font-family: "roboto", sans-serif;
   margin-right: 10px;
 }
 
@@ -153,22 +155,26 @@ const roty = useSpring(useTransform(() => x.get() * 8))
 }
 
 .dark-theme {
-  background-color: #8c9de3;
-  outline: 1px solid #9488b0;
-  color: white;
+  background-color: #9488B0;
+  outline: 1px solid #6572a5;
+  color:white;
+
+  .pricingTitle, .pricingPrice {
+    color: white;
+  }
 
   .pricingButton {
-    background-color: #bfccff;
+    background-color: #efe9ff;
     color: black;
   }
 }
 
 .light-theme {
   color: black;
-  outline: 1px solid black;
+  outline: 1px solid rgba(0, 0, 0, 0.205);
 
   .pricingButton {
-    background-color: #8c9de3;
+    background-color: #9488B0;
     color: white;
   }
 }
