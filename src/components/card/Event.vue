@@ -99,11 +99,18 @@
         justify-content: flex-start; 
         align-items: center; 
         display: inline-flex;
+        transform: scale(1);
+        transition: all 0.2s ease-in-out;
 
         .mobile-layout & {
           max-width: 1080px;
         }
     }
+
+    .card:hover {
+        transform: scale(1.02);
+        background-color: #D8CFE7;
+}
 
     .mobile-layout & {
           max-width: 1080px;
@@ -176,8 +183,7 @@
         border: 0 solid black;
     }
 
-    .host_box {
-        background: white; 
+    .host_box { 
         overflow: hidden;
         display: flex;
         gap: 16px;
