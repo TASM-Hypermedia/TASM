@@ -57,7 +57,7 @@ const programPoints: {
     :subtitle="event.subtitle"
   >
     <section>
-      <p class="shortDesc">"{{ event.shortDesc }}"</p>
+      <p class="shortDesc body-text">"{{ event.shortDesc }}"</p>
     </section>
     <section class="eventInfo">
       <div class="eventInfoRow">
@@ -125,46 +125,54 @@ const programPoints: {
               {{ calendar_day_name }}
             </div>
           </div>
-          <div class="eventWhenText">
+          <div class="eventWhenText body-text">
             <h3>When:</h3>
             <p>{{ calendar_day }} {{ calendar_month }} {{ calendar_year }}</p>
           </div>
         </div>
-        <div class="eventInfoColumn">
+        <div class="eventInfoColumn body-text">
           <div class="eventWhereIcon">
             <img src="../../assets/icons/location-icon.jpg" alt="" />
           </div>
-          <div class="eventWhereText">
+          <div class="eventWhereText body-text">
             <h3>Where:</h3>
             <p>{{ event.location }}</p>
           </div>
         </div>
       </div>
       <NuxtLink class="link-button" to="#">
-        <calendarSvg class="attend" style="" />
+        <calendarSvg class="attend body-text" style="" />
         Attend This Event
       </NuxtLink>
     </section>
     <section>
-      <p class="description">
+      <p class="description body-text">
         {{ event.description }}
       </p>
     </section>
     <section class="pair">
       <div>
-        <h1>What You'll Learn</h1>
+        <h1 class="title">What You'll Learn</h1>
         <ul>
-          <li v-for="(point, index) in learnPoints" :key="index">
+          <li
+            v-for="(point, index) in learnPoints"
+            :key="index"
+            class="body-text"
+          >
             {{ point }}
           </li>
         </ul>
       </div>
       <div>
-        <h1>The Program</h1>
+        <h1 class="title">The Program</h1>
         <template v-for="day of programPoints" :key="day">
-          <h3 class="programDay">{{ day.day }}</h3>
+          <h3 class="programDay body-text">{{ day.day }}</h3>
           <ul>
-            <li v-for="(point, index) in day.points" :key="`${day}-${index}`">
+            <li
+              v-for="(point, index) in day.points"
+              :key="`${day}-${index}`"
+              class="body-text"
+            >
               {{ point }}
             </li>
           </ul>
@@ -172,7 +180,7 @@ const programPoints: {
       </div>
     </section>
     <section v-if="event.guest">
-      <h1>Special Guest</h1>
+      <h1 class="title">Special Guest</h1>
       <ContentCard
         :content-card-prop="{
           title: event.guest.name,
@@ -183,13 +191,15 @@ const programPoints: {
       />
     </section>
     <section>
-      <h1>Teachers in This Event</h1>
+      <h1 class="title">Teachers in This Event</h1>
       <CardGrid :length="event.teachers.length">
         <template #card="{ index }">
           <card-teacher :teacher-prop="event.teachers[index]" />
         </template>
       </CardGrid>
-      <NuxtLink class="link-button" to="/events"> View other events </NuxtLink>
+      <NuxtLink class="link-button body-text" to="/events">
+        View other events
+      </NuxtLink>
     </section>
   </PageWrap>
 </template>
@@ -308,6 +318,7 @@ h1 {
 
 .programDay {
   margin-top: -10px;
+  font-weight: bold;
 }
 
 span.label {

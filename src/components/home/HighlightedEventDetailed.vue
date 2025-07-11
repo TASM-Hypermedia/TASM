@@ -21,7 +21,7 @@
           </div>
           <div class="info-texts body-text">
             <div class="info-label">WHEN</div>
-            <div class="info-value">
+            <div class="info-value title">
               {{ eventProp.date }}
             </div>
           </div>
@@ -34,7 +34,7 @@
           </div>
           <div class="info-texts body-text">
             <div class="info-label">HOST</div>
-            <div class="info-value body-text">{{ eventProp.hostName }}</div>
+            <div class="info-value title">{{ eventProp.hostName }}</div>
           </div>
         </div>
 
@@ -44,7 +44,7 @@
           </div>
           <div class="info-texts body-text">
             <div class="info-label">WHERE</div>
-            <div class="info-value body-text">{{ eventProp.location }}</div>
+            <div class="info-value title">{{ eventProp.location }}</div>
           </div>
         </div>
       </div>

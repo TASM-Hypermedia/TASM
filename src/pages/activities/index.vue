@@ -41,8 +41,8 @@ const activitiesListModern = resActivities.data.value!.filter(
   >
     <section>
       <div class="category">
-        <h1>{{ categoriesList![0].title }}</h1>
-        <p>{{ categoriesList![0].description }}</p>
+        <h1 class="title">{{ categoriesList![0].title }}</h1>
+        <p class="body-text">{{ categoriesList![0].description }}</p>
       </div>
       <template v-if="activitiesListTraditional.length > 0">
         <card-grid :length="activitiesListTraditional.length">
@@ -52,14 +52,16 @@ const activitiesListModern = resActivities.data.value!.filter(
         </card-grid>
       </template>
       <template v-else>
-        <div class="empty-state">No activities available at the moment.</div>
+        <div class="empty-state body-text">
+          No activities available at the moment.
+        </div>
       </template>
     </section>
 
     <section>
       <div class="category">
-        <h1 id="dynamic">{{ categoriesList![1].title }}</h1>
-        <p>{{ categoriesList![1].description }}</p>
+        <h1 id="dynamic" class="title">{{ categoriesList![1].title }}</h1>
+        <p class="body-text">{{ categoriesList![1].description }}</p>
       </div>
       <template v-if="activitiesListModern.length > 0">
         <card-grid :length="activitiesListModern.length">
@@ -69,7 +71,9 @@ const activitiesListModern = resActivities.data.value!.filter(
         </card-grid>
       </template>
       <template v-else>
-        <div class="empty-state">No activities available at the moment.</div>
+        <div class="empty-state body-text">
+          No activities available at the moment.
+        </div>
       </template>
     </section>
   </page-wrap>

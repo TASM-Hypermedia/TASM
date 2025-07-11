@@ -15,7 +15,7 @@ function toggle() {
 
 <template>
   <motion.div class="faqContainer">
-    <button type="button" class="faqQuestion title" @click="toggle">
+    <button type="button" class="faqQuestion body-text" @click="toggle">
       {{ faqProp.question }}
       <img
         src="/images/arrow-icon.png"

@@ -4,8 +4,11 @@
       class="card-image"
       :style="{ backgroundImage: `url(${activityProp.image})` }"
     ></div>
-    <div class="card-title">{{ activityProp.title }}</div>
-    <div v-if="activityProp.shortDescription !== null" class="card-description">
+    <div class="card-title title">{{ activityProp.title }}</div>
+    <div
+      v-if="activityProp.shortDescription !== null"
+      class="card-description body-text"
+    >
       {{ activityProp.shortDescription }}
     </div>
   </NuxtLink>
@@ -53,7 +56,7 @@ div {
 
 .card:hover {
   transform: scale(1.02);
-  background-color: #D8CFE7;
+  background-color: #d8cfe7;
 }
 
 .card-image {

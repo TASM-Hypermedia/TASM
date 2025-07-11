@@ -21,7 +21,7 @@ const contactsList = res.data.value
       <div class="row">
         <div class="column"></div>
         <div class="column">
-          <a href="tel:+391234567890">
+          <a class="body-text" href="tel:+391234567890">
             <img
               src="../assets/socials/wa.png"
               alt="Whatsapp number"
@@ -32,7 +32,7 @@ const contactsList = res.data.value
           </a>
         </div>
         <div class="column">
-          <a href="tel:+391234567890">
+          <a class="body-text" href="tel:+391234567890">
             <img
               src="../public/images/icons/phone.png"
               alt="Phone number"
@@ -43,7 +43,7 @@ const contactsList = res.data.value
           </a>
         </div>
         <div class="column">
-          <a href="mailto:simone.pedroni@mail.polimi.it">
+          <a class="body-text" href="mailto:simone.pedroni@mail.polimi.it">
             <img
               src="../public/images/icons/mail.png"
               alt="Mail"
@@ -57,7 +57,7 @@ const contactsList = res.data.value
       </div>
     </section>
 
-    <h1 class="map-title">Come and join us</h1>
+    <h1 class="map-title title">Come and join us</h1>
     <section class="map-section">
       <iframe
         title="Map showing the Yoga Center"
@@ -68,8 +68,8 @@ const contactsList = res.data.value
       ></iframe>
     </section>
 
-    <h1>Contact us</h1>
-    <section class="form-section">
+    <h1 class="title">Contact us</h1>
+    <section class="form-section body-text">
       <form
         action="mailto:simone.pedroni@mail.polimi.it"
         method="post"
@@ -116,12 +116,19 @@ const contactsList = res.data.value
         </label>
         <br /><br />
 
-        
-        <input id="submit" type="submit" class="link-button" value="Submit" />
+        <input
+          id="submit"
+          type="submit"
+          class="link-button body-text"
+          value="Submit"
+        />
         <br />
-        <input id="reset" type="reset" class="link-button" value="Reset" />
-        
-
+        <input
+          id="reset"
+          type="reset"
+          class="link-button body-text"
+          value="Reset"
+        />
       </form>
     </section>
   </PageWrap>
@@ -145,6 +152,7 @@ const contactsList = res.data.value
   a {
     color: black;
     text-decoration: none;
+    font-weight: 500;
   }
 
   a:visited {
@@ -232,8 +240,6 @@ h1 {
   width: 100%;
   margin: 0px;
 }
-
-
 
 // .form-button {
 //   width: 100%;

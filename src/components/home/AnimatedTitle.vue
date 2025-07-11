@@ -10,6 +10,7 @@ const letters = computed(() => props.title.split(""))
   <motion.div
     initial="hidden"
     while-in-view="visible"
+    class="title"
     :transition="{ staggerChildren: 0.05 }"
   >
     <motion.span

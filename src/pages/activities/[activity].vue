@@ -62,7 +62,7 @@ for (let i = 0; i < 3; i++) {
     :title="activity.title"
   >
     <section>
-      <p class="description">
+      <p class="description body-text">
         {{ activity.description }}
       </p>
     </section>
@@ -71,9 +71,9 @@ for (let i = 0; i < 3; i++) {
 
     <section class="pair">
       <div>
-        <h1>What You'll Do</h1>
-        <span class="label">Difficulty level:</span>
-        <div class="buttons">
+        <h1 class="title">What You'll Do</h1>
+        <span class="label body-title">Difficulty level:</span>
+        <div class="buttons body-text">
           <button
             v-if="activity.info[0].length > 0"
             :class="selectedDifficulty === 0 ? 'selected' : undefined"
@@ -100,6 +100,7 @@ for (let i = 0; i < 3; i++) {
           <li
             v-for="(info, i) in activity.info[selectedDifficulty]"
             :key="`info-point-${i}`"
+            class="body-text"
           >
             <strong>{{ info.name }}</strong> – {{ info.description }}
           </li>
@@ -107,7 +108,7 @@ for (let i = 0; i < 3; i++) {
       </div>
 
       <div class="lessons">
-        <h1>Next Lessons</h1>
+        <h1 class="title">Next Lessons</h1>
         <div
           v-for="(lesson, index) in activity.nextLessons"
           :key="index"
@@ -116,10 +117,12 @@ for (let i = 0; i < 3; i++) {
           <img class="logo" src="../../assets/images/calendar.svg" alt="logo" />
           <div>
             <div>
-              <span style="font-weight: bold">{{ lesson.name }}</span>
-              <span>{{ lesson.difficulty }}</span>
+              <span style="font-weight: bold" class="body-text">{{
+                lesson.name
+              }}</span>
+              <span class="body-text">{{ lesson.difficulty }}</span>
             </div>
-            <div style="font-size: 0.9em; opacity: 0.7">
+            <div style="font-size: 1em; opacity: 0.7" class="body-text">
               <span>{{ lesson.date }}</span>
               <span>{{ lesson.time }}</span>
             </div>
@@ -129,7 +132,7 @@ for (let i = 0; i < 3; i++) {
     </section>
 
     <section style="align-items: center; text-align: center">
-      <h1>Teaching {{ activity.title }}</h1>
+      <h1 class="title">Teaching {{ activity.title }}</h1>
       <CardGrid :length="activity.teachers.length">
         <template #card="{ index }">
           <card-teacher :teacher-prop="activity.teachers[index]" />
@@ -138,13 +141,13 @@ for (let i = 0; i < 3; i++) {
     </section>
 
     <section style="align-items: center; text-align: center">
-      <h2>Similar Activities</h2>
+      <h1 class="title">Similar Activities</h1>
       <card-grid :length="similarActivities.length">
         <template #card="{ index }">
           <card-activity :activity-prop="similarActivities[index]" />
         </template>
       </card-grid>
-      <NuxtLink class="link-button" to="/activities">
+      <NuxtLink class="link-button body-text" to="/activities">
         View all activities
       </NuxtLink>
     </section>

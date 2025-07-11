@@ -77,7 +77,7 @@ const teacher = data.data.value
 
     <!-- ACTIVITIES WITH ME - CONTENT PREVIEW-->
     <div v-if="teacher.activities.length > 0" class="divWithMe">
-      <h3>ACTIVITIES WITH ME</h3>
+      <h3 class="title title-teacher">Activities with me</h3>
       <card-grid :length="teacher.activities.length">
         <template #card="{ index }">
           <CardActivity
@@ -96,7 +96,7 @@ const teacher = data.data.value
 
     <!-- EVENTS WITH ME -->
     <div v-if="teacher.events.length > 0" class="divWithMe">
-      <h3>EVENTS WITH ME</h3>
+      <h3 class="title title-teacher">Events with me</h3>
       <card-grid :length="teacher.events.length">
         <template #card="{ index }">
           <CardEvent
@@ -123,12 +123,12 @@ const teacher = data.data.value
 
     <!-- IL MIO PERCORSO -->
     <div class="myJourney">
-      <h3>My history:</h3>
+      <h3 class="title teacher-title">My history:</h3>
       <p>{{ teacher.history }}</p>
     </div>
 
     <!-- SPECIALIZZAZIONI & CERTIFICAZIONI -->
-    <div class="specCert">
+    <div class="specCert body-text">
       <div class="column">
         <h4>Specializations:</h4>
         <div v-for="(item, index) in teacher.specializations" :key="index">
@@ -217,11 +217,14 @@ ul {
 
 .link-button {
   color: white;
-  background-color: #7265B4;
+  background-color: #7265b4;
   border-radius: 8px;
   padding: 8px 32px;
   margin: 16px;
   text-decoration: none;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+.title-teacher {
+  font-weight: bold;
 }
 </style>
