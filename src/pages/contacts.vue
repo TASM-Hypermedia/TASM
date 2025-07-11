@@ -116,9 +116,12 @@ const contactsList = res.data.value
         </label>
         <br /><br />
 
-        <input id="submit" type="submit" class="form-button" value="Submit" />
+        
+        <input id="submit" type="submit" class="link-button" value="Submit" />
         <br />
-        <input id="reset" type="reset" class="form-button" value="Reset" />
+        <input id="reset" type="reset" class="link-button" value="Reset" />
+        
+
       </form>
     </section>
   </PageWrap>
@@ -225,15 +228,22 @@ h1 {
   width: 100%;
 }
 
-.form-button {
+.link-button {
   width: 100%;
-  color: white;
-  background-color: #7265B4;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 5px 0;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  // font-size: 18px;
-  // font-weight: 500;
+  margin: 0px;
 }
+
+
+
+// .form-button {
+//   width: 100%;
+//   color: white;
+//   background-color: #7265B4;
+//   border-radius: 10px;
+//   padding: 10px;
+//   margin: 5px 0;
+//   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+//   // font-size: 18px;
+//   // font-weight: 500;
+// }
 </style>
