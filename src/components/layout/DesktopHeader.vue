@@ -15,7 +15,7 @@ function active(thisRoute: string) {
 <template>
   <nav
     class="header-div"
-    :style="{ backgroundColor: `rgba(240, 240, 240, ${opacity})` }"
+    :style="{ backgroundColor: `rgba(232, 221, 241, ${opacity})` }"
   >
     <NuxtLink to="/" class="logo">
       <img
@@ -59,9 +59,9 @@ function active(thisRoute: string) {
   width: 100vw;
   padding: 16px;
   gap: 8px;
-  background-color: #f0f0f0;
+  background-color: rgb(229, 221, 241);
   backdrop-filter: blur(12px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -84,14 +84,16 @@ function active(thisRoute: string) {
   border: 1px solid transparent;
 
   &.active-link {
-    background-color: #e2e2e2f0;
+    background-color: #ccbce3;
     font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #bfb0d7;
   }
 }
 
 .link:hover {
-  background-color: #e2e2e2a0;
+  background-color: #ccbce3;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #fffc;
+  border: 1px solid #bfb0d7;
 }
 </style>
