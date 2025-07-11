@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { EventType } from "~/types"
+import calendarSvg from "~/assets/images/calendar.svg"
+
 
 const route = useRoute()
 
@@ -140,7 +142,8 @@ const programPoints: {
         </div>
       </div>
       <NuxtLink class="link-button" to="#">
-        <img class="attend" src="../../assets/images/calendar.svg" alt="logo" />
+        <!-- <img class="attend" src="../../assets/images/calendar.svg" alt="logo" />-->
+         <calendarSvg  class = "attend" style=""/>
         Attend This Event
       </NuxtLink>
     </section>
@@ -341,24 +344,28 @@ ul {
   }
 }
 
-.link-button {
-  color: white;
-  background-color: #7265B4;
-  border-radius: 8px;
-  padding: 8px 32px;
-  margin: 16px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-
-  .attend {
-    filter: brightness(100);
-  }
-
-  .mobile-layout & {
-    margin-top: 50px;
-  }
+.attend {
+  filter: brightness(100);
 }
+
+// .link-button {
+//   color: white;
+//   background-color: #7265B4;
+//   border-radius: 8px;
+//   padding: 8px 32px;
+//   margin: 16px;
+//   text-decoration: none;
+//   display: flex;
+//   align-items: center;
+//   gap: 8px;
+//   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+
+//   .attend {
+//     filter: brightness(100);
+//   }
+
+//   .mobile-layout & {
+//     margin-top: 50px;
+//   }
+// }
 </style>
