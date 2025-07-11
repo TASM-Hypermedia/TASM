@@ -79,21 +79,21 @@ for (let i = 0; i < 3; i++) {
             :class="selectedDifficulty === 0 ? 'selected' : undefined"
             @click="setDifficulty(0)"
           >
-            Easy
+            🌿 Easy
           </button>
           <button
             v-if="activity.info[1].length > 0"
             :class="selectedDifficulty === 1 ? 'selected' : undefined"
             @click="setDifficulty(1)"
           >
-            Medium
+            🌀 Medium
           </button>
           <button
             v-if="activity.info[2].length > 0"
             :class="selectedDifficulty === 2 ? 'selected' : undefined"
             @click="setDifficulty(2)"
           >
-            Hard
+            🔥 Hard
           </button>
         </div>
         <ol>
@@ -231,7 +231,7 @@ div.buttons {
     outline-offset: -1px;
 
     &.selected {
-      background-color: #e2e2e2;
+      background-color: #e8ddf1;
     }
   }
 }
