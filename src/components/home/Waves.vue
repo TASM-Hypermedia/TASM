@@ -7,14 +7,14 @@ const waves = Array.from({ length: 7 }, (_, i) => {
   const component = defineAsyncComponent(
     () => import(`~/assets/waves/Vector-${i}.svg?component`)
   )
-  const scrollMultiplier = Math.random() + 0.1
+  const scrollMultiplier = Math.random() ** 2
 
   return {
     id: i,
     component,
     x: useSpring(useTransform(() => scrollY.get() * scrollMultiplier)),
     y: useSpring(
-      useTransform(() => scrollSpeed.get() * 0.003 * i * scrollMultiplier)
+      useTransform(() => scrollSpeed.get() * 0.001 * i * scrollMultiplier)
     ),
   }
 })
@@ -66,7 +66,7 @@ const fillerHeight = useTransform(() =>
   .wave {
     position: absolute;
     top: 0;
-    right: -100px;
+    right: -300px;
     pointer-events: none;
   }
 }
