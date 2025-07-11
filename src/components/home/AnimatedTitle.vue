@@ -4,35 +4,34 @@ import { motion } from "motion-v"
 
 const props = defineProps<{ title: string }>()
 const letters = computed(() => props.title.split(""))
-
-const { y } = useCustomScroll()
-const seen = computed(() => y.value > 200)
 </script>
 
 <template>
   <motion.div
     initial="hidden"
-    :animate="seen ? 'visible' : 'hidden'"
-    :transition="{
-      when: 'beforeChildren',
-      staggerChildren: 0.1,
-      duration: 0.5,
-    }"
+    while-in-view="visible"
+    :transition="{ staggerChildren: 0.05 }"
   >
     <motion.span
       v-for="(letter, index) in letters"
       :key="index"
       :variants="{
-        hidden: { y: -200 },
-        visible: {
-          y: 0,
-          transition: {
-            type: 'spring',
-            stiffness: 300,
-            damping: 20,
-            delay: 0.1,
-          },
+        hidden: {
+          x: -30 + index * 8,
+          y: -20,
+          opacity: 0.6,
+          filter: 'blur(4px)',
         },
+        visible: {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          filter: 'blur(0px)',
+        },
+      }"
+      :transition="{
+        duration: 0.5,
+        ease: 'easeOut',
       }"
     >
       {{ letter }}
@@ -43,7 +42,6 @@ const seen = computed(() => y.value > 200)
 <style scoped lang="scss">
 div {
   font-size: 5em;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;

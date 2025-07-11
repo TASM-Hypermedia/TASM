@@ -9,32 +9,33 @@ import { motion } from "motion-v"
 
 const benefits = [
   {
-    title: "CONNECTION",
+    title: "Connection",
     description:
       "Reconnect with yourself, others, and the world around you —on and off the mat",
     image: "Connessione.svg",
     position: 0,
   },
   {
-    title: "CLARITY",
+    title: "Clarity",
     description:
       "Find mental focus and inner stillness through breath and mindful movement",
     image: "Lampadina.svg",
     position: 1,
   },
   {
-    title: "STRENGTH",
+    title: "Strength",
     description: "Build physical resilience and emotional balance",
     image: "Forza.svg",
     position: 2,
   },
   {
-    title: "FREEDOM",
+    title: "Freedom",
     description: "Release tension in the body and let go of limiting thoughts",
     image: "Liberta.svg",
     position: 3,
   },
 ]
+
 onMounted(() => {
   console.log(window.innerWidth)
   clientWidth.value = window.innerWidth
@@ -45,57 +46,43 @@ onMounted(() => {
 })
 
 const clientWidth = ref(0)
-//window.innerWidth
-
 console.log(clientWidth)
 
-const ratioTop = 5000 / 288
-
+const ratioTop = 5000 / 1000
 const ratioBottom = 5000 / 288
 
 const topHeight = computed(() => -clientWidth.value / ratioTop)
 const bottomHeight = computed(() => -clientWidth.value / ratioBottom)
-console.log(topHeight, bottomHeight)
 </script>
 
 <template>
   <div class="container-benefits">
     <div class="sheet"></div>
-    <!-- <SvgBottom
-      class="svg-imageBottom"
-      :style="{ bottom: bottomHeight + 'px', width: '100vw' }"
-    />
-    <SvgTop
-      class="svg-imageTop"
-      :style="{ top: topHeight + 'px', width: '100vw' }"
-    /> -->
 
     <SvgWaveT
       class="svg-imageTop"
-      :style="{ top: +topHeight, width: '100vw' }"
-    /><SvgWaveEmptyT
+      :style="{ top: `${topHeight}px`, width: '100vw' }"
+    />
+    <SvgWaveEmptyT
       class="svg-imageTop"
-      :style="{ top: topHeight * 4 + 'px', width: '100vw' }"
-    /><SvgWaveEmptyT
+      :style="{ top: `${bottomHeight * 4}px`, width: '100vw' }"
+    />
+    <SvgWaveEmptyT
       class="svg-imageTop"
-      :style="{
-        top: topHeight * 4.35 + 'px',
-        width: '100vw',
-      }"
+      :style="{ top: `${bottomHeight * 4.35}px`, width: '100vw' }"
     />
 
     <SvgWaveB
       class="svg-imageTop"
-      :style="{ bottom: +topHeight * 3.5, width: '100vw' }"
-    /><SvgWaveEmptyB
+      :style="{ bottom: `${bottomHeight * 3.5}px`, width: '100vw' }"
+    />
+    <SvgWaveEmptyB
       class="svg-imageTop"
-      :style="{ bottom: topHeight * 1.5 + 'px', width: '100vw' }"
-    /><SvgWaveEmptyB
+      :style="{ bottom: `${bottomHeight * 1.5}px`, width: '100vw' }"
+    />
+    <SvgWaveEmptyB
       class="svg-imageTop"
-      :style="{
-        bottom: topHeight * 2.35 + 'px',
-        width: '100vw',
-      }"
+      :style="{ bottom: `${bottomHeight * 2.35}px`, width: '100vw' }"
     />
 
     <div
@@ -110,7 +97,7 @@ console.log(topHeight, bottomHeight)
       "
     >
       <div style="display: flex; font-size: 20px" class="title">
-        <HomeAnimatedTitle title="BENEFITS" />
+        <HomeAnimatedTitle title="Benefits" />
       </div>
 
       <motion.div

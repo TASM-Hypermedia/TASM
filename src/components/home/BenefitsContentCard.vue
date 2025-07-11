@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import SvgBlob from "~/assets/images/homepage/Blob-Fill.svg"
 import SvgBlobOutline from "~/assets/images/homepage/Blob-outline.svg"
-import { motion } from "motion-v"
+import { motion, Motion } from "motion-v"
 //import { ref, computed } from "vue" //ref, computedimport { } from "vue"
 
 const { benefitsProp } = defineProps<{
@@ -12,6 +12,17 @@ const { benefitsProp } = defineProps<{
     position: number
   }
 }>()
+
+const hover = useMotionValue(0)
+const setHover = (value: boolean) => {
+  hover.set(value ? 1 : 0)
+}
+const spring = useSpring(hover, { bounce: 0 })
+const x1 = useTransform(spring, [0, 1], ["-50%", "-52%"])
+const y1 = useTransform(spring, [0, 1], ["-50%", "-52%"])
+const x2 = useTransform(spring, [0, 1], ["-40%", "-38%"])
+const y2 = useTransform(spring, [0, 1], ["-45%", "-42%"])
+const imgScale = useTransform(spring, [0, 1], [0.9, 1])
 
 const variations = {
   hidden: {
@@ -25,7 +36,7 @@ const variations = {
     x: 0,
   },
   hover: {
-    scale: 1.015,
+    scale: 1,
   },
 }
 </script>
@@ -47,6 +58,10 @@ const variations = {
       display: inline-flex;
       position: relative;
     "
+    @focus="setHover(true)"
+    @mouseover="setHover(true)"
+    @mouseleave="setHover(false)"
+    @blur="setHover(false)"
   >
     <div style="display: flex; flex-direction: column; gap: 20px">
       <div>
@@ -64,22 +79,48 @@ const variations = {
           <div
             style="justify-content: center; align-items: center; display: flex"
           >
-            <svg-blob class="svg-blob" />
-            <svg-blob-outline class="svg-blob-outline" />
-            <img
-              class="teacher_image"
-              style="
-                width: 50%;
-                height: 50%;
-                object-fit: contain;
-                justify-content: center;
-                align-items: center;
-                scale: 0.8;
-                /*border-radius: 7px;*/
-              "
-              :src="'/images/icons/benefits/' + benefitsProp.image"
-              :alt="benefitsProp.title"
-            />
+            <Motion
+              as-child
+              :style="{
+                x: x1,
+                y: y1,
+                scale: 1.7,
+              }"
+            >
+              <svg-blob class="svg-blob" />
+            </Motion>
+            <Motion
+              as-child
+              :style="{
+                x: x2,
+                y: y2,
+                scale: 1.7,
+              }"
+            >
+              <svg-blob-outline class="svg-blob-outline" />
+            </Motion>
+            <motion.div
+              class="teacher_img_wrapper"
+              :style="{
+                width: '80px',
+                height: '80px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                scale: imgScale,
+              }"
+            >
+              <motion.img
+                class="teacher_image"
+                :style="{
+                  width: '100%',
+                  height: '100%',
+                }"
+                :src="'/images/icons/benefits/' + benefitsProp.image"
+                :alt="benefitsProp.title"
+              />
+            </motion.div>
           </div>
         </div>
       </div>
@@ -136,8 +177,8 @@ const variations = {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: fit-content;
-  height: fit-content;
+  width: 100%;
+  height: 100%;
   z-index: -1;
   transform: translate(-50%, -50%) scale(1.7);
 }
@@ -145,10 +186,10 @@ const variations = {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: fit-content;
-  height: fit-content;
+  width: 100%;
+  height: 100%;
   z-index: -1;
-  transform: translate(-30%, -40%) scale(1.7);
+  transform: translate(-40%, -40%) scale(1.7);
   opacity: 0.5;
 }
 /* div {
