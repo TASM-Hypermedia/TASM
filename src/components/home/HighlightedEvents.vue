@@ -88,10 +88,10 @@ function animateDot(dot: HTMLElement | null, repeat = true) {
   currentAnimation = animate(
     dot,
     {
-      scale: [1, 1.3, 1],
+      scale: [1, 1.2, 1],
       filter: [
         "drop-shadow(0 0 0 rgba(0,0,0,0))",
-        "drop-shadow(0 0 15px rgba(122, 65, 175,1))",
+        "drop-shadow(0 0 15px rgba(122, 65, 175,0.8))",
         "drop-shadow(0 0 0 rgba(0,0,0,0))",
       ],
     },

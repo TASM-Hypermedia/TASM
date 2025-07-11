@@ -50,3 +50,20 @@ p {
   word-wrap: break-word;
   
 }
+
+.link-button {
+  color: white;
+  background-color: #7265b4;
+  border-radius: 8px;
+  padding: 8px 32px;
+  margin: 16px;
+  text-decoration: none;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1);
+  transition: all 0.2s ease-in-out;
+}
+.link-button:hover {
+  color: white;
+  background-color: #9a88c5;
+  transform: scale(1.02);
+}

@@ -58,9 +58,9 @@ function toggle() {
   display: flex;
   text-align: left;
   justify-content: space-between;
-  font-weight: 500;
-  font-size: 1.1rem;
-  font-style: italic;
+  font-weight: 700;
+  font-size: 1.3rem;
+  // font-style: italic;
 
   img {
     align-self: center;
