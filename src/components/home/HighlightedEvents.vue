@@ -201,7 +201,7 @@ watch(selectedIndex, (newVal) => {
                 word-wrap: break-word;
               "
             >
-              Highlited events
+              Highlighted Events
             </div>
             <div
               class="title"

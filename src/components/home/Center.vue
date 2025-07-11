@@ -18,7 +18,7 @@ const { homePageElement } = defineProps<{
       style="
         display: flex;
         width: 100%;
-        max-width: 900px;
+        max-width: 800px;
         z-index: 1;
         gap: 64px;
         align-items: stretch;
@@ -31,7 +31,7 @@ const { homePageElement } = defineProps<{
           flex: 1;
           display: flex;
           flex-direction: column;
-          align-items: center;
+          align-items: start;
           gap: 18px;
         "
       >
@@ -51,7 +51,6 @@ const { homePageElement } = defineProps<{
           style="
             opacity: 0.8;
             align-self: stretch;
-            text-align: right;
             font-style: italic;
             color: black;
             font-weight: bolder;
@@ -59,7 +58,7 @@ const { homePageElement } = defineProps<{
         >
           {{ homePageElement.title }}
         </div>
-        <div class="body-text" style="flex: 1">
+        <div class="body-text" style="flex: 1; font-size: 1.2rem">
           {{ homePageElement.description }}
         </div>
         <NuxtLink class="link-button" to="/yogacenter">
@@ -105,6 +104,9 @@ const { homePageElement } = defineProps<{
 .link-button {
   color: white;
   background-color: rgb(183, 152, 184);
+  margin: 0;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
   border-radius: 8px;
   padding: 12px 36px;
   text-decoration: none;

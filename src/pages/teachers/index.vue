@@ -26,7 +26,6 @@ const teachersList = res.data.value
   <page-wrap
     title="Our Team"
     subtitle="Discover our instructors"
-    tagline="The Teachers:"
     img-src="/banners/team-banner.jpg"
   >
     <card-grid :length="teachersList!.length">

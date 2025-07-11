@@ -2,7 +2,6 @@
 import type { EventType } from "~/types"
 import calendarSvg from "~/assets/images/calendar.svg"
 
-
 const route = useRoute()
 
 const a = route.params.event
@@ -142,8 +141,7 @@ const programPoints: {
         </div>
       </div>
       <NuxtLink class="link-button" to="#">
-        <!-- <img class="attend" src="../../assets/images/calendar.svg" alt="logo" />-->
-         <calendarSvg  class = "attend" style=""/>
+        <calendarSvg class="attend" style="" />
         Attend This Event
       </NuxtLink>
     </section>

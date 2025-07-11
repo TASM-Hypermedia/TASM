@@ -1,5 +1,9 @@
 <template>
-  <page-wrap :title="'Events'" img-src="/banners/events-banner.jpg">
+  <page-wrap
+    :title="'Events'"
+    subtitle="Explore our upcoming events and workshops."
+    img-src="/banners/events-banner.jpg"
+  >
     <card-grid :length="eventsList.length">
       <template #card="{ index }">
         <card-event :event-prop="eventsList[index]" />
@@ -14,7 +18,7 @@ import { useAPI } from "~/composables/useAPI"
 
 definePageMeta({
   title: "Events",
-  description: "Explore our upcoming events and workshops.",
+  description: "Explore upcoming events and workshops.",
 })
 
 const { data, error } = await useAPI<Event[]>("/getAllEvents")
