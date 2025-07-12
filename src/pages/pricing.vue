@@ -56,10 +56,13 @@ const pricingList = resPricing.data.value
 .priceSection {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
   max-width: 1080px;
 
   div {
-    width: 90%;
+    flex: 1;
+    margin: 0 16px;
   }
 
   .mobile-layout & {
