@@ -8,61 +8,63 @@
     ></div> -->
 
     <NuxtLink :to="`/events/${eventProp.url}`" class="event-card">
-      <div class="event-info-rows">
-        <!-- Calendario -->
+      <GyroAnim>
+        <div class="event-info-rows">
+          <!-- Calendario -->
 
-        <div class="info-row body-text">
-          <div class="wrapper-div">
-            <SquareCalendar :date="calendar_date" />
-          </div>
-          <div class="info-texts body-text">
-            <div class="info-label">When</div>
-            <div class="info-value">
-              {{
-                calendar_date.toLocaleDateString("en-US", {
-                  month: "long",
-                  day: "numeric",
-                  weekday: "long",
-                })
-              }}
+          <div class="info-row body-text">
+            <div class="wrapper-div">
+              <SquareCalendar :date="calendar_date" />
+            </div>
+            <div class="info-texts body-text">
+              <div class="info-label">When</div>
+              <div class="info-value">
+                {{
+                  calendar_date.toLocaleDateString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    weekday: "long",
+                  })
+                }}
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Host -->
-        <div class="info-row body-text">
-          <div class="wrapper-div">
-            <img :src="eventProp.hostImage" alt="Host" class="info-icon" />
-          </div>
-          <div class="info-texts body-text">
-            <div class="info-label">Guest</div>
-            <div class="info-value">{{ eventProp.hostName }}</div>
-          </div>
-        </div>
-
-        <div class="info-row">
-          <div class="wrapper-div">
-            <div
-              :style="{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }"
-            >
-              <svg-icon />
+          <!-- Host -->
+          <div class="info-row body-text">
+            <div class="wrapper-div">
+              <img :src="eventProp.hostImage" alt="Host" class="info-icon" />
+            </div>
+            <div class="info-texts body-text">
+              <div class="info-label">Guest</div>
+              <div class="info-value">{{ eventProp.hostName }}</div>
             </div>
           </div>
-          <div class="info-texts body-text">
-            <div class="info-label">Where</div>
-            <div class="info-value">{{ eventProp.location }}</div>
+
+          <div class="info-row">
+            <div class="wrapper-div">
+              <div
+                :style="{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }"
+              >
+                <svg-icon />
+              </div>
+            </div>
+            <div class="info-texts body-text">
+              <div class="info-label">Where</div>
+              <div class="info-value">{{ eventProp.location }}</div>
+            </div>
+          </div>
+
+          <div class="info-row learn-more">
+            <p :to="`/events/${eventProp.url}`" class="body-text">Learn More</p>
+            <arrow class="arrow-icon" />
           </div>
         </div>
-
-        <div class="info-row learn-more">
-          <p :to="`/events/${eventProp.url}`" class="body-text">Learn More</p>
-          <arrow class="arrow-icon" />
-        </div>
-      </div>
+      </GyroAnim>
     </NuxtLink>
   </div>
 </template>

@@ -31,7 +31,7 @@ const letters = computed(() => props.title.split(""))
         },
       }"
       :transition="{
-        duration: 0.5,
+        duration: 0.4,
         ease: 'easeOut',
       }"
     >

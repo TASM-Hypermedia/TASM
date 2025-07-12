@@ -5,9 +5,7 @@
       initial="hidden"
       while-in-view="visible"
       :transition="{
-        duration: 0.8,
         ease: easeInOut,
-        delay: 0.1,
         staggerChildren: 0.15,
       }"
       class="activities"
@@ -17,7 +15,7 @@
         :key="i"
         :variants="variants"
         :transition="{
-          duration: 0.8,
+          duration: 0.7,
           ease: easeInOut,
         }"
         :style="{
