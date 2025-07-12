@@ -36,7 +36,7 @@ const marginTop = useMotionTemplate`${hero}px`
       :style="{ y }"
     />
     <motion.div class="hero-page" :style="{ marginTop }">
-      <p v-if="tagline" class="body-text">{{ tagline }}</p>
+      <h3 v-if="tagline" class="body-text">{{ tagline }}</h3>
       <h1 class="title">{{ title }}</h1>
       <h2 v-if="subtitle" class="body-text">{{ subtitle }}</h2>
     </motion.div>
@@ -47,7 +47,7 @@ const marginTop = useMotionTemplate`${hero}px`
 .hero-page {
   background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(12px);
-  box-shadow: 0px 4px 24px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 24px 2px rgba(0, 0, 0, 0.1);
   text-align: center;
   font-weight: 700;
   max-width: 1080px;
@@ -72,7 +72,7 @@ const marginTop = useMotionTemplate`${hero}px`
   font-style: italic;
 }
 
-.hero-page p {
+.hero-page h3 {
   font-size: 24px;
   line-height: 16px;
   font-weight: 400;
