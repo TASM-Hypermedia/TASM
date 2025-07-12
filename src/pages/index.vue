@@ -3,8 +3,8 @@ import { useAPI } from "~/composables/useAPI"
 import type { ResponseData } from "~/types"
 
 definePageMeta({
-  title: "TASM Yoga",
-  description: "Welcome to TASM Yoga, your journey to wellness begins here.",
+  title: "Inner Bloom",
+  description: "Welcome to Inner Bloom, your journey to wellness begins here.",
 })
 
 const response = await useAPI<ResponseData>("/getHomePage", {

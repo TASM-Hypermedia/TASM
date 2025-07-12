@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  title: "Yoga Center",
+  title: "The Center",
   description: "Explore our Yoga Center, where tranquility meets practice.",
 })
 
@@ -22,7 +22,11 @@ const yogaCenter = res.data.value
 </script>
 
 <template>
-  <PageWrap title="Yoga Center" img-src="./banners/yogaCenter-banner.jpg">
+  <PageWrap
+    tagline="Our Yoga Center"
+    title="Inner Bloom"
+    img-src="./banners/yogaCenter-banner.jpg"
+  >
     <section class="body-text">
       <div>{{ yogaCenter!.description }}</div>
     </section>

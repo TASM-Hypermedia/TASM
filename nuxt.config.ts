@@ -84,8 +84,8 @@ export default defineNuxtConfig({
   },
   site: {
     url: "tasm.it",
-    name: "TASM",
+    name: "Inner Bloom",
     description:
-      "TASM is a yoga studio in City, Country, offering classes, workshops, and teacher training.",
+      "Inner Bloom is a Yoga Center in City, Country, offering classes, workshops, and teacher training.",
   },
 })
