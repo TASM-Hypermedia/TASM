@@ -65,7 +65,7 @@ onMounted(() => {
       }"
     >
       <motion.div class="writtenContent" :variants="variants">
-        <p class="contentTitle title">{{ contentCardProp.title }}</p>
+        <h2 class="contentTitle title">{{ contentCardProp.title }}</h2>
         <p v-if="contentCardProp.subtitle" class="contentSubtitle body-text">
           {{ contentCardProp.subtitle }}
         </p>

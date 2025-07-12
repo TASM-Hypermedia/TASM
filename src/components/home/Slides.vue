@@ -16,9 +16,9 @@
                 scale: hoverindex === 1 ? 0.9 : 1,
               }"
             >
-              <v-img :src="image1" height="100%" width="100%" contain>
+              <v-img :src="image1" height="100%" width="100%" alt="Our teachers" contain>
                 <v-sheet class="sheetImg">
-                  <nuxt-link to="/teachers" class="textImg"
+                  <nuxt-link to="/teachers" class="textImg" aria-label="Our teachers"
                     ><div class="text-center title">
                       <h1>OUR TEAM</h1>
                       Click here to see our incredible teachers
@@ -44,9 +44,9 @@
                 scale: hoverindex === 2 ? 0.9 : 1,
               }"
             >
-              <v-img :src="image2" height="100%" width="100%" contain>
+              <v-img :src="image2" height="100%" width="100%" alt="Our events" contain>
                 <v-sheet class="sheetImg">
-                  <nuxt-link to="/events" class="textImg"
+                  <nuxt-link to="/events" class="textImg" aria-label="Our events"
                     ><div class="text-center title">
                       <h1>OUR EVENTS</h1>
                       Click here to see our incredible events
@@ -72,9 +72,9 @@
                 scale: hoverindex === 3 ? 0.9 : 1,
               }"
             >
-              <v-img :src="image3" height="100%" width="100%" contain>
+              <v-img :src="image3" height="100%" width="100%" alt="Our activities" contain>
                 <v-sheet class="sheetImg">
-                  <nuxt-link to="/activities" class="textImg"
+                  <nuxt-link to="/activities" class="textImg" aria-label="Our activities"
                     ><div class="text-center title">
                       <h1>OUR ACTIVITIES</h1>
                       Click here to see our incredible activities
