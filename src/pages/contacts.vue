@@ -22,8 +22,10 @@ const contactsList = res.data.value
         <div class="column"></div>
         <div class="column">
           <a class="body-text" href="tel:+391234567890">
-            <img
-              src="../assets/socials/wa.png"
+            <NuxtImg
+              preload
+              format="webp"
+              src="/images/icons/wa.png"
               alt="Whatsapp number"
               class="contact-image"
             />
@@ -33,8 +35,10 @@ const contactsList = res.data.value
         </div>
         <div class="column">
           <a class="body-text" href="tel:+391234567890">
-            <img
-              src="../public/images/icons/phone.png"
+            <NuxtImg
+              preload
+              format="webp"
+              src="/images/icons/phone.png"
               alt="Phone number"
               class="contact-image"
             />
@@ -44,8 +48,10 @@ const contactsList = res.data.value
         </div>
         <div class="column">
           <a class="body-text" href="mailto:simone.pedroni@mail.polimi.it">
-            <img
-              src="../public/images/icons/mail.png"
+            <NuxtImg
+              preload
+              format="webp"
+              src="/images/icons/mail.png"
               alt="Mail"
               class="contact-image"
             />

@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build --preset github_pages",
+    "build": "nuxt generate --preset github_pages",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -26,7 +26,6 @@
     "nuxt-svgo": "^4.2.2",
     "nuxt-viewport": "^2.3.1",
     "vue": "^3.5.13",
-    "vue-router": "^4.5.0",
     "vuetify-nuxt-module": "^0.16.1"
   },
   "devDependencies": {

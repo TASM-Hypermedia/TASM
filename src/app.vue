@@ -1,10 +1,20 @@
 <script setup lang="ts">
 import type { LayoutKey } from "#build/types/layouts"
 
+// Layout management
 const viewport = useViewport()
 const getLayout: () => LayoutKey = () =>
   viewport.isLessThan("tablet") ? "mobile" : "default"
+const updateLayout = () => {
+  setPageLayout(getLayout())
+}
 
+onMounted(() => {
+  updateLayout()
+  window.addEventListener("resize", () => updateLayout())
+})
+
+// SEO management
 const route = useRoute()
 
 useHead({
@@ -21,18 +31,13 @@ useSeoMeta({
     (route.meta.description as string) ??
     "Welcome to Inner Bloom, your journey to wellness begins here.",
 })
-
-onMounted(() => {
-  setPageLayout(getLayout())
-  window.addEventListener("resize", () => setPageLayout(getLayout()))
-})
 </script>
 
 <template>
   <div id="app-container">
     <LoadingIndicator />
     <NuxtRouteAnnouncer />
-    <NuxtLayout>
+    <NuxtLayout :name="getLayout()">
       <NuxtPage />
     </NuxtLayout>
   </div>

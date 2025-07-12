@@ -185,11 +185,9 @@ onMounted(() => {
         @pointercancel="dragEnd"
       >
         <div class="images">
-          <motion.img
+          <Motion
             v-for="(animImage, i) in animImages"
             :key="i"
-            :src="`/images/${animImage.image.URL}`"
-            :alt="animImage.image.alt ?? `Carousel Image ${i + 1}`"
             :style="{
               objectPosition: animImage.position,
               transform: animImage.transform,
@@ -199,22 +197,31 @@ onMounted(() => {
               opacity: animImage.opacity,
               flex: animImage.flex,
             }"
-            @click="
-              () => {
-                if (relativeIdx.get() === i) {
-                  openModal(animImage.image)
-                } else {
-                  // we have to jump through hoops to make the carousel not spin like a maniac
-                  // when clicking on an image that is the last or first in the array
-                  // not the cleanest, but it works
-                  let d = i - relativeIdx.get()
-                  if (d < -2) d += props.images.length
-                  if (d > 2) d -= props.images.length
-                  currIdx.set(currIdx.get() + d)
+            as-child
+          >
+            <NuxtImg
+              loading="lazy"
+              format="webp"
+              quality="75"
+              :src="`/images/${animImage.image.URL}`"
+              :alt="animImage.image.alt ?? `Carousel Image ${i + 1}`"
+              @click="
+                () => {
+                  if (relativeIdx.get() === i) {
+                    openModal(animImage.image)
+                  } else {
+                    // we have to jump through hoops to make the carousel not spin like a maniac
+                    // when clicking on an image that is the last or first in the array
+                    // not the cleanest, but it works
+                    let d = i - relativeIdx.get()
+                    if (d < -2) d += props.images.length
+                    if (d > 2) d -= props.images.length
+                    currIdx.set(currIdx.get() + d)
+                  }
                 }
-              }
-            "
-          />
+              "
+            />
+          </Motion>
         </div>
         <div class="dots">
           <div
@@ -265,7 +272,10 @@ onMounted(() => {
           @click="closeModal"
         >
           <div class="modal-content">
-            <img
+            <NuxtImg
+              loading="lazy"
+              format="webp"
+              quality="75"
               :src="`/images/${modalImage.URL}`"
               :alt="modalImage.alt ?? 'Modal Image'"
             />

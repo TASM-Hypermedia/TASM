@@ -111,7 +111,10 @@ const variations = {
                 scale: imgScale,
               }"
             >
-              <motion.img
+              <NuxtImg
+                preload
+                format="webp"
+                quality="75"
                 class="teacher_image"
                 :style="{
                   width: '100%',

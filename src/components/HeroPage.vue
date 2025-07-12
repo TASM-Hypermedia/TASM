@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { NuxtImg } from "#components"
 import { motion, useScroll } from "motion-v"
 
 const props = defineProps<{
@@ -28,13 +29,15 @@ const marginTop = useMotionTemplate`${hero}px`
 
 <template>
   <div class="copertina-page">
-    <motion.img
-      v-if="props.urlImg !== undefined"
-      :src="`/images/${props.urlImg}`"
-      :alt="`Background Image - ${title}`"
-      class="background-image"
-      :style="{ y }"
-    />
+    <Motion v-if="props.urlImg !== undefined" :style="{ y }" as-child>
+      <NuxtImg
+        preload
+        format="webp"
+        :src="`/images/${props.urlImg}`"
+        :alt="`Background Image - ${title}`"
+        class="background-image"
+      />
+    </Motion>
     <motion.div class="hero-page" :style="{ marginTop }">
       <h3 v-if="tagline" class="body-text">{{ tagline }}</h3>
       <h1 class="title">{{ title }}</h1>

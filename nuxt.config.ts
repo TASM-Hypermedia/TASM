@@ -1,4 +1,21 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+// import path from "path"
+import fs from "fs"
+
+const files = await fs.promises.readdir("./src/public/", { recursive: true })
+const optImgPaths = files
+  .filter(
+    (file) =>
+      file.endsWith(".png") ||
+      file.endsWith(".jpg") ||
+      file.endsWith(".jpeg") ||
+      file.endsWith(".webp")
+  )
+  // .map((file) =>
+  //   path.relative(path.join(file.parentPath, file.name), "./src/public/")
+  // )
+  .map((path) => [`/_ipx/f_webp/${path}`, `/_ipx/f_webp&q_75/${path}`])
+  .flat()
+
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
@@ -36,6 +53,12 @@ export default defineNuxtConfig({
           href: "/site.webmanifest",
         },
       ],
+    },
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ["/", ...optImgPaths],
     },
   },
   srcDir: "src/",
@@ -119,5 +142,12 @@ export default defineNuxtConfig({
     name: "Inner Bloom",
     description:
       "Inner Bloom is a Yoga Center in City, Country, offering classes, workshops, and teacher training.",
+  },
+  icon: {
+    collections: ["material-symbols"],
+    clientBundle: {
+      scan: true,
+      sizeLimitKb: 256,
+    },
   },
 })

@@ -16,10 +16,13 @@ function toggle() {
 <template>
   <motion.div class="faqContainer">
     <button type="button" class="faqQuestion body-text" @click="toggle">
-      {{ faqProp.question }}
-      <img
-        src="/images/arrow-icon.png"
-        :style="`rotate: ${open ? '270deg' : '90deg'}`"
+      <span>
+        {{ faqProp.question }}
+      </span>
+      <Icon
+        class="dropdown-icon"
+        name="material-symbols:expand-circle-down-rounded"
+        :style="`rotate: ${open ? '180deg' : '00deg'}`"
         alt=""
       />
     </button>
@@ -56,19 +59,18 @@ function toggle() {
 
 .faqQuestion {
   display: flex;
+  width: 100%;
   text-align: left;
   justify-content: space-between;
   font-weight: 700;
   font-size: 1.3rem;
   // font-style: italic;
 
-  img {
+  .dropdown-icon {
+    transition: all 0.2s ease-in-out;
     align-self: center;
-    width: 2%;
-
-    .mobile-layout & {
-      width: 4%;
-    }
+    width: 24px;
+    height: 24px;
   }
 }
 

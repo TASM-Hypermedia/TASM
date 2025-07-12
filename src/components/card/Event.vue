@@ -14,7 +14,10 @@
 
     <div class="bottom">
       <div v-if="eventProp.hostName !== 'No Name'" class="host_box" style="">
-        <img
+        <NuxtImg
+          preload
+          format="webp"
+          quality="75"
           class="host_image"
           :src="eventProp.hostImage"
           alt=""

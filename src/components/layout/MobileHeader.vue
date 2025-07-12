@@ -92,8 +92,10 @@ const linkVariants = {
       >
         <motion.div :variants="linkVariants">
           <NuxtLink :class="active('yogacenter')" to="/yogacenter">
-            <img
-              src="../../assets/icons/center-icon.png"
+            <NuxtImg
+              preload
+              format="webp"
+              src="/icons/center-icon.png"
               alt=""
               width="17px"
               style="vertical-align: text-bottom; margin-bottom: 2px"
@@ -103,8 +105,10 @@ const linkVariants = {
         </motion.div>
         <motion.div :variants="linkVariants">
           <NuxtLink :class="active('teachers')" to="/teachers">
-            <img
-              src="../../assets/icons/team-icon.png"
+            <NuxtImg
+              preload
+              format="webp"
+              src="/icons/team-icon.png"
               alt=""
               width="17px"
               style="vertical-align: text-bottom; margin-bottom: 2px"
@@ -114,8 +118,10 @@ const linkVariants = {
         </motion.div>
         <motion.div :variants="linkVariants">
           <NuxtLink :class="active('activities')" to="/activities">
-            <img
-              src="../../assets/icons/activities-icon.png"
+            <NuxtImg
+              preload
+              format="webp"
+              src="/icons/activities-icon.png"
               alt=""
               width="17px"
               style="vertical-align: text-bottom; margin-bottom: 2px"
@@ -125,8 +131,10 @@ const linkVariants = {
         </motion.div>
         <motion.div :variants="linkVariants">
           <NuxtLink :class="active('events')" to="/events">
-            <img
-              src="../../assets/icons/events-icons.png"
+            <NuxtImg
+              preload
+              format="webp"
+              src="/icons/events-icon.png"
               alt=""
               width="17px"
               style="vertical-align: text-bottom; margin-bottom: 2px"
@@ -136,8 +144,10 @@ const linkVariants = {
         </motion.div>
         <motion.div :variants="linkVariants">
           <NuxtLink :class="active('pricing')" to="/pricing">
-            <img
-              src="../../assets/icons/pricing-icon.png"
+            <NuxtImg
+              preload
+              format="webp"
+              src="/icons/pricing-icon.png"
               alt=""
               width="17px"
               style="vertical-align: text-bottom; margin-bottom: 2px"
@@ -147,8 +157,10 @@ const linkVariants = {
         </motion.div>
         <motion.div :variants="linkVariants">
           <NuxtLink :class="active('contacts')" to="/contacts">
-            <img
-              src="../../assets/icons/contact-icon.png"
+            <NuxtImg
+              preload
+              format="webp"
+              src="/icons/contact-icon.png"
               alt=""
               width="17px"
               style="vertical-align: text-bottom; margin-bottom: 2px"
@@ -197,13 +209,16 @@ nav {
     border: 1px solid transparent;
 
     &.active-link {
-      background-color: #e2e2e2f0;
+      background-color: #ccbce3;
       font-weight: bold;
-    }
-    &:hover {
-      background-color: #e2e2e2a0;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      border: 1px solid #fffc;
+      border: 1px solid #bfb0d7;
+    }
+
+    &:hover {
+      background-color: #ccbce3;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border: 1px solid #bfb0d7;
     }
   }
 }

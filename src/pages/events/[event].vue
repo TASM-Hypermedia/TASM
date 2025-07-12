@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { EventType } from "~/types"
+import locationSvg from "~/assets/images/homepage/icon-location2.svg"
 import calendarSvg from "~/assets/images/calendar.svg"
 
 const route = useRoute()
@@ -73,7 +74,7 @@ const programPoints: {
         </div>
         <div class="eventInfoColumn body-text">
           <div class="eventWhereIcon">
-            <img src="../../assets/icons/location-icon.jpg" alt="" />
+            <locationSvg />
           </div>
           <div class="eventWhereText body-text">
             <h3>Where:</h3>
@@ -212,22 +213,13 @@ h1 {
 .eventWhereIcon {
   width: 87px;
   height: 87px;
-  position: relative;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  text-align: center;
+  justify-content: center;
   box-shadow: 0 4px 5px 1px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
   padding: 8px;
-
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-  }
 }
 
 .eventWhereText {

@@ -24,8 +24,10 @@ function active(thisRoute: string) {
       <logo class="header-img" />
     </NuxtLink>
     <NuxtLink :class="active('yogacenter')" to="/yogacenter">
-      <img
-        src="../../assets/icons/center-icon.png"
+      <NuxtImg
+        preload
+        format="webp"
+        src="/icons/center-icon.png"
         alt=""
         width="17px"
         style="vertical-align: text-bottom; margin-bottom: 2px"
@@ -33,8 +35,10 @@ function active(thisRoute: string) {
       The Center
     </NuxtLink>
     <NuxtLink :class="active('teachers')" to="/teachers">
-      <img
-        src="../../assets/icons/team-icon.png"
+      <NuxtImg
+        preload
+        format="webp"
+        src="/icons/team-icon.png"
         alt=""
         width="17px"
         style="vertical-align: text-bottom; margin-bottom: 2px"
@@ -42,8 +46,10 @@ function active(thisRoute: string) {
       Our Team
     </NuxtLink>
     <NuxtLink :class="active('activities')" to="/activities">
-      <img
-        src="../../assets/icons/activities-icon.png"
+      <NuxtImg
+        preload
+        format="webp"
+        src="/icons/activities-icon.png"
         alt=""
         width="17px"
         style="vertical-align: text-bottom; margin-bottom: 2px"
@@ -51,8 +57,10 @@ function active(thisRoute: string) {
       Activities
     </NuxtLink>
     <NuxtLink :class="active('events')" to="/events">
-      <img
-        src="../../assets/icons/events-icons.png"
+      <NuxtImg
+        preload
+        format="webp"
+        src="/icons/events-icon.png"
         alt=""
         width="17px"
         style="vertical-align: text-bottom; margin-bottom: 2px"
@@ -60,8 +68,10 @@ function active(thisRoute: string) {
       Events
     </NuxtLink>
     <NuxtLink :class="active('pricing')" to="/pricing">
-      <img
-        src="../../assets/icons/pricing-icon.png"
+      <NuxtImg
+        preload
+        format="webp"
+        src="/icons/pricing-icon.png"
         alt=""
         width="17px"
         style="vertical-align: text-bottom; margin-bottom: 2px"
@@ -69,8 +79,10 @@ function active(thisRoute: string) {
       Pricing
     </NuxtLink>
     <NuxtLink :class="active('contacts')" to="/contacts">
-      <img
-        src="../../assets/icons/contact-icon.png"
+      <NuxtImg
+        preload
+        format="webp"
+        src="/icons/contact-icon.png"
         alt=""
         width="17px"
         style="vertical-align: text-bottom; margin-bottom: 2px"

@@ -15,9 +15,11 @@
     </div>
 
     <div class="certifications">
-      <img
+      <NuxtImg
         v-for="(Certificate, i) in certificationProp"
         :key="i"
+        preload
+        format="webp"
         :src="Certificate.imageURL"
         class="card_image"
         :alt="`Certification ${i + 1}`"

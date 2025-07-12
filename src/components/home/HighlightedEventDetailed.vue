@@ -33,7 +33,14 @@
           <!-- Host -->
           <div class="info-row body-text">
             <div class="wrapper-div">
-              <img :src="eventProp.hostImage" alt="Host" class="info-icon" />
+              <NuxtImg
+                preload
+                format="webp"
+                quality="75"
+                :src="eventProp.hostImage"
+                alt="Host"
+                class="info-icon"
+              />
             </div>
             <div class="info-texts body-text">
               <div class="info-label">Guest</div>

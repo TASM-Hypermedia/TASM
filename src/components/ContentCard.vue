@@ -72,39 +72,49 @@ onMounted(() => {
         <p class="body-text">{{ contentCardProp.description }}</p>
       </motion.div>
       <GyroAnim class="imageContainer" :style="{ display: 'flex', flex: 1 }">
-        <img
+        <NuxtImg
+          preload
+          format="webp"
+          quality="75"
           :class="{ imageOnTheLeft: !contentCardProp.imageOnTheRight }"
           :src="contentCardProp.imgUrl"
           tabindex="0"
+          alt=""
           @click="openModal(contentCardProp)"
           @keydown.enter="openModal(contentCardProp)"
-          alt=""
         />
       </GyroAnim>
     </motion.div>
-    <AnimatePresence>
-      <motion.div
-        v-if="modalImage !== null"
-        class="modal"
-        :exit="{ opacity: 0 }"
-        :initial="{ opacity: 0 }"
-        :animate="{ opacity: 1 }"
-        :transition="{ duration: 0.2, ease: 'easeInOut' }"
-        @click="closeModal"
-      >
-        <div class="modal-content">
-          <img :src="modalImage.URL" :alt="modalImage.alt ?? 'Modal Image'" />
-          <span>{{ modalImage.alt ?? "Fullscreen Image" }}</span>
-        </div>
-        <button
-          class="close-button"
-          aria-label="Close Modal"
+    <ClientOnly>
+      <AnimatePresence>
+        <motion.div
+          v-if="modalImage !== null"
+          class="modal"
+          :exit="{ opacity: 0 }"
+          :initial="{ opacity: 0 }"
+          :animate="{ opacity: 1 }"
+          :transition="{ duration: 0.2, ease: 'easeInOut' }"
           @click="closeModal"
         >
-          <Icon name="material-symbols:cancel-rounded" />
-        </button>
-      </motion.div>
-    </AnimatePresence>
+          <div class="modal-content">
+            <NuxtImg
+              loading="lazy"
+              format="webp"
+              :src="modalImage.URL"
+              :alt="modalImage.alt ?? 'Modal Image'"
+            />
+            <span>{{ modalImage.alt ?? "Fullscreen Image" }}</span>
+          </div>
+          <button
+            class="close-button"
+            aria-label="Close Modal"
+            @click="closeModal"
+          >
+            <Icon name="material-symbols:cancel-rounded" />
+          </button>
+        </motion.div>
+      </AnimatePresence>
+    </ClientOnly>
   </div>
 </template>
 

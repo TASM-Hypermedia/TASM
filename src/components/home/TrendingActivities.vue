@@ -31,7 +31,10 @@
           style="text-decoration: none; height: 100%; width: 100%"
         >
           <GyroAnim class="card_image_wrapper">
-            <img
+            <NuxtImg
+              preload
+              format="webp"
+              quality="75"
               class="card_image"
               :src="activity.prop.image"
               :alt="activity.prop.title"

@@ -1,6 +1,9 @@
 <template>
   <NuxtLink :to="`/teachers/${teacherProp.url}`" class="card">
-    <img
+    <NuxtImg
+      preload
+      format="webp"
+      quality="75"
       class="teacher_image"
       :src="'/images/' + teacherProp.image"
       alt=""
