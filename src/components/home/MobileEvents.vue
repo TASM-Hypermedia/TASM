@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import SvgArrow from "~/assets/images/homepage/HearArrow.svg"
 import type { Event } from "~/types"
 import { AnimatePresence, Motion, motion, easeInOut } from "motion-v"
 
@@ -62,9 +61,6 @@ const handleClick = (index: number) => {
         <div class="title" style="">Highlighted Events</div>
         <div class="body-text">
           Click on the tabs to discover more about our favourite upcoming events
-        </div>
-        <div class="arrow">
-          <SvgArrow preserveAspectRatio="none" />
         </div>
       </motion.div>
     </AnimatePresence>
