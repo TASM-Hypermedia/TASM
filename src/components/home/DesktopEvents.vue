@@ -174,12 +174,13 @@ watch(selectedIndex, (newIndex) => {
     gap: 32px;
 
     .title {
-      color: white;
+      color: black;
       font-size: 5rem;
       font-weight: 900;
     }
 
     .body-text {
+      color: black;
       font-size: 2rem;
       font-weight: 600;
     }

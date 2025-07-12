@@ -111,7 +111,7 @@ const { homePageElement } = defineProps<{
 }
 
 .link-button {
-  color: white;
+  color: black;
   background-color: rgb(183, 152, 184);
   margin: 0;
   margin-bottom: 12px;
@@ -119,6 +119,6 @@ const { homePageElement } = defineProps<{
   border-radius: 8px;
   padding: 12px 36px;
   text-decoration: none;
-  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
 }
 </style>
