@@ -103,7 +103,7 @@ const programPoints: {
       <div>
         <h1 class="title">The Program</h1>
         <template v-for="day of programPoints" :key="day">
-          <h3 class="programDay body-text">{{ day.day }}</h3>
+          <h2 class="programDay body-text">{{ day.day }}</h2>
           <ul>
             <li
               v-for="(point, index) in day.points"

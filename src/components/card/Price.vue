@@ -123,7 +123,7 @@ const theme = priceProp.darkMode ? "dark-theme" : "light-theme"
 .dark-theme {
   background-color: #9488b0;
   outline: 1px solid #6572a5;
-  color: white;
+  color: black;
 
   .pricingTitle,
   .pricingPrice {
@@ -142,7 +142,7 @@ const theme = priceProp.darkMode ? "dark-theme" : "light-theme"
 
   .pricingButton {
     background-color: #9488b0;
-    color: white;
+    color: black;
   }
 }
 </style>

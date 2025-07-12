@@ -88,7 +88,7 @@ const contactsList = res.data.value
         <label for="FirstName" class="form-label">
           First name:<br />
           <input
-            id="fname"
+            id="FirstName"
             class="form-input"
             type="text"
             name="FirstName"
@@ -101,7 +101,7 @@ const contactsList = res.data.value
         <label for="LastName" class="form-label">
           Last name:<br />
           <input
-            id="lname"
+            id="LastName"
             class="form-input"
             type="text"
             name="LastName"
@@ -114,7 +114,7 @@ const contactsList = res.data.value
         <label for="Message" class="form-label">
           Message:<br />
           <textarea
-            id="message"
+            id="Message"
             class="form-input"
             name="Message"
             placeholder="Insert your message here"
