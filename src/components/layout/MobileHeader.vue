@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { NuxtLink } from "#components"
 import { motion, AnimatePresence } from "motion-v"
-import logo from "~assets/images/headerIcon.svg"
+import logo from "~/assets/images/headerIcon.svg"
 
 const route = useRoute()
 
@@ -212,8 +212,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  img {
-    width: 64px;
+  position: relative;
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0% 0%;
+    transform: scale(0.73);
   }
 }
 

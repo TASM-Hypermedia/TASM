@@ -51,7 +51,7 @@ onMounted(() => {
     })
 
     watch(offset, (newOffset) => {
-      const zPosition = transform(newOffset, [0, 2], [-100, 100])
+      const zPosition = transform(newOffset, [0, 2], [-20, 70])
       const shadow = transform(
         newOffset,
         [0, 2],
@@ -61,7 +61,7 @@ onMounted(() => {
       const animation = animate(
         dot,
         {
-          transform: `perspective(500px) translateZ(${zPosition}px)`,
+          transform: `perspective(2000px) translate3d(0, 0, ${zPosition}px)`,
           filter: `drop-shadow(${shadow})`,
         },
         { type: "spring", stiffness: 100 }
@@ -201,20 +201,8 @@ watch(selectedIndex, (newIndex) => {
   top: 0;
   flex: 1;
   padding: 32px 64px;
-}
-
-#dot1,
-#dot2,
-#dot3 {
-  cursor: pointer;
-  transform-box: fill-box;
   transform-origin: center;
-  transition: transform 0.3s ease;
-}
-
-#dot1:hover,
-#dot2:hover,
-#dot3:hover {
-  transform: scale(1.2);
+  perspective-origin: center;
+  perspective: 2000px;
 }
 </style>

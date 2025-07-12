@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { NuxtLink } from "#components"
+import logo from "~/assets/images/headerIcon.svg"
 
 const { y } = useCustomScroll()
 const opacity = computed(() =>
@@ -20,12 +21,7 @@ function active(thisRoute: string) {
     :style="{ backgroundColor: `rgba(232, 221, 241, ${opacity})` }"
   >
     <NuxtLink to="/" class="logo">
-      <img
-        class="header-img"
-        aria-label="Link to Homepage"
-        src="../../assets/images/headerIcon.svg"
-        alt="Logo"
-      />
+      <logo class="header-img" />
     </NuxtLink>
     <NuxtLink :class="active('yogacenter')" to="/yogacenter">
       <img
@@ -105,8 +101,15 @@ function active(thisRoute: string) {
 .logo {
   display: block;
   margin-right: auto;
-  img {
-    width: 64px;
+  height: 42px;
+  width: 64px;
+  position: relative;
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0% 0%;
+    transform: scale(0.73);
   }
 }
 
