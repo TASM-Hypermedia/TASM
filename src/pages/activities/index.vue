@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import ActivityCard from "~/components/ActivityCard.vue"
-
 definePageMeta({
   title: "Activities",
   description: "Explore the various types of yoga we offer.",
@@ -43,35 +41,39 @@ const activitiesListModern = resActivities.data.value!.filter(
   >
     <section>
       <div class="category">
-        <h1>{{ categoriesList![0].title }}</h1>
-        <p>{{ categoriesList![0].description }}</p>
+        <h1 class="title">{{ categoriesList![0].title }}</h1>
+        <p class="body-text">{{ categoriesList![0].description }}</p>
       </div>
       <template v-if="activitiesListTraditional.length > 0">
         <card-grid :length="activitiesListTraditional.length">
           <template #card="{ index }">
-            <activity-card :activity-prop="activitiesListTraditional[index]" />
+            <card-activity :activity-prop="activitiesListTraditional[index]" />
           </template>
         </card-grid>
       </template>
       <template v-else>
-        <div class="empty-state">No activities available at the moment.</div>
+        <div class="empty-state body-text">
+          No activities available at the moment.
+        </div>
       </template>
     </section>
 
     <section>
       <div class="category">
-        <h1 id="dynamic">{{ categoriesList![1].title }}</h1>
-        <p>{{ categoriesList![1].description }}</p>
+        <h1 id="dynamic" class="title">{{ categoriesList![1].title }}</h1>
+        <p class="body-text">{{ categoriesList![1].description }}</p>
       </div>
       <template v-if="activitiesListModern.length > 0">
         <card-grid :length="activitiesListModern.length">
           <template #card="{ index }">
-            <activity-card :activity-prop="activitiesListModern[index]" />
+            <card-activity :activity-prop="activitiesListModern[index]" />
           </template>
         </card-grid>
       </template>
       <template v-else>
-        <div class="empty-state">No activities available at the moment.</div>
+        <div class="empty-state body-text">
+          No activities available at the moment.
+        </div>
       </template>
     </section>
   </page-wrap>

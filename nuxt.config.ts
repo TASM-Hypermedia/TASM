@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     "vuetify-nuxt-module",
     "nuxt-viewport",
     "motion-v/nuxt",
+    "nuxt-svgo",
     "@nuxtjs/seo",
   ],
   vuetify: {
@@ -28,9 +29,6 @@ export default defineNuxtConfig({
       styles: ["normal", "italic"],
       subsets: ["latin-ext", "latin"],
     },
-  },
-  app: {
-    pageTransition: { name: "page", mode: "out-in" },
   },
   viewport: {
     breakpoints: {
@@ -63,13 +61,31 @@ export default defineNuxtConfig({
 
     feature: "minWidth",
   },
+  svgo: {
+    autoImportPath: "~/assets/homepage/",
+    defaultImport: "component",
+
+    // Configurazione svgo vera e propria
+    svgoConfig: {
+      plugins: [
+        {
+          name: "preset-default",
+          params: {
+            overrides: {
+              cleanupIds: false,
+            },
+          },
+        },
+      ],
+    },
+  },
   sitemap: {
     sources: ["/api/__sitemap__/vercel"],
   },
   site: {
     url: "tasm.it",
-    name: "TASM",
+    name: "Inner Bloom",
     description:
-      "TASM is a yoga studio in City, Country, offering classes, workshops, and teacher training.",
+      "Inner Bloom is a Yoga Center in City, Country, offering classes, workshops, and teacher training.",
   },
 })

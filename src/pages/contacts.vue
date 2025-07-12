@@ -21,7 +21,7 @@ const contactsList = res.data.value
       <div class="row">
         <div class="column"></div>
         <div class="column">
-          <a href="tel:+391234567890">
+          <a class="body-text" href="tel:+391234567890">
             <img
               src="../assets/socials/wa.png"
               alt="Whatsapp number"
@@ -32,7 +32,7 @@ const contactsList = res.data.value
           </a>
         </div>
         <div class="column">
-          <a href="tel:+391234567890">
+          <a class="body-text" href="tel:+391234567890">
             <img
               src="../public/images/icons/phone.png"
               alt="Phone number"
@@ -43,7 +43,7 @@ const contactsList = res.data.value
           </a>
         </div>
         <div class="column">
-          <a href="mailto:simone.pedroni@mail.polimi.it">
+          <a class="body-text" href="mailto:simone.pedroni@mail.polimi.it">
             <img
               src="../public/images/icons/mail.png"
               alt="Mail"
@@ -57,19 +57,28 @@ const contactsList = res.data.value
       </div>
     </section>
 
-    <h1 class="map-title">Come and join us</h1>
+    <h1 class="map-title title">Come and join us</h1>
     <section class="map-section">
+      <!-- FOR SOME REASON, google refuses to display the map on firefox, we work around that by putting 2 of them :) -->
       <iframe
-        title="Map showing the Yoga Center"
+        title="Map"
         class="map"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89509.5532925476!2d9.043172443359369!3d45.486450000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c12dfe45ee8f%3A0x6528954343c34fd4!2sMilano%20Yoga%20Space!5e0!3m2!1sit!2sit!4v1746451557377!5m2!1sit!2sit"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3067.1444071872493!2d9.227271999999997!3d45.478155199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c6f67dd11753%3A0x8e30fae1774a3377!2sPolitecnico%20di%20Milano!5e1!3m2!1sen!2sit!4v1752315415681!5m2!1sen!2sit"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        style="display: none"
+      ></iframe>
+      <iframe
+        title="Map"
+        class="map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3067.1444071872493!2d9.227271999999997!3d45.478155199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c6f67dd11753%3A0x8e30fae1774a3377!2sPolitecnico%20di%20Milano!5e1!3m2!1sen!2sit!4v1752315415681!5m2!1sen!2sit"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
     </section>
 
-    <h1>Contact us</h1>
-    <section class="form-section">
+    <h1 class="title">Contact us</h1>
+    <section class="form-section body-text">
       <form
         action="mailto:simone.pedroni@mail.polimi.it"
         method="post"
@@ -116,9 +125,19 @@ const contactsList = res.data.value
         </label>
         <br /><br />
 
-        <input id="submit" type="submit" class="form-button" value="Submit" />
+        <input
+          id="submit"
+          type="submit"
+          class="link-button body-text"
+          value="Submit"
+        />
         <br />
-        <input id="reset" type="reset" class="form-button" value="Reset" />
+        <input
+          id="reset"
+          type="reset"
+          class="link-button body-text"
+          value="Reset"
+        />
       </form>
     </section>
   </PageWrap>
@@ -142,6 +161,7 @@ const contactsList = res.data.value
   a {
     color: black;
     text-decoration: none;
+    font-weight: 500;
   }
 
   a:visited {
@@ -171,7 +191,7 @@ const contactsList = res.data.value
   width: 100%;
   text-align: center;
   padding: 20px;
-  margin-top: 40px;
+  margin-top: 32px;
 
   .mobile-layout & {
     width: 90%;
@@ -193,6 +213,8 @@ h1 {
   height: 450px;
   border: 0;
   margin-top: -15px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 
   .mobile-layout & {
     max-width: 90%;
@@ -211,10 +233,12 @@ h1 {
 
 .contact-form {
   border: 1px solid #919090;
-  border-radius: 10px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   padding: 30px 20px;
   width: 80%;
   margin: auto;
+  margin-bottom: 100px;
 }
 
 .form-input {
@@ -225,12 +249,20 @@ h1 {
   width: 100%;
 }
 
-.form-button {
+.link-button {
   width: 100%;
-  color: white;
-  background-color: black;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 5px 0;
+  margin: 0;
 }
+
+// .form-button {
+//   width: 100%;
+//   color: white;
+//   background-color: #7265B4;
+//   border-radius: 10px;
+//   padding: 10px;
+//   margin: 5px 0;
+//   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+//   // font-size: 18px;
+//   // font-weight: 500;
+// }
 </style>

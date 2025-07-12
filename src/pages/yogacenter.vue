@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  title: "Yoga Center",
+  title: "The Center",
   description: "Explore our Yoga Center, where tranquility meets practice.",
 })
 
@@ -22,13 +22,17 @@ const yogaCenter = res.data.value
 </script>
 
 <template>
-  <PageWrap title="Yoga Center" img-src="./banners/yogaCenter-banner.jpg">
-    <section class="description">
+  <PageWrap
+    tagline="Our Yoga Center"
+    title="Inner Bloom"
+    img-src="./banners/yogaCenter-banner.jpg"
+  >
+    <section class="body-text">
       <div>{{ yogaCenter!.description }}</div>
     </section>
 
     <section class="rooms">
-      <h1>Available Rooms</h1>
+      <h1 class="title">Available Rooms</h1>
       <div v-for="(room, index) in yogaCenter!.rooms" :key="index">
         <content-card :content-card-prop="room" separator />
       </div>

@@ -1,3 +1,4 @@
+//Teacher card type
 export type Teacher = {
   teacherId: number
   name: string
@@ -21,6 +22,7 @@ export type Activity = {
   url: string
 }
 
+// Event card type
 export type Event = {
   title: string
   eventId?: number
@@ -112,9 +114,25 @@ export interface ActivityType {
   }[]
 }
 
+export type Review = {
+  person: string
+  text: string
+  stars: number
+}
+
+export type Certification = {
+  imageURL: string
+}
+
 export type ResponseData = {
   yogaCenter: YogaCenter
   activities: Activity[]
   events: Event[]
   teachers: Teacher[]
+  highlights: {
+    highlightEvents: Event[]
+    highlightActivities: Activity[]
+  }
+  reviews: Review[]
+  certifications: Certification[]
 }

@@ -9,17 +9,17 @@ const route = useRoute()
 
 useHead({
   titleTemplate: (t) => {
-    return t ? `${t} - TASM Yoga` : "TASM Yoga"
+    return t ? `${t} - Inner Bloom` : "Inner Bloom"
   },
 })
 
 useSeoMeta({
-  title: "TASM Yoga",
-  description: "Welcome to TASM Yoga, your journey to wellness begins here.",
-  ogTitle: (route.meta.title as string) ?? "TASM Yoga",
+  title: "Inner Bloom - Yoga Center",
+  description: "Welcome to Inner Bloom, your journey to wellness begins here.",
+  ogTitle: (route.meta.title as string) ?? "Inner Bloom",
   ogDescription:
     (route.meta.description as string) ??
-    "Welcome to TASM Yoga, your journey to wellness begins here.",
+    "Welcome to Inner Bloom, your journey to wellness begins here.",
 })
 
 const layout = ref<LayoutKey>(getLayout())

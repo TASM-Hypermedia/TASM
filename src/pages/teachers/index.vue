@@ -26,12 +26,11 @@ const teachersList = res.data.value
   <page-wrap
     title="Our Team"
     subtitle="Discover our instructors"
-    tagline="The Teachers:"
     img-src="/banners/team-banner.jpg"
   >
     <card-grid :length="teachersList!.length">
       <template #card="{ index }">
-        <teacher-card :teacher-prop="teachersList![index]" />
+        <card-teacher :teacher-prop="teachersList![index]" />
       </template>
     </card-grid>
   </page-wrap>

@@ -15,8 +15,6 @@ const resFaqs = await useAPI<
 if (resFaqs.error.value) throw resFaqs.error.value
 const faqList = resFaqs.data.value
 
-//console.log(faqList)
-
 const resPricing = await useAPI<
   {
     title: string
@@ -31,8 +29,6 @@ const resPricing = await useAPI<
 
 if (resPricing.error.value) throw resPricing.error.value
 const pricingList = resPricing.data.value
-
-console.log(pricingList![0].pricingItems)
 </script>
 
 <template>
@@ -43,14 +39,14 @@ console.log(pricingList![0].pricingItems)
   >
     <section class="priceSection">
       <div v-for="(item, index) in pricingList" :key="index">
-        <price-card :price-prop="item" />
+        <card-price :price-prop="item" />
       </div>
     </section>
 
     <section class="faqSection">
-      <h2>FAQs</h2>
+      <h2 class="title">FAQs</h2>
       <div v-for="(item, index) in faqList" :key="index">
-        <faq-card :faq-prop="item" />
+        <card-faq :faq-prop="item" />
       </div>
     </section>
   </PageWrap>

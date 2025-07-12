@@ -3,8 +3,8 @@ import { useAPI } from "~/composables/useAPI"
 import type { ResponseData } from "~/types"
 
 definePageMeta({
-  title: "TASM Yoga",
-  description: "Welcome to TASM Yoga, your journey to wellness begins here.",
+  title: "Inner Bloom",
+  description: "Welcome to Inner Bloom, your journey to wellness begins here.",
 })
 
 const response = await useAPI<ResponseData>("/getHomePage", {
@@ -24,67 +24,73 @@ const { data } = response
 </script>
 
 <template>
-  <PageWrap title="Namaste" img-src="HomePage 1.jpeg">
-    <AnimatedCarousel
-      :images="[
-        { URL: 'HomePage 1.jpeg' },
-        { URL: 'HomePage.jpg' },
-        { URL: 'HomePage 1.jpeg' },
-        { URL: 'HomePage.jpg' },
-        { URL: 'HomePage 1.jpeg' },
-        { URL: 'HomePage.jpg' },
-      ]"
+  <main>
+    <HeroPage title="Namaste" url-img="HomePage 1.jpeg" />
+    <HomeCenter
+      :home-page-element="{
+        title: data?.yogaCenter.title || 'Yoga Center',
+
+        description:
+          data?.yogaCenter.description ||
+          'Discover our Yoga Center, a serene space for relaxation and rejuvenation.',
+        imgUrl: '/images/center/yogaCenter.jpg',
+        altDescription: 'Yoga center image',
+      }"
     />
-    <NuxtLink to="/teachers" class="cardYogaCenter">
-      <ContentCard
-        :content-card-prop="{
-          title: data?.yogaCenter.title || 'Yoga Center',
-          //subtitle: data?.yogaCenter.Mantra,
-          description: data?.yogaCenter.description,
-          imgUrl: '/images/center/yogaCenter.jpg',
-          altDescription: 'Yoga center image',
-          imageOnTheRight: false,
-        }"
-      ></ContentCard>
-    </NuxtLink>
 
-    <h2 class="titleSubsection">OUR TEACHERS</h2>
+    <HomeTrendingActivities
+      :activities-prop="response.data.value?.highlights.highlightActivities"
+    />
 
-    <card-grid :length="data?.teachers.length || 0">
-      <template #card="{ index }">
-        <teacher-card :teacher-prop="data?.teachers[index]!" />
-      </template>
-    </card-grid>
+    <HomeHighlightedEvents
+      v-if="
+        response.data.value?.highlights.highlightEvents &&
+        response.data.value.highlights.highlightEvents.length
+      "
+      :highlighted-events="
+        response.data.value?.highlights.highlightEvents ?? []
+      "
+    />
 
-    <h2 class="titleSubsection">OUR EVENTS</h2>
+    <div class="slideSection">
+      <HomeSlides />
+    </div>
+    <!-- <SeparatorComponent :separator-title="'Events'" /> -->
+    <HomeBenefits />
+    <HomeReviews :reviews-prop="response.data.value?.reviews" />
 
-    <card-grid :length="data?.events.length || 0">
-      <template #card="{ index }">
-        <event-card :event-prop="data?.events[index]!" />
-      </template>
-    </card-grid>
-
-    <h2 class="titleSubsection">OUR ACTIVITIES</h2>
-    <card-grid :length="data?.activities.length || 0">
-      <!--<template #card="{ index }">
-        <activity-card :activity-prop="data?.activities[index]!" />
-      </template>-->
-    </card-grid>
-  </PageWrap>
+    <HomeCertifications
+      :certification-prop="response.data.value?.certifications"
+    />
+  </main>
 </template>
 
 <style scoped>
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  max-width: 100vw;
+  height: 100%;
+  gap: 100px;
+  margin-bottom: 32px;
+  border: 0px solid black;
+}
+
 .cardYogaCenter {
   width: 100%;
   height: 100%;
   padding: 11px;
   background: rgb(255, 255, 255);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  /*box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);*/
   overflow: hidden;
   border-radius: 15px;
   cursor: pointer;
-  outline: 1px rgba(0, 0, 0, 0.17) solid;
-  outline-offset: -1px;
+  /*outline: 1px rgba(0, 0, 0, 0.17) solid;
+  outline-offset: -1px;*/
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -93,7 +99,19 @@ const { data } = response
   color: rgb(0, 0, 0);
   text-decoration: none;
 }
-.titleSubsection {
-  padding: 20px;
+.benefitsSection {
+  background-color: #a2d2ff;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  border-top-left-radius: 250px;
+  border-top-right-radius: 250px;
+}
+.slideSection {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  padding: 16px;
 }
 </style>

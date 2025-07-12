@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { EventType } from "~/types"
+import calendarSvg from "~/assets/images/calendar.svg"
 
 const route = useRoute()
 
@@ -23,18 +24,6 @@ if (response.error.value || !response.data.value)
 const event = response.data.value
 
 const calendar_date = new Date(event.date)
-const calendar_year = calendar_date.getFullYear()
-const calendar_month = calendar_date.toLocaleString("en-US", { month: "long" })
-const calendar_month_short = calendar_date
-  .toLocaleString("en-US", { month: "short" })
-  .toUpperCase()
-const calendar_day = calendar_date.getDate()
-const calendar_day_name = calendar_date
-  .toLocaleString("en-US", { weekday: "short" })
-  .toUpperCase()
-
-console.log(calendar_day)
-console.log(calendar_day_name)
 
 const learnPoints = event.infostr
   .split("\n")
@@ -59,114 +48,68 @@ const programPoints: {
     :subtitle="event.subtitle"
   >
     <section>
-      <p class="shortDesc">"{{ event.shortDesc }}"</p>
+      <p class="shortDesc body-text">"{{ event.shortDesc }}"</p>
     </section>
     <section class="eventInfo">
       <div class="eventInfoRow">
         <div class="eventInfoColumn">
-          <div class="eventWhenIcon" style="">
-            <div
-              style="
-                width: 87px;
-                height: 25px;
-                background: rgba(223.86, 84.16, 84.16, 0.83);
-                overflow: hidden;
-                border-bottom: 1px #b94646 solid;
-              "
-            >
-              <div
-                style="
-                  height: 100%;
-                  text-align: center;
-                  justify-content: center;
-                  display: flex;
-                  flex-direction: column;
-                  color: rgba(137.55, 21.03, 21.03, 0.72);
-                  font-size: 20px;
-                  font-family: Instrument Sans;
-                  font-weight: 700;
-                  line-height: 20px;
-                  word-wrap: break-word;
-                "
-              >
-                {{ calendar_month_short }}
-              </div>
-            </div>
-            <div
-              style="
-                height: 35px;
-                text-align: center;
-                justify-content: center;
-                display: flex;
-                flex-direction: column;
-                color: #2b2b2b;
-                font-size: 40px;
-                font-family: Instrument Sans;
-                font-weight: 500;
-                line-height: 40px;
-                word-wrap: break-word;
-              "
-            >
-              {{ calendar_day }}
-            </div>
-            <div
-              style="
-                height: 18px;
-                text-align: center;
-                justify-content: center;
-                display: flex;
-                flex-direction: column;
-                color: #7a7a7a;
-                font-size: 15px;
-                font-family: Instrument Sans;
-                font-weight: 500;
-                line-height: 15px;
-                word-wrap: break-word;
-              "
-            >
-              {{ calendar_day_name }}
-            </div>
-          </div>
-          <div class="eventWhenText">
+          <SquareCalendar :date="calendar_date" />
+          <div class="eventWhenText body-text">
             <h3>When:</h3>
-            <p>{{ calendar_day }} {{ calendar_month }} {{ calendar_year }}</p>
+            <p>
+              {{
+                calendar_date.toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                })
+              }}
+            </p>
           </div>
         </div>
-        <div class="eventInfoColumn">
+        <div class="eventInfoColumn body-text">
           <div class="eventWhereIcon">
             <img src="../../assets/icons/location-icon.jpg" alt="" />
           </div>
-          <div class="eventWhereText">
+          <div class="eventWhereText body-text">
             <h3>Where:</h3>
             <p>{{ event.location }}</p>
           </div>
         </div>
       </div>
       <NuxtLink class="link-button" to="#">
-        <img class="attend" src="../../assets/images/calendar.svg" alt="logo" />
+        <calendarSvg class="attend body-text" style="" />
         Attend This Event
       </NuxtLink>
     </section>
     <section>
-      <p class="description">
+      <p class="description body-text">
         {{ event.description }}
       </p>
     </section>
     <section class="pair">
       <div>
-        <h1>What You'll Learn</h1>
+        <h1 class="title">What You'll Learn</h1>
         <ul>
-          <li v-for="(point, index) in learnPoints" :key="index">
+          <li
+            v-for="(point, index) in learnPoints"
+            :key="index"
+            class="body-text"
+          >
             {{ point }}
           </li>
         </ul>
       </div>
       <div>
-        <h1>The Program</h1>
+        <h1 class="title">The Program</h1>
         <template v-for="day of programPoints" :key="day">
-          <h3>{{ day.day }}</h3>
+          <h3 class="programDay body-text">{{ day.day }}</h3>
           <ul>
-            <li v-for="(point, index) in day.points" :key="`${day}-${index}`">
+            <li
+              v-for="(point, index) in day.points"
+              :key="`${day}-${index}`"
+              class="body-text"
+            >
               {{ point }}
             </li>
           </ul>
@@ -174,7 +117,7 @@ const programPoints: {
       </div>
     </section>
     <section v-if="event.guest">
-      <h1>Special Guest</h1>
+      <h1 class="title">Special Guest</h1>
       <ContentCard
         :content-card-prop="{
           title: event.guest.name,
@@ -185,13 +128,15 @@ const programPoints: {
       />
     </section>
     <section>
-      <h1>Teachers in This Event</h1>
+      <h1 class="title">Teachers in This Event</h1>
       <CardGrid :length="event.teachers.length">
         <template #card="{ index }">
-          <teacher-card :teacher-prop="event.teachers[index]" />
+          <card-teacher :teacher-prop="event.teachers[index]" />
         </template>
       </CardGrid>
-      <NuxtLink class="link-button" to="/events"> View other events </NuxtLink>
+      <NuxtLink class="link-button body-text" to="/events">
+        View other events
+      </NuxtLink>
     </section>
   </PageWrap>
 </template>
@@ -247,20 +192,6 @@ h1 {
   display: flex;
 }
 
-.eventWhenIcon {
-  width: 87px;
-  height: 87px;
-  position: relative;
-  box-shadow: 0 4px 5px 1px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-}
-
 .eventWhenText {
   margin: auto;
   padding: 0 15px;
@@ -308,6 +239,11 @@ h1 {
   }
 }
 
+.programDay {
+  margin-top: -10px;
+  font-weight: bold;
+}
+
 span.label {
   opacity: 0.8;
   font-size: 1.3em;
@@ -340,23 +276,28 @@ ul {
   }
 }
 
-.link-button {
-  color: white;
-  background-color: #020202;
-  border-radius: 8px;
-  padding: 8px 32px;
-  margin: 16px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  .attend {
-    filter: brightness(100);
-  }
-
-  .mobile-layout & {
-    margin-top: 50px;
-  }
+.attend {
+  filter: brightness(100);
 }
+
+// .link-button {
+//   color: white;
+//   background-color: #7265B4;
+//   border-radius: 8px;
+//   padding: 8px 32px;
+//   margin: 16px;
+//   text-decoration: none;
+//   display: flex;
+//   align-items: center;
+//   gap: 8px;
+//   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+
+//   .attend {
+//     filter: brightness(100);
+//   }
+
+//   .mobile-layout & {
+//     margin-top: 50px;
+//   }
+// }
 </style>
