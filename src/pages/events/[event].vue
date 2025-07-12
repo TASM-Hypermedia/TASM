@@ -24,15 +24,6 @@ if (response.error.value || !response.data.value)
 const event = response.data.value
 
 const calendar_date = new Date(event.date)
-const calendar_year = calendar_date.getFullYear()
-const calendar_month = calendar_date.toLocaleString("en-US", { month: "long" })
-const calendar_month_short = calendar_date
-  .toLocaleString("en-US", { month: "short" })
-  .toUpperCase()
-const calendar_day = calendar_date.getDate()
-const calendar_day_name = calendar_date
-  .toLocaleString("en-US", { weekday: "short" })
-  .toUpperCase()
 
 const learnPoints = event.infostr
   .split("\n")
@@ -62,72 +53,18 @@ const programPoints: {
     <section class="eventInfo">
       <div class="eventInfoRow">
         <div class="eventInfoColumn">
-          <div class="eventWhenIcon" style="">
-            <div
-              style="
-                width: 87px;
-                height: 25px;
-                background: rgba(223.86, 84.16, 84.16, 0.83);
-                overflow: hidden;
-                border-bottom: 1px #b94646 solid;
-              "
-            >
-              <div
-                style="
-                  height: 100%;
-                  text-align: center;
-                  justify-content: center;
-                  display: flex;
-                  flex-direction: column;
-                  color: rgba(137.55, 21.03, 21.03, 0.72);
-                  font-size: 20px;
-                  font-family: Instrument Sans;
-                  font-weight: 700;
-                  line-height: 20px;
-                  word-wrap: break-word;
-                "
-              >
-                {{ calendar_month_short }}
-              </div>
-            </div>
-            <div
-              style="
-                height: 35px;
-                text-align: center;
-                justify-content: center;
-                display: flex;
-                flex-direction: column;
-                color: #2b2b2b;
-                font-size: 40px;
-                font-family: Instrument Sans;
-                font-weight: 500;
-                line-height: 40px;
-                word-wrap: break-word;
-              "
-            >
-              {{ calendar_day }}
-            </div>
-            <div
-              style="
-                height: 18px;
-                text-align: center;
-                justify-content: center;
-                display: flex;
-                flex-direction: column;
-                color: #7a7a7a;
-                font-size: 15px;
-                font-family: Instrument Sans;
-                font-weight: 500;
-                line-height: 15px;
-                word-wrap: break-word;
-              "
-            >
-              {{ calendar_day_name }}
-            </div>
-          </div>
+          <SquareCalendar :date="calendar_date" />
           <div class="eventWhenText body-text">
             <h3>When:</h3>
-            <p>{{ calendar_day }} {{ calendar_month }} {{ calendar_year }}</p>
+            <p>
+              {{
+                calendar_date.toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                })
+              }}
+            </p>
           </div>
         </div>
         <div class="eventInfoColumn body-text">
@@ -253,20 +190,6 @@ h1 {
 
 .eventInfoColumn {
   display: flex;
-}
-
-.eventWhenIcon {
-  width: 87px;
-  height: 87px;
-  position: relative;
-  box-shadow: 0 4px 5px 1px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
 }
 
 .eventWhenText {

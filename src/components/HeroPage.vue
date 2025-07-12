@@ -67,7 +67,7 @@ const marginTop = useMotionTemplate`${hero}px`
 
 .hero-page h2 {
   font-size: 24px;
-  line-height: 16px;
+  line-height: 22px;
   margin-top: 8px;
   font-style: italic;
 }

@@ -1,306 +1,44 @@
 <script setup lang="ts">
-import SvgRoadmap from "~/assets/images/homepage/onlyRoadMap.svg"
-import SvgArrow from "~/assets/images/homepage/HearArrow.svg"
 import SvgBlob from "~/assets/images/homepage/blob-eventH.svg"
-import { onMounted } from "vue"
 import type { Event } from "~/types"
-import { motion } from "motion-v"
-import { animate } from "@motionone/dom"
+
+const viewport = useViewport()
+
 const { highlightedEvents } = defineProps<{
   highlightedEvents: Array<Event>
 }>()
-
-let currentAnimation: ReturnType<typeof animate> | null = null
-let animationInterval: ReturnType<typeof setInterval> | null = null
-
-const dotIds = ["dot1", "dot2", "dot3"]
-let currentDotIndex = 0
-
-onMounted(() => {
-  clientWidth.value = window.innerWidth
-  clientHeight.value = window.innerHeight
-
-  window.addEventListener("resize", () => {
-    clientWidth.value = window.innerWidth
-    clientHeight.value = window.innerHeight
-  })
-
-  const dot1 = document.getElementById("dot1")
-  const dot2 = document.getElementById("dot2")
-  const dot3 = document.getElementById("dot3")
-  const div = document.querySelector(".sheet-event")
-
-  dot2?.addEventListener("click", () => {
-    showEventWithAnimation(1, dot2)
-  })
-  dot1?.addEventListener("click", () => {
-    showEventWithAnimation(0, dot1)
-  })
-  dot3?.addEventListener("click", () => {
-    showEventWithAnimation(2, dot3)
-  })
-  // dot2?.addEventListener("mouseover", () => {
-  //   showEventWithAnimation(1, dot2)
-  // })
-  // dot1?.addEventListener("mouseover", () => {
-  //   showEventWithAnimation(0, dot1)
-  // })
-  // dot3?.addEventListener("mouseover", () => {
-  //   showEventWithAnimation(2, dot3)
-  // })
-
-  div?.addEventListener("mouseleave", () => {
-    hideEvent()
-  })
-})
-
-const clientWidth = ref(0)
-const clientHeight = ref(0)
-const svgwidth = computed(() => clientWidth.value / 2)
-
-const selectedIndex = ref<number | null>(null)
-function showEventWithAnimation(index: number, dot: HTMLElement | null) {
-  stopDotLoop() // <<<<< interrompe subito il loop prima dell'animazione
-  currentAnimation?.cancel() // se c'è già un'animazione in corso, fermala
-  animateDot(dot, true)
-  showEvent(index)
-}
-
-function showEvent(i: number) {
-  selectedIndex.value = i
-}
-
-function hideEvent() {
-  selectedIndex.value = null //:style="{ height: '100%', width: svgwidth + 'px' }"
-  currentAnimation?.cancel()
-}
-function animateDot(dot: HTMLElement | null, repeat = true) {
-  if (!dot) return
-
-  currentAnimation?.cancel() // cancella l’animazione precedente
-  dot.setAttribute("transform-box", "fill-box")
-  dot.setAttribute("transform-origin", "center")
-
-  // Per compatibilità extra:
-  dot.style.transformBox = "fill-box"
-  dot.style.transformOrigin = "center"
-
-  currentAnimation = animate(
-    dot,
-    {
-      scale: [1, 1.2, 1],
-      filter: [
-        "drop-shadow(0 0 0 rgba(0,0,0,0))",
-        "drop-shadow(0 0 15px rgba(122, 65, 175,0.8))",
-        "drop-shadow(0 0 0 rgba(0,0,0,0))",
-      ],
-    },
-    {
-      duration: 1.3,
-      repeat: repeat ? Infinity : 0,
-      easing: "ease-in-out",
-    }
-  )
-}
-
-function startDotLoop() {
-  if (animationInterval) return // already running
-
-  if (selectedIndex.value !== null) {
-    return // don't start if an event is selected
-  }
-  animationInterval = setInterval(() => {
-    const dotId = dotIds[currentDotIndex]
-    const dot = document.getElementById(dotId)
-
-    if (dot) {
-      currentAnimation?.cancel()
-      animateDot(dot, false)
-    }
-
-    currentDotIndex = (currentDotIndex + 1) % dotIds.length
-  }, 2500) // every 2.5 seconds
-}
-
-function stopDotLoop() {
-  currentAnimation?.cancel()
-  currentAnimation = null
-
-  if (animationInterval) {
-    clearInterval(animationInterval)
-    animationInterval = null
-  }
-}
-
-watch(selectedIndex, (newVal) => {
-  if (newVal === null) {
-    startDotLoop()
-  } else {
-    stopDotLoop()
-  }
-})
 </script>
 <template>
-  <div class="container" :style="{ height: (clientHeight * 2) / 3 + 'px' }">
-    <div class="sheet-event-wrapper">
-      <SvgBlob class="svg-background" :style="{ width: clientWidth + 'px' }" />
-
-      <div class="sheet-event">
-        <SvgRoadmap
-          class="svg-image"
-          :style="{
-            width: svgwidth,
-            height: (clientHeight * 2) / 3 + 'px',
-
-            // backgroundSize: (clientHeight * 2) / 3 + 'px',
-          }"
-        />
-        <!--animate presence con motion.div x fade in e fadeout -->
-        <motion.div
-          v-if="selectedIndex !== null"
-          :initial="{ opacity: 0 }"
-          :animate="{ opacity: 1 }"
-          :exit="{ opacity: 0 }"
-          :transition="{ delay: 0.3, duration: 1 }"
-          :style="{
-            height: (clientHeight * 2) / 3 + 'px',
-            padding: '20px',
-          }"
-        >
-          <HomeHighlightedEventDetailed
-            :event-prop="highlightedEvents[selectedIndex]"
-          />
-        </motion.div>
-        <motion.div
-          v-else
-          :initial="{ opacity: 0 }"
-          :animate="{ opacity: 1 }"
-          :exit="{ opacity: 0 }"
-          :transition="{ delay: 0.3, duration: 1 }"
-        >
-          <div
-            class="default-event"
-            :style="{
-              width: svgwidth + 'px',
-              height: (clientHeight * 2) / 3 + 'px',
-              padding: '20px',
-            }"
-          >
-            <div
-              class="title"
-              style="
-                color: white;
-                /* align-self: stretch; */
-                text-align: center;
-                justify-content: center;
-                display: flex;
-                flex-direction: column;
-                font-size: 80px;
-                font-weight: 900;
-                line-height: 96px;
-                word-wrap: break-word;
-              "
-            >
-              Highlighted Events
-            </div>
-            <div
-              class="title"
-              style="
-                color: white;
-                align-self: stretch;
-                text-align: center;
-                justify-content: center;
-                display: flex;
-                flex-direction: column;
-                font-size: 50px;
-                font-weight: 600;
-                line-height: 60px;
-                word-wrap: break-word;
-              "
-            >
-              click on the dots to discover more about our favourite events
-            </div>
-            <div style="width: 292px; height: 109px"><SvgArrow /></div>
-          </div>
-        </motion.div>
-      </div>
-    </div>
+  <div id="highlighted-events">
+    <SvgBlob class="svg-background" preserveAspectRatio="none" />
+    <HomeDesktopEvents
+      v-if="viewport.isGreaterOrEquals('tablet')"
+      :highlighted-events="highlightedEvents"
+    />
+    <HomeMobileEvents v-else :highlighted-events="highlightedEvents" />
   </div>
 </template>
-<style scoped>
-.container {
-  width: 100%;
-  height: 100%;
 
-  /*background-color: #f0e2f9;*/
-}
-.default-event {
-  color: white;
-  height: 100%;
-  padding-left: 18px;
-  padding-right: 18px;
-  /*padding-bottom: 80px;*/
+<style scoped lang="scss">
+#highlighted-events {
+  width: 100%;
+  min-height: calc(2 * 100vh / 3);
   overflow: hidden;
-  flex-direction: column;
-  justify-content: center; /* Center children vertically */
+  position: relative;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 70px;
-  display: flex; /* Use flex instead of inline-flex for full height */
 }
+
 .svg-background {
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: -1;
   pointer-events: none;
-
-  height: fit-content;
-}
-.sheet-event {
-  /*background-color: #f0e2f9;*/
-  flex: 1;
-  height: 100%;
-  right: 0;
-  position: relative;
-
-  display: flex;
-  justify-content: center;
-  /*background-image: url("~/assets/images/homepage/blob-event.svg");*/
-}
-
-.svg-image {
-  /*background-color: #f0e2f9;*/
-
-  min-width: 450px;
-  height: 100%;
-  position: relative;
-  justify-content: center;
-  top: 0;
-  /* background-image: url("~/assets/images/homepage/backgroundEventRoadMap.jpg");
-  background-size: contain;
-  background-clip: content-box; */
-  flex: 1;
-}
-.sheet-event-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-#dot1,
-#dot2,
-#dot3 {
-  cursor: pointer;
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: transform 0.3s ease;
-}
-
-#dot1:hover,
-#dot2:hover,
-#dot3:hover {
-  transform: scale(1.2);
 }
 </style>
