@@ -140,17 +140,19 @@ for (let i = 0; i < 3; i++) {
       </CardGrid>
     </section>
 
-    <section style="align-items: center; text-align: center">
-      <h1 class="title">Similar Activities</h1>
-      <card-grid :length="similarActivities.length">
-        <template #card="{ index }">
-          <card-activity :activity-prop="similarActivities[index]" />
-        </template>
-      </card-grid>
-      <NuxtLink class="link-button body-text" to="/activities">
-        View all activities
-      </NuxtLink>
-    </section>
+    <ClientOnly>
+      <section style="align-items: center; text-align: center">
+        <h1 class="title">Similar Activities</h1>
+        <card-grid :length="similarActivities.length">
+          <template #card="{ index }">
+            <card-activity :activity-prop="similarActivities[index]" />
+          </template>
+        </card-grid>
+        <NuxtLink class="link-button body-text" to="/activities">
+          View all activities
+        </NuxtLink>
+      </section>
+    </ClientOnly>
   </PageWrap>
 </template>
 
