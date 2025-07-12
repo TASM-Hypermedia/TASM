@@ -114,7 +114,7 @@ for (let i = 0; i < 3; i++) {
           :key="index"
           class="next-lesson"
         >
-          <img class="logo" src="../../assets/images/calendar.svg" alt="logo" />
+          <Icon name="material-symbols:calendar-today" class="calendar" />
           <div>
             <div>
               <span style="font-weight: bold" class="body-text">{{
@@ -258,6 +258,12 @@ div.buttons {
   margin: 4px;
   outline: 1px rgba(0, 0, 0, 0.17) solid;
   outline-offset: -1px;
+
+  .calendar {
+    margin: 4px 0;
+    width: 36px;
+    height: 36px;
+  }
 
   img {
     flex: 0;

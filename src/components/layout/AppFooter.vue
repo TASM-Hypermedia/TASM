@@ -1,18 +1,25 @@
+<script setup lang="ts">
+import Logo from "~/assets/images/headerIcon.svg"
+import fb from "~/assets/socials/fb.svg"
+import ig from "~/assets/socials/ig.svg"
+import yt from "~/assets/socials/yt.svg"
+</script>
+
 <template>
   <footer>
     <div class="footer-content">
       <div>
-        <img class="logo" src="../../assets/images/headerIcon.svg" alt="Yoga Center Logo" />
+        <Logo class="logo" />
         <div class="socials">
-          <NuxtLink to="https://www.facebook.com/polimi/"
-            ><img src="../../assets/socials/fb.svg" alt="facebook"
-          /></NuxtLink>
-          <NuxtLink to="https://www.instagram.com/polimi/"
-            ><img src="../../assets/socials/ig.svg" alt="instagram"
-          /></NuxtLink>
-          <NuxtLink to="https://www.youtube.com/polimi"
-            ><img src="../../assets/socials/yt.svg" alt="youtube"
-          /></NuxtLink>
+          <NuxtLink to="https://www.facebook.com/polimi/">
+            <fb alt="facebook" />
+          </NuxtLink>
+          <NuxtLink to="https://www.instagram.com/polimi/">
+            <ig alt="instagram" />
+          </NuxtLink>
+          <NuxtLink to="https://www.youtube.com/polimi">
+            <yt alt="youtube" />
+          </NuxtLink>
         </div>
       </div>
       <div>
@@ -26,9 +33,11 @@
       </div>
       <div>
         <h2>Policies</h2>
-        <NuxtLink to="https://www.polimi.it/il-politecnico/comunicazione/privacy"
-          >Privacy Policy</NuxtLink
+        <NuxtLink
+          to="https://www.polimi.it/il-politecnico/comunicazione/privacy"
         >
+          Privacy Policy
+        </NuxtLink>
       </div>
       <div>
         <h2>Legal Information</h2>
