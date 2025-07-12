@@ -97,7 +97,7 @@ onMounted(() => {
           <span>{{ modalImage.alt ?? "Fullscreen Image" }}</span>
         </div>
         <button class="close-button" @click="closeModal">
-          <v-icon icon="mdi-close" size="large" />
+          <Icon name="material-symbols:cancel-rounded" />
         </button>
       </motion.div>
     </AnimatePresence>
@@ -209,6 +209,11 @@ onMounted(() => {
     border: none;
     cursor: pointer;
     color: #fff;
+
+    span {
+      width: 32px;
+      height: 32px;
+    }
   }
 
   .modal-content {

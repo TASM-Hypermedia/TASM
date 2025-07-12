@@ -48,10 +48,16 @@ const linkVariants = {
 <template>
   <nav :style="{ opacity: opacity }">
     <header>
-      <NuxtLink to="/" class="logo">
+      <NuxtLink to="/" class="logo" aria-label="Home">
         <logo class="header-img" />
       </NuxtLink>
-      <v-icon id="icon" icon="mdi-menu" @click="toggleMenu()"></v-icon>
+      <Icon
+        aria-label="Toggle menu"
+        tabindex="0"
+        name="material-symbols:menu-rounded"
+        class="mdi"
+        @click="toggleMenu"
+      />
     </header>
 
     <AnimatePresence>
@@ -232,6 +238,10 @@ div {
 }
 
 .mdi {
+  cursor: pointer;
+  margin: 8px;
   margin-left: auto;
+  width: 26px;
+  height: 26px;
 }
 </style>

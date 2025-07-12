@@ -22,10 +22,9 @@ useSeoMeta({
     "Welcome to Inner Bloom, your journey to wellness begins here.",
 })
 
-const layout = ref<LayoutKey>(getLayout())
-
 onMounted(() => {
-  window.addEventListener("resize", () => (layout.value = getLayout()))
+  setPageLayout(getLayout())
+  window.addEventListener("resize", () => setPageLayout(getLayout()))
 })
 </script>
 
@@ -33,7 +32,7 @@ onMounted(() => {
   <div id="app-container">
     <LoadingIndicator />
     <NuxtRouteAnnouncer />
-    <NuxtLayout :name="layout">
+    <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
   </div>

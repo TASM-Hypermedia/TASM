@@ -20,7 +20,7 @@ function active(thisRoute: string) {
     class="header-div"
     :style="{ backgroundColor: `rgba(232, 221, 241, ${opacity})` }"
   >
-    <NuxtLink to="/" class="logo">
+    <NuxtLink to="/" class="logo" aria-label="Home">
       <logo class="header-img" />
     </NuxtLink>
     <NuxtLink :class="active('yogacenter')" to="/yogacenter">
