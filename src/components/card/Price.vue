@@ -92,7 +92,7 @@ const theme = priceProp.darkMode ? "dark-theme" : "light-theme"
 .pricingSup {
   font-size: 30px;
   font-weight: 400;
-  font-family: "roboto", sans-serif;
+  font-family: Roboto, sans-serif;
   margin-right: 10px;
 }
 
