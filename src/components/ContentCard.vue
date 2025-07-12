@@ -76,6 +76,7 @@ onMounted(() => {
           :class="{ imageOnTheLeft: !contentCardProp.imageOnTheRight }"
           :src="contentCardProp.imgUrl"
           :alt="contentCardProp.altDescription"
+          tabindex="0"
           @click="openModal(contentCardProp)"
           @keydown.enter="openModal(contentCardProp)"
         />
