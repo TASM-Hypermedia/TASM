@@ -63,7 +63,7 @@ defineProps<{
   font-family: Roboto;
   font-weight: 300;
   word-wrap: break-word;
-  text-align: justify;
+  text-align: center;
 }
 
 .certifications {

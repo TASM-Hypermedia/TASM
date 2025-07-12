@@ -2,7 +2,7 @@
   <footer>
     <div class="footer-content">
       <div>
-        <img class="logo" src="../../assets/images/headerIcon.svg" alt="logo" />
+        <img class="logo" src="../../assets/images/headerIcon.svg" alt="Yoga Center Logo" />
         <div class="socials">
           <NuxtLink to="https://www.facebook.com/polimi/"
             ><img src="../../assets/socials/fb.svg" alt="facebook"
@@ -16,7 +16,7 @@
         </div>
       </div>
       <div>
-        <h3>The School</h3>
+        <h2>The School</h2>
         <NuxtLink to="/yogacenter">The Center</NuxtLink>
         <NuxtLink to="/teachers">Our Team</NuxtLink>
         <NuxtLink to="/activities">Activities</NuxtLink>
@@ -25,13 +25,13 @@
         <NuxtLink to="/contacts">Contacts</NuxtLink>
       </div>
       <div>
-        <h3>Policies</h3>
+        <h2>Policies</h2>
         <NuxtLink to="https://www.polimi.it/il-politecnico/comunicazione/privacy"
           >Privacy Policy</NuxtLink
         >
       </div>
       <div>
-        <h3>Legal Information</h3>
+        <h2>Legal Information</h2>
         <p>+39 123 456 7890</p>
         <p>info@inner-bloom.com</p>
         <p>Piazza Leonardo da Vinci, 32, 20133 Milan (MI), Italy</p>
