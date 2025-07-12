@@ -4,13 +4,13 @@
       <div>
         <img class="logo" src="../../assets/images/headerIcon.svg" alt="logo" />
         <div class="socials">
-          <NuxtLink to="https://www.facebook.com/milanoyogaspace"
+          <NuxtLink to="https://www.facebook.com/polimi/"
             ><img src="../../assets/socials/fb.svg" alt="facebook"
           /></NuxtLink>
-          <NuxtLink to="https://www.instagram.com/milanoyogaspace/"
+          <NuxtLink to="https://www.instagram.com/polimi/"
             ><img src="../../assets/socials/ig.svg" alt="instagram"
           /></NuxtLink>
-          <NuxtLink to="https://www.youtube.com/@MilanoYogaSpace"
+          <NuxtLink to="https://www.youtube.com/polimi"
             ><img src="../../assets/socials/yt.svg" alt="youtube"
           /></NuxtLink>
         </div>
@@ -26,7 +26,7 @@
       </div>
       <div>
         <h3>Policies</h3>
-        <NuxtLink to="https://www.milanoyogaspace.com/privacy/privacy-policy/"
+        <NuxtLink to="https://www.polimi.it/il-politecnico/comunicazione/privacy"
           >Privacy Policy</NuxtLink
         >
       </div>
@@ -34,7 +34,7 @@
         <h3>Legal Information</h3>
         <p>+39 123 456 7890</p>
         <p>info@inner-bloom.com</p>
-        <p>Via Pastrengo, 7, 20159 Milan (MI), Italy</p>
+        <p>Piazza Leonardo da Vinci, 32, 20133 Milan (MI), Italy</p>
         <p>CF: 123456789</p>
         <p>P.IVA: 12345678901</p>
         <p>© 2025 The School. All rights reserved.</p>

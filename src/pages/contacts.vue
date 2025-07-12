@@ -60,9 +60,17 @@ const contactsList = res.data.value
     <h1 class="map-title title">Come and join us</h1>
     <section class="map-section">
       <iframe
-        title="Map showing the Yoga Center"
+        title="Map"
         class="map"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89509.5532925476!2d9.043172443359369!3d45.486450000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c12dfe45ee8f%3A0x6528954343c34fd4!2sMilano%20Yoga%20Space!5e0!3m2!1sit!2sit!4v1746451557377!5m2!1sit!2sit"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3067.1444071872493!2d9.227271999999997!3d45.478155199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c6f67dd11753%3A0x8e30fae1774a3377!2sPolitecnico%20di%20Milano!5e1!3m2!1sen!2sit!4v1752315415681!5m2!1sen!2sit"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        style="display: none"
+      ></iframe>
+      <iframe
+        title="Map"
+        class="map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3067.1444071872493!2d9.227271999999997!3d45.478155199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c6f67dd11753%3A0x8e30fae1774a3377!2sPolitecnico%20di%20Milano!5e1!3m2!1sen!2sit!4v1752315415681!5m2!1sen!2sit"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
@@ -238,7 +246,7 @@ h1 {
 
 .link-button {
   width: 100%;
-  margin: 0px;
+  margin: 0;
 }
 
 // .form-button {
