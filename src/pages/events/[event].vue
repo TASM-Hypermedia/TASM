@@ -31,13 +31,17 @@ const learnPoints = event.infostr
 const programPoints: {
   day: string
   points: string[]
-}[] = event.programstr.split("#").map((d) => {
-  const lines = d.split("\n").map((s) => s.replace(";", "").trim())
-  return {
-    day: lines.shift() ?? "",
-    points: lines.filter((s) => s),
-  }
-})
+}[] = event.programstr
+  .split("#")
+  .map((d) => d.trim())
+  .filter((d) => d.length > 0)
+  .map((d) => {
+    const lines = d.split("\n").map((s) => s.replace(";", "").trim())
+    return {
+      day: lines.shift() ?? "",
+      points: lines.filter((s) => s),
+    }
+  })
 </script>
 
 <template>
