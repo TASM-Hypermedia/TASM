@@ -205,7 +205,6 @@ onMounted(() => {
 
 function mouseOver(i: number) {
   hoverindex.value = i
-  console.log("hoverindex", hoverindex.value)
   const img = ["Activities", "Team", "Events"][i % 3]
 
   if (layout.value == "mobile") {

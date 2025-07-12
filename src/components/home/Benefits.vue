@@ -36,17 +36,13 @@ const benefits = [
   },
 ]
 
+const clientWidth = ref(0)
 onMounted(() => {
-  console.log(window.innerWidth)
   clientWidth.value = window.innerWidth
-
   window.addEventListener("resize", () => {
     clientWidth.value = window.innerWidth
   })
 })
-
-const clientWidth = ref(0)
-console.log(clientWidth)
 
 const ratioTop = 5000 / 1000
 const ratioBottom = 5000 / 286
