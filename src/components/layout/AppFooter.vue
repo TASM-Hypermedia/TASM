@@ -45,16 +45,22 @@
 
 <style scoped lang="scss">
 footer {
-  background: linear-gradient(0deg,rgba(216, 207, 231, 1) 0%, rgba(234, 229, 242, 1) 68%, rgba(255, 255, 255, 1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(216, 207, 231, 1) 0%,
+    rgba(234, 229, 242, 1) 68%,
+    rgba(255, 255, 255, 1) 100%
+  );
   display: flex;
   padding-bottom: 64px;
   font-size: 14px;
-  // box-shadow: 0 -1px 16px rgba(0, 0, 0, 0.1);
   order: 1000;
+  width: 100vw;
 
   .footer-content {
     margin: auto;
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
     justify-content: space-between;
     padding: 32px 128px;
@@ -62,6 +68,9 @@ footer {
     .mobile-layout & {
       padding: 16px;
       flex-direction: column;
+      div {
+        flex: 1 1 0;
+      }
     }
 
     div {
@@ -69,7 +78,7 @@ footer {
       flex-direction: column;
       margin-right: 32px;
       min-width: 100px;
-      flex: 1;
+      flex: 1 1 150px;
 
       .socials {
         display: flex;

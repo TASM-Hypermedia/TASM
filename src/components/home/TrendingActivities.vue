@@ -1,17 +1,17 @@
 <template>
-  <motion.div
-    class="component"
-    initial="hidden"
-    while-in-view="visible"
-    :transition="{
-      duration: 0.8,
-      ease: easeInOut,
-      delay: 0.1,
-      staggerChildren: 0.15,
-    }"
-  >
+  <div class="component">
     <div class="title">Trending Activities</div>
-    <div ref="containerRef" class="activities">
+    <motion.div
+      initial="hidden"
+      while-in-view="visible"
+      :transition="{
+        duration: 0.8,
+        ease: easeInOut,
+        delay: 0.1,
+        staggerChildren: 0.15,
+      }"
+      class="activities"
+    >
       <motion.div
         v-for="(activity, i) in activities"
         :key="i"
@@ -24,7 +24,7 @@
           scale: activity.scale,
         }"
         class="card"
-        @hover-start="activity.target.set(1.02)"
+        @hover-start="activity.target.set(2)"
         @hover-end="activity.target.set(1)"
       >
         <NuxtLink
@@ -47,26 +47,20 @@
             </div>
 
             <motion.div
-              id="motioncard"
               class="right_arrow"
-              :variants="{
-                hidden: { rotate: -45 },
-                visible: { rotate: -45 },
-                whileHover: { rotate: 0 },
-              }"
-              :transition="{ duration: 0.2, ease: 'easeInOut' }"
+              :style="{ rotate: activity.rotation }"
             >
               <arrow style="width: 100%; height: 100%" />
             </motion.div>
           </div>
         </NuxtLink>
       </motion.div>
-    </div>
-  </motion.div>
+    </motion.div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { easeInOut, motion, type Variant } from "motion-v"
+import { easeInOut, motion } from "motion-v"
 import type { Activity } from "~/types"
 import arrow from "~/assets/images/right-arrow.svg"
 
@@ -74,13 +68,12 @@ const props = defineProps<{
   activitiesProp?: Array<Activity>
 }>()
 
-const variants: Record<string, Variant> = {
+const variants = {
   hidden: {
     opacity: 0.5,
     y: -50,
     filter: "blur(10px)",
   },
-
   visible: {
     opacity: 1,
     y: 0,
@@ -88,39 +81,36 @@ const variants: Record<string, Variant> = {
   },
 }
 
-const activities = computed(() => {
-  return (props.activitiesProp || []).map((activity) => {
-    const target = useMotionValue(1)
-    return {
-      prop: activity,
-      target,
-      scale: useSpring(target, { bounce: 0, mass: 0.3, stiffness: 400 }),
-    }
+const activities = (props.activitiesProp || []).map((activity) => {
+  const target = useMotionValue(1)
+  const spring = useSpring(target, {
+    bounce: 0,
+    mass: 1,
+    stiffness: 200,
   })
+
+  return {
+    prop: activity,
+    target,
+    scale: useTransform(spring, [1, 2], [1, 1.02]),
+    rotation: useTransform(spring, [1, 2], [-45, 0]),
+  }
 })
 </script>
 
 <style scoped>
-div {
-  border: 0px solid black;
-}
-
 .component {
   width: 100%;
-  height: fit-content;
-  align-items: center;
-  padding: 8% 0px;
-  background: white;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background: white;
   gap: 0px;
-  /* border: 0px solid black; */
 }
 
 .title {
   text-align: center;
   justify-content: center;
-  /* display: flex;  */
   flex-direction: column;
   color: black;
   font-size: 80px;
@@ -132,22 +122,17 @@ div {
 
 .activities {
   width: 100%;
-  max-width: 1200px;
-  height: fit-content;
-  padding: 3% 1.75% 6% 1.75%; /*top right bottom left*/
+  padding: 16px;
   display: flex;
-  /* flex-direction: row;  */
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  gap: 2%;
   flex-wrap: wrap;
-  /* border: 0px solid black; */
 }
 
 .card {
-  width: 23.5%;
-  min-width: 260px;
+  width: 280px;
   height: 375px;
+  margin: 16px;
   padding: 18px;
   border-radius: 20px;
   background-color: #bdb2d4;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ContentCard } from "~/types"
-import { cubicBezier, motion, type Variant } from "motion-v"
+import { cubicBezier, motion } from "motion-v"
 
 const { contentCardProp } = defineProps<{
   contentCardProp: ContentCard
@@ -19,7 +19,7 @@ const closeModal = () => {
   modalImage.value = null
 }
 
-const variants: Record<string, Variant> = {
+const variants = {
   hidden: {
     opacity: 0.7,
     filter: "blur(6px)",

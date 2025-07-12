@@ -14,27 +14,9 @@ const { homePageElement } = defineProps<{
 <template>
   <div class="container">
     <HomeWaves />
-    <div
-      style="
-        display: flex;
-        width: 100%;
-        max-width: 800px;
-        z-index: 1;
-        gap: 64px;
-        align-items: stretch;
-      "
-    >
+    <div class="wrapper">
       <SvgTizia class="svg-tizia" />
-
-      <div
-        style="
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: start;
-          gap: 18px;
-        "
-      >
+      <div class="not-the-image">
         <div
           class="title"
           style="
@@ -70,7 +52,7 @@ const { homePageElement } = defineProps<{
   <!-- </nuxt-link> -->
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .container {
   z-index: 0;
   width: 100%;
@@ -82,6 +64,34 @@ const { homePageElement } = defineProps<{
   position: relative;
   margin-top: 50px;
   margin-bottom: 280px;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  z-index: 1;
+  gap: 64px;
+  align-items: stretch;
+
+  .mobile-layout & {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .not-the-image {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 18px;
+
+    .mobile-layout & {
+      align-items: center;
+      text-align: center;
+    }
+  }
 }
 
 .sheetImg {

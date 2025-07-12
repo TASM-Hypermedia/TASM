@@ -85,10 +85,17 @@ main {
   width: 65vw;
   height: 75px;
   user-select: none;
-  font-size: 1em;
+  font-size: 0.5rem;
 
   span {
     opacity: 0.6;
+  }
+
+  h2.title {
+    font-size: 1.5rem;
+    line-height: 1rem;
+    color: black;
+    text-align: center;
   }
 }
 

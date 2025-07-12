@@ -74,7 +74,7 @@ main {
   width: 100%;
   max-width: 100vw;
   height: 100%;
-  gap: 32px;
+  gap: 64px;
   margin-bottom: 32px;
   border: 0px solid black;
 }
