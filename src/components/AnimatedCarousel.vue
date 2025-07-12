@@ -240,10 +240,18 @@ onMounted(() => {
           </div>
         </div>
       </div>
-      <button class="scroll-button" @click="backwards()">
+      <button
+        class="scroll-button"
+        aria-label="Scroll Backwards"
+        @click="backwards()"
+      >
         <Icon name="material-symbols:arrow-circle-left-rounded" />
       </button>
-      <button class="scroll-button" @click="forwards()">
+      <button
+        class="scroll-button"
+        aria-label="Scroll Forwards"
+        @click="forwards()"
+      >
         <Icon name="material-symbols:arrow-circle-right-rounded" />
       </button>
       <AnimatePresence>
@@ -263,7 +271,11 @@ onMounted(() => {
             />
             <span>{{ modalImage.alt ?? "Fullscreen Image" }}</span>
           </div>
-          <button class="close-button" @click="closeModal">
+          <button
+            class="close-button"
+            aria-label="Close Modal"
+            @click="closeModal"
+          >
             <Icon name="material-symbols:cancel-rounded" />
           </button>
         </motion.div>

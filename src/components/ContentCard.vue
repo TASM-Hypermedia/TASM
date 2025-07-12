@@ -96,7 +96,11 @@ onMounted(() => {
           <img :src="modalImage.URL" :alt="modalImage.alt ?? 'Modal Image'" />
           <span>{{ modalImage.alt ?? "Fullscreen Image" }}</span>
         </div>
-        <button class="close-button" @click="closeModal">
+        <button
+          class="close-button"
+          aria-label="Close Modal"
+          @click="closeModal"
+        >
           <Icon name="material-symbols:cancel-rounded" />
         </button>
       </motion.div>
