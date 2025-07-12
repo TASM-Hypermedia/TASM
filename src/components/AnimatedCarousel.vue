@@ -241,10 +241,10 @@ onMounted(() => {
         </div>
       </div>
       <button class="scroll-button" @click="backwards()">
-        <v-icon icon="mdi-menu-left" size="large"></v-icon>
+        <Icon name="material-symbols:arrow-circle-left-rounded" />
       </button>
       <button class="scroll-button" @click="forwards()">
-        <v-icon icon="mdi-menu-right" size="large"></v-icon>
+        <Icon name="material-symbols:arrow-circle-right-rounded" />
       </button>
       <AnimatePresence>
         <motion.div
@@ -264,7 +264,7 @@ onMounted(() => {
             <span>{{ modalImage.alt ?? "Fullscreen Image" }}</span>
           </div>
           <button class="close-button" @click="closeModal">
-            <v-icon icon="mdi-close" size="large" />
+            <Icon name="material-symbols:cancel-rounded" />
           </button>
         </motion.div>
       </AnimatePresence>
@@ -295,6 +295,11 @@ onMounted(() => {
     border: none;
     cursor: pointer;
     color: #fff;
+
+    span {
+      width: 32px;
+      height: 32px;
+    }
   }
 
   .modal-content {
@@ -401,11 +406,18 @@ onMounted(() => {
 
 .scroll-button {
   cursor: pointer;
-  background-color: #e2e2e2;
+  background-color: #0009;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   border-radius: 50%;
+  display: flex;
+
+  span {
+    width: 30px;
+    height: 30px;
+    color: white;
+  }
 
   &:nth-of-type(1) {
     left: 16px;
