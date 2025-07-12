@@ -65,7 +65,7 @@ const calendar_day_name = props.date
         justify-content: center;
         display: flex;
         flex-direction: column;
-        color: #7a7a7a;
+        color: black;
         font-size: 15px;
         font-family: Instrument Sans;
         font-weight: 500;

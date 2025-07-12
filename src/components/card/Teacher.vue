@@ -3,7 +3,7 @@
     <img
       class="teacher_image"
       :src="'/images/' + teacherProp.image"
-      :alt="teacherProp.name"
+      alt=""
     />
     <div class="teacher_name title" style="">{{ teacherProp.name }}</div>
     <!-- <div class="mantra" style="">&ldquo;{{ teacherProp.mantra }}&rdquo;</div> -->

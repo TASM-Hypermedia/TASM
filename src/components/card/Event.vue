@@ -17,7 +17,7 @@
         <img
           class="host_image"
           :src="eventProp.hostImage"
-          :alt="eventProp.hostName"
+          alt=""
         />
         <div
           style="
