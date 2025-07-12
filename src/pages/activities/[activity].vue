@@ -114,7 +114,7 @@ for (let i = 0; i < 3; i++) {
           :key="index"
           class="next-lesson"
         >
-          <img class="logo" src="../../assets/images/calendar.svg" alt="logo" />
+          <img class="logo" src="../../assets/images/calendar.svg" alt="" />
           <div>
             <div>
               <span style="font-weight: bold" class="body-text">{{
