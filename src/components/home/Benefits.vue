@@ -49,7 +49,7 @@ const clientWidth = ref(0)
 console.log(clientWidth)
 
 const ratioTop = 5000 / 1000
-const ratioBottom = 5000 / 288
+const ratioBottom = 5000 / 286
 
 const topHeight = computed(() => -clientWidth.value / ratioTop)
 const bottomHeight = computed(() => -clientWidth.value / ratioBottom)
@@ -65,24 +65,24 @@ const bottomHeight = computed(() => -clientWidth.value / ratioBottom)
     />
     <SvgWaveEmptyT
       class="svg-imageTop"
-      :style="{ top: `${bottomHeight * 4}px`, width: '100vw' }"
+      :style="{ top: `${topHeight - 40}px`, width: '100vw' }"
     />
     <SvgWaveEmptyT
       class="svg-imageTop"
-      :style="{ top: `${bottomHeight * 4.35}px`, width: '100vw' }"
+      :style="{ top: `${topHeight - 100}px`, width: '100vw' }"
     />
 
     <SvgWaveB
       class="svg-imageTop"
-      :style="{ bottom: `${bottomHeight * 3.5}px`, width: '100vw' }"
+      :style="{ bottom: `${topHeight}px`, width: '100vw' }"
     />
     <SvgWaveEmptyB
       class="svg-imageTop"
-      :style="{ bottom: `${bottomHeight * 1.5}px`, width: '100vw' }"
+      :style="{ bottom: `${bottomHeight - 40}px`, width: '100vw' }"
     />
     <SvgWaveEmptyB
       class="svg-imageTop"
-      :style="{ bottom: `${bottomHeight * 2.35}px`, width: '100vw' }"
+      :style="{ bottom: `${bottomHeight - 100}px`, width: '100vw' }"
     />
 
     <div
@@ -130,31 +130,28 @@ const bottomHeight = computed(() => -clientWidth.value / ratioBottom)
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-bottom: 300px;
-  margin-top: 250px;
+  margin-bottom: 150px;
+  margin-top: 150px;
 }
 
 .svg-imageBottom {
   width: 100vw;
-  /*height: auto;*/
   left: 0;
-  /*bottom: 0;*/
   position: absolute;
+  pointer-events: none;
 }
 .svg-imageTop {
   width: 100vw;
-  /*height: auto;*/
   left: 0;
-  /*top: 0px;*/
   position: absolute;
+  pointer-events: none;
 }
 .sheet {
   width: 100vw;
   bottom: 0;
-  top: -20px;
+  top: -5px;
   left: 0;
-  bottom: -10px;
-  /* top: -120px; */
+  bottom: -5px;
   position: absolute;
   background-color: #f0e2f9;
 }

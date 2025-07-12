@@ -72,9 +72,10 @@ main {
   justify-content: center;
   align-items: center;
   width: 100%;
+  overflow: hidden;
   max-width: 100vw;
   height: 100%;
-  gap: 64px;
+  gap: 100px;
   margin-bottom: 32px;
   border: 0px solid black;
 }
@@ -111,6 +112,6 @@ main {
   width: 100%;
   height: 100%;
   background-color: #ffffff;
-  padding: 5%;
+  padding: 16px;
 }
 </style>

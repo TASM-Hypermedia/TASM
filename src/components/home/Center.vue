@@ -26,7 +26,7 @@ const { homePageElement } = defineProps<{
             font-size: 4rem;
           "
         >
-          Yoga Center
+          {{ homePageElement.title }}
         </div>
         <div
           class="title"
@@ -38,7 +38,7 @@ const { homePageElement } = defineProps<{
             font-weight: bolder;
           "
         >
-          {{ homePageElement.title }}
+          Yoga Center
         </div>
         <div class="body-text" style="flex: 1; font-size: 1.2rem">
           {{ homePageElement.description }}
@@ -62,7 +62,6 @@ const { homePageElement } = defineProps<{
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-top: 50px;
   margin-bottom: 280px;
 }
 

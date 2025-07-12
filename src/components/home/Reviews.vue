@@ -21,12 +21,17 @@
         <div class="name body-text">{{ review.person }}</div>
 
         <div class="rating" :aria-label="`Rating: ${review.stars} out of 5`">
-          <img
+          <star
             v-for="k in review.stars"
-            :key="k"
-            src="https://www.svgrepo.com/show/513408/star.svg"
+            :key="`full-${k}`"
             style="height: 25px; width: 25px"
-            alt=""
+            fill="black"
+          />
+          <star
+            v-for="k in 5 - review.stars"
+            :key="`empty-${k}`"
+            style="height: 25px; width: 25px; opacity: 0.3"
+            fill="none"
           />
         </div>
       </motion.div>
@@ -37,6 +42,7 @@
 <script setup lang="ts">
 import { motion } from "motion-v"
 import type { Review } from "~/types"
+import star from "~/assets/images/homepage/star.svg"
 
 defineProps<{
   reviewsProp?: Array<Review>

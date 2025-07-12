@@ -4,18 +4,17 @@
     <div v-if="layout === 'mobile'">
       <v-row class="homePage3Slides">
         <v-col cols="12" sm="12" class="pa-1">
-          <motion.div
-            :while-hover="{
-              scale: 0.9,
-
-              transition: { duration: 0.2 },
-            }"
+          <div
+            style="width: 100%; height: 100%"
+            @touchstart="mouseOver(1)"
+            @focus="mouseOver(1)"
+            @touchend="mouseLeave"
+            @blur="mouseLeave"
           >
-            <div
-              @touchstart="mouseOver(1)"
-              @focus="mouseOver(1)"
-              @touchend="mouseLeave"
-              @blur="mouseLeave"
+            <motion.div
+              :animate="{
+                scale: hoverindex === 1 ? 0.9 : 1,
+              }"
             >
               <v-img :src="image1" height="100%" width="100%" contain>
                 <v-sheet class="sheetImg">
@@ -27,24 +26,23 @@
                   </nuxt-link>
                 </v-sheet>
               </v-img>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </v-col>
       </v-row>
       <v-row class="homePage3Slides">
         <v-col cols="12" sm="12" class="pa-1">
-          <motion.div
-            :while-hover="{
-              scale: 0.9,
-
-              transition: { duration: 0.2 },
-            }"
+          <div
+            style="width: 100%; height: 100%"
+            @touchstart="mouseOver(2)"
+            @focus="mouseOver(2)"
+            @touchend="mouseLeave"
+            @blur="mouseLeave"
           >
-            <div
-              @touchstart="mouseOver(2)"
-              @focus="mouseOver(2)"
-              @touchend="mouseLeave"
-              @blur="mouseLeave"
+            <motion.div
+              :animate="{
+                scale: hoverindex === 2 ? 0.9 : 1,
+              }"
             >
               <v-img :src="image2" height="100%" width="100%" contain>
                 <v-sheet class="sheetImg">
@@ -56,24 +54,23 @@
                   </nuxt-link>
                 </v-sheet>
               </v-img>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </v-col>
       </v-row>
       <v-row class="homePage3Slides">
         <v-col cols="12" sm="12" class="pa-1">
-          <motion.div
-            :while-hover="{
-              scale: 0.9,
-
-              transition: { duration: 0.2 },
-            }"
+          <div
+            style="width: 100%; height: 100%"
+            @touchstart="mouseOver(3)"
+            @focus="mouseOver(3)"
+            @touchend="mouseLeave"
+            @blur="mouseLeave"
           >
-            <div
-              @touchstart="mouseOver(3)"
-              @focus="mouseOver(3)"
-              @touchend="mouseLeave"
-              @blur="mouseLeave"
+            <motion.div
+              :animate="{
+                scale: hoverindex === 3 ? 0.9 : 1,
+              }"
             >
               <v-img :src="image3" height="100%" width="100%" contain>
                 <v-sheet class="sheetImg">
@@ -85,8 +82,8 @@
                   </nuxt-link>
                 </v-sheet>
               </v-img>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </v-col>
       </v-row>
     </div>
@@ -182,6 +179,7 @@
 import { ref, onMounted } from "vue"
 import { motion } from "motion-v"
 
+const hoverindex = ref(0)
 const image1 = ref("./images/homepage/Team-1.png")
 const image2 = ref("./images/homepage/Team-2.png")
 const image3 = ref("./images/homepage/Team-3.png")
@@ -206,13 +204,9 @@ onMounted(() => {
 })
 
 function mouseOver(i: number) {
-  let img = "Activities"
-
-  if (i === 1) {
-    img = "Team"
-  } else if (i === 2) {
-    img = "Events"
-  }
+  hoverindex.value = i
+  console.log("hoverindex", hoverindex.value)
+  const img = ["Activities", "Team", "Events"][i % 3]
 
   if (layout.value == "mobile") {
     image1.value = `./images/homepage/${img}-1-mobile.png`
@@ -226,10 +220,7 @@ function mouseOver(i: number) {
 }
 
 function mouseLeave() {
-  // Reset images on mouse leave
-  /*image1.value = `./images/homepage/Sfondo-1.jpg`
-  image2.value = `./images/homepage/Sfondo-2.jpg`
-  image3.value = `./images/homepage/Sfondo-3.jpg`*/
+  hoverindex.value = 0
 }
 </script>
 

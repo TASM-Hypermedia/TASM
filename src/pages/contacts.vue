@@ -59,6 +59,7 @@ const contactsList = res.data.value
 
     <h1 class="map-title title">Come and join us</h1>
     <section class="map-section">
+      <!-- FOR SOME REASON, google refuses to display the map on firefox, we work around that by putting 2 of them :) -->
       <iframe
         title="Map"
         class="map"
@@ -190,7 +191,7 @@ const contactsList = res.data.value
   width: 100%;
   text-align: center;
   padding: 20px;
-  margin-top: 40px;
+  margin-top: 32px;
 
   .mobile-layout & {
     width: 90%;
@@ -212,6 +213,8 @@ h1 {
   height: 450px;
   border: 0;
   margin-top: -15px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 
   .mobile-layout & {
     max-width: 90%;
@@ -230,10 +233,12 @@ h1 {
 
 .contact-form {
   border: 1px solid #919090;
-  border-radius: 10px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   padding: 30px 20px;
   width: 80%;
   margin: auto;
+  margin-bottom: 100px;
 }
 
 .form-input {
