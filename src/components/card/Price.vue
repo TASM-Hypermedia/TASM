@@ -47,10 +47,10 @@ const theme = priceProp.darkMode ? "dark-theme" : "light-theme"
           </li>
         </ul>
       </div>
-      <NuxtLink
-        to="https://paypal.me/Pedroni28?country.x=IT&locale.x=it_IT"
+      <a
+        href="mailto: simone.pedroni@mail.polimi.it"
         class="pricingButton body-text"
-        >Subscribe</NuxtLink
+        >Subscribe</a
       >
     </motion.div>
   </GyroAnim>
@@ -79,7 +79,7 @@ const theme = priceProp.darkMode ? "dark-theme" : "light-theme"
   display: flex;
   flex-direction: column;
   justify-content: start;
-  box-shadow: 0px 5px 10px rgb(88, 87, 87, 0.5);
+  box-shadow: 0 5px 10px rgb(88, 87, 87, 0.5);
   .mobile-layout & {
     margin-bottom: 32px;
   }

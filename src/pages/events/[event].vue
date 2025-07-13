@@ -82,10 +82,10 @@ const programPoints: {
           </div>
         </div>
       </div>
-      <NuxtLink class="link-button" to="#">
+      <a href="mailto: simone.pedroni@mail.polimi.it" class="link-button">
         <calendarSvg class="attend body-text" style="" />
         Attend This Event
-      </NuxtLink>
+      </a>
     </section>
     <section>
       <p class="description body-text">
