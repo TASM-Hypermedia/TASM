@@ -23,8 +23,7 @@ const props = defineProps<{
 
 const { scrollY } = useScroll()
 const y = useTransform(() => scrollY.get() / 3)
-const hero = useTransform(() => clamp(scrollY.get() / 2, 0, 100))
-const marginTop = useMotionTemplate`${hero}px`
+const hero = useTransform(() => clamp(scrollY.get() / 2, 0, 500))
 </script>
 
 <template>
@@ -38,7 +37,7 @@ const marginTop = useMotionTemplate`${hero}px`
         class="background-image"
       />
     </Motion>
-    <motion.div class="hero-page" :style="{ marginTop }">
+    <motion.div class="hero-page" :style="{ y: hero }">
       <h3 v-if="tagline" class="body-text">{{ tagline }}</h3>
       <h1 class="title">{{ title }}</h1>
       <h2 v-if="subtitle" class="body-text">{{ subtitle }}</h2>
@@ -61,6 +60,17 @@ const marginTop = useMotionTemplate`${hero}px`
   display: flex;
   flex-direction: column;
   transition: all 0.1 linear;
+
+  .mobile-layout & {
+    padding: 32px 16px;
+    width: 100%;
+    margin: auto;
+
+    h1 {
+      font-size: 4rem;
+      line-height: 52px;
+    }
+  }
 }
 
 .hero-page h1 {
