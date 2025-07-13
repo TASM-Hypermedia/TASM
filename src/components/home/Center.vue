@@ -72,6 +72,7 @@ const { homePageElement } = defineProps<{
   z-index: 1;
   gap: 64px;
   align-items: stretch;
+  padding: 16px;
 
   .mobile-layout & {
     flex-direction: column;
