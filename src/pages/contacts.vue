@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import locationSvg from "~/assets/images/homepage/icon-location-contacts.svg"
+import mailSvg from "~/assets/images/icon-mail.svg"
+import phoneSvg from "~/assets/images/icon-phone.svg"
 
 definePageMeta({
   title: "Contacts",
@@ -41,13 +43,7 @@ const contactsList = res.data.value
         <div class="column">
           <div class="contactIcon">
             <a href="tel:+391234567890" class="body-text" aria-label="Phone">
-              <NuxtImg
-                preload
-                format="webp"
-                src="/images/icons/phone.png"
-                alt="Phone number"
-                class="contact-image"
-              />
+              <phoneSvg />
             </a>
           </div>
           <div class="contactText">
@@ -61,13 +57,7 @@ const contactsList = res.data.value
         <div class="column">
           <div class="contactIcon">
             <a class="body-text" href="tel:+391234567890" aria-label="Email">
-              <NuxtImg
-                preload
-                format="webp"
-                src="/images/icons/mail.png"
-                alt="Mail"
-                class="contact-image"
-              />
+              <mailSvg />
             </a>
           </div>
           <div class="contactText">
@@ -80,8 +70,8 @@ const contactsList = res.data.value
             <locationSvg />
           </div>
           <div class="contactText">
-            <h3>Phone number:</h3>
-            <p>Piazza Leonardo da Vinci, 32, 20133 Milan (MI)</p>
+            <h3>Address:</h3>
+            <p>Piazza Leonardo da Vinci, 32, 20133 Milan</p>
           </div>
         </div>
       </div>
