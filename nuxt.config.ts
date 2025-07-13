@@ -152,4 +152,8 @@ export default defineNuxtConfig({
       sizeLimitKb: 256,
     },
   },
+  sourcemap: {
+    server: true,
+    client: true,
+  },
 })

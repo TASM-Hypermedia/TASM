@@ -83,7 +83,7 @@ main {
   top: 0;
   margin: auto;
   width: 65vw;
-  height: 75px;
+  height: 64px;
   user-select: none;
   font-size: 0.5rem;
 

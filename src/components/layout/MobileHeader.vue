@@ -51,13 +51,14 @@ const linkVariants = {
       <NuxtLink to="/" class="logo" aria-label="Home">
         <logo class="header-img" />
       </NuxtLink>
-      <Icon
-        aria-label="Toggle menu"
-        tabindex="0"
-        name="material-symbols:menu-rounded"
+      <button
         class="mdi"
+        :aria-label="open ? 'Close menu' : 'Open menu'"
+        :aria-expanded="open"
         @click="toggleMenu"
-      />
+      >
+        <Icon name="material-symbols:menu-rounded" />
+      </button>
     </header>
 
     <AnimatePresence>
@@ -97,8 +98,7 @@ const linkVariants = {
               format="webp"
               src="/icons/center-icon.png"
               alt=""
-              width="17px"
-              style="vertical-align: text-bottom; margin-bottom: 2px"
+              class="header-img"
             />
             The Center
           </NuxtLink>
@@ -110,8 +110,7 @@ const linkVariants = {
               format="webp"
               src="/icons/team-icon.png"
               alt=""
-              width="17px"
-              style="vertical-align: text-bottom; margin-bottom: 2px"
+              class="header-img"
             />
             Our Team
           </NuxtLink>
@@ -123,8 +122,7 @@ const linkVariants = {
               format="webp"
               src="/icons/activities-icon.png"
               alt=""
-              width="17px"
-              style="vertical-align: text-bottom; margin-bottom: 2px"
+              class="header-img"
             />
             Activities
           </NuxtLink>
@@ -136,8 +134,7 @@ const linkVariants = {
               format="webp"
               src="/icons/events-icon.png"
               alt=""
-              width="17px"
-              style="vertical-align: text-bottom; margin-bottom: 2px"
+              class="header-img"
             />
             Events
           </NuxtLink>
@@ -149,8 +146,7 @@ const linkVariants = {
               format="webp"
               src="/icons/pricing-icon.png"
               alt=""
-              width="17px"
-              style="vertical-align: text-bottom; margin-bottom: 2px"
+              class="header-img"
             />
             Pricing
           </NuxtLink>
@@ -162,8 +158,7 @@ const linkVariants = {
               format="webp"
               src="/icons/contact-icon.png"
               alt=""
-              width="17px"
-              style="vertical-align: text-bottom; margin-bottom: 2px"
+              class="header-img"
             />
             Contacts
           </NuxtLink>
@@ -174,6 +169,12 @@ const linkVariants = {
 </template>
 
 <style scoped lang="scss">
+.header-img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
 nav {
   position: fixed;
   top: 0;
@@ -207,6 +208,9 @@ nav {
     background-color: transparent;
     transition: all 0.3s ease;
     border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &.active-link {
       background-color: #ccbce3;
@@ -234,8 +238,12 @@ header {
   align-items: center;
   justify-content: center;
   position: relative;
+  width: 63px;
+
   svg {
     position: absolute;
+    width: 87px;
+    height: 58px;
     top: 0;
     left: 0;
     transform-origin: 0% 0%;
@@ -258,5 +266,9 @@ div {
   margin-left: auto;
   width: 26px;
   height: 26px;
+  span {
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>

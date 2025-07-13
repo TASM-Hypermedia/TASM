@@ -11,13 +11,16 @@ import yt from "~/assets/socials/yt.svg"
       <div>
         <NuxtLink to="/" aria-label="HomePage"><Logo class="logo" /></NuxtLink>
         <div class="socials">
-          <NuxtLink to="https://www.facebook.com/polimi/">
+          <NuxtLink to="https://www.facebook.com/polimi/" aria-label="Facebook">
             <fb alt="facebook" />
           </NuxtLink>
-          <NuxtLink to="https://www.instagram.com/polimi/">
+          <NuxtLink
+            to="https://www.instagram.com/polimi/"
+            aria-label="Instagram"
+          >
             <ig alt="instagram" />
           </NuxtLink>
-          <NuxtLink to="https://www.youtube.com/polimi">
+          <NuxtLink to="https://www.youtube.com/polimi" aria-label="YouTube">
             <yt alt="youtube" />
           </NuxtLink>
         </div>

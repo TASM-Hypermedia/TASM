@@ -16,9 +16,18 @@
                 scale: hoverindex === 1 ? 0.9 : 1,
               }"
             >
-              <v-img :src="image1" height="100%" width="100%" alt="Our teachers" contain>
+              <v-img
+                :src="image1"
+                height="100%"
+                width="100%"
+                alt="Our teachers"
+                contain
+              >
                 <v-sheet class="sheetImg">
-                  <nuxt-link to="/teachers" class="textImg" aria-label="Our teachers"
+                  <nuxt-link
+                    to="/teachers"
+                    class="textImg"
+                    aria-label="Our teachers"
                     ><div class="text-center title">
                       <h1>OUR TEAM</h1>
                       Click here to see our incredible teachers
@@ -44,9 +53,18 @@
                 scale: hoverindex === 2 ? 0.9 : 1,
               }"
             >
-              <v-img :src="image2" height="100%" width="100%" alt="Our events" contain>
+              <v-img
+                :src="image2"
+                height="100%"
+                width="100%"
+                alt="Our events"
+                contain
+              >
                 <v-sheet class="sheetImg">
-                  <nuxt-link to="/events" class="textImg" aria-label="Our events"
+                  <nuxt-link
+                    to="/events"
+                    class="textImg"
+                    aria-label="Our events"
                     ><div class="text-center title">
                       <h1>OUR EVENTS</h1>
                       Click here to see our incredible events
@@ -72,9 +90,18 @@
                 scale: hoverindex === 3 ? 0.9 : 1,
               }"
             >
-              <v-img :src="image3" height="100%" width="100%" alt="Our activities" contain>
+              <v-img
+                :src="image3"
+                height="100%"
+                width="100%"
+                alt="Our activities"
+                contain
+              >
                 <v-sheet class="sheetImg">
-                  <nuxt-link to="/activities" class="textImg" aria-label="Our activities"
+                  <nuxt-link
+                    to="/activities"
+                    class="textImg"
+                    aria-label="Our activities"
                     ><div class="text-center title">
                       <h1>OUR ACTIVITIES</h1>
                       Click here to see our incredible activities
@@ -232,6 +259,7 @@ function mouseLeave() {
   width: 100%;
   height: 100%;
   background-color: rgba(92, 91, 91, 0.388);
+  backdrop-filter: blur(4px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -247,6 +275,7 @@ function mouseLeave() {
 .text-center {
   color: white;
   gap: 10%;
+  text-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);
   .mobile-layout & {
     font-size: 1.5rem;
   }
