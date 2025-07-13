@@ -9,7 +9,7 @@ import yt from "~/assets/socials/yt.svg"
   <footer>
     <div class="footer-content">
       <div>
-        <Logo class="logo" />
+        <NuxtLink to="/" aria-label="HomePage"><Logo class="logo" /></NuxtLink>
         <div class="socials">
           <NuxtLink to="https://www.facebook.com/polimi/">
             <fb alt="facebook" />
