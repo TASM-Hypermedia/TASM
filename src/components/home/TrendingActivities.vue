@@ -86,8 +86,9 @@ const activities = (props.activitiesProp || []).map((activity) => {
   const target = useMotionValue(1)
   const spring = useSpring(target, {
     bounce: 0,
-    mass: 1,
-    stiffness: 200,
+    mass: 0.5,
+    stiffness: 300,
+    damping: 20,
   })
 
   return {
