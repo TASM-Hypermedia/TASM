@@ -1,3 +1,6 @@
+// THIS IS DEPRECATED CODE, ITS NOT USED ANYMORE SINCE WE MOVED TO MOTION
+// IT IS HERE FOR REFERENCE PURPOSES ONLY
+
 import { onWatcherCleanup } from "vue"
 
 export type EaseFN = (x: number) => number

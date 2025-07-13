@@ -2,6 +2,7 @@
 import locationSvg from "~/assets/images/homepage/icon-location-contacts.svg"
 import mailSvg from "~/assets/images/icon-mail.svg"
 import phoneSvg from "~/assets/images/icon-phone.svg"
+import whatsapp from "~/assets/images/icon-whatsapp.svg"
 
 definePageMeta({
   title: "Contacts",
@@ -25,30 +26,24 @@ const contactsList = res.data.value
       <div class="row">
         <div class="column">
           <div class="contactIcon">
-            <a href="tel:+391234567890" class="body-text" aria-label="Whatsapp">
-              <NuxtImg
-                preload
-                format="webp"
-                src="/images/icons/wa.png"
-                alt=""
-                class="contact-image"
-              />
+            <a href="tel:+391234567890" aria-label="Whatsapp">
+              <whatsapp width="100px" height="100px" />
             </a>
           </div>
           <div class="contactText">
             <h2>Whatsapp:</h2>
-            <p> {{ contactsList![0].contactInfo }} </p>
+            <p>{{ contactsList![0].contactInfo }}</p>
           </div>
         </div>
         <div class="column">
           <div class="contactIcon">
-            <a href="tel:+391234567890" class="body-text" aria-label="Phone">
+            <a href="tel:+391234567890" aria-label="Phone">
               <phoneSvg />
             </a>
           </div>
           <div class="contactText">
             <h2>Phone number:</h2>
-            <p> {{ contactsList![0].contactInfo }} </p>
+            <p>{{ contactsList![0].contactInfo }}</p>
           </div>
         </div>
       </div>
@@ -56,13 +51,13 @@ const contactsList = res.data.value
       <div class="row">
         <div class="column">
           <div class="contactIcon">
-            <a class="body-text" href="mailto: simone.pedroni@mail.polimi.it" aria-label="Email">
+            <a href="mailto: simone.pedroni@mail.polimi.it" aria-label="Email">
               <mailSvg />
             </a>
           </div>
           <div class="contactText">
             <h2>Email:</h2>
-            <p> {{ contactsList![1].contactInfo }} </p>
+            <p>{{ contactsList![1].contactInfo }}</p>
           </div>
         </div>
         <div class="column">
@@ -166,7 +161,7 @@ const contactsList = res.data.value
 <style scoped lang="scss">
 .row {
   width: 80%;
-  margin: auto;
+  margin: 8px auto;
   display: flex;
   flex-direction: row;
   gap: 16px;
@@ -178,7 +173,9 @@ const contactsList = res.data.value
 
 .column {
   display: flex;
-  flex: 50%;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
 
   a {
     color: black;

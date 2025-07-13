@@ -10,7 +10,9 @@ const { highlightedEvents } = defineProps<{
 </script>
 <template>
   <div id="highlighted-events">
+    <!-- background -->
     <SvgBlob class="svg-background" preserveAspectRatio="none" />
+    <!-- switch between components for different layouts, both will end up displaying the same HighlightedEventDetailed -->
     <HomeDesktopEvents
       v-if="viewport.isGreaterOrEquals('tablet')"
       :highlighted-events="highlightedEvents"

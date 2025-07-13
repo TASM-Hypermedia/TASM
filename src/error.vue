@@ -18,6 +18,7 @@ defineProps({
     <NuxtLayout :name="layout">
       <main class="error-page">
         <h1>Error {{ error?.statusCode }}</h1>
+        <!-- statusMessage and message can differ in specific settings, we display both -->
         <strong>{{ error?.statusMessage }}</strong>
         <p>{{ error?.message }}</p>
         <NuxtLink class="link-button" to="/">Go back home</NuxtLink>

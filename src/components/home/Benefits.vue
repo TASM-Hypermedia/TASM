@@ -44,6 +44,7 @@ onMounted(() => {
   })
 })
 
+// position values calculated from the SVGs directly, it's easier to tweak them here instead of manipulating the SVGs directly
 const ratioTop = 5000 / 1000
 const ratioBottom = 5000 / 286
 

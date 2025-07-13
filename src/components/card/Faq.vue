@@ -6,6 +6,7 @@ const { faqProp } = defineProps<{
   faqProp: Faq
 }>()
 
+// state to control the open/closed state of the FAQ answer with animation
 const open = ref(false)
 
 function toggle() {

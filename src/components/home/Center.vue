@@ -62,7 +62,7 @@ const { homePageElement } = defineProps<{
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-bottom: 280px;
+  margin-bottom: 280px; // to account for the waves
 }
 
 .wrapper {

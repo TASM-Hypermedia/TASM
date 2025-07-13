@@ -1,3 +1,6 @@
+// THIS IS DEPRECATED CODE, ITS NOT USED ANYMORE SINCE WE MOVED TO MOTION
+// IT IS HERE FOR REFERENCE PURPOSES ONLY
+
 import { onBeforeUnmount, onMounted, ref } from "vue"
 import { withFramerate } from "~/utils"
 

@@ -18,14 +18,18 @@ if (response.error.value || !response.data.value)
     fatal: true,
     ...(response.error.value ?? {
       statusCode: 404,
-      message: `${EventURL} - Event not found`,
+      message: `${EventURL} - Event not found`, // specific error message for better clarity
     }),
   })
 
 const event = response.data.value
 
-const calendar_date = new Date(event.date)
+const calendar_date = new Date(event.date) // parse the date string into a Date object
 
+// The learnPoints and programPoints are derived from the event's infostr and programstr
+// Those are stored as strings with a predefined format for practicality
+// This code is here to quickly parse those strings into arrays so that they can be mapped to
+// <li> and <h2> elements in the template -- it's simpler than it seems
 const learnPoints = event.infostr
   .split("\n")
   .map((s) => s.replace(";", "").trim())

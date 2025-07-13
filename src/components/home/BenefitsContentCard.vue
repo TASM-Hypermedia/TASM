@@ -2,7 +2,6 @@
 import SvgBlob from "~/assets/images/homepage/Blob-Fill.svg"
 import SvgBlobOutline from "~/assets/images/homepage/Blob-outline.svg"
 import { motion, Motion } from "motion-v"
-//import { ref, computed } from "vue" //ref, computedimport { } from "vue"
 
 const { benefitsProp } = defineProps<{
   benefitsProp: {
@@ -13,10 +12,12 @@ const { benefitsProp } = defineProps<{
   }
 }>()
 
+// dynamic import of the SVG element, this allows for better performance without bloating the bundle size
 const svg = defineAsyncComponent(
   () => import(`~/assets/images/benefits/${benefitsProp.image}.svg?component`)
 )
 
+// tweak the positions for the cool mouse hover effect, serves no purpose otherwise
 const hover = useMotionValue(0)
 const setHover = (value: boolean) => {
   hover.set(value ? 1 : 0)

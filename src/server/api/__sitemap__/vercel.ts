@@ -2,6 +2,8 @@
 // @ts-nocheck
 import { defineSitemapEventHandler } from "#imports"
 
+// This url is used to generate the sitemap for the vercel deployment
+// Used during generation of the static bundle
 export default defineSitemapEventHandler(async () => {
   const f = $fetch.create({
     baseURL: "https://tasm-backend.vercel.app/api",

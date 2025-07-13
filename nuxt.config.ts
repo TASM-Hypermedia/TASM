@@ -1,6 +1,9 @@
 // import path from "path"
 import fs from "fs"
 
+// go through the public directory and find all image files
+// that we want to optimize with ipx, this to allow for dynamic image fetching that are still optimized despite the static build
+// With a full server that would not be necessary
 const files = await fs.promises.readdir("./src/public/", { recursive: true })
 const optImgPaths = files
   .filter(
@@ -10,13 +13,11 @@ const optImgPaths = files
       file.endsWith(".jpeg") ||
       file.endsWith(".webp")
   )
-  // .map((file) =>
-  //   path.relative(path.join(file.parentPath, file.name), "./src/public/")
-  // )
   .map((path) => [`/_ipx/f_webp/${path}`, `/_ipx/f_webp&q_75/${path}`])
   .flat()
 
 export default defineNuxtConfig({
+  ssr: true,
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
   typescript: {
@@ -25,6 +26,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      // all links for favicons&co.
       link: [
         {
           rel: "icon",
@@ -58,6 +60,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
+      // get all the images to optimize with ipx
       routes: ["/", ...optImgPaths],
     },
   },
@@ -121,6 +124,7 @@ export default defineNuxtConfig({
     defaultImport: "component",
 
     // Configurazione svgo vera e propria
+    // Gli ID devono essere mantenuti per l'animazione dei dot nella benefits roadmap
     svgoConfig: {
       plugins: [
         {
@@ -135,6 +139,7 @@ export default defineNuxtConfig({
     },
   },
   sitemap: {
+    // to generate the sitemap from the vercel backend
     sources: ["/api/__sitemap__/vercel"],
   },
   site: {
@@ -145,6 +150,7 @@ export default defineNuxtConfig({
   },
   icon: {
     collections: ["material-symbols"],
+    // using something else seems to cause issues with icons not loading in prod
     provider: "iconify",
     serverBundle: false,
     clientBundle: {

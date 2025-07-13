@@ -3,6 +3,7 @@ import { computed } from "vue"
 import { motion } from "motion-v"
 
 const props = defineProps<{ title: string }>()
+// Split the title into individual letters for animation
 const letters = computed(() => props.title.split(""))
 </script>
 

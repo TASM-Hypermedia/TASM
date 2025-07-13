@@ -1,25 +1,25 @@
 <script setup lang="ts">
 import { easeOut, motion } from "motion-v"
 
-const hover = ref(false)
 const handleMouse = (event: MouseEvent) => {
   const rect = priceCardRef.value?.getBoundingClientRect()
   if (!rect) return
-  hover.value = true
   x.set((event.clientX - rect.left) / rect.width - 0.5)
   y.set((event.clientY - rect.top) / rect.height - 0.5)
 }
 const mouseLeave = () => {
-  hover.value = false
+  // reset the position when the mouse leaves the element
   x.set(0)
   y.set(0)
 }
 
+// we need the card ref to calculate the bounding rect, since we want all movement to be relative to the card itself
 const priceCardRef = useTemplateRef<HTMLDivElement>("gyro-container-ref")
 
 const x = useMotionValue(0)
 const y = useMotionValue(0)
 
+// those values look fine ig
 const rotx = useSpring(useTransform(() => -y.get() * 8))
 const roty = useSpring(useTransform(() => x.get() * 8))
 </script>

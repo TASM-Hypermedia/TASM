@@ -168,6 +168,7 @@ onMounted(() => {
   <!-- eslint-disable vuejs-accessibility/no-static-element-interactions -->
   <!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
   <div class="carousel">
+    <!-- SSR has issues with all the motion stuff and imgs loaded weird, this component doesn't provide any critical info, thus is only CSR -->
     <ClientOnly fallback="Loading images...">
       <div
         class="images-container"

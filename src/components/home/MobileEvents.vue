@@ -7,6 +7,7 @@ const { highlightedEvents } = defineProps<{
 }>()
 const selectedIndex = ref<number | null>(null)
 
+// update the index, and scroll the highlighted events into view
 const handleClick = (index: number) => {
   selectedIndex.value = index
   document.getElementById("highlighted-events")?.scrollIntoView({
@@ -27,6 +28,7 @@ const handleClick = (index: number) => {
           @click="handleClick(i)"
         >
           {{ item.title }}
+          <!-- small underline that follows the selected tab, to highlight the selected item -->
           <motion.div
             v-if="selectedIndex === i"
             id="underline"

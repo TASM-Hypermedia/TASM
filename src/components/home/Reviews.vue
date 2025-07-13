@@ -20,6 +20,7 @@
 
         <div class="name body-text">{{ review.person }}</div>
 
+        <!-- role and label for accessibility purposes, since there's no text -->
         <div
           class="rating"
           role="img"

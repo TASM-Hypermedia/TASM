@@ -25,7 +25,12 @@ const { data } = response
 
 <template>
   <main>
-    <HeroPage title="Namaste" subtitle="Welcome to Inner Bloom yoga center!" url-img="HomePage 1.jpeg" />
+    <!-- This page was split into components due to its complexity -->
+    <HeroPage
+      title="Namaste"
+      subtitle="Welcome to Inner Bloom yoga center!"
+      url-img="HomePage 1.jpeg"
+    />
     <HomeCenter
       :home-page-element="{
         title: data?.yogaCenter.title || 'Yoga Center',

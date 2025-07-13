@@ -218,6 +218,8 @@ const viewport = useViewport()
 const layout = computed(() =>
   viewport.isLessThan("tablet") ? "mobile" : "default"
 )
+
+// load the correct images based on the layout
 onMounted(() => {
   if (layout.value === "mobile") {
     image1.value = image1Mobile.value

@@ -15,10 +15,12 @@
         :key="i"
         :variants="variants"
         :transition="{
+          // fade-in effect
           duration: 0.7,
           ease: easeInOut,
         }"
         :style="{
+          // scale effect on hover
           scale: activity.scale,
         }"
         class="card"
@@ -69,6 +71,7 @@ const props = defineProps<{
   activitiesProp?: Array<Activity>
 }>()
 
+// variants for the fade-in effect
 const variants = {
   hidden: {
     opacity: 0.5,
@@ -83,6 +86,7 @@ const variants = {
 }
 
 const activities = (props.activitiesProp || []).map((activity) => {
+  // target is set for the hover scaling effect, handled separately from the fade-in effect
   const target = useMotionValue(1)
   const spring = useSpring(target, {
     bounce: 0,
@@ -91,6 +95,7 @@ const activities = (props.activitiesProp || []).map((activity) => {
     damping: 20,
   })
 
+  // object to wrap all the properties needed for the activity card
   return {
     prop: activity,
     target,

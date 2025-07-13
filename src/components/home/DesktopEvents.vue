@@ -15,18 +15,23 @@ import {
 } from "motion-v"
 import { animate } from "motion"
 
+// ahhh this is a bit of a hack, but it works
+
 const { highlightedEvents } = defineProps<{
   highlightedEvents: Array<Event>
 }>()
 
+// since we want to animate the dots, but the dots are SVG elements, we need to use refs
 const dots = ref<Array<SVGPathElement>>([])
 const selectedIndex = ref<number | null>(null)
 
 onMounted(() => {
+  // we do the thing for each dot
   Array.from({ length: 3 }).forEach((_, i) => {
     const dot = document.getElementById(`dot${i + 1}`) as SVGPathElement | null
-    if (!dot) return
+    if (!dot) return // how
 
+    // each has its hover state and pressed state, handled with motion
     const hovering = ref(false)
     hover(dot, () => {
       hovering.value = true
@@ -37,6 +42,7 @@ onMounted(() => {
       selectedIndex.value = i
     })
 
+    // we also want to have a random idle offset, so that the dots don't look static
     const idleOffset = ref(0)
     const newRandomOffset = () => {
       idleOffset.value = Math.random() / 2 + 0.5
@@ -44,19 +50,21 @@ onMounted(() => {
     }
     newRandomOffset()
 
+    // based on the state, we calculate a different offset value
     const offset = computed(() => {
       if (selectedIndex.value === i) return 2
       if (hovering.value) return 1
       return idleOffset.value
     })
 
+    // we watch the offset to apply the 3D effect and shadow
     watch(offset, (newOffset) => {
-      const zPosition = transform(newOffset, [0, 2], [-20, 70])
+      const zPosition = transform(newOffset, [0, 2], [-20, 70]) // map the z position
       const shadow = transform(
         newOffset,
         [0, 2],
         ["0 0px 0px rgba(0, 0, 0, 1)", "0 8px 12px rgba(122, 65, 175, 0.3)"]
-      )
+      ) // map the shadow
 
       const animation = animate(
         dot,
@@ -65,10 +73,11 @@ onMounted(() => {
           filter: `drop-shadow(${shadow})`,
         },
         { type: "spring", stiffness: 100 }
-      )
+      ) // apply the animation imperatively
       onWatcherCleanup(() => animation.stop())
     })
 
+    // keep the reference
     dots.value.push(dot)
   })
 
@@ -79,6 +88,7 @@ onMounted(() => {
   })
 })
 
+// when the selected index changes, animate the dot with special border effect to make it more visible
 watch(selectedIndex, (newIndex) => {
   if (newIndex === null) return
   const dot = dots.value[newIndex]
@@ -101,7 +111,7 @@ watch(selectedIndex, (newIndex) => {
     animate(dot, {
       stroke: "#fff",
       strokeWidth: 1.5,
-    })
+    }) // reset the border
   })
 })
 </script>

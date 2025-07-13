@@ -10,6 +10,7 @@ const opacity = computed(() =>
 const route = useRoute()
 
 function active(thisRoute: string) {
+  // confront the element with the current route path, and assign the active class accordingly
   if (route.path.startsWith(`/${thisRoute}`)) return "link active-link"
   else return "link"
 }

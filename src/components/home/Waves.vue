@@ -1,18 +1,23 @@
 <script setup lang="ts">
 import { motion } from "motion-v"
+// cool waves!!!!
+
+// animation linked with the vertical scroll position
 const { scrollY } = useScroll()
 const scrollSpeed = useVelocity(scrollY)
 
 const waves = Array.from({ length: 7 }, (_, i) => {
+  // for each of the 7 wave svgs, dynamically import it and generate a random scroll multiplier for variation
   const component = defineAsyncComponent(
     () => import(`~/assets/waves/Vector-${i}.svg?component`)
   )
-  const scrollMultiplier = Math.random() ** 2
+  const scrollMultiplier = Math.random() ** 2 // square distribution for more variation
 
   return {
     id: i,
     component,
     x: useSpring(
+      // the horizontal position is bound to the scroll position, with a slowish spring effect
       useTransform(() => scrollY.get() * scrollMultiplier),
       {
         mass: 3,
@@ -20,12 +25,14 @@ const waves = Array.from({ length: 7 }, (_, i) => {
         damping: 50,
       }
     ),
+    // the vertical position is only a subtle offset based on the scroll speed, to create a hint of depth
     y: useSpring(
       useTransform(() => scrollSpeed.get() * 0.001 * i * scrollMultiplier)
     ),
   }
 })
 
+// we have a filler rectangle with the top element to avoid some pink to bleed through the top
 const fillerHeight = useTransform(() =>
   clamp(waves[waves.length - 1].y.get() + 5, 5, 500)
 )

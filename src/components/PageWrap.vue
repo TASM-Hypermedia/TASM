@@ -10,6 +10,7 @@ const layout = computed(() =>
 const { y } = useCustomScroll()
 const seen = computed(() => y.value > 600)
 
+// Component used to ensure consistent behavior overall layout all pages
 const { title } = defineProps<{
   /**
    * Hero page title
@@ -35,6 +36,8 @@ useHead({ title })
 
 <template>
   <main>
+    <!-- The mobile menu tagline is rendered here since this component already
+     has all the relevant info and is used in all pages that require it -->
     <motion.div
       v-if="layout === 'mobile'"
       class="info-header-mobile"

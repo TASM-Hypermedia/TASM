@@ -1,8 +1,10 @@
 <script setup lang="ts">
+// This component displays a square calendar with the date information, it's mostly decorative
 const props = defineProps<{
   date: Date
 }>()
 
+// extract string
 const calendar_month = props.date
   .toLocaleString("en-US", { month: "short" })
   .toUpperCase()

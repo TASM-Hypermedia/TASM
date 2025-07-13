@@ -12,6 +12,8 @@ function active(thisRoute: string) {
 
 const open = ref(false)
 
+// the difference with desktop starts here, the menu is hidden by default and toggled with a button
+// the opacity is set to 1 when the menu is open, otherwise it fades out with with the scroll thingy
 const { y } = useCustomScroll()
 const opacity = computed(() =>
   open.value ? 1 : maprange(clamp(y.value, 0, 600), 0, 600, 0.6, 1)
@@ -62,6 +64,7 @@ const linkVariants = {
     </header>
 
     <AnimatePresence>
+      <!-- this is the actual menu, animated -->
       <motion.div
         class="mobile-menu"
         :variants="{

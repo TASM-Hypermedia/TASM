@@ -4,6 +4,8 @@ import AppFooter from "@/components/layout/AppFooter.vue"
 </script>
 
 <template>
+  <!-- This class is used in CSS to apply desktop-specific styles -->
+  <!-- The reason this is used rather than media queries is to ensure consistent behavior across all components -->
   <div class="desktop-layout">
     <DesktopHeader />
     <slot />

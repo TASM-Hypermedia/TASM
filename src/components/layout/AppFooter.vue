@@ -66,7 +66,7 @@ footer {
   display: flex;
   padding-bottom: 64px;
   font-size: 14px;
-  order: 1000;
+  order: 1000; // ensure the footer is always at the bottom, otherwise it breaks if the layout switches
   width: 100vw;
 
   .footer-content {

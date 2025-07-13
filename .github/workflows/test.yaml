@@ -3,6 +3,7 @@ on:
   push:
   workflow_dispatch:
 
+# classic test job to run tsc and eslint
 jobs:
   test:
     name: Typecheck and Lint

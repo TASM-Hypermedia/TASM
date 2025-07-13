@@ -77,7 +77,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue"
+import { computed } from "vue"
 import type { Event } from "~/types"
 import SvgIcon from "~/assets/images/homepage/icon-location2.svg"
 import arrow from "~/assets/images/right-arrow.svg"
@@ -85,14 +85,6 @@ import arrow from "~/assets/images/right-arrow.svg"
 const props = defineProps<{
   eventProp: Event
 }>()
-const clientWidth = ref(0)
-
-onMounted(() => {
-  clientWidth.value = window.innerWidth
-  window.addEventListener("resize", () => {
-    clientWidth.value = window.innerWidth
-  })
-})
 
 const calendar_date = computed(() => new Date(props.eventProp.date))
 </script>

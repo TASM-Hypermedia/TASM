@@ -20,10 +20,6 @@
       />
     </v-container>
   </NuxtLink>
-  <!-- 
-   1-motion wrapping 
-   2-hover in css
-   -->
 </template>
 
 <script setup lang="ts">

@@ -30,6 +30,9 @@ const setDifficulty = (n: number) => {
   selectedDifficulty.value = n
 }
 
+// here we fetch all activities and select random ones at build time, in a production
+// implementation this should be done on the backend to avoid loading all activities
+// at once with an ACTUAL ranking algorithm of some sort
 const resActivities = await useAPI<
   {
     title: string
