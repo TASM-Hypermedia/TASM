@@ -12,7 +12,14 @@ const waves = Array.from({ length: 7 }, (_, i) => {
   return {
     id: i,
     component,
-    x: useSpring(useTransform(() => scrollY.get() * scrollMultiplier)),
+    x: useSpring(
+      useTransform(() => scrollY.get() * scrollMultiplier),
+      {
+        mass: 3,
+        stiffness: 200,
+        damping: 50,
+      }
+    ),
     y: useSpring(
       useTransform(() => scrollSpeed.get() * 0.001 * i * scrollMultiplier)
     ),

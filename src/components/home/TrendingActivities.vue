@@ -178,7 +178,7 @@ const activities = (props.activitiesProp || []).map((activity) => {
 
 .card_title {
   flex: 1;
-  color: black;
+  color: white;
   height: 30px;
   font-size: 1.5rem;
   line-height: 30px;
@@ -186,7 +186,7 @@ const activities = (props.activitiesProp || []).map((activity) => {
   display: flex;
   position: relative;
   flex-direction: row;
-  text-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
+  text-shadow: 0px 0px 16px rgba(0, 0, 0, 0.6);
 }
 
 .card_title span {

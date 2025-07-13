@@ -73,12 +73,12 @@ footer {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 32px;
     justify-content: space-between;
     padding: 32px 128px;
 
     .mobile-layout & {
-      padding: 16px;
+      padding: 32px;
       flex-direction: column;
       div {
         flex: 1 1 0;
@@ -88,7 +88,6 @@ footer {
     div {
       display: flex;
       flex-direction: column;
-      margin-right: 32px;
       min-width: 100px;
       flex: 1 1 150px;
 
