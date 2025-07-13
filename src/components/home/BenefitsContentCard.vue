@@ -13,6 +13,10 @@ const { benefitsProp } = defineProps<{
   }
 }>()
 
+const svg = defineAsyncComponent(
+  () => import(`~/assets/images/benefits/${benefitsProp.image}.svg?component`)
+)
+
 const hover = useMotionValue(0)
 const setHover = (value: boolean) => {
   hover.set(value ? 1 : 0)
@@ -100,7 +104,6 @@ const variations = {
               <svg-blob-outline class="svg-blob-outline" />
             </Motion>
             <motion.div
-              class="teacher_img_wrapper"
               :style="{
                 width: '80px',
                 height: '80px',
@@ -111,17 +114,12 @@ const variations = {
                 scale: imgScale,
               }"
             >
-              <NuxtImg
-                preload
-                format="webp"
-                quality="75"
-                class="teacher_image"
+              <component
+                :is="svg"
                 :style="{
                   width: '100%',
                   height: '100%',
                 }"
-                :src="'/images/icons/benefits/' + benefitsProp.image"
-                :alt="benefitsProp.title"
               />
             </motion.div>
           </div>

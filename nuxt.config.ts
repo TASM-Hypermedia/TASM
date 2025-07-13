@@ -145,6 +145,8 @@ export default defineNuxtConfig({
   },
   icon: {
     collections: ["material-symbols"],
+    provider: "iconify",
+    serverBundle: false,
     clientBundle: {
       scan: true,
       sizeLimitKb: 256,

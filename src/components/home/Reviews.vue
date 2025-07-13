@@ -20,7 +20,11 @@
 
         <div class="name body-text">{{ review.person }}</div>
 
-        <div class="rating" :aria-label="`Rating: ${review.stars} out of 5`">
+        <div
+          class="rating"
+          role="img"
+          :aria-label="`Rating: ${review.stars} out of 5`"
+        >
           <star
             v-for="k in review.stars"
             :key="`full-${k}`"

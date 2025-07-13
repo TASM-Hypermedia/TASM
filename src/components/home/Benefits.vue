@@ -12,26 +12,26 @@ const benefits = [
     title: "Connection",
     description:
       "Reconnect with yourself, others, and the world around you —on and off the mat",
-    image: "Connessione.svg",
+    image: "Connessione",
     position: 0,
   },
   {
     title: "Clarity",
     description:
       "Find mental focus and inner stillness through breath and mindful movement",
-    image: "Lampadina.svg",
+    image: "Lampadina",
     position: 1,
   },
   {
     title: "Strength",
     description: "Build physical resilience and emotional balance",
-    image: "Forza.svg",
+    image: "Forza",
     position: 2,
   },
   {
     title: "Freedom",
     description: "Release tension in the body and let go of limiting thoughts",
-    image: "Liberta.svg",
+    image: "Liberta",
     position: 3,
   },
 ]
