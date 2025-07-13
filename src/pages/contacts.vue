@@ -30,7 +30,7 @@ const contactsList = res.data.value
                 preload
                 format="webp"
                 src="/images/icons/wa.png"
-                alt="Whatsapp number"
+                alt=""
                 class="contact-image"
               />
             </a>
