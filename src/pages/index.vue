@@ -38,11 +38,11 @@ const { data } = response
       }"
     />
 
-    <HomeTrendingActivities
+    <LazyHomeTrendingActivities
       :activities-prop="response.data.value?.highlights.highlightActivities"
     />
 
-    <HomeHighlightedEvents
+    <LazyHomeHighlightedEvents
       v-if="
         response.data.value?.highlights.highlightEvents &&
         response.data.value.highlights.highlightEvents.length
@@ -56,10 +56,10 @@ const { data } = response
       <HomeSlides />
     </div>
     <!-- <SeparatorComponent :separator-title="'Events'" /> -->
-    <HomeBenefits />
-    <HomeReviews :reviews-prop="response.data.value?.reviews" />
+    <LazyHomeBenefits />
+    <LazyHomeReviews :reviews-prop="response.data.value?.reviews" />
 
-    <HomeCertifications
+    <LazyHomeCertifications
       :certification-prop="response.data.value?.certifications"
     />
   </main>

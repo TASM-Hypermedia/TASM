@@ -13,7 +13,7 @@ const { homePageElement } = defineProps<{
 
 <template>
   <div class="container">
-    <HomeWaves />
+    <LazyHomeWaves />
     <div class="wrapper">
       <SvgTizia class="svg-tizia" />
       <div class="not-the-image">
