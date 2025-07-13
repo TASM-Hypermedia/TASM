@@ -17,7 +17,7 @@ defineProps({
     <LoadingIndicator />
     <NuxtLayout :name="layout">
       <main class="error-page">
-        <h1>{{ error?.statusCode }}</h1>
+        <h1>Error {{ error?.statusCode }}</h1>
         <strong>{{ error?.statusMessage }}</strong>
         <p>{{ error?.message }}</p>
         <NuxtLink class="link-button" to="/">Go back home</NuxtLink>
@@ -47,7 +47,7 @@ main.error-page {
   padding-top: 128px;
   height: 100%;
   margin-bottom: 32px;
-  border: 0px solid black;
+  border: 0 solid black;
 
   h1 {
     font-size: 64px;
