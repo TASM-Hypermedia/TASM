@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import locationSvg from "~/assets/images/homepage/icon-location-contacts.svg"
+
 definePageMeta({
   title: "Contacts",
   description: "Get in touch with us for any inquiries or information.",
@@ -19,47 +21,69 @@ const contactsList = res.data.value
   <PageWrap title="Contacts" img-src="./banners/contacts-banner.jpg">
     <section class="contact-section">
       <div class="row">
-        <div class="column"></div>
         <div class="column">
-          <a class="body-text" href="tel:+391234567890">
-            <NuxtImg
-              preload
-              format="webp"
-              src="/images/icons/wa.png"
-              alt="Whatsapp number"
-              class="contact-image"
-            />
-            <br />
-            <p class="contact-info">{{ contactsList![0].contactInfo }}</p>
-          </a>
+          <div class="contactIcon">
+            <a href="tel:+391234567890" class="body-text" aria-label="Whatsapp">
+              <NuxtImg
+                preload
+                format="webp"
+                src="/images/icons/wa.png"
+                alt="Whatsapp number"
+                class="contact-image"
+              />
+            </a>
+          </div>
+          <div class="contactText">
+            <h3>Whatsapp:</h3>
+            <p> {{ contactsList![0].contactInfo }} </p>
+          </div>
         </div>
         <div class="column">
-          <a class="body-text" href="tel:+391234567890">
-            <NuxtImg
-              preload
-              format="webp"
-              src="/images/icons/phone.png"
-              alt="Phone number"
-              class="contact-image"
-            />
-            <br />
-            <p class="contact-info">{{ contactsList![0].contactInfo }}</p>
-          </a>
+          <div class="contactIcon">
+            <a href="tel:+391234567890" class="body-text" aria-label="Phone">
+              <NuxtImg
+                preload
+                format="webp"
+                src="/images/icons/phone.png"
+                alt="Phone number"
+                class="contact-image"
+              />
+            </a>
+          </div>
+          <div class="contactText">
+            <h3>Phone number:</h3>
+            <p> {{ contactsList![0].contactInfo }} </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column">
+          <div class="contactIcon">
+            <a class="body-text" href="tel:+391234567890" aria-label="Email">
+              <NuxtImg
+                preload
+                format="webp"
+                src="/images/icons/mail.png"
+                alt="Mail"
+                class="contact-image"
+              />
+            </a>
+          </div>
+          <div class="contactText">
+            <h3>Email:</h3>
+            <p> {{ contactsList![1].contactInfo }} </p>
+          </div>
         </div>
         <div class="column">
-          <a class="body-text" href="mailto:simone.pedroni@mail.polimi.it">
-            <NuxtImg
-              preload
-              format="webp"
-              src="/images/icons/mail.png"
-              alt="Mail"
-              class="contact-image"
-            />
-            <br />
-            <p class="contact-info">{{ contactsList![1].contactInfo }}</p>
-          </a>
+          <div class="contactSvg">
+            <locationSvg />
+          </div>
+          <div class="contactText">
+            <h3>Phone number:</h3>
+            <p>Piazza Leonardo da Vinci, 32, 20133 Milan (MI)</p>
+          </div>
         </div>
-        <div class="column"></div>
       </div>
     </section>
 
@@ -154,6 +178,8 @@ const contactsList = res.data.value
   width: 80%;
   margin: auto;
   display: flex;
+  flex-direction: row;
+  gap: 16px;
 
   .mobile-layout & {
     flex-direction: column;
@@ -161,8 +187,8 @@ const contactsList = res.data.value
 }
 
 .column {
-  flex: 20%;
-  text-align: center;
+  display: flex;
+  flex: 50%;
 
   a {
     color: black;
@@ -173,6 +199,31 @@ const contactsList = res.data.value
   a:visited {
     color: black;
     text-decoration: none;
+  }
+
+  .contactIcon {
+    flex: 40%;
+    text-align: center;
+  }
+
+  .contactSvg {
+    display: flex;
+    flex: 40%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contactText {
+    flex: 60%;
+    margin: auto;
+
+    h3 {
+      font-size: 25px;
+    }
+
+    p {
+      font-size: 20px;
+    }
   }
 }
 
@@ -220,7 +271,7 @@ h1 {
   border: 0;
   margin-top: -15px;
   border-radius: 16px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 
   .mobile-layout & {
     max-width: 90%;
@@ -240,7 +291,7 @@ h1 {
 .contact-form {
   border: 1px solid #919090;
   border-radius: 16px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   padding: 30px 20px;
   width: 80%;
   margin: auto;
