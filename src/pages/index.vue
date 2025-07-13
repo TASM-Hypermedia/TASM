@@ -25,7 +25,7 @@ const { data } = response
 
 <template>
   <main>
-    <HeroPage title="Namaste" url-img="HomePage 1.jpeg" />
+    <HeroPage title="Namaste" subtitle="Welcome to Inner Bloom yoga center!" url-img="HomePage 1.jpeg" />
     <HomeCenter
       :home-page-element="{
         title: data?.yogaCenter.title || 'Yoga Center',
@@ -77,7 +77,7 @@ main {
   height: 100%;
   gap: 100px;
   margin-bottom: 32px;
-  border: 0px solid black;
+  border: 0 solid black;
 }
 
 .cardYogaCenter {
