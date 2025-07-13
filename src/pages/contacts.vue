@@ -36,7 +36,7 @@ const contactsList = res.data.value
             </a>
           </div>
           <div class="contactText">
-            <h3>Whatsapp:</h3>
+            <h2>Whatsapp:</h2>
             <p> {{ contactsList![0].contactInfo }} </p>
           </div>
         </div>
@@ -47,7 +47,7 @@ const contactsList = res.data.value
             </a>
           </div>
           <div class="contactText">
-            <h3>Phone number:</h3>
+            <h2>Phone number:</h2>
             <p> {{ contactsList![0].contactInfo }} </p>
           </div>
         </div>
@@ -61,7 +61,7 @@ const contactsList = res.data.value
             </a>
           </div>
           <div class="contactText">
-            <h3>Email:</h3>
+            <h2>Email:</h2>
             <p> {{ contactsList![1].contactInfo }} </p>
           </div>
         </div>
@@ -70,7 +70,7 @@ const contactsList = res.data.value
             <locationSvg />
           </div>
           <div class="contactText">
-            <h3>Address:</h3>
+            <h2>Address:</h2>
             <p>Piazza Leonardo da Vinci, 32, 20133 Milan</p>
           </div>
         </div>
@@ -207,7 +207,7 @@ const contactsList = res.data.value
     flex: 60%;
     margin: auto;
 
-    h3 {
+    h2 {
       font-size: 25px;
     }
 
