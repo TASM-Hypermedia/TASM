@@ -56,7 +56,7 @@ const contactsList = res.data.value
       <div class="row">
         <div class="column">
           <div class="contactIcon">
-            <a class="body-text" href="tel:+391234567890" aria-label="Email">
+            <a class="body-text" href="mailto: simone.pedroni@mail.polimi.it" aria-label="Email">
               <mailSvg />
             </a>
           </div>
