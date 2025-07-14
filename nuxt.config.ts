@@ -26,6 +26,9 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      htmlAttrs: {
+        lang: "en",
+      },
       // all links for favicons&co.
       link: [
         {
