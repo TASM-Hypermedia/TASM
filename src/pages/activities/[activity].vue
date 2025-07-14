@@ -3,12 +3,15 @@ import type { ActivityType } from "~/types"
 
 const route = useRoute()
 
-const a = route.params.activity
-const ActivityURL = typeof a === "string" ? a : a.join("")
+const activityURL = computed(() => {
+  const a = route.params.activity
+  return typeof a === "string" ? a : a.join("")
+})
 
 const response = await useAPI<ActivityType>("/postActivity", {
+  key: `activity-${activityURL.value}`,
   method: "POST",
-  body: JSON.stringify({ ActivityURL }),
+  body: JSON.stringify({ ActivityURL: activityURL.value }),
 })
 
 if (response.error.value || !response.data.value)
@@ -17,7 +20,7 @@ if (response.error.value || !response.data.value)
     ...response.error.value,
     statusCode: 404,
     statusMessage: "Activity not found",
-    message: `"${ActivityURL}" - We don't offer this activity yet!`,
+    message: `"${activityURL.value}" - We don't offer this activity yet!`,
   })
 
 const activity = response.data.value
@@ -60,6 +63,7 @@ for (let i = 0; i < 3; i++) {
 </script>
 <template>
   <PageWrap
+    :key="activityURL"
     :img-src="activity.mainImageURL"
     tagline="Our Activities:"
     :title="activity.title"

@@ -4,13 +4,15 @@ import locationSvg from "~/assets/images/homepage/icon-location2.svg"
 import calendarSvg from "~/assets/images/calendar.svg"
 
 const route = useRoute()
-
-const a = route.params.event
-const EventURL = typeof a === "string" ? a : a.join("")
+const eventURL = computed(() => {
+  const a = route.params.event
+  return typeof a === "string" ? a : a.join("")
+})
 
 const response = await useAPI<EventType>("/postEvent", {
+  key: `event-${eventURL.value}`,
   method: "POST",
-  body: JSON.stringify({ EventURL }),
+  body: JSON.stringify({ EventURL: eventURL.value }),
 })
 
 if (response.error.value || !response.data.value)
@@ -18,7 +20,7 @@ if (response.error.value || !response.data.value)
     fatal: true,
     ...(response.error.value ?? {
       statusCode: 404,
-      message: `${EventURL} - Event not found`, // specific error message for better clarity
+      message: `${eventURL.value} - Event not found`, // specific error message for better clarity
     }),
   })
 
@@ -51,6 +53,7 @@ const programPoints: {
 
 <template>
   <PageWrap
+    :key="eventURL"
     :img-src="event.mainImageURL"
     tagline="Our Events:"
     :title="event.title"

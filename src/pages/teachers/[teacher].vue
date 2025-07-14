@@ -2,10 +2,7 @@
 import { useRoute } from "vue-router"
 import { useAPI } from "~/composables/useAPI"
 
-const route = useRoute()
-const TeacherURL = route.params.teacher
-
-const data = await useAPI<{
+type TeacherResponse = {
   name: string
   mantra: string
   description: string
@@ -42,9 +39,18 @@ const data = await useAPI<{
     }>
     bannerImageURL: string
   }>
-}>("/postTeacher", {
+}
+
+const route = useRoute()
+const teacherURL = computed(() => {
+  const t = route.params.teacher
+  return typeof t === "string" ? t : t.join("")
+})
+
+const data = await useAPI<TeacherResponse>("/postTeacher", {
+  key: `teacher-${teacherURL.value}`,
   method: "POST",
-  body: JSON.stringify({ TeacherURL }),
+  body: JSON.stringify({ TeacherURL: teacherURL.value }),
 })
 
 if (data.error.value || !data.data.value)
@@ -60,6 +66,7 @@ const teacher = data.data.value
 
 <template>
   <PageWrap
+    :key="teacherURL"
     :title="teacher.name"
     :subtitle="teacher.mantra"
     tagline="The Teachers:"
